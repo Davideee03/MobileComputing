@@ -6,6 +6,7 @@ var last_direction : Vector2
 var direction : Vector2
 
 var first_position : Vector2
+var is_dragging : bool = false
 
 ###ENEMIES###
 #var enemies : Array[Node2D]
@@ -24,6 +25,7 @@ func _input(event):
 		get_tree().quit()
 	
 	if event is InputEventScreenTouch:
+		is_dragging = false
 		if event.is_pressed():
 			first_position = (event.position - (get_viewport().size*0.5))
 		else:
@@ -31,9 +33,11 @@ func _input(event):
 	elif event is InputEventScreenDrag:
 		var target : Vector2 = (event.position - (get_viewport().size*0.5))
 		direction = first_position.direction_to(target).normalized()
+		is_dragging = true
+		
 
 func _process(delta):
-	if first_position!=global_position:
+	if is_dragging:
 		global_position += direction * speed * delta
 #	#If there's an enemy and can_shoot, shoot
 #	if !enemies.is_empty() && can_shoot:
