@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://c00nunxsjq8nk"]
+
+[ext_resource type="Script" path="res://Scripts/Player/PlayerBullet.gd" id="1_pfnli"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_osxyn"]
+size = Vector2(20, 6)
+
+[node name="PlayerBullet" type="Node2D"]
+top_level = true
+script = ExtResource("1_pfnli")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -2.5
+offset_right = 10.0
+offset_bottom = 2.5
+
+[node name="TargetDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TargetDetector"]
+shape = SubResource("RectangleShape2D_osxyn")
+
+[connection signal="area_entered" from="TargetDetector" to="." method="_on_target_detector_area_entered"]

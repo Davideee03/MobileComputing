@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://lk6cl41y4bsr"]
+
+[ext_resource type="Script" path="res://Scripts/Town/TownHall.gd" id="1_lrecq"]
+[ext_resource type="Script" path="res://Scripts/Town/BuildingButton.gd" id="2_sk5f4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ojwjd"]
+size = Vector2(60, 60)
+
+[node name="TownHall" type="Area2D" node_paths=PackedStringArray("health_bar")]
+collision_layer = 8
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_lrecq")
+health_bar = NodePath("TownHallHealth")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ojwjd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+mouse_filter = 2
+
+[node name="TownHallHealth" type="ProgressBar" parent="."]
+offset_left = -50.0
+offset_top = -60.0
+offset_right = 50.0
+offset_bottom = -50.0
+mouse_filter = 2
+value = 100.0
+show_percentage = false
+
+[node name="BuildingButton" type="Button" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+flat = true
+script = ExtResource("2_sk5f4")
+
+[node name="BuildingName" type="Label" parent="BuildingButton"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = -68.0
+offset_right = 50.0
+offset_bottom = -42.0
+grow_horizontal = 2
+text = "Town hall"
+horizontal_alignment = 1
+
+[connection signal="destroyed" from="." to="." method="_on_destroyed"]
+[connection signal="button_down" from="BuildingButton" to="BuildingButton" method="_on_button_down"]

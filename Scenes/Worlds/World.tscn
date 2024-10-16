@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dey45n3bkn00i"]
+
+[ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="1_mbfud"]
+[ext_resource type="Script" path="res://Scripts/Enemies/EnemySpawners.gd" id="2_6j8cj"]
+[ext_resource type="PackedScene" uid="uid://cicvcl7ecrmi7" path="res://Scenes/Enemies/EnemySpawner.tscn" id="3_u8ckd"]
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_mbfud")]
+
+[node name="EnemySpawners" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("2_6j8cj")
+player = NodePath("../Player")
+
+[node name="EnemySpawnerRU" parent="EnemySpawners" instance=ExtResource("3_u8ckd")]
+position = Vector2(500, -680)
+
+[node name="EnemySpawnerLU" parent="EnemySpawners" instance=ExtResource("3_u8ckd")]
+position = Vector2(-500, -680)
+
+[node name="EnemySpawnerLD" parent="EnemySpawners" instance=ExtResource("3_u8ckd")]
+position = Vector2(-500, 680)
+
+[node name="EnemySpawnerRD" parent="EnemySpawners" instance=ExtResource("3_u8ckd")]
+position = Vector2(500, 680)

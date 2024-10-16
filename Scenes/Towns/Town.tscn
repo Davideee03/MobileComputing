@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu3i1p3knb8dp"]
+
+[ext_resource type="PackedScene" uid="uid://dvhjxcscbxat6" path="res://Scenes/Fuel/FuelContainer/FuelContainer.tscn" id="2_1j8pv"]
+[ext_resource type="PackedScene" uid="uid://6qm43mvh3ma6" path="res://Scenes/Enemies/Enemy.tscn" id="2_6xet0"]
+[ext_resource type="Script" path="res://Scripts/Enemies/WaveManager.gd" id="2_7hnn4"]
+[ext_resource type="PackedScene" uid="uid://cicvcl7ecrmi7" path="res://Scenes/Enemies/EnemySpawner.tscn" id="2_kbano"]
+[ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
+[ext_resource type="Script" path="res://Scripts/Fuel/PickUpFuel.gd" id="3_057bw"]
+
+[node name="World" type="Node2D"]
+
+[node name="FuelContainer" parent="." instance=ExtResource("2_1j8pv")]
+
+[node name="Player" parent="." instance=ExtResource("2_ko0f8")]
+position = Vector2(133, -99)
+
+[node name="Control" type="Control" parent="Player"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -449.0
+offset_top = -648.0
+offset_right = 455.0
+offset_bottom = 698.0
+
+[node name="WaveCounter" type="Label" parent="Player/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 100.0
+offset_top = 129.0
+offset_right = 147.0
+offset_bottom = 155.0
+text = "Wave: 0"
+
+[node name="StartWave" type="Button" parent="Player/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 366.0
+offset_top = 65.0
+offset_right = 458.0
+offset_bottom = 96.0
+text = "Start Wave"
+
+[node name="PickUpFuel" type="Button" parent="Player/Control" node_paths=PackedStringArray("player", "fuel_container")]
+layout_mode = 0
+offset_left = 583.0
+offset_top = 65.0
+offset_right = 591.0
+offset_bottom = 73.0
+text = "Pick Up Fuel"
+script = ExtResource("3_057bw")
+player = NodePath("../..")
+fuel_container = NodePath("../../../FuelContainer")
+
+[node name="Spawners" type="Node2D" parent="."]
+script = ExtResource("2_7hnn4")
+enemies = Array[PackedScene]([ExtResource("2_6xet0")])
+
+[node name="EnemySpawner" parent="Spawners" node_paths=PackedStringArray("target") instance=ExtResource("2_kbano")]
+position = Vector2(-1250, 0)
+target = NodePath("../../FuelContainer")
+
+[node name="EnemySpawner2" parent="Spawners" node_paths=PackedStringArray("target") instance=ExtResource("2_kbano")]
+position = Vector2(1250, 0)
+target = NodePath("../../FuelContainer")
+
+[connection signal="button_down" from="Player/Control/StartWave" to="Spawners" method="_on_start_wave_button_down"]
+[connection signal="button_down" from="Player/Control/PickUpFuel" to="Player/Control/PickUpFuel" method="_on_button_down"]
