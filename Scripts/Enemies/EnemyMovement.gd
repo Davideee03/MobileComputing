@@ -7,7 +7,7 @@ var can_attack : bool = false
 
 @export_category("Damage")
 @export var damage_inflicted : float = 25.0
-@export var attack_time : float = 2.5
+@export var attack_time : float = 0.5
 
 
 func _process(delta):
@@ -19,10 +19,13 @@ func set_target(new_target):
 
 func _on_area_entered(area):
 	attack(area)
-
-func attack(building : Area2D):
 	can_attack = true
+func _on_area_exited(area):
+	can_attack = false
+
+func attack(player : Area2D):
 	await get_tree().create_timer(attack_time).timeout
 	
-	building.take_damage(damage_inflicted)
-	attack(building)
+	if !can_attack: return
+	player.take_damage(damage_inflicted)
+	attack(player)
