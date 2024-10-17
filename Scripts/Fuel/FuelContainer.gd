@@ -8,7 +8,8 @@ extends Area2D
 #Reparent the current node in order to 
 #follow the player copying his transform
 func follow_player():
-	reparent(player, false)
+	reparent(player)
+	position = Vector2(0,0)
 
 #Wait a process frame, then reparent the node 
 #keeping the current transform
