@@ -32,8 +32,6 @@ func instantiate(enemy):
 	new_enemy.set_target(target)
 	
 	var monster_value : int = new_enemy.monster_value
-#	parent.update_wave(monster_value)
-#	update_enemies_number(monster_value)
 
 func choose_rand_enemy():
 	if parent.stop_spawning():
@@ -41,9 +39,3 @@ func choose_rand_enemy():
 	var rand_enemy = enemies.pick_random()
 	
 	return rand_enemy
-
-#func update_enemies_number(value : int):
-#	enemies_number+=value
-#
-#	if enemies_number<=0:
-#		print(enemies_number)

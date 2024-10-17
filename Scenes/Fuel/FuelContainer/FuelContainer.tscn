@@ -1,19 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvhjxcscbxat6"]
+[gd_scene load_steps=3 format=3 uid="uid://dvhjxcscbxat6"]
 
 [ext_resource type="Script" path="res://Scripts/Fuel/FuelContainer.gd" id="1_cwpt3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_338jw"]
 size = Vector2(40, 40)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_a4fct"]
-radius = 300.0
-
-[node name="FuelContainer" type="Area2D" node_paths=PackedStringArray("health_bar")]
+[node name="FuelContainer" type="Area2D"]
 collision_layer = 8
 collision_mask = 0
 monitoring = false
 script = ExtResource("1_cwpt3")
-health_bar = NodePath("FuelHealthBar")
 
 [node name="FuelCol" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_338jw")
@@ -32,15 +28,3 @@ offset_bottom = -50.0
 mouse_filter = 2
 value = 100.0
 show_percentage = false
-
-[node name="PlayerDetector" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-shape = SubResource("CircleShape2D_a4fct")
-
-[connection signal="destroyed" from="." to="." method="_on_destroyed"]
-[connection signal="area_entered" from="PlayerDetector" to="." method="_on_player_detector_area_entered"]
-[connection signal="area_exited" from="PlayerDetector" to="." method="_on_player_detector_area_exited"]

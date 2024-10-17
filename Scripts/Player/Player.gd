@@ -8,15 +8,6 @@ var direction : Vector2
 var first_position : Vector2
 var is_dragging : bool = false
 
-###ENEMIES###
-#var enemies : Array[Node2D]
-
-#@export_category("Shoot")
-#@export var can_shoot : bool = true
-#@onready var timer = $Timer
-#@onready var BULLET = preload("res://Scenes/Player/PlayerBullet.tscn")
-#@onready var bullet_container = $BulletContainer
-
 func _ready():
 	first_position = global_position
 
@@ -39,26 +30,3 @@ func _input(event):
 func _process(delta):
 	if is_dragging:
 		global_position += direction * speed * delta
-#	#If there's an enemy and can_shoot, shoot
-#	if !enemies.is_empty() && can_shoot:
-#		shoot()
-#		can_shoot = false
-
-#Manage enemies array
-#func _on_emey_detector_area_entered(area):
-#	enemies.append(area)
-#func _on_emey_detector_area_exited(area):
-#	enemies.erase(area)
-#
-##Shoot
-#func shoot():
-#	#Get the closer enemy
-#	var bullet = BULLET.instantiate()
-#	bullet_container.add_child(bullet)
-#	var current_enemey_position = Utilities.get_closer_node_array(enemies, global_position).global_position
-#	bullet.global_position = global_position
-#	bullet.get_direction(current_enemey_position)
-#	timer.start()
-##Reload
-#func _on_timer_timeout():
-#	can_shoot = true

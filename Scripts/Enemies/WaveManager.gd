@@ -36,8 +36,7 @@ func update_wave(value : int):
 	
 	if current_enemies<=0:
 		wave_ended = true
-		wave_button.disabled = false
-		
+		wave_button.end_wave()
 
 func spawn_enemy(enemy):
 	add_child(enemy)
@@ -45,7 +44,3 @@ func spawn_enemy(enemy):
 
 func stop_spawning():
 	return enemy_spawned>=max_enemies
-
-func _on_start_wave_button_down():
-	start_wave()
-	wave_button.disabled = true
