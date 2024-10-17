@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu3i1p3knb8dp"]
+[gd_scene load_steps=11 format=3 uid="uid://cu3i1p3knb8dp"]
 
 [ext_resource type="PackedScene" uid="uid://dvhjxcscbxat6" path="res://Scenes/Fuel/FuelContainer/FuelContainer.tscn" id="2_1j8pv"]
 [ext_resource type="PackedScene" uid="uid://6qm43mvh3ma6" path="res://Scenes/Enemies/Enemy.tscn" id="2_6xet0"]
@@ -10,9 +10,46 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_lm2qt"]
 radius = 270.0
 
+[sub_resource type="Animation" id="Animation_6qcin"]
+resource_name = "StartWave"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buttons:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(100, 1138), Vector2(100, 1346)]
+}
+
+[sub_resource type="Animation" id="Animation_srwuj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Buttons:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(100, 1138)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hum08"]
+_data = {
+"RESET": SubResource("Animation_srwuj"),
+"StartWave": SubResource("Animation_6qcin")
+}
+
 [node name="World" type="Node2D"]
 
-[node name="FuelContainer" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_1j8pv")]
+[node name="FuelContainer" parent="." node_paths=PackedStringArray("world", "player") instance=ExtResource("2_1j8pv")]
+world = NodePath("..")
 player = NodePath("../Player")
 
 [node name="PlayerDetector" type="Area2D" parent="FuelContainer"]
@@ -43,17 +80,38 @@ offset_right = 147.0
 offset_bottom = 155.0
 text = "Wave: 0"
 
-[node name="StartWave" type="Button" parent="Player/Control" node_paths=PackedStringArray("spawners", "fuel_container")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player/Control"]
+libraries = {
+"": SubResource("AnimationLibrary_hum08")
+}
+
+[node name="Buttons" type="Control" parent="Player/Control"]
+anchors_preset = 0
+offset_left = 100.0
+offset_top = 1138.0
+offset_right = 797.0
+offset_bottom = 1278.0
+
+[node name="StartWave" type="Button" parent="Player/Control/Buttons" node_paths=PackedStringArray("spawners", "fuel_container", "animation_player")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 366.0
-offset_top = 65.0
-offset_right = 458.0
-offset_bottom = 96.0
+offset_left = 401.0
+offset_right = 672.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 50
 text = "Start Wave"
 script = ExtResource("3_72yn0")
-spawners = NodePath("../../Spawners")
-fuel_container = NodePath("../../../FuelContainer")
+spawners = NodePath("../../../Spawners")
+fuel_container = NodePath("../../../../FuelContainer")
+animation_player = NodePath("../../AnimationPlayer")
+
+[node name="ShopButton" type="Button" parent="Player/Control/Buttons"]
+layout_mode = 0
+offset_left = 57.0
+offset_right = 257.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 50
+text = "Shop"
 
 [node name="Spawners" type="Node2D" parent="Player"]
 position = Vector2(-133, 99)
@@ -68,6 +126,6 @@ target = NodePath("../../../FuelContainer")
 position = Vector2(1250, 0)
 target = NodePath("../../../FuelContainer")
 
-[connection signal="area_entered" from="FuelContainer/PlayerDetector" to="Player/Control/StartWave" method="_on_player_detector_area_entered"]
-[connection signal="area_exited" from="FuelContainer/PlayerDetector" to="Player/Control/StartWave" method="_on_player_detector_area_exited"]
-[connection signal="button_down" from="Player/Control/StartWave" to="Player/Control/StartWave" method="_on_button_down"]
+[connection signal="area_entered" from="FuelContainer/PlayerDetector" to="Player/Control/Buttons/StartWave" method="_on_player_detector_area_entered"]
+[connection signal="area_exited" from="FuelContainer/PlayerDetector" to="Player/Control/Buttons/StartWave" method="_on_player_detector_area_exited"]
+[connection signal="button_down" from="Player/Control/Buttons/StartWave" to="Player/Control/Buttons/StartWave" method="_on_button_down"]
