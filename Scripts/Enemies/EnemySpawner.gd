@@ -8,7 +8,7 @@ var parent : Node2D
 var enemies_number : int = 0
 
 @export_subgroup("Target")
-@export var target : Node2D
+@export var target : Area2D
 
 func _ready():
 	parent = get_parent()

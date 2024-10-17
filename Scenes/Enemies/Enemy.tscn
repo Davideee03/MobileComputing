@@ -9,7 +9,7 @@ radius = 40.0
 [node name="Enemy" type="Area2D"]
 top_level = true
 collision_layer = 4
-collision_mask = 2
+collision_mask = 8
 script = ExtResource("1_tx775")
 death_text = ExtResource("3_sbivf")
 
@@ -23,4 +23,3 @@ offset_right = 20.0
 offset_bottom = 20.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_area_exited"]
