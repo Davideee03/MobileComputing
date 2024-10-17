@@ -120,11 +120,11 @@ enemies = Array[PackedScene]([ExtResource("2_6xet0")])
 
 [node name="EnemySpawner" parent="Player/Spawners" node_paths=PackedStringArray("target") instance=ExtResource("2_kbano")]
 position = Vector2(-1250, 0)
-target = NodePath("../../../FuelContainer")
+target = NodePath("../..")
 
 [node name="EnemySpawner2" parent="Player/Spawners" node_paths=PackedStringArray("target") instance=ExtResource("2_kbano")]
 position = Vector2(1250, 0)
-target = NodePath("../../../FuelContainer")
+target = NodePath("../..")
 
 [connection signal="area_entered" from="FuelContainer/PlayerDetector" to="Player/Control/Buttons/StartWave" method="_on_player_detector_area_entered"]
 [connection signal="area_exited" from="FuelContainer/PlayerDetector" to="Player/Control/Buttons/StartWave" method="_on_player_detector_area_exited"]
