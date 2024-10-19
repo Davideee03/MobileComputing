@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cftrkiyi740hw"]
+
+[node name="Shop" type="TabContainer"]
+offset_right = 500.0
+offset_bottom = 200.0
+tab_alignment = 1
+
+[node name="Weapons" type="ScrollContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Weapons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Gun" type="Button" parent="Weapons/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Gun"
+
+[node name="Upgrades" type="ScrollContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Upgrades"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Armor" type="Button" parent="Upgrades/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Armor
+"

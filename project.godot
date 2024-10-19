@@ -12,13 +12,14 @@ config_version=5
 
 config/name="Mobile Computing 2.0"
 run/main_scene="res://Scenes/Towns/Town.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Utilities="*res://Scripts/Global/Utilities.gd"
 Score="*res://Scripts/Global/Score.gd"
+Global="*res://Scripts/Global/Global.gd"
 
 [display]
 
@@ -69,5 +70,6 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true

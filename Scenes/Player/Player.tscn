@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://7lfiufia8slp"]
+[gd_scene load_steps=10 format=3 uid="uid://7lfiufia8slp"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_q7gve"]
 [ext_resource type="Script" path="res://Scripts/Player/Camera.gd" id="2_nrn82"]
 [ext_resource type="Script" path="res://Scripts/Player/ExpBar.gd" id="3_kd4df"]
 [ext_resource type="Script" path="res://Scripts/Player/MoneyTraker.gd" id="4_hxyia"]
 [ext_resource type="Script" path="res://Scripts/Player/HealthSystem.gd" id="4_t5p63"]
-[ext_resource type="Script" path="res://Scripts/Player/ShootSystem.gd" id="6_f7t2u"]
+[ext_resource type="Script" path="res://Scripts/Weapon/ShootSystem.gd" id="6_mm21w"]
+[ext_resource type="PackedScene" uid="uid://cq0wws7n8ntrp" path="res://Scenes/Weapon/Gun.tscn" id="7_085li"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l558a"]
 size = Vector2(500, 1000)
@@ -19,6 +20,14 @@ script = ExtResource("1_q7gve")
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("2_nrn82")
 target = NodePath("..")
+
+[node name="EmeyDetector" type="Area2D" parent="Camera2D"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/EmeyDetector"]
+shape = SubResource("RectangleShape2D_l558a")
 
 [node name="ExpBar" type="ProgressBar" parent="Camera2D"]
 offset_left = -349.0
@@ -51,27 +60,6 @@ offset_bottom = -557.0
 text = "Money:"
 script = ExtResource("4_hxyia")
 
-[node name="EmeyDetector" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EmeyDetector"]
-shape = SubResource("RectangleShape2D_l558a")
-
-[node name="BulletContainer" type="Node2D" parent="."]
-unique_name_in_owner = true
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-
-[node name="Timer" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 0.75
-
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 0
@@ -81,9 +69,19 @@ script = ExtResource("4_t5p63")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("RectangleShape2D_klpek")
 
-[node name="ShootSystem" type="Node" parent="."]
-script = ExtResource("6_f7t2u")
+[node name="ShootingSystem" type="Node2D" parent="."]
+script = ExtResource("6_mm21w")
 
-[connection signal="area_entered" from="EmeyDetector" to="ShootSystem" method="_on_emey_detector_area_entered"]
-[connection signal="area_exited" from="EmeyDetector" to="ShootSystem" method="_on_emey_detector_area_exited"]
-[connection signal="timeout" from="Timer" to="ShootSystem" method="_on_timer_timeout"]
+[node name="Gun" parent="ShootingSystem" instance=ExtResource("7_085li")]
+
+[node name="Gun2" parent="ShootingSystem" instance=ExtResource("7_085li")]
+position = Vector2(37, -40)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[connection signal="area_entered" from="Camera2D/EmeyDetector" to="ShootingSystem" method="_on_emey_detector_area_entered"]
+[connection signal="area_exited" from="Camera2D/EmeyDetector" to="ShootingSystem" method="_on_emey_detector_area_exited"]
