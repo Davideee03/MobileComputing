@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Utilities="*res://Scripts/Global/Utilities.gd"
 Score="*res://Scripts/Global/Score.gd"
+Global="*res://Scripts/Global/Global.gd"
 
 [display]
 
@@ -69,5 +70,6 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
