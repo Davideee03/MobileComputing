@@ -60,14 +60,6 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FuelContainer/PlayerDetector"]
 shape = SubResource("CircleShape2D_lm2qt")
 
-[node name="PlayerDetector" type="Area2D" parent="FuelContainer"]
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FuelContainer/PlayerDetector"]
-shape = SubResource("CircleShape2D_lm2qt")
-
 [node name="Player" parent="." instance=ExtResource("2_ko0f8")]
 position = Vector2(133, -99)
 
