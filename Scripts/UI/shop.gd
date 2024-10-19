@@ -2,6 +2,7 @@ extends TabContainer
 
 
 func _ready():
+	# for future reference we can also anchor the shop to the screen (this is harder I think)
 	# getting the display size of the mobile
 	var screen_size = get_viewport_rect().size
 	# setting the minimum size of the shop to 80% of the screen
