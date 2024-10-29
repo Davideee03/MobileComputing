@@ -21,6 +21,8 @@ func _process(_delta):
 	var enemy_position = parent.enemies[0].global_position
 	
 	look_at(enemy_position)
+	# func for checking if the enemy is on the right or left side of the screen
+	check_flip(enemy_position)
 	
 	if can_shoot:
 		shoot(enemy_position)
@@ -36,3 +38,10 @@ func shoot(target : Vector2):
 func reload():
 	await get_tree().create_timer(reload_time).timeout
 	can_shoot = true
+	
+# function used for flippin the weapon's sprite when the enemy is on the left side of the screen
+func check_flip(enemy_position : Vector2):
+	if enemy_position.x < global_position.x:
+		weapon.scale.y = -1
+	else:
+		weapon.scale.y= 1

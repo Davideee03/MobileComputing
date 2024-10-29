@@ -3,15 +3,14 @@
 [ext_resource type="Script" path="res://Scripts/UI/shop.gd" id="1_h7e3h"]
 
 [node name="Shop" type="TabContainer"]
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_right = 4.0
+anchors_preset = -1
+anchor_left = 0.31
+anchor_right = 3.51
+anchor_bottom = 2.055
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
+tab_alignment = 1
 current_tab = 0
 script = ExtResource("1_h7e3h")
 
