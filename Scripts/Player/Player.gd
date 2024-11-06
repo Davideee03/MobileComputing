@@ -12,15 +12,20 @@ func _ready():
 	first_position = global_position
 
 func _input(event):
+	#Quit if esc is pressed
+	#Just for computer development
 	if Input.is_action_just_pressed("esc"):
 		get_tree().quit()
 	
+	#If the sceen is touched
+	#Select the current player position
 	if event is InputEventScreenTouch:
 		is_dragging = false
 		if event.is_pressed():
 			first_position = (event.position - (get_viewport().size*0.5))
 		else:
 			first_position = global_position
+	#If ScreenDrag get the finger direction 
 	elif event is InputEventScreenDrag:
 		var target : Vector2 = (event.position - (get_viewport().size*0.5))
 		direction = first_position.direction_to(target).normalized()
@@ -28,5 +33,5 @@ func _input(event):
 		
 
 func _process(delta):
-	if is_dragging:
+	if is_dragging && !Global.shop_opened:
 		global_position += direction * speed * delta
