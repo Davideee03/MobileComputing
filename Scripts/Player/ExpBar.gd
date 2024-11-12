@@ -7,6 +7,7 @@ var current_exp : float
 var current_level : int = 0
 
 func _ready():
+	#Connect to the global script Score
 	Score.update_exp.connect(update_exp)
 	
 	current_exp = max_exp
@@ -14,6 +15,7 @@ func _ready():
 	
 	new_level()
 
+#Update exp accordingly to Score
 func update_exp(exp : float):
 	current_exp += exp
 	value = current_exp
