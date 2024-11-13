@@ -1,11 +1,20 @@
 extends PlayerWeapon
 
+@export var can_shoot : bool = true
+
 var enemies : Array
 var current_enemy
 var is_reloading : bool = false
 
+
+###DEBUG###
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("a"):
+		can_shoot = !can_shoot
+		print("Can shoot: " + str(can_shoot))
+
 func _process(_delta: float) -> void:
-	if enemies.is_empty(): return #If there's no enemy near return
+	if enemies.is_empty() || !can_shoot: return #If there's no enemy near return
 	
 	#Select the enemy target
 	current_enemy = get_target()

@@ -1,19 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://cu3i1p3knb8dp"]
+[gd_scene load_steps=12 format=3 uid="uid://cu3i1p3knb8dp"]
 
 [ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
 [ext_resource type="PackedScene" uid="uid://cftrkiyi740hw" path="res://Scenes/UI/Shop.tscn" id="3_iquj0"]
+[ext_resource type="Script" path="res://Scripts/Weapons/Computer.gd" id="7_mpx2t"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Spawners.gd" id="8_1d40r"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Spawner.gd" id="9_bfess"]
 [ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="10_avg3d"]
 [ext_resource type="PackedScene" uid="uid://pr1ilbeewdmj" path="res://Scenes/Enemies/EnemyDefault.tscn" id="11_dj6o8"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m7dyb"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tjmkm"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_l7b7f"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_dgn66"]
+
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_ko0f8")]
-position = Vector2(133, -99)
 
 [node name="Spawners" type="Node2D" parent="Player"]
-position = Vector2(-133, 99)
 script = ExtResource("8_1d40r")
 max_enemies = 0
 
@@ -23,7 +33,7 @@ script = ExtResource("9_bfess")
 enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
 [node name="Spawner2" type="Node2D" parent="Player/Spawners"]
-position = Vector2(550, 0)
+position = Vector2(800, 0)
 script = ExtResource("9_bfess")
 enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
@@ -33,7 +43,27 @@ script = ExtResource("9_bfess")
 enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
 [node name="Spawner4" type="Node2D" parent="Player/Spawners"]
-position = Vector2(-500, 0)
+position = Vector2(-800, 0)
+script = ExtResource("9_bfess")
+enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
+
+[node name="Spawner5" type="Node2D" parent="Player/Spawners"]
+position = Vector2(-800, -800)
+script = ExtResource("9_bfess")
+enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
+
+[node name="Spawner6" type="Node2D" parent="Player/Spawners"]
+position = Vector2(800, -800)
+script = ExtResource("9_bfess")
+enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
+
+[node name="Spawner7" type="Node2D" parent="Player/Spawners"]
+position = Vector2(800, 748)
+script = ExtResource("9_bfess")
+enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
+
+[node name="Spawner8" type="Node2D" parent="Player/Spawners"]
+position = Vector2(-800, 748)
 script = ExtResource("9_bfess")
 enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
@@ -146,14 +176,52 @@ offset_right = 66.0
 offset_bottom = 49.0
 text = "Exp: 0"
 
+[node name="Health" type="Label" parent="Player/UI/UI/Stats"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 20.0
+offset_top = 148.0
+offset_right = 99.0
+offset_bottom = 171.0
+text = "Health: 15"
+
 [node name="Computer" type="Node2D" parent="." groups=["Computer"]]
+unique_name_in_owner = true
+script = ExtResource("7_mpx2t")
 
 [node name="Computer" type="ColorRect" parent="Computer"]
+z_index = -1
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 color = Color(0, 0, 0, 1)
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="WallRight" type="StaticBody2D" parent="Walls"]
+position = Vector2(450, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallRight"]
+shape = SubResource("WorldBoundaryShape2D_m7dyb")
+
+[node name="WallLeft" type="StaticBody2D" parent="Walls"]
+position = Vector2(-450, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallLeft"]
+shape = SubResource("WorldBoundaryShape2D_tjmkm")
+
+[node name="WallUp" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, -750)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallUp"]
+shape = SubResource("WorldBoundaryShape2D_l7b7f")
+
+[node name="WallDown" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, 750)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallDown"]
+shape = SubResource("WorldBoundaryShape2D_dgn66")
 
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/Spawners" method="_on_start_wave_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI" method="_on_start_wave_button_button_down"]

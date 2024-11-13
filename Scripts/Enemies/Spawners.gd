@@ -4,6 +4,9 @@ extends Node2D
 var current_enemies : int = 0
 var enemies_defeated : int = 0
 
+#Gameplay
+@onready var computer: Node2D = %Computer
+
 ##UI##
 @onready var ui: Control = %UI
 
@@ -33,6 +36,9 @@ func player_won() -> void:
 	print("Player won!")
 	#Make the buttons visible again
 	ui.change_buttons_visibility()
+	
+	#The computer is on the ground
+	computer.disconnect_from_player()
 
 #Check if the wave is finished
 func wave_ended():
@@ -44,11 +50,16 @@ func _on_start_wave_button_down() -> void:
 
 #Set up the wave
 func set_up():
+	#Enemies are setted to zero
 	current_enemies = 0
 	enemies_defeated = 0
 	
+	#Update the Gloabl Wave stat
 	Stats.update_wave()
 	
+	#Get the number of the enemies for this wave
 	max_enemies = int(Utilities.get_max_enemy_number())
 	print("Max enemies: " + str(max_enemies))
- 
+	
+	#Attach the computer to the players
+	computer.attach_to_player()

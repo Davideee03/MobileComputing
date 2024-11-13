@@ -3,9 +3,12 @@ extends Control
 #Ui references
 @onready var buttons: Control = $Buttons
 @onready var shop: Control = $Shop
+
+#Stats
 @onready var money: Label = %Money
 @onready var waves: Label = %Waves
 @onready var exp: Label = %Exp
+@onready var health: Label = %Health
 
 #Connect the signal in stats to update the currents statistics
 func _ready() -> void:
@@ -19,10 +22,11 @@ func change_buttons_visibility():
 		button.disabled = !button.disabled
 
 #Display the stats
-func display_new_stats(current_money, current_exp, current_wave):
+func display_new_stats(current_money, current_exp, current_wave, current_health):
 	money.text = "Money: " + str(current_money)
 	waves.text = "Waves: " + str(current_wave)
 	exp.text = "Exp: " + str(current_exp)
+	health.text = "Health: " + str(current_health)
 
 #Start a new wave
 func _on_start_wave_button_button_down() -> void:

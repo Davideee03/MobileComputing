@@ -1,4 +1,4 @@
-extends Node2D
+extends CharacterBody2D
 
 @export_category("Movement")
 @export var speed : float = 500.0
@@ -7,6 +7,8 @@ var direction : Vector2
 
 var first_position : Vector2
 var is_dragging : bool = false
+
+@onready var hitbox: Area2D = %Hitbox
 
 func _ready():
 	first_position = global_position
@@ -34,4 +36,12 @@ func _input(event):
 
 func _process(delta):
 	if is_dragging && !Global.shop_opened:
-		global_position += direction * speed * delta
+		#global_position += direction * speed * delta
+		velocity = direction*speed
+		move_and_slide()
+
+#Reset the position and health if dead
+#Called by Global
+func reset():
+	global_position = Vector2.ZERO
+	hitbox.restore_health()
