@@ -16,6 +16,7 @@ size = Vector2(40, 40)
 script = ExtResource("1_q7gve")
 
 [node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
+zoom = Vector2(1.2, 1.2)
 script = ExtResource("2_nrn82")
 target = NodePath("..")
 
@@ -26,7 +27,6 @@ offset_right = 20.0
 offset_bottom = 20.0
 
 [node name="Weapon" parent="." instance=ExtResource("6_mjxid")]
-position = Vector2(0, -76)
 script = ExtResource("6_2h1e7")
 
 [node name="Areas" type="Node2D" parent="."]

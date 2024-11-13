@@ -1,53 +1,25 @@
-[gd_scene load_steps=13 format=3 uid="uid://cu3i1p3knb8dp"]
+[gd_scene load_steps=11 format=3 uid="uid://cu3i1p3knb8dp"]
 
-[ext_resource type="PackedScene" uid="uid://dvhjxcscbxat6" path="res://Scenes/Fuel/FuelContainer/FuelContainer.tscn" id="2_1j8pv"]
-[ext_resource type="PackedScene" uid="uid://6qm43mvh3ma6" path="res://Scenes/Enemies/Enemy.tscn" id="2_6xet0"]
-[ext_resource type="Script" path="res://Scripts/Enemies/WaveManager.gd" id="2_7hnn4"]
-[ext_resource type="PackedScene" uid="uid://cicvcl7ecrmi7" path="res://Scenes/Enemies/EnemySpawner.tscn" id="2_kbano"]
 [ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
 [ext_resource type="Script" path="res://Scripts/Enemies/StartWaveButton.gd" id="3_72yn0"]
 [ext_resource type="PackedScene" uid="uid://cftrkiyi740hw" path="res://Scenes/UI/Shop.tscn" id="3_iquj0"]
 [ext_resource type="Script" path="res://Scripts/UI/ShopButton.gd" id="5_5nti8"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Spawners.gd" id="8_1d40r"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Spawner.gd" id="9_bfess"]
 [ext_resource type="Script" path="res://Scripts/Player/ExpBar.gd" id="9_n3qff"]
 [ext_resource type="Script" path="res://Scripts/Player/MoneyTraker.gd" id="10_65hhf"]
+[ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="10_avg3d"]
 [ext_resource type="PackedScene" uid="uid://pr1ilbeewdmj" path="res://Scenes/Enemies/EnemyDefault.tscn" id="11_dj6o8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lm2qt"]
-radius = 270.0
-
 [node name="World" type="Node2D"]
-
-[node name="FuelContainer" parent="." node_paths=PackedStringArray("world", "player") instance=ExtResource("2_1j8pv")]
-world = NodePath("..")
-player = NodePath("../Player")
-
-[node name="PlayerDetector" type="Area2D" parent="FuelContainer"]
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FuelContainer/PlayerDetector"]
-shape = SubResource("CircleShape2D_lm2qt")
 
 [node name="Player" parent="." instance=ExtResource("2_ko0f8")]
 position = Vector2(133, -99)
 
-[node name="Spawners" type="Node2D" parent="Player"]
-position = Vector2(-133, 99)
-script = ExtResource("2_7hnn4")
-enemies = Array[PackedScene]([ExtResource("2_6xet0")])
+[node name="CanvasLayerFalso" type="CanvasLayer" parent="Player"]
+visible = false
 
-[node name="EnemySpawner" parent="Player/Spawners" node_paths=PackedStringArray("target") instance=ExtResource("2_kbano")]
-position = Vector2(-1250, 0)
-target = NodePath("../../../FuelContainer")
-
-[node name="EnemySpawner2" parent="Player/Spawners" node_paths=PackedStringArray("target") instance=ExtResource("2_kbano")]
-position = Vector2(1250, 0)
-target = NodePath("../../../FuelContainer")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Player"]
-
-[node name="Control" type="Control" parent="Player/CanvasLayer"]
+[node name="Control" type="Control" parent="Player/CanvasLayerFalso"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -55,7 +27,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="WaveCounter" type="Label" parent="Player/CanvasLayer/Control"]
+[node name="WaveCounter" type="Label" parent="Player/CanvasLayerFalso/Control"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 20.0
@@ -64,7 +36,7 @@ offset_right = 80.0
 offset_bottom = 172.0
 text = "Wave: 0"
 
-[node name="Shop" type="Control" parent="Player/CanvasLayer/Control"]
+[node name="Shop" type="Control" parent="Player/CanvasLayerFalso/Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -76,7 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_5nti8")
 
-[node name="Shop" parent="Player/CanvasLayer/Control/Shop" instance=ExtResource("3_iquj0")]
+[node name="Shop" parent="Player/CanvasLayerFalso/Control/Shop" instance=ExtResource("3_iquj0")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -90,7 +62,7 @@ offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ExitButton" type="Button" parent="Player/CanvasLayer/Control/Shop"]
+[node name="ExitButton" type="Button" parent="Player/CanvasLayerFalso/Control/Shop"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -106,7 +78,7 @@ grow_vertical = 2
 text = "Exit
 "
 
-[node name="Buttons" type="Control" parent="Player/CanvasLayer/Control"]
+[node name="Buttons" type="Control" parent="Player/CanvasLayerFalso/Control"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -121,7 +93,7 @@ offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="StartWave" type="Button" parent="Player/CanvasLayer/Control/Buttons" node_paths=PackedStringArray("spawners", "fuel_container")]
+[node name="StartWave" type="Button" parent="Player/CanvasLayerFalso/Control/Buttons"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -138,10 +110,8 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "Start Wave"
 script = ExtResource("3_72yn0")
-spawners = NodePath("../../../../Spawners")
-fuel_container = NodePath("../../../../../FuelContainer")
 
-[node name="ShopButton" type="Button" parent="Player/CanvasLayer/Control/Buttons"]
+[node name="ShopButton" type="Button" parent="Player/CanvasLayerFalso/Control/Buttons"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -157,7 +127,7 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 50
 text = "Shop"
 
-[node name="ExpBar" type="ProgressBar" parent="Player/CanvasLayer/Control"]
+[node name="ExpBar" type="ProgressBar" parent="Player/CanvasLayerFalso/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -170,7 +140,7 @@ grow_horizontal = 2
 show_percentage = false
 script = ExtResource("9_n3qff")
 
-[node name="LevelTraker" type="Label" parent="Player/CanvasLayer/Control/ExpBar"]
+[node name="LevelTraker" type="Label" parent="Player/CanvasLayerFalso/Control/ExpBar"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -185,7 +155,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Level:"
 
-[node name="MoneyTraker" type="Label" parent="Player/CanvasLayer/Control"]
+[node name="MoneyTraker" type="Label" parent="Player/CanvasLayerFalso/Control"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -198,11 +168,104 @@ grow_vertical = 2
 text = "Money:"
 script = ExtResource("10_65hhf")
 
-[node name="Enemy2" parent="." instance=ExtResource("11_dj6o8")]
-position = Vector2(42, -307)
+[node name="Spawners" type="Node2D" parent="Player"]
+position = Vector2(-133, 99)
+script = ExtResource("8_1d40r")
 
-[connection signal="area_entered" from="FuelContainer/PlayerDetector" to="Player/CanvasLayer/Control/Buttons/StartWave" method="_on_player_detector_area_entered"]
-[connection signal="area_exited" from="FuelContainer/PlayerDetector" to="Player/CanvasLayer/Control/Buttons/StartWave" method="_on_player_detector_area_exited"]
-[connection signal="button_down" from="Player/CanvasLayer/Control/Shop/ExitButton" to="Player/CanvasLayer/Control/Shop" method="_on_exit_button_button_down"]
-[connection signal="button_down" from="Player/CanvasLayer/Control/Buttons/StartWave" to="Player/CanvasLayer/Control/Buttons/StartWave" method="_on_button_down"]
-[connection signal="button_down" from="Player/CanvasLayer/Control/Buttons/ShopButton" to="Player/CanvasLayer/Control/Shop" method="_on_button_down"]
+[node name="Spawner" type="Node2D" parent="Player/Spawners"]
+position = Vector2(0, -800)
+script = ExtResource("9_bfess")
+enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
+
+[node name="Spawner2" type="Node2D" parent="Player/Spawners"]
+position = Vector2(550, 0)
+script = ExtResource("9_bfess")
+enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
+
+[node name="Spawner3" type="Node2D" parent="Player/Spawners"]
+position = Vector2(0, 800)
+script = ExtResource("9_bfess")
+enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
+
+[node name="Spawner4" type="Node2D" parent="Player/Spawners"]
+position = Vector2(-500, 0)
+script = ExtResource("9_bfess")
+enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
+
+[node name="UI" type="CanvasLayer" parent="Player"]
+
+[node name="UI" type="Control" parent="Player/UI"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_avg3d")
+
+[node name="Buttons" type="Control" parent="Player/UI/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartWaveButton" type="Button" parent="Player/UI/UI/Buttons"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 1138.0
+offset_right = 642.0
+offset_bottom = 1169.0
+text = "Start Wave
+"
+
+[node name="ShopButton" type="Button" parent="Player/UI/UI/Buttons"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 1138.0
+offset_right = 124.0
+offset_bottom = 1169.0
+text = "Shop
+"
+
+[node name="Shop" type="Control" parent="Player/UI/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShopBack" type="Button" parent="Player/UI/UI/Shop"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 748.0
+offset_right = 595.0
+offset_bottom = 779.0
+text = "Back
+"
+
+[node name="Shop" parent="Player/UI/UI/Shop" instance=ExtResource("3_iquj0")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = 266.0
+offset_right = 250.0
+offset_bottom = 466.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_down" from="Player/CanvasLayerFalso/Control/Shop/ExitButton" to="Player/CanvasLayerFalso/Control/Shop" method="_on_exit_button_button_down"]
+[connection signal="button_down" from="Player/CanvasLayerFalso/Control/Buttons/StartWave" to="Player/CanvasLayerFalso/Control/Buttons/StartWave" method="_on_button_down"]
+[connection signal="button_down" from="Player/CanvasLayerFalso/Control/Buttons/ShopButton" to="Player/CanvasLayerFalso/Control/Shop" method="_on_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/Spawners" method="_on_start_wave_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI" method="_on_start_wave_button_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/ShopButton" to="Player/UI/UI" method="_on_shop_button_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Shop/ShopBack" to="Player/UI/UI" method="_on_shop_back_button_down"]

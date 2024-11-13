@@ -14,6 +14,6 @@ func _process(delta: float) -> void:
 	global_position += direction * SPEED * delta
 
 func _on_enemy_detector_area_entered(area: Area2D) -> void:
-	print("Hit!")
+	area.take_damage(damage)
 	destroyed = true
 	queue_free()
