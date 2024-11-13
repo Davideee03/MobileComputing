@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cq0wws7n8ntrp"]
 
-[ext_resource type="Script" path="res://Scripts/Weapon/Gun.gd" id="1_6g3t5"]
+[ext_resource type="Script" path="res://Scripts/PlayerWeapons/WeaponsClasses/GunProv.gd" id="1_6g3t5"]
 [ext_resource type="PackedScene" uid="uid://c00nunxsjq8nk" path="res://Scenes/Weapon/PlayerBullet.tscn" id="2_2rhse"]
 [ext_resource type="Texture2D" uid="uid://eqf2btskdko3" path="res://Sprites/Weapons/Gun.png" id="3_fs2ws"]
 

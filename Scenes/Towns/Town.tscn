@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cu3i1p3knb8dp"]
+[gd_scene load_steps=13 format=3 uid="uid://cu3i1p3knb8dp"]
 
 [ext_resource type="PackedScene" uid="uid://dvhjxcscbxat6" path="res://Scenes/Fuel/FuelContainer/FuelContainer.tscn" id="2_1j8pv"]
 [ext_resource type="PackedScene" uid="uid://6qm43mvh3ma6" path="res://Scenes/Enemies/Enemy.tscn" id="2_6xet0"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/ShopButton.gd" id="5_5nti8"]
 [ext_resource type="Script" path="res://Scripts/Player/ExpBar.gd" id="9_n3qff"]
 [ext_resource type="Script" path="res://Scripts/Player/MoneyTraker.gd" id="10_65hhf"]
+[ext_resource type="PackedScene" uid="uid://pr1ilbeewdmj" path="res://Scenes/Enemies/EnemyDefault.tscn" id="11_dj6o8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lm2qt"]
 radius = 270.0
@@ -196,6 +197,9 @@ offset_bottom = -504.0
 grow_vertical = 2
 text = "Money:"
 script = ExtResource("10_65hhf")
+
+[node name="Enemy2" parent="." instance=ExtResource("11_dj6o8")]
+position = Vector2(42, -307)
 
 [connection signal="area_entered" from="FuelContainer/PlayerDetector" to="Player/CanvasLayer/Control/Buttons/StartWave" method="_on_player_detector_area_entered"]
 [connection signal="area_exited" from="FuelContainer/PlayerDetector" to="Player/CanvasLayer/Control/Buttons/StartWave" method="_on_player_detector_area_exited"]

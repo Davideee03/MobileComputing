@@ -29,6 +29,18 @@ window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
 
+[file_customization]
+
+folder_colors={
+"res://Scenes/Weapon/": "blue",
+"res://Scripts/Enemies/": "red",
+"res://Scripts/Fuel/": "blue",
+"res://Scripts/Player/": "blue",
+"res://Scripts/PlayerWeapons/": "blue",
+"res://Scripts/UI/": "green",
+"res://Scripts/Weapons/": "blue"
+}
+
 [input]
 
 w={
