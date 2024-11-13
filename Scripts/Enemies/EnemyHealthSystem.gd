@@ -46,7 +46,7 @@
 class_name EnemyHealthSystem
 extends Area2D
 
-var health : float = 50.0
+var health : float = 15.0
 
 func take_damage(damage : float):
 	health-=damage

@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Utilities="*res://Scripts/Global/Utilities.gd"
-Score="*res://Scripts/Global/Score.gd"
 Global="*res://Scripts/Global/Global.gd"
+Stats="*res://Scripts/Global/Stats.gd"
+Utilities="*res://Scripts/Global/Utilities.gd"
 
 [display]
 

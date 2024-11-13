@@ -15,7 +15,6 @@ position = Vector2(133, -99)
 [node name="Spawners" type="Node2D" parent="Player"]
 position = Vector2(-133, 99)
 script = ExtResource("8_1d40r")
-max_enemies = 0
 
 [node name="Spawner" type="Node2D" parent="Player/Spawners"]
 position = Vector2(0, -800)
@@ -127,33 +126,6 @@ offset_top = 110.0
 offset_right = 80.0
 offset_bottom = 133.0
 text = "Wave: 0"
-
-[node name="Money" type="Label" parent="Player/UI/UI/Stats"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 20.0
-offset_top = 64.0
-offset_right = 73.0
-offset_bottom = 87.0
-text = "Money: 0"
-
-[node name="Exp" type="Label" parent="Player/UI/UI/Stats"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 20.0
-offset_top = 26.0
-offset_right = 66.0
-offset_bottom = 49.0
-text = "Exp: 0"
-
-[node name="Computer" type="Node2D" parent="." groups=["Computer"]]
-
-[node name="Computer" type="ColorRect" parent="Computer"]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-color = Color(0, 0, 0, 1)
 
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/Spawners" method="_on_start_wave_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI" method="_on_start_wave_button_button_down"]

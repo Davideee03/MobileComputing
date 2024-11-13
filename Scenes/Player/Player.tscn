@@ -27,6 +27,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 
 [node name="Weapon" parent="." instance=ExtResource("6_mjxid")]
+position = Vector2(0, -31)
 script = ExtResource("6_2h1e7")
 
 [node name="Areas" type="Node2D" parent="."]

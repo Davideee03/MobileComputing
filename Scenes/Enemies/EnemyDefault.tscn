@@ -9,6 +9,9 @@ size = Vector2(40, 40)
 [node name="Enemy" type="Node2D"]
 top_level = true
 script = ExtResource("1_byofy")
+value = 1
+max_money_drop = 5
+max_exp_drop = 10
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -20.0

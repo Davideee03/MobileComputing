@@ -21,10 +21,10 @@ func load_weapon(weapon) -> void:
 	damage = weapon.damage
 	reload_time = weapon.reload_time
 	
-	print(weapon)
-	print(sprite.texture)
-	print(damage)
-	print(reload_time)
+	print("Weapon: " + str(weapon))
+	print("Sprite: " + str(sprite.texture))
+	print("Damage: " + str(damage))
+	print("Reload time: " + str(reload_time))
 
 # function used for flippin the weapon's sprite when the enemy is on the left side of the screen
 func check_flip(enemy_position : Vector2):
