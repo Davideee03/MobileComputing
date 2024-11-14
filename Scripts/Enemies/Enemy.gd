@@ -1,7 +1,7 @@
 class_name Enemy
 extends Node2D
 
-@export var value : int = 2
+@export var value : int = 1
 @export var damage : int = 5
 
 @export_subgroup("Money")

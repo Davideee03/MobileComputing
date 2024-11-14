@@ -10,9 +10,9 @@ var enemies_defeated : int = 0
 ##UI##
 @onready var ui: Control = %UI
 
-#Rotate to inprove randomness
-func _process(delta: float) -> void:
-	rotation += delta
+#Rotate to increase randomness
+#func _process(delta: float) -> void:
+	#rotation += delta
 
 #Start a new wave
 #Called by StartWaveButton

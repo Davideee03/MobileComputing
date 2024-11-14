@@ -13,7 +13,6 @@ size = Vector2(45, 45)
 [node name="Enemy" type="Node2D"]
 top_level = true
 script = ExtResource("1_byofy")
-value = 1
 max_money_drop = 5
 max_exp_drop = 10
 
