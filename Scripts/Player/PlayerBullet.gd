@@ -4,8 +4,7 @@ extends Node2D
 @export var SPEED : float = 1000.0
 var direction : Vector2
 
-@export_category("Damage")
-@export var damage : float = 10.0
+var damage : float
 
 func get_direction(target_position : Vector2):
 	direction = -target_position.direction_to(global_position).normalized()

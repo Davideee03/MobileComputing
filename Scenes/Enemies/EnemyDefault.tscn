@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://pr1ilbeewdmj"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/EnemyDefaultMovement.gd" id="1_byofy"]
+[ext_resource type="Script" path="res://Scripts/Enemies/EnemyHealthSystem.gd" id="1_e5dgr"]
+[ext_resource type="Script" path="res://Scripts/Enemies/DefaultEnemy/DamageArea.gd" id="3_xfmkv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8f483"]
+size = Vector2(40, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7kq0v"]
+size = Vector2(45, 45)
+
+[node name="Enemy" type="Node2D"]
+top_level = true
+script = ExtResource("1_byofy")
+max_money_drop = 5
+max_exp_drop = 10
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(1, 0, 0, 1)
+
+[node name="HealthSystem" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("1_e5dgr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthSystem"]
+shape = SubResource("RectangleShape2D_8f483")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("3_xfmkv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_7kq0v")
+
+[connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
