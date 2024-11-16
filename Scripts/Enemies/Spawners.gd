@@ -39,6 +39,9 @@ func player_won() -> void:
 	
 	#The computer is on the ground
 	computer.disconnect_from_player()
+	
+	#Save files
+	SaveAndLoad.save()
 
 #Check if the wave is finished
 func wave_ended():

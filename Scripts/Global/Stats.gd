@@ -8,6 +8,20 @@ var current_exp : int = 0
 var current_wave : int = 0
 var current_health : int = 15
 
+
+func _ready() -> void:
+	#Wait some time to load the stats
+	await get_tree().create_timer(0.1).timeout
+	
+	#Load all the stats
+	current_wave = SaveAndLoad.get_stat("Wave")
+	current_exp = SaveAndLoad.get_stat("Exp")
+	current_money = SaveAndLoad.get_stat("Money")
+	current_health = SaveAndLoad.get_stat("Health")
+	
+	#Set the stats
+	emit_stats()
+
 #Add more money
 #Called when an enemy is defeated
 func add_money(value : int):
@@ -36,6 +50,7 @@ func update_wave(reset_wave = false):
 		current_wave-=1
 	else:
 		current_wave+=1
+	
 	emit_stats()
 
 #Update the stats
