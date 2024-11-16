@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 Global="*res://Scripts/Global/Global.gd"
 Stats="*res://Scripts/Global/Stats.gd"
 Utilities="*res://Scripts/Global/Utilities.gd"
+SaveAndLoad="*res://Scripts/Global/SaveAndLoad.gd"
 
 [display]
 
