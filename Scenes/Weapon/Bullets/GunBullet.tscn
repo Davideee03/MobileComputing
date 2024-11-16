@@ -1,7 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf1h0nd8dnj0l"]
+[gd_scene load_steps=5 format=3 uid="uid://cf1h0nd8dnj0l"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerWeapons/Bullets/GunBullet.gd" id="1_7hxe5"]
 [ext_resource type="Texture2D" uid="uid://bsvxx3iv6mjm7" path="res://Sprites/Bullets/GunBullet.png" id="2_rqvbq"]
+
+[sub_resource type="Environment" id="Environment_tp86i"]
+background_mode = 3
+glow_enabled = true
+glow_hdr_threshold = 1.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfddh"]
 size = Vector2(10, 5)
@@ -9,6 +14,9 @@ size = Vector2(10, 5)
 [node name="GunBullet" type="Node2D"]
 top_level = true
 script = ExtResource("1_7hxe5")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tp86i")
 
 [node name="EnemyDetector" type="Area2D" parent="."]
 position = Vector2(1, 0)
@@ -20,6 +28,7 @@ monitorable = false
 shape = SubResource("RectangleShape2D_wfddh")
 
 [node name="GunBullet" type="Sprite2D" parent="."]
+modulate = Color(0.101718, 0.880181, 0.863883, 1)
 texture = ExtResource("2_rqvbq")
 
 [connection signal="area_entered" from="EnemyDetector" to="." method="_on_enemy_detector_area_entered"]
