@@ -8,6 +8,18 @@ var current_exp : int = 0
 var current_wave : int = 0
 var current_health : int = 15
 
+# checkpoint stats. When we die before the end of the wave we need to reset the stats
+var checkpoint_money : int = 0
+var checkpoint_exp : int = 0
+
+func save_checkpoint():
+	checkpoint_money = current_money
+	checkpoint_exp = current_exp
+
+# reloading as a checkpoint
+func restore_checkpoint():
+	current_money = checkpoint_money
+	current_exp = checkpoint_exp
 
 func _ready() -> void:
 	#Wait some time to load the stats
@@ -18,7 +30,7 @@ func _ready() -> void:
 	current_exp = SaveAndLoad.get_stat("Exp")
 	current_money = SaveAndLoad.get_stat("Money")
 	current_health = SaveAndLoad.get_stat("Health")
-	
+	save_checkpoint()
 	#Set the stats
 	emit_stats()
 
@@ -48,6 +60,8 @@ func update_wave(reset_wave = false):
 	#Called by Global
 	if reset_wave:
 		current_wave-=1
+		# reloading the stats from the checkpoint if we die before ending the wave
+		restore_checkpoint()
 	else:
 		current_wave+=1
 	

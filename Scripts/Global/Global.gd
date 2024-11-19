@@ -31,13 +31,27 @@ func reset_wave():
 	player.reset()
 	computer.disconnect_from_player(true)
 	
+	# Stopping the spawner if the player dies before the wave ends
+	for spawner in get_tree().get_nodes_in_group("Spawner"):
+		spawner.stop_wave()
+	
 	#Don't pass to the next wave
 	Stats.update_wave(true)
 	
 	#Without the first while the script doesn't work
 	#I really don't know why
-	while !enemies.is_empty():
+	#while !enemies.is_empty():
 		#Destroy every enemy
-		for enemy in enemies:
+		#for enemy in enemies:
+		#	enemy.reset = true
+		#	enemy.die()
+			
+			
+	# trying to fix the wave not stopping even if we die UNRESOLVED
+	for enemy in enemies.duplicate():  
+		if enemy:
 			enemy.reset = true
 			enemy.die()
+			enemies.erase(enemy) 
+			
+	

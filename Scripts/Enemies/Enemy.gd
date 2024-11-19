@@ -26,7 +26,7 @@ func _ready() -> void:
 func die():
 	#Once dead reduce the number of current enemies on the field
 	get_parent().update_wave(-value)
-	#Add money and exp to the player
+	#Add money and exp to the playwer
 	
 	if !reset:
 		Stats.add_money(choose_random_money_drop())
