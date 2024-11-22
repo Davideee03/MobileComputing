@@ -31,11 +31,11 @@ func die():
 	get_parent().update_wave(-value)
 	
 	#dropping the core item of the enemy 
-	drop_item()
 	#Add money and exp to the playwer
 	if !reset:
 		Stats.add_money(choose_random_money_drop())
 		Stats.add_exp(choose_random_exp_drop())
+		drop_item()
 	
 	#Update the Global enemies array
 	Global.remove_enemy(self)
@@ -55,10 +55,9 @@ func drop_item():
 	# instantiating a drop whenever we call the function
 	var item = item_scene.instantiate()
 	item.position = position
-	
-	
 	# using maxt algorithm implemented ahead
 	# changing the function to make it weighted 
 	item.item_type = randi_range(0,3)
 	main.call_deferred("add_child", item)
 	item.add_to_group("items")
+	Global.drops.append(item)

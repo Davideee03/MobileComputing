@@ -44,11 +44,7 @@ func update_wave(value : int):
 	if current_enemies<=0 or Stats.current_health<= 0:
 		wave_ended = true
 		wave_button.end_wave()
-	# if the player is dead we stop spawning
-	#if Stats.current_health==0:
-	#	wave_ended = true
-	#	wave_button.end_wave()
-
+	
 func spawn_enemy(enemy):
 	add_child(enemy)
 	update_wave(enemy.monster_value)

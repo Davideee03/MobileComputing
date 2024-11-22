@@ -13,6 +13,9 @@ var computer
 #Take note of the enemies active
 var enemies : Array
 
+#Take note of the active drops
+var drops : Array = []
+
 #Setup
 func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
@@ -23,6 +26,10 @@ func enemy_spawned(enemy):
 	enemies.append(enemy)
 func remove_enemy(enemy):
 	enemies.erase(enemy)
+	
+func remove_drops(drop):
+	if drop in drops:
+		drops.erase(drop)
 
 #Reset if the player is dead
 #Called by Hitbox (Player)
@@ -31,7 +38,7 @@ func reset_wave():
 	player.reset()
 	computer.disconnect_from_player(true)
 	
-	# Stopping the spawner if the player dies before the wave ends
+	# Stopping the spawner if the player dies before the wave ends FUNCTION STOP WAVE NOT IMPLEMENTED
 	for spawner in get_tree().get_nodes_in_group("Spawner"):
 		spawner.stop_wave()
 	
@@ -54,4 +61,9 @@ func reset_wave():
 			enemy.die()
 			enemies.erase(enemy) 
 			
+	for drop in drops.duplicate():
+		if drop and drop.is_in_group("items") and is_instance_valid(drop):
+			drop.queue_free()
+		drops.erase(drop)
+
 	

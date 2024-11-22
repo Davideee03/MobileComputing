@@ -26,4 +26,6 @@ func _on_area_entered(area: Area2D) -> void:
 	else:
 		Stats.current_coreLegendary += 1
 		Stats.emit_stats()
+		
+	Global.remove_drops(self)
 	queue_free()
