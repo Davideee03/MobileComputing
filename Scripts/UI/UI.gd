@@ -51,6 +51,17 @@ func _on_shop_back_button_down() -> void:
 	Global.shop_opened = false
 	shop.visible = false
 	
-# developer button  for resetting the wave to zero and others things
+# developer button  for resetting the game to zero
 func _on_reset_game_button_down() -> void:
 	Stats.reset_to_zero()
+	Stats.emit_stats()
+
+
+func _on_cheats_button_down() -> void:
+	Stats.current_money = 10000000000
+	Stats.current_coreNormal = 1000000
+	Stats.current_coreRare = 1000000
+	Stats.current_coreEpic = 1000000
+	Stats.current_coreLegendary = 1000000
+	Stats.current_exp = 1000000
+	Stats.emit_stats()

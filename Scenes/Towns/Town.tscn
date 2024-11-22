@@ -115,6 +115,14 @@ offset_right = 831.0
 offset_bottom = 41.0
 text = "Reset Game to Wave 0"
 
+[node name="Cheats" type="Button" parent="Player/UI/UI/Buttons"]
+layout_mode = 0
+offset_left = 650.0
+offset_top = 70.0
+offset_right = 850.0
+offset_bottom = 101.0
+text = "Inf resources"
+
 [node name="Shop" type="Control" parent="Player/UI/UI"]
 visible = false
 layout_mode = 1
@@ -271,4 +279,5 @@ shape = SubResource("WorldBoundaryShape2D_dgn66")
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI" method="_on_start_wave_button_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/ShopButton" to="Player/UI/UI" method="_on_shop_button_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/ResetGame" to="Player/UI/UI" method="_on_reset_game_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/Cheats" to="Player/UI/UI" method="_on_cheats_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Shop/ShopBack" to="Player/UI/UI" method="_on_shop_back_button_down"]
