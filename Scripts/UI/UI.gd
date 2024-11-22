@@ -9,6 +9,10 @@ extends Control
 @onready var waves: Label = %Waves
 @onready var exp: Label = %Exp
 @onready var health: Label = %Health
+@onready var coreNormal: Label = %CoreNormal
+@onready var coreRare: Label = %CoreRare
+@onready var coreEpic: Label = %CoreEpic
+@onready var coreLegendary: Label = %CoreLegendary
 
 #Connect the signal in stats to update the currents statistics
 func _ready() -> void:
@@ -22,11 +26,15 @@ func change_buttons_visibility():
 		button.disabled = !button.disabled
 
 #Display the stats
-func display_new_stats(current_money, current_exp, current_wave, current_health):
+func display_new_stats(current_money, current_exp, current_wave, current_health, current_coreNormal,current_coreRare,current_coreEpic, current_coreLegendary ):
 	money.text = "Money: " + str(current_money)
 	waves.text = "Waves: " + str(current_wave)
 	exp.text = "Exp: " + str(current_exp)
 	health.text = "Health: " + str(current_health)
+	coreNormal.text = "coreNormal: " + str(current_coreNormal)
+	coreRare.text = "coreRare: " + str(current_coreRare)
+	coreEpic.text = "coreEpic: " + str(current_coreEpic)
+	coreLegendary.text = "coreLegendary: " + str(current_coreLegendary)
 
 #Start a new wave
 func _on_start_wave_button_button_down() -> void:
@@ -42,3 +50,7 @@ func _on_shop_back_button_down() -> void:
 	change_buttons_visibility()
 	Global.shop_opened = false
 	shop.visible = false
+	
+# developer button  for resetting the wave to zero and others things
+func _on_reset_game_button_down() -> void:
+	Stats.reset_to_zero()
