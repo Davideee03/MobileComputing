@@ -65,7 +65,7 @@ func add_money(value : int):
 	current_money+=value
 	emit_stats()
 
-#Add more money
+#Add more exp
 #Called when an enemy is defeated
 func add_exp(value : int):
 	current_exp+=value

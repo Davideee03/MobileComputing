@@ -57,6 +57,7 @@ func _on_reset_game_button_down() -> void:
 	Stats.emit_stats()
 
 
+# Adding almost infinite resources for the player 
 func _on_cheats_button_down() -> void:
 	Stats.current_money = 10000000000
 	Stats.current_coreNormal = 1000000
