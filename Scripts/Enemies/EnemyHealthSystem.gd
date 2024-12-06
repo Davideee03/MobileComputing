@@ -52,3 +52,4 @@ func take_damage(damage : float):
 	health-=damage
 	if health<=0:
 		get_parent().die()
+		

@@ -29,6 +29,7 @@ func load_data():
 		stats = save.get_var()
 		save.close()
 		
+		
 		print("Loaded!")
 	#Or create a new file with the dafault values
 	else:
@@ -41,7 +42,12 @@ func set_stats():
 	stats["Exp"] = Stats.current_exp
 	stats["Money"] = Stats.current_money
 	stats["Health"] = Stats.current_health
-
+	
+	# Core drops stats
+	stats["CoreNormal"] = Stats.current_coreNormal
+	stats["CoreRare"] = Stats.current_coreRare
+	stats["CoreEpic"] = Stats.current_coreEpic
+	stats["CoreLegendary"] = Stats.current_coreLegendary
 #Get the requested statistic
 #Called by Statistics
 func get_stat(key : String):
