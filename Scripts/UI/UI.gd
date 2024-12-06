@@ -19,7 +19,7 @@ func _ready() -> void:
 	Stats.on_stats_changed.connect(display_new_stats)
 
 #Hide or show the buttons when necessary
-#Called in UI 
+#Called in UI 	
 func change_buttons_visibility():
 	for button in buttons.get_children():
 		button.visible = !button.visible

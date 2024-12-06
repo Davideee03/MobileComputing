@@ -54,8 +54,13 @@ func choose_random_exp_drop():
 func drop_item():
 	# instantiating a drop whenever we call the function
 	var item = item_scene.instantiate()
-	item.position = position
-	# using maxt algorithm implemented ahead
+	
+	# giving the spawn core a random position, usefull when the enemy drops more than 1 thing (resolving overlapping)
+	var random_offset = Vector2(
+		randf_range(-15, 15), 
+		randf_range(-15, 15)   
+	)
+	item.position = position + random_offset
 	# changing the function to make it weighted 
 	item.item_type = randi_range(0,3)
 	main.call_deferred("add_child", item)

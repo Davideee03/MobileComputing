@@ -64,6 +64,6 @@ func reset_wave():
 	for drop in drops.duplicate():
 		if drop and drop.is_in_group("items") and is_instance_valid(drop):
 			drop.queue_free()
-		drops.erase(drop)
+			drops.erase(drop)
 
 	
