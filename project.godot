@@ -33,9 +33,8 @@ window/handheld/orientation=1
 [file_customization]
 
 folder_colors={
-"res://Scenes/": "orange",
+"res://Scenes/Enemies/": "red",
 "res://Scenes/Weapon/": "blue",
-"res://Scripts/": "green",
 "res://Scripts/Enemies/": "red",
 "res://Scripts/Fuel/": "blue",
 "res://Scripts/Player/": "blue",

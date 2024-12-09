@@ -10,6 +10,8 @@ var enemies_defeated : int = 0
 ##UI##
 @onready var ui: Control = %UI
 
+var player_is_dead : bool = false
+
 #Rotate to increase randomness
 #func _process(delta: float) -> void:
 	#rotation += delta
@@ -32,8 +34,25 @@ func update_wave(enemy_value : int):
 	if enemies_defeated>=max_enemies:
 		player_won()
 
+###We'll add a victory ui from here
 func player_won() -> void: 
+	#Player didn't win if he's dead
+	if player_is_dead: return
 	print("Player won!")
+	end_wave()
+
+#End the wave
+#Called by Global if the player is defeated
+func end_wave():
+	#Notify that player is dead if the wave isn't finished
+	if !wave_ended(): player_is_dead = true
+	
+	#Wait a frame
+	await get_tree().create_timer(get_process_delta_time()).timeout
+	
+	#Collect all the remaining cores
+	get_tree().call_group("item", "item_collected")
+	
 	#Make the buttons visible again
 	ui.change_buttons_visibility()
 	
@@ -45,7 +64,7 @@ func player_won() -> void:
 
 #Check if the wave is finished
 func wave_ended():
-	return max_enemies <= current_enemies
+	return max_enemies <= current_enemies 
 
 #Called by StartWaveButton
 func _on_start_wave_button_down() -> void:
@@ -56,6 +75,9 @@ func set_up():
 	#Enemies are setted to zero
 	current_enemies = 0
 	enemies_defeated = 0
+	
+	#Player is alive
+	player_is_dead = false
 	
 	#Update the Gloabl Wave stat
 	Stats.update_wave()

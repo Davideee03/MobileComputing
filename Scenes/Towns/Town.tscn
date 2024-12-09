@@ -23,46 +23,46 @@ normal = Vector2(0, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_ko0f8")]
 
-[node name="Spawners" type="Node2D" parent="Player"]
+[node name="Spawners" type="Node2D" parent="Player" groups=["SpawnerContainer"]]
 script = ExtResource("8_1d40r")
 max_enemies = 0
 
-[node name="Spawner" type="Node2D" parent="Player/Spawners"]
+[node name="Spawner" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(0, -800)
 script = ExtResource("9_bfess")
 enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
-[node name="Spawner2" type="Node2D" parent="Player/Spawners"]
+[node name="Spawner2" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(800, 0)
 script = ExtResource("9_bfess")
 enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
-[node name="Spawner3" type="Node2D" parent="Player/Spawners"]
+[node name="Spawner3" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(0, 800)
 script = ExtResource("9_bfess")
 enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
-[node name="Spawner4" type="Node2D" parent="Player/Spawners"]
+[node name="Spawner4" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(-800, 0)
 script = ExtResource("9_bfess")
 enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
-[node name="Spawner5" type="Node2D" parent="Player/Spawners"]
+[node name="Spawner5" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(-800, -800)
 script = ExtResource("9_bfess")
 enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
-[node name="Spawner6" type="Node2D" parent="Player/Spawners"]
+[node name="Spawner6" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(800, -800)
 script = ExtResource("9_bfess")
 enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
-[node name="Spawner7" type="Node2D" parent="Player/Spawners"]
+[node name="Spawner7" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(800, 748)
 script = ExtResource("9_bfess")
 enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
-[node name="Spawner8" type="Node2D" parent="Player/Spawners"]
+[node name="Spawner8" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(-800, 748)
 script = ExtResource("9_bfess")
 enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
@@ -109,18 +109,18 @@ text = "Shop
 
 [node name="ResetGame" type="Button" parent="Player/UI/UI/Buttons"]
 layout_mode = 0
-offset_left = 650.0
-offset_top = 10.0
-offset_right = 831.0
-offset_bottom = 41.0
+offset_left = 480.0
+offset_top = 26.0
+offset_right = 661.0
+offset_bottom = 57.0
 text = "Reset Game to Wave 0"
 
 [node name="Cheats" type="Button" parent="Player/UI/UI/Buttons"]
 layout_mode = 0
-offset_left = 650.0
-offset_top = 70.0
-offset_right = 850.0
-offset_bottom = 101.0
+offset_left = 480.0
+offset_top = 86.0
+offset_right = 680.0
+offset_bottom = 117.0
 text = "Inf resources"
 
 [node name="Shop" type="Control" parent="Player/UI/UI"]
@@ -274,6 +274,9 @@ position = Vector2(0, 750)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallDown"]
 shape = SubResource("WorldBoundaryShape2D_dgn66")
+
+[node name="Items" type="Node" parent="."]
+unique_name_in_owner = true
 
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/Spawners" method="_on_start_wave_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI" method="_on_start_wave_button_button_down"]

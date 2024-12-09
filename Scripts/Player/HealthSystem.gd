@@ -34,7 +34,6 @@ func take_damage(damage : int):
 	#Reload current scene if negative health
 	#Momentaneo
 	if current_health<=0:
-		#get_tree().call_deferred("reload_current_scene")
 		Global.reset_wave()
 
 func invincibility():

@@ -12,35 +12,6 @@ var current_coreRare : int = 0
 var current_coreEpic : int = 0
 var current_coreLegendary: int = 0
 
-
-# checkpoint stats. When we die before the end of the wave we need to reset the stats
-var checkpoint_money : int = 0
-var checkpoint_exp : int = 0
-var checkpoint_coreNormal: int = 0
-var checkpoint_coreRare : int = 0
-var checkpoint_coreEpic : int = 0
-var checkpoint_coreLegendary : int = 0
-
-
-# Save the stats in the wave
-func save_checkpoint():
-	checkpoint_money = current_money
-	checkpoint_exp = current_exp
-	checkpoint_coreNormal = current_coreNormal
-	checkpoint_coreRare = current_coreRare
-	checkpoint_coreEpic= current_coreEpic
-	checkpoint_coreLegendary = current_coreLegendary
-
-# reloading as a checkpoint the stats in case we die before the end of the wave
-func restore_checkpoint():
-	current_money = checkpoint_money
-	current_exp = checkpoint_exp
-	current_coreNormal = checkpoint_coreNormal
-	current_coreRare = checkpoint_coreRare
-	current_coreEpic = checkpoint_coreEpic
-	current_coreLegendary = checkpoint_coreLegendary
-	
-
 func _ready() -> void:
 	#Wait some time to load the stats
 	await get_tree().create_timer(0.1).timeout
@@ -54,7 +25,6 @@ func _ready() -> void:
 	current_coreRare = SaveAndLoad.get_stat("CoreRare")
 	current_coreEpic = SaveAndLoad.get_stat("CoreEpic")
 	current_coreLegendary = SaveAndLoad.get_stat("CoreLegendary")
-	save_checkpoint()
 	
 	#Set the stats
 	emit_stats()
@@ -70,21 +40,12 @@ func add_money(value : int):
 func add_exp(value : int):
 	current_exp+=value
 	emit_stats()
-	
-func add_coreNormal(value : int):
-	current_coreNormal += value
-	emit_stats()
-	
-func add_coreRare(value : int):
-	current_coreRare += value
-	emit_stats()
-	
-func add_coreEpic(value : int):
-	current_coreEpic += value
-	emit_stats()
 
-func add_coreLegendary(value : int):
-	current_coreLegendary += value
+#Add core
+#Based on the core_type, this function updates the 
+#correct variable
+func add_core(core_type : String):
+	set("current_"+core_type, get("current_"+core_type)+1)
 	emit_stats()
 
 #Update player's health
@@ -101,13 +62,10 @@ func update_wave(reset_wave = false):
 	#Called by Global
 	if reset_wave:
 		current_wave-=1
-		# reloading the stats from the checkpoint if we die before ending the wave
-		restore_checkpoint()
 	else:
 		current_wave+=1
 	
 	emit_stats()
-
 
 # Reset the game to zero
 func reset_to_zero():
@@ -118,6 +76,9 @@ func reset_to_zero():
 	current_coreRare = 0
 	current_coreEpic = 0
 	current_coreLegendary = 0
+	
+	SaveAndLoad.save()
+
 #Update the stats
 #Connected in UI
 func emit_stats():

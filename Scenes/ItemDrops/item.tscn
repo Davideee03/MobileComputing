@@ -1,18 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://j3xx2bhui57g"]
+[gd_scene load_steps=3 format=3 uid="uid://j3xx2bhui57g"]
 
-[ext_resource type="Texture2D" uid="uid://cpdag45ml8dok" path="res://Sprites/Items/GEM 2 - BLUE - 0008.png" id="1_dm704"]
-[ext_resource type="Script" path="res://Scripts/ItemDrops/item.gd" id="1_isva0"]
+[ext_resource type="Script" path="res://Scripts/ItemDrops/Item.gd" id="1_isva0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nhu28"]
 radius = 11.0454
 
-[node name="Item" type="Area2D"]
-collision_layer = 64
+[node name="Item" type="Area2D" groups=["item"]]
+collision_layer = 0
 collision_mask = 2
+monitorable = false
 script = ExtResource("1_isva0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_dm704")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)

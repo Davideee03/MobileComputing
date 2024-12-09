@@ -7,11 +7,26 @@ extends Node2D
 #if it has just done it
 var spawned : bool = false
 
+#Var to check if the player is still alive
+var player_is_dead : bool = false
+
+#Bool to check if it's the first enemy spawned
+var first_spawn : bool = true
+
 func spawn():
+	#Check if it's the first enemy spawned
+	if first_spawn && player_is_dead:
+		first_spawn = false
+		#Player is alive
+		if player_is_dead: player_is_dead = false
+	
 	#Wait a random time
 	await get_tree().create_timer(choose_random_wait_time()).timeout
 	#If the wave is not ended, spawn a new enemy
-	if get_parent().wave_ended(): return
+	if get_parent().wave_ended() || player_is_dead: 
+		first_spawn = true #Reset
+		#End wave
+		return
 	
 	#If the spawner has just spawned an enemy
 	#it must spawn nothing
@@ -56,3 +71,7 @@ func choose_random_wait_time():
 #Update the wave
 func update_wave(value):
 	get_parent().update_wave(value)
+
+#Stop the wave cause the player is dead
+func stop_wave():
+	player_is_dead = true

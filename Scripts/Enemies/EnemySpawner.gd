@@ -1,9 +1,9 @@
 extends Node2D
 
 @export_category("Spawn Enemies")
-var enemies : Array[PackedScene]
 @export var min_spawn_time : float = 0.5
 @export var max_spawn_time : float = 2.5
+var enemies : Array[PackedScene]
 var parent : Node2D
 var enemies_number : int = 0
 
