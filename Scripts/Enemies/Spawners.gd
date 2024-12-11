@@ -31,13 +31,12 @@ func update_wave(enemy_value : int):
 	else: enemies_defeated-=enemy_value
 	
 	#Wave ended, no more enemies present
-	if enemies_defeated>=max_enemies:
+	if enemies_defeated>=max_enemies && !player_is_dead:
 		player_won()
 
 ###We'll add a victory ui from here
 func player_won() -> void: 
 	#Player didn't win if he's dead
-	if player_is_dead: return
 	print("Player won!")
 	end_wave()
 
@@ -53,7 +52,6 @@ func end_wave():
 	#Collect all the remaining cores
 	get_tree().call_group("item", "follow_player")
 	
-	#Make the buttons visible again
 	ui.change_buttons_visibility()
 	
 	#The computer is on the ground
