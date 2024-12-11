@@ -12,12 +12,8 @@ func _ready() -> void:
 	await get_tree().create_timer(LIFE_TIME).timeout
 	if !destroyed:
 		queue_free()
-		
-
-#funzione quando il nemico entra nell'area
-func
 
 #Movimento Proiettile
 func _process(delta: float) -> void:
 	global_position += random_direction * SPEED * delta
-	print("Figlio")
+	print("Figlio2")
