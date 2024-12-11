@@ -113,37 +113,56 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="StartWaveButton" type="Button" parent="Player/UI/UI/Buttons"]
-layout_mode = 0
-offset_left = 550.0
-offset_top = 1138.0
-offset_right = 642.0
-offset_bottom = 1169.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = -142.0
+offset_right = -78.0
+offset_bottom = -111.0
+grow_horizontal = 0
+grow_vertical = 0
 text = "Start Wave
 "
 
 [node name="ShopButton" type="Button" parent="Player/UI/UI/Buttons"]
-layout_mode = 0
-offset_left = 77.0
-offset_top = 1138.0
-offset_right = 124.0
-offset_bottom = 1169.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 110.0
+offset_top = -142.0
+offset_right = 157.0
+offset_bottom = -111.0
+grow_vertical = 0
 text = "Shop
 "
 
 [node name="ResetGame" type="Button" parent="Player/UI/UI/Buttons"]
-layout_mode = 0
-offset_left = 480.0
-offset_top = 26.0
-offset_right = 661.0
-offset_bottom = 57.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = 24.0
+offset_right = -59.0
+offset_bottom = 55.0
+grow_horizontal = 0
 text = "Reset Game to Wave 0"
 
 [node name="Cheats" type="Button" parent="Player/UI/UI/Buttons"]
-layout_mode = 0
-offset_left = 480.0
-offset_top = 86.0
-offset_right = 680.0
-offset_bottom = 117.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = 87.0
+offset_right = -40.0
+offset_bottom = 118.0
+grow_horizontal = 0
 text = "Inf resources"
 
 [node name="Shop" type="Control" parent="Player/UI/UI"]

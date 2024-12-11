@@ -43,6 +43,9 @@ func die():
 		Stats.add_money(choose_random_money_drop())
 		Stats.add_exp(choose_random_exp_drop())
 		drop_item()
+		
+		#Play a sound when destroyed
+		UniversalAudioPlayer.play_expolosion()
 	
 	#Update the Global enemies array
 	Global.remove_enemy(self)

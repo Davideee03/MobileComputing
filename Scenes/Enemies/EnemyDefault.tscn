@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://pr1ilbeewdmj"]
+[gd_scene load_steps=11 format=3 uid="uid://pr1ilbeewdmj"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/EnemyDefaultMovement.gd" id="1_byofy"]
 [ext_resource type="Script" path="res://Scripts/Enemies/EnemyHealthSystem.gd" id="1_e5dgr"]
 [ext_resource type="Script" path="res://Scripts/Enemies/DefaultEnemy/DamageArea.gd" id="3_xfmkv"]
 [ext_resource type="Texture2D" uid="uid://bcgb7nwhpyl14" path="res://Sprites/Enemies/DefaultEnemy.png" id="4_p2thn"]
+[ext_resource type="Texture2D" uid="uid://cq4irhh5imy38" path="res://Sprites/Player/PlayerShadow.png" id="5_ly11t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8f483"]
 size = Vector2(35, 35)
@@ -75,9 +76,15 @@ script = ExtResource("3_xfmkv")
 shape = SubResource("RectangleShape2D_7kq0v")
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
+z_index = 5
 scale = Vector2(3, 3)
 texture = ExtResource("4_p2thn")
 hframes = 4
+
+[node name="PlayerShadow" type="Sprite2D" parent="."]
+position = Vector2(0, 20)
+scale = Vector2(3, 3)
+texture = ExtResource("5_ly11t")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

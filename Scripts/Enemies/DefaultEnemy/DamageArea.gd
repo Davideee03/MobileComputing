@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var hti_time : float = 0.2
+@export var hit_time : float = 0.2
 var damage : int 
 
 #Set the damage value
