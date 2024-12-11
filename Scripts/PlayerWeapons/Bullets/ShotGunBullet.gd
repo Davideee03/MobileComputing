@@ -5,7 +5,7 @@ var initial_position : Vector2 = global_position #posizione iniziale
 var destroyed = false
 var min_damage : float = 2.0
 var max_distance : float = 1000.0
-var max_damage : float = 18.0
+var max_damage : float = 20.0
 
 #quando il proiettile non colpisce nulla viene comunque distrutto
 func _ready() -> void:

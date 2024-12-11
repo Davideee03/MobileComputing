@@ -38,7 +38,6 @@ func update_wave(enemy_value : int):
 func player_won() -> void: 
 	#Player didn't win if he's dead
 	if player_is_dead: return
-	ui.change_buttons_visibility()
 	print("Player won!")
 	end_wave()
 
@@ -53,7 +52,10 @@ func end_wave():
 	
 	#Collect all the remaining cores
 	get_tree().call_group("item", "item_collected")
-
+	
+	#Make the buttons visible again
+	ui.change_buttons_visibility()
+	
 	#The computer is on the ground
 	computer.disconnect_from_player()
 	
