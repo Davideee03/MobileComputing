@@ -19,7 +19,7 @@ func _ready() -> void:
 	Stats.on_stats_changed.connect(display_new_stats)
 
 #Hide or show the buttons when necessary
-#Called in UI 	
+#Called in UI
 func change_buttons_visibility():
 	for button in buttons.get_children():
 		button.visible = !button.visible
@@ -45,19 +45,19 @@ func _on_shop_button_button_down() -> void:
 	change_buttons_visibility()
 	Global.shop_opened = true
 	shop.visible = true
+
 #Close the shop
 func _on_shop_back_button_down() -> void:
 	change_buttons_visibility()
 	Global.shop_opened = false
 	shop.visible = false
-	
-# developer button  for resetting the game to zero
+
+#Developer button  for resetting the game to zero
 func _on_reset_game_button_down() -> void:
 	Stats.reset_to_zero()
 	Stats.emit_stats()
 
-
-# Adding almost infinite resources for the player 
+#Adding almost infinite resources for the player 
 func _on_cheats_button_down() -> void:
 	Stats.current_money = 10000000000
 	Stats.current_coreNormal = 1000000
