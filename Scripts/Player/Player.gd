@@ -9,6 +9,8 @@ var first_position : Vector2
 var is_dragging : bool = false
 
 @onready var hitbox: Area2D = %Hitbox
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var player: Sprite2D = $Player
 
 func _ready():
 	first_position = global_position
@@ -25,14 +27,17 @@ func _input(event):
 		is_dragging = false
 		if event.is_pressed():
 			first_position = (event.position - (get_viewport().size*0.5))
+			animation_player.play("Walk", -1, 2)
 		else:
 			first_position = global_position
+			animation_player.stop()
 	#If ScreenDrag get the finger direction 
 	elif event is InputEventScreenDrag:
 		var target : Vector2 = (event.position - (get_viewport().size*0.5))
 		direction = first_position.direction_to(target).normalized()
+		if (direction.x>0&&!player.flip_h)||(direction.x<0&&player.flip_h):
+			player.flip_h = !player.flip_h
 		is_dragging = true
-		
 
 func _process(delta):
 	if is_dragging && !Global.shop_opened:

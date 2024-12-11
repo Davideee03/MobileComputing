@@ -51,7 +51,7 @@ func end_wave():
 	await get_tree().create_timer(get_process_delta_time()).timeout
 	
 	#Collect all the remaining cores
-	get_tree().call_group("item", "item_collected")
+	get_tree().call_group("item", "follow_player")
 	
 	#Make the buttons visible again
 	ui.change_buttons_visibility()

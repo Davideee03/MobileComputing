@@ -25,9 +25,13 @@ var target : Node2D
 #This value is triggered by Global in "reset"
 var reset : bool = false
 
+#Get the sprite
+@onready var enemy_sprite: Sprite2D = $EnemySprite
+
 #Take note of the player
 func _ready() -> void:
-	target = get_tree().get_first_node_in_group("Player")
+	var target_parent = get_tree().get_first_node_in_group("Target")
+	target = target_parent.get_target()
 
 func die():
 	#Once dead reduce the number of current enemies on the field
