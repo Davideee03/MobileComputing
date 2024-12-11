@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://brjbu4konv3x6"]
+[gd_scene load_steps=6 format=3 uid="uid://brjbu4konv3x6"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerWeapons/Bullets/ShotGunBullet.gd" id="1_gldkf"]
-[ext_resource type="Texture2D" uid="uid://bsvxx3iv6mjm7" path="res://Sprites/Bullets/GunBullet.png" id="2_hx7lr"]
+[ext_resource type="Texture2D" uid="uid://mcg6njyik3dv" path="res://Sprites/Items/GEM 2 - GOLD - 0008.png" id="2_b46xo"]
 [ext_resource type="Script" path="res://Scripts/PlayerWeapons/Bullets/ChildShotGunBullet.gd" id="3_rxcgo"]
+[ext_resource type="Texture2D" uid="uid://cpdag45ml8dok" path="res://Sprites/Items/GEM 2 - BLUE - 0008.png" id="4_fh1d2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfddh"]
 size = Vector2(10, 5)
@@ -21,7 +22,7 @@ monitorable = false
 shape = SubResource("RectangleShape2D_wfddh")
 
 [node name="ShotGunBullet" type="Sprite2D" parent="."]
-texture = ExtResource("2_hx7lr")
+texture = ExtResource("2_b46xo")
 
 [node name="Child1" type="Node2D" parent="."]
 script = ExtResource("3_rxcgo")
@@ -36,7 +37,7 @@ monitorable = false
 shape = SubResource("RectangleShape2D_wfddh")
 
 [node name="ShotGunBullet" type="Sprite2D" parent="Child1"]
-texture = ExtResource("2_hx7lr")
+texture = ExtResource("4_fh1d2")
 
 [connection signal="area_entered" from="EnemyDetector" to="." method="_on_enemy_detector_area_entered"]
 [connection signal="area_entered" from="Child1/EnemyDetector" to="." method="_on_enemy_detector_area_entered"]

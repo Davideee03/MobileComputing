@@ -28,6 +28,7 @@ func _on_enemy_detector_area_entered(enemy: Area2D) -> void:
 #Movimento Proiettile
 func _process(delta: float) -> void:
 	global_position += direction * SPEED * delta
+	print("Padre")
 	
 #Danno Calcolato in base alla distanza
 func calculate_damage(distance: float) -> float:
