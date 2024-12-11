@@ -1,12 +1,4 @@
-class_name ShotGunBullet
-extends Bullet
-const SPEED : float = 1000.0
-const LIFE_TIME : float = 5.0
-var initial_position : Vector2 = global_position #posizione iniziale
-var destroyed = false
-var min_damage : float = 2.0
-var max_distance : float = 1000.0
-var max_damage : float = 15.0
+extends  ShotGunBullet
 
 #quando il proiettile non colpisce nulla viene comunque distrutto
 func _ready() -> void:
