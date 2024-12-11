@@ -44,7 +44,7 @@ func reset_wave():
 	for spawner in get_tree().get_nodes_in_group("Spawner"):
 		spawner.stop_wave()
 	
-	spawner_container.end_wave()
+	spawner_container.defeat()
 	
 	#Don't pass to the next wave
 	Stats.update_wave(true)

@@ -14,7 +14,7 @@
 size = Vector2(350, 600)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klpek"]
-size = Vector2(40, 40)
+size = Vector2(50, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lyj5"]
 
@@ -59,6 +59,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_lm157"]
 resource_name = "Walk"
+length = 1.1
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
