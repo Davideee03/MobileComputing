@@ -13,6 +13,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	global_position += direction * SPEED * delta
 
+#Enemy Enters Area
 func _on_enemy_detector_area_entered(area: Area2D) -> void:
 	area.take_damage(damage)
 	destroyed = true

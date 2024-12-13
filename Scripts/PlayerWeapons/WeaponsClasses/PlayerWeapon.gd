@@ -9,7 +9,7 @@ var reload_time : float
 
 ##MOMENTANEO##
 func _ready() -> void:
-	load_weapon(Gun.new())
+	load_weapon(ShotGun.new())
 
 #Load new stats when needed
 #This function is called by the shop buttons

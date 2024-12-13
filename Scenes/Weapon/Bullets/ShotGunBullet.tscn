@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://brjbu4konv3x6"]
+[gd_scene load_steps=5 format=3 uid="uid://brjbu4konv3x6"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerWeapons/Bullets/ShotGunBullet.gd" id="1_gldkf"]
 [ext_resource type="Texture2D" uid="uid://bsvxx3iv6mjm7" path="res://Sprites/Bullets/GunBullet.png" id="3_fsatg"]
 [ext_resource type="Script" path="res://Scripts/PlayerWeapons/Bullets/ChildShotGunBullet.gd" id="3_rxcgo"]
-[ext_resource type="Script" path="res://Scripts/PlayerWeapons/Bullets/Child2ShotGunBullet.gd" id="4_vmkh1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfddh"]
 size = Vector2(10, 5)
@@ -14,6 +13,7 @@ script = ExtResource("1_gldkf")
 
 [node name="Child1" type="Node2D" parent="."]
 script = ExtResource("3_rxcgo")
+central_bullet = true
 
 [node name="EnemyDetector" type="Area2D" parent="Child1"]
 position = Vector2(1, 0)
@@ -28,7 +28,7 @@ shape = SubResource("RectangleShape2D_wfddh")
 texture = ExtResource("3_fsatg")
 
 [node name="Child2" type="Node2D" parent="."]
-script = ExtResource("4_vmkh1")
+script = ExtResource("3_rxcgo")
 
 [node name="EnemyDetector" type="Area2D" parent="Child2"]
 position = Vector2(1, 0)
@@ -42,4 +42,21 @@ shape = SubResource("RectangleShape2D_wfddh")
 [node name="ShotGunBullet" type="Sprite2D" parent="Child2"]
 texture = ExtResource("3_fsatg")
 
-[connection signal="area_entered" from="Child1/EnemyDetector" to="." method="_on_enemy_detector_area_entered"]
+[node name="Child3" type="Node2D" parent="."]
+script = ExtResource("3_rxcgo")
+
+[node name="EnemyDetector" type="Area2D" parent="Child3"]
+position = Vector2(1, 0)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Child3/EnemyDetector"]
+shape = SubResource("RectangleShape2D_wfddh")
+
+[node name="ShotGunBullet" type="Sprite2D" parent="Child3"]
+texture = ExtResource("3_fsatg")
+
+[connection signal="area_entered" from="Child1/EnemyDetector" to="Child1" method="_on_enemy_detector_area_entered"]
+[connection signal="area_entered" from="Child2/EnemyDetector" to="Child2" method="_on_enemy_detector_area_entered"]
+[connection signal="area_entered" from="Child3/EnemyDetector" to="Child3" method="_on_enemy_detector_area_entered"]
