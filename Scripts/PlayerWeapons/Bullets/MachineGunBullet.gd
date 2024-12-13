@@ -23,7 +23,7 @@ func _on_enemy_detector_area_entered(area: Area2D) -> void:
 
 func fire_stop() -> void:
 	while true:
-		can_shoot=false
+		#can_shoot=false
 		
 		await get_tree().create_timer(2).timeout
-		$Weapon.can_shoot=true
+		#can_shoot=true
