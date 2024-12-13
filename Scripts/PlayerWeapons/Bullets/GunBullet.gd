@@ -1,5 +1,4 @@
 extends Bullet
-
 const SPEED : float = 1000.0
 const LIFE_TIME : float = 5.0
 
