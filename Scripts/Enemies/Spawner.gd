@@ -1,7 +1,7 @@
 extends Node2D
 
 #All the enemies that can be spawned
-@export var enemies : Array[PackedScene]
+var enemies : Array[PackedScene]
 
 #Don't allow to a spawner to spawn an enemy
 #if it has just done it
@@ -12,6 +12,10 @@ var player_is_dead : bool = false
 
 #Bool to check if it's the first enemy spawned
 var first_spawn : bool = true
+
+func _init() -> void:
+	#Get all the enemies
+	enemies = WaveController.enemies
 
 func spawn():
 	#Check if it's the first enemy spawned

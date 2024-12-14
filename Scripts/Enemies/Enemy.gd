@@ -1,5 +1,5 @@
 class_name Enemy
-extends Node2D
+extends CharacterBody2D
 
 @export var value : int = 1
 @export var damage : int = 5
@@ -16,6 +16,7 @@ extends Node2D
 @export var core : PackedScene = preload("res://Scenes/ItemDrops/item.tscn")
 
 var target : Node2D
+var player : CharacterBody2D
 
 #Select the item parent
 @onready var items_container = get_node("/root/World/Items")
@@ -28,10 +29,14 @@ var reset : bool = false
 #Get the sprite
 @onready var enemy_sprite: Sprite2D = $EnemySprite
 
+func _init() -> void:
+	top_level = true
+
 #Take note of the player
 func _ready() -> void:
 	var target_parent = get_tree().get_first_node_in_group("Target")
 	target = target_parent.get_target()
+	player = get_tree().get_first_node_in_group("Player")
 
 func die():
 	#Once dead reduce the number of current enemies on the field

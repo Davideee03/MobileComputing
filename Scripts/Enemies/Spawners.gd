@@ -40,7 +40,6 @@ func player_won() -> void:
 	print("Player won!")
 
 #End the wave
-#Called by Global if the player is defeated
 func end_wave():
 	#Notify that player is dead if the wave isn't finished
 	if !player_is_dead: player_won()
@@ -86,5 +85,8 @@ func set_up():
 	#Attach the computer to the players
 	computer.attach_to_player()
 
+#Called by Global if the player is defeated
 func defeat():
 	player_is_dead = true
+	
+	print("Player has lost")
