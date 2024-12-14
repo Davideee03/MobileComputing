@@ -137,7 +137,6 @@ script = ExtResource("2_nrn82")
 [node name="Weapon" parent="." instance=ExtResource("6_mjxid")]
 position = Vector2(0, -31)
 script = ExtResource("6_2h1e7")
-can_shoot = true
 
 [node name="Areas" type="Node2D" parent="."]
 

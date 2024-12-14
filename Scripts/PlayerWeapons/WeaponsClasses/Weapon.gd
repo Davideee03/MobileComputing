@@ -1,11 +1,8 @@
 extends PlayerWeapon
 
-@export var can_shoot : bool = true
-
 var enemies : Array
 var current_enemy
 var is_reloading : bool = false
-
 
 ###DEBUG###
 func _input(event: InputEvent) -> void:
@@ -26,6 +23,7 @@ func _process(_delta: float) -> void:
 	if !is_reloading:
 		shoot()
 
+#Manage Shoot
 func shoot():
 	#Spawn a new bullet
 	var new_bullet = bullet.instantiate()
@@ -37,6 +35,7 @@ func shoot():
 	is_reloading = true
 	reload()
 
+#Manage Reload Time
 func reload() -> void:
 	await get_tree().create_timer(reload_time).timeout
 	is_reloading = false
