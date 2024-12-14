@@ -56,6 +56,11 @@ text = "AssaultRifle"
 script = ExtResource("1_jvfwi")
 new_weapon = SubResource("Resource_pb7jp")
 
+[node name="ShopButton" type="Button" parent="Weapons/VBoxContainer"]
+layout_mode = 2
+text = "Mine"
+script = ExtResource("1_jvfwi")
+
 [node name="Upgrades" type="ScrollContainer" parent="."]
 visible = false
 layout_mode = 2
@@ -75,3 +80,4 @@ text = "Armor
 [connection signal="button_down" from="Weapons/VBoxContainer/ShotGunShopButton" to="Weapons/VBoxContainer/ShotGunShopButton" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/MachineGunShopButton" to="Weapons/VBoxContainer/MachineGunShopButton" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/AssaultRifleShopButton" to="Weapons/VBoxContainer/AssaultRifleShopButton" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/ShopButton" to="Weapons/VBoxContainer/ShopButton" method="_on_button_down"]
