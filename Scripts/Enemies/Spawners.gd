@@ -31,7 +31,7 @@ func update_wave(enemy_value : int):
 	else: enemies_defeated-=enemy_value
 	
 	#Wave ended, no more enemies present
-	if enemies_defeated>=max_enemies:
+	if enemies_defeated>=current_enemies:
 		end_wave()
 
 ###We'll add a victory ui from here
@@ -88,5 +88,4 @@ func set_up():
 #Called by Global if the player is defeated
 func defeat():
 	player_is_dead = true
-	
 	print("Player has lost")

@@ -1,8 +1,9 @@
 class_name Enemy
-extends CharacterBody2D
+extends Node2D
 
 @export var value : int = 1
 @export var damage : int = 5
+@export var health : int = 20
 
 @export_subgroup("Money")
 @export var min_money_drop : int = 1
@@ -28,6 +29,13 @@ var reset : bool = false
 
 #Get the sprite
 @onready var enemy_sprite: Sprite2D = $EnemySprite
+
+#Movement
+var speed : float 
+var direction : Vector2
+
+#Animation
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _init() -> void:
 	top_level = true

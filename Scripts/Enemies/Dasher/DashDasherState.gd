@@ -3,17 +3,24 @@ class_name DashDasherState
 extends DasherMovementState
 
 @export_category("Movement")
-@export var speed : float = 300.0
+@export var speed : float = 450.0
 
-var direction : Vector2
 var idle : bool = false
 
 func enter() -> void:
-	direction = DASHER.global_position.direction_to(PLAYER.global_position)
-	DASHER.update_input(speed, direction)
+	DASHER.update_speed(0)
+	ANIMATOR.play("Charge")
+	
+	var direction : Vector2 = DASHER.global_position.direction_to(PLAYER.global_position)
+	DASHER.update_direction(direction)
+	
+	await ANIMATOR.animation_finished
+	
+	ANIMATOR.play("Dash")
+	DASHER.update_speed(speed)
 
 func update(delta):
-	DASHER.update_velocity()
+	DASHER.update_velocity(delta)
 	
 	if idle: 
 		transition.emit("IdleDasherState")

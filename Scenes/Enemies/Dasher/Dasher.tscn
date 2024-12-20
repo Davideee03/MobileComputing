@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://8bg61c2tpil6"]
+[gd_scene load_steps=18 format=3 uid="uid://8bg61c2tpil6"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Dasher/DasherMovement.gd" id="1_8cgav"]
 [ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.gd" id="2_tuqdk"]
@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/Dasher/IdleDasherState.gd" id="3_xoo5o"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Dasher/ChaseDasherState.gd" id="4_4h2d7"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Dasher/DashDasherState.gd" id="5_7mdq2"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixlum"]
+[ext_resource type="Texture2D" uid="uid://ckvncrx32culf" path="res://Sprites/Enemies/Dasher.png" id="8_vofbw"]
+[ext_resource type="Texture2D" uid="uid://cq4irhh5imy38" path="res://Sprites/Player/PlayerShadow.png" id="9_5onrp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u42id"]
 radius = 150.0
@@ -17,19 +17,86 @@ radius = 150.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bk1gu"]
 
-[node name="Dasher" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_555si"]
+resource_name = "Charge"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pdp8r"]
+resource_name = "Dash"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1gnyv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wt5lu"]
+resource_name = "Walk"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EnemySprite:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vims4"]
+_data = {
+"Charge": SubResource("Animation_555si"),
+"Dash": SubResource("Animation_pdp8r"),
+"RESET": SubResource("Animation_1gnyv"),
+"Walk": SubResource("Animation_wt5lu")
+}
+
+[node name="Dasher" type="Node2D"]
 script = ExtResource("1_8cgav")
 value = 3
 damage = 4
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ixlum")
+health = 12
 
 [node name="Areas" type="Node2D" parent="."]
 
@@ -51,8 +118,6 @@ shape = SubResource("RectangleShape2D_7v1qx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/EnemyHealthSystem"]
 shape = SubResource("RectangleShape2D_bk1gu")
 
-[node name="EnemySprite" type="Sprite2D" parent="."]
-
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
 script = ExtResource("2_tuqdk")
 CURRENT_STATE = NodePath("IdleDasherState")
@@ -65,7 +130,22 @@ script = ExtResource("4_4h2d7")
 
 [node name="DashDasherState" type="Node" parent="StateMachine"]
 script = ExtResource("5_7mdq2")
-speed = null
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("8_vofbw")
+hframes = 6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vims4")
+}
+
+[node name="PlayerShadow" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(0, 18)
+scale = Vector2(3, 3)
+texture = ExtResource("9_5onrp")
 
 [connection signal="area_entered" from="Areas/PlayerDetector" to="StateMachine/ChaseDasherState" method="_on_player_detector_area_entered"]
 [connection signal="area_exited" from="Areas/PlayerDetector" to="StateMachine/DashDasherState" method="_on_player_detector_area_exited"]

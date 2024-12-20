@@ -30,7 +30,7 @@ func _input(event):
 			animation_player.play("Walk", -1, 2)
 		else:
 			first_position = global_position
-			animation_player.stop()
+			animation_player.play("Idle", -1, 0.8)
 	#If ScreenDrag get the finger direction 
 	elif event is InputEventScreenDrag:
 		var target : Vector2 = (event.position - (get_viewport().size*0.5))
