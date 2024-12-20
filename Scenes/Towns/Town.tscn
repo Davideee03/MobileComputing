@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cu3i1p3knb8dp"]
+[gd_scene load_steps=14 format=4 uid="uid://cu3i1p3knb8dp"]
 
 [ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
 [ext_resource type="PackedScene" uid="uid://cftrkiyi740hw" path="res://Scenes/UI/Shop.tscn" id="3_iquj0"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://yb31726ijnte" path="res://Sprites/Enviroment/Floor.png" id="8_mmq2u"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Spawner.gd" id="9_bfess"]
 [ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="10_avg3d"]
-[ext_resource type="PackedScene" uid="uid://pr1ilbeewdmj" path="res://Scenes/Enemies/EnemyDefault.tscn" id="11_dj6o8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m7dyb"]
 normal = Vector2(-1, 0)
@@ -53,42 +52,34 @@ max_enemies = 0
 [node name="Spawner" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(0, -800)
 script = ExtResource("9_bfess")
-enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
 [node name="Spawner2" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(800, 0)
 script = ExtResource("9_bfess")
-enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
 [node name="Spawner3" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(0, 800)
 script = ExtResource("9_bfess")
-enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
 [node name="Spawner4" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(-800, 0)
 script = ExtResource("9_bfess")
-enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
 [node name="Spawner5" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(-800, -800)
 script = ExtResource("9_bfess")
-enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
 [node name="Spawner6" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(800, -800)
 script = ExtResource("9_bfess")
-enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
 [node name="Spawner7" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(800, 748)
 script = ExtResource("9_bfess")
-enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
 [node name="Spawner8" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(-800, 748)
 script = ExtResource("9_bfess")
-enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
 
 [node name="UI" type="CanvasLayer" parent="Player"]
 
