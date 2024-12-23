@@ -1,3 +1,85 @@
-[gd_scene format=3 uid="uid://c3uky5qtvghti"]
+[gd_scene load_steps=13 format=3 uid="uid://c3uky5qtvghti"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Shooter/ShooterMovement.gd" id="1_kph8m"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/StateMachine.gd" id="2_et5t1"]
+[ext_resource type="PackedScene" uid="uid://dmkvpjm0t2c10" path="res://Scenes/Enemies/EnemyHitbox.tscn" id="2_hs3b2"]
+[ext_resource type="PackedScene" uid="uid://cb0lrrs21qk8c" path="res://Scenes/Enemies/EnemyHealthSystem.tscn" id="3_j5wyf"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Shooter/IdleShooterState.gd" id="3_rsl4h"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Shooter/ChaseShooterState.gd" id="4_ivarx"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Shooter/ShootShooterState.gd" id="7_o3oxh"]
+[ext_resource type="PackedScene" uid="uid://dp356qdg4yhii" path="res://Scenes/Enemies/Shooter/ShooterProjectile.tscn" id="8_dgjo5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2brpk"]
+radius = 200.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ie0kc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvyhc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nxkty"]
+radius = 270.0
 
 [node name="Shooter" type="Node2D"]
+script = ExtResource("1_kph8m")
+value = 4
+damage = 3
+health = 7
+
+[node name="ShootingPoint" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -46)
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="PlayerDetector" type="Area2D" parent="Areas"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/PlayerDetector"]
+shape = SubResource("CircleShape2D_2brpk")
+
+[node name="EnemyHitbox" parent="Areas" instance=ExtResource("2_hs3b2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/EnemyHitbox"]
+shape = SubResource("RectangleShape2D_ie0kc")
+
+[node name="EnemyHealthSystem" parent="Areas" instance=ExtResource("3_j5wyf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/EnemyHealthSystem"]
+shape = SubResource("RectangleShape2D_jvyhc")
+
+[node name="StopShooting" type="Area2D" parent="Areas"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/StopShooting"]
+shape = SubResource("CircleShape2D_nxkty")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("CURRENT_STATE")]
+script = ExtResource("2_et5t1")
+CURRENT_STATE = NodePath("IdleShooterState")
+
+[node name="IdleShooterState" type="Node" parent="StateMachine"]
+script = ExtResource("3_rsl4h")
+
+[node name="ChaseShooterState" type="Node" parent="StateMachine"]
+script = ExtResource("4_ivarx")
+
+[node name="ShootShooterState" type="Node" parent="StateMachine"]
+script = ExtResource("7_o3oxh")
+projectile = ExtResource("8_dgjo5")
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="area_entered" from="Areas/PlayerDetector" to="StateMachine/ChaseShooterState" method="_on_wide_player_detector_area_entered"]
+[connection signal="area_exited" from="Areas/StopShooting" to="StateMachine/ShootShooterState" method="_on_stop_shooting_area_exited"]
