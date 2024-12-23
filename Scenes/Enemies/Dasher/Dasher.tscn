@@ -94,7 +94,7 @@ _data = {
 
 [node name="Dasher" type="Node2D"]
 script = ExtResource("1_8cgav")
-value = 3
+value = 2
 damage = 4
 health = 12
 

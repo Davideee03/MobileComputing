@@ -54,7 +54,6 @@ _data = {
 [node name="DefaultEnemy" type="Node2D"]
 top_level = true
 script = ExtResource("1_byofy")
-value = 2
 health = 7
 
 [node name="HealthSystem" type="Area2D" parent="."]
