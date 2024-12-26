@@ -1,7 +1,7 @@
 extends Node2D
 
 #All the enemies that can be spawned
-@export var enemies : Array[PackedScene]
+var enemies : Array[PackedScene]
 
 #Don't allow to a spawner to spawn an enemy
 #if it has just done it
@@ -12,6 +12,10 @@ var player_is_dead : bool = false
 
 #Bool to check if it's the first enemy spawned
 var first_spawn : bool = true
+
+func _init() -> void:
+	#Get all the enemies
+	enemies = WaveController.enemies
 
 func spawn():
 	#Check if it's the first enemy spawned
@@ -64,7 +68,7 @@ func choose_random_wait_time():
 	var x : int = Stats.current_wave
 	#The wait time depends on the current wave
 	#With x small, the wait time is small too
-	var max_wait_time : float = 1.5*pow(x,0.3)
+	var max_wait_time : float = 1.2*pow(x,0.3)
 	var min_wait_time : float = pow(x, 0.3)
 	return randf_range(min_wait_time, max_wait_time)
 
