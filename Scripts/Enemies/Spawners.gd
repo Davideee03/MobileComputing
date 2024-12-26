@@ -31,20 +31,18 @@ func update_wave(enemy_value : int):
 	else: enemies_defeated-=enemy_value
 	
 	#Wave ended, no more enemies present
-	if enemies_defeated>=max_enemies && !player_is_dead:
-		player_won()
+	if enemies_defeated>=current_enemies:
+		end_wave()
 
 ###We'll add a victory ui from here
 func player_won() -> void: 
 	#Player didn't win if he's dead
 	print("Player won!")
-	end_wave()
 
 #End the wave
-#Called by Global if the player is defeated
 func end_wave():
 	#Notify that player is dead if the wave isn't finished
-	if !wave_ended(): player_is_dead = true
+	if !player_is_dead: player_won()
 	
 	#Wait a frame
 	await get_tree().create_timer(get_process_delta_time()).timeout
@@ -86,3 +84,8 @@ func set_up():
 	
 	#Attach the computer to the players
 	computer.attach_to_player()
+
+#Called by Global if the player is defeated
+func defeat():
+	player_is_dead = true
+	print("Player has lost")

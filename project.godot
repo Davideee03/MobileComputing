@@ -22,6 +22,7 @@ Stats="*res://Scripts/Global/Stats.gd"
 Utilities="*res://Scripts/Global/Utilities.gd"
 SaveAndLoad="*res://Scripts/Global/SaveAndLoad.gd"
 UniversalAudioPlayer="*res://Scenes/Sounds/UniversalAudioPlayer.tscn"
+WaveController="*res://Scripts/Global/WaveController.gd"
 
 [display]
 

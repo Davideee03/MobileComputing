@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bionusjjedesc"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/Giant/GiantMovement.gd" id="1_c5nhx"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Health/EnemyHealthSystem.gd" id="2_65n7o"]
+[ext_resource type="Script" path="res://Scripts/Enemies/DefaultEnemy/DamageArea.gd" id="3_w2j72"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2tqv"]
+size = Vector2(35, 35)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eobid"]
+size = Vector2(30, 30)
+
+[node name="Giant" type="Node2D"]
+script = ExtResource("1_c5nhx")
+value = 3
+damage = 6
+health = 21
+
+[node name="HealthSystem" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+script = ExtResource("2_65n7o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HealthSystem"]
+shape = SubResource("RectangleShape2D_l2tqv")
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("3_w2j72")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_eobid")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+
+[node name="EnemySprite" type="Sprite2D" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]

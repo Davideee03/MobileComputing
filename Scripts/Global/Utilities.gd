@@ -15,4 +15,4 @@ func get_closer_node_array(array : Array, position : Vector2):
 
 func get_max_enemy_number():
 	var x = Stats.current_wave
-	return 6.5*pow(x, 0.6)
+	return 7*pow(x, 0.6)
