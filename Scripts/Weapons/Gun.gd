@@ -15,7 +15,9 @@ var name = "Gun"
 func up():
 	if upgradingCost():
 		damage = 2.5*pow(damage, 0.7)
+		damage = snapped(damage, 0.01)
 		reload_time = max(reload_time * pow(1 - reload_reduction, level), 0.1)
+		reload_time = snapped(reload_time, 0.01)
 		level += 1
 		print("level: "+ str(level))
 		print("Upgraded Gun: New damage = " + str(damage))

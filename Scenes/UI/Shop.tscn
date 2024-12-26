@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cftrkiyi740hw"]
+[gd_scene load_steps=29 format=3 uid="uid://cftrkiyi740hw"]
 
 [ext_resource type="Script" path="res://Scripts/UI/WeaponButton.gd" id="1_jvfwi"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Gun.gd" id="2_faleo"]
@@ -42,6 +42,9 @@ script = ExtResource("7_a5lli")
 script = ExtResource("5_slk5c")
 
 [sub_resource type="Resource" id="Resource_lqkcy"]
+script = ExtResource("5_slk5c")
+
+[sub_resource type="Resource" id="Resource_klymg"]
 script = ExtResource("5_slk5c")
 
 [sub_resource type="Resource" id="Resource_c1m8t"]
@@ -239,8 +242,9 @@ offset_left = 31.0
 offset_top = 9.0
 offset_right = 216.0
 offset_bottom = 37.0
-text = "Gun lv. "
+text = "Assault lv. 1"
 script = ExtResource("7_jxy6n")
+new_weapon = SubResource("Resource_klymg")
 
 [node name="StatsAssault" type="Label" parent="Weapons/VBoxContainer/Assault"]
 layout_mode = 0
