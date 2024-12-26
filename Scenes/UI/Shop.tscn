@@ -233,6 +233,28 @@ text = "Upgrade"
 script = ExtResource("5_vysrr")
 new_weapon = SubResource("Resource_lqkcy")
 
+[node name="LevelAssault" type="Label" parent="Weapons/VBoxContainer/Assault"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 9.0
+offset_right = 216.0
+offset_bottom = 37.0
+text = "Gun lv. "
+script = ExtResource("7_jxy6n")
+
+[node name="StatsAssault" type="Label" parent="Weapons/VBoxContainer/Assault"]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 7.0
+offset_right = 283.0
+offset_bottom = 108.0
+text = "Stats:
+Damage: 7.5
+Reload: 0.2
+Price: 500
+"
+script = ExtResource("7_xvl4a")
+
 [node name="GunSprite" type="TextureRect" parent="Weapons/VBoxContainer/Assault"]
 layout_mode = 0
 offset_left = 31.0
@@ -240,26 +262,6 @@ offset_top = 43.0
 offset_right = 125.0
 offset_bottom = 101.0
 texture = ExtResource("10_hvtsb")
-
-[node name="Name" type="Label" parent="Weapons/VBoxContainer/Assault"]
-layout_mode = 0
-offset_left = 31.0
-offset_top = 9.0
-offset_right = 216.0
-offset_bottom = 37.0
-text = "Gun lv. "
-
-[node name="Stats" type="Label" parent="Weapons/VBoxContainer/Assault"]
-layout_mode = 0
-offset_left = 150.0
-offset_top = 7.0
-offset_right = 283.0
-offset_bottom = 108.0
-text = "Stats:
-
-Damage:
-Reload:
-"
 
 [node name="MachineGunShopButton" type="Button" parent="Weapons/VBoxContainer"]
 layout_mode = 2
@@ -347,14 +349,16 @@ texture = ExtResource("6_cx44u")
 [connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/SelectShotGun" to="Weapons/VBoxContainer/ShotGun/SelectShotGun" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/UpgradeShotGun" to="Weapons/VBoxContainer/ShotGun/SelectShotGun" method="_on_up_gun_button_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/UpgradeShotGun" to="Weapons/VBoxContainer/ShotGun/UpgradeShotGun" method="_on_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/UpgradeShotGun" to="Weapons/VBoxContainer/ShotGun/StatsShotGun" method="_on_upgrade_gun_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/UpgradeShotGun" to="Weapons/VBoxContainer/ShotGun/LevelShotGun" method="_on_upgrade_gun_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/UpgradeShotGun" to="Weapons/VBoxContainer/ShotGun/StatsShotGun" method="_on_upgrade_gun_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Assault/BuyAssault" to="Weapons/VBoxContainer/Assault/BuyAssault" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Assault/BuyAssault" to="Weapons/VBoxContainer/Assault/SelectAssault" method="_on_buy_button_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Assault/BuyAssault" to="Weapons/VBoxContainer/Assault/UpgradeAssault" method="_on_buy_button_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Assault/SelectAssault" to="Weapons/VBoxContainer/Assault/SelectAssault" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Assault/UpgradeAssault" to="Weapons/VBoxContainer/Assault/SelectAssault" method="_on_up_gun_button_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Assault/UpgradeAssault" to="Weapons/VBoxContainer/Assault/UpgradeAssault" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Assault/UpgradeAssault" to="Weapons/VBoxContainer/Assault/LevelAssault" method="_on_upgrade_gun_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Assault/UpgradeAssault" to="Weapons/VBoxContainer/Assault/StatsAssault" method="_on_upgrade_gun_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/MachineGunShopButton" to="Weapons/VBoxContainer/MachineGunShopButton" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/AssaultRifleShopButton" to="Weapons/VBoxContainer/AssaultRifleShopButton" method="_on_button_down"]
 [connection signal="button_down" from="Upgrades/VBoxContainer/TextureRect/Button" to="Upgrades/VBoxContainer/TextureRect/Button" method="_on_button_down"]

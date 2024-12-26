@@ -8,6 +8,7 @@ var reload_time = 0.2
 var level = 1
 var reload_reduction = 0.008
 var price = 500
+var name = "AssaultRifle"
 
 
 # Upgrading the weapon called by the playerWeapon
