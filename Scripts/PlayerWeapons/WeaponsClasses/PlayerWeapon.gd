@@ -6,16 +6,18 @@ extends Node2D
 var bullet : PackedScene
 var damage : float
 var reload_time : float
+var current_weapon: Weapon 
 
 ##MOMENTANEO##
 func _ready() -> void:
-	load_weapon(Gun.new())
+	current_weapon = Gun.new()
+	load_weapon(current_weapon)
 
 #Load new stats when needed
 #This function is called by the shop buttons
 func load_weapon(weapon) -> void:
 	print("Load")
-	
+	current_weapon = weapon
 	sprite.texture = weapon.sprite
 	bullet = weapon.bullet
 	damage = weapon.damage
@@ -32,3 +34,26 @@ func check_flip(enemy_position : Vector2):
 		sprite.scale.y = -1
 	else:
 		sprite.scale.y= 1
+
+
+func upgrade():
+	load_weapon(current_weapon)
+	current_weapon.up()
+
+func pri():
+	return current_weapon.price
+	
+func getNameWeapon():
+	return current_weapon.name
+
+func getWeaponLevel():
+	return current_weapon.level
+	
+func getDamage():
+	return current_weapon.damage
+	
+func getReload():
+	return current_weapon.reload_time
+	
+	
+	

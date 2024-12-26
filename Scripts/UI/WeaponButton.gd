@@ -14,3 +14,12 @@ func _ready() -> void:
 #When pressed, change the player weapon parameters
 func _on_button_down() -> void:
 	weapon.load_weapon(new_weapon)
+
+
+func _on_buy_button_button_down() -> void:
+	if weapon.pri() < Stats.current_money:
+		show()
+		
+
+func _on_up_gun_button_button_down() -> void:
+	weapon.load_weapon(new_weapon)
