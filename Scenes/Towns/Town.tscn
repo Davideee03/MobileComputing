@@ -47,7 +47,6 @@ sources/0 = SubResource("TileSetAtlasSource_xgg58")
 
 [node name="Spawners" type="Node2D" parent="Player" groups=["SpawnerContainer"]]
 script = ExtResource("8_1d40r")
-max_enemies = 0
 
 [node name="Spawner" type="Node2D" parent="Player/Spawners" groups=["Spawner"]]
 position = Vector2(0, -800)
