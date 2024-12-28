@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://7lfiufia8slp"]
+[gd_scene load_steps=18 format=3 uid="uid://7lfiufia8slp"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_q7gve"]
 [ext_resource type="Texture2D" uid="uid://fihrd7dx35sc" path="res://Sprites/Player/Player.png" id="2_hx48d"]
@@ -157,7 +157,7 @@ script = ExtResource("2_nrn82")
 position = Vector2(0, -31)
 script = ExtResource("6_2h1e7")
 
-[node name="Explosives" type="Node2D" parent="."]
+[node name="Explosives" type="Node" parent="."]
 script = ExtResource("5_h8t7a")
 
 [node name="Areas" type="Node2D" parent="."]

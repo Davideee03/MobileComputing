@@ -57,7 +57,16 @@ text = "AssaultRifle"
 script = ExtResource("1_jvfwi")
 new_weapon = SubResource("Resource_pb7jp")
 
-[node name="Mine" type="Button" parent="Weapons/VBoxContainer"]
+[node name="Explosives" type="ScrollContainer" parent="."]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Explosives"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Mine" type="Button" parent="Explosives/VBoxContainer"]
 layout_mode = 2
 text = "Mine"
 script = ExtResource("6_0xdhb")
@@ -65,7 +74,7 @@ script = ExtResource("6_0xdhb")
 [node name="Upgrades" type="ScrollContainer" parent="."]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 1
+metadata/_tab_index = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Upgrades"]
 layout_mode = 2
@@ -81,4 +90,4 @@ text = "Armor
 [connection signal="button_down" from="Weapons/VBoxContainer/ShotGunShopButton" to="Weapons/VBoxContainer/ShotGunShopButton" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/MachineGunShopButton" to="Weapons/VBoxContainer/MachineGunShopButton" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/AssaultRifleShopButton" to="Weapons/VBoxContainer/AssaultRifleShopButton" method="_on_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/Mine" to="Weapons/VBoxContainer/Mine" method="_on_button_down"]
+[connection signal="button_down" from="Explosives/VBoxContainer/Mine" to="Explosives/VBoxContainer/Mine" method="_on_button_down"]
