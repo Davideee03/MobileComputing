@@ -8,9 +8,13 @@ var reload_time = 0.2
 var level = 1
 var reload_reduction = 0.008
 var price = 500
-var name = "Assault"
+var name = "AssaultRifle"
+var bought = false
+var weapon_save = WeaponSave
 
-
+func _init():
+	print("Nuova arma creata: " + name)
+	
 # Upgrading the weapon called by the playerWeapon
 func up():
 	if upgradingCost():
@@ -22,6 +26,7 @@ func up():
 		print("level: "+ str(level))
 		print("Upgraded Gun: New damage = " + str(damage))
 		print("price" + str(price))
+		weapon_save.save_weapon(self)
 	else:
 		print("not enough moneysir")
 	
@@ -33,4 +38,7 @@ func upgradingCost():
 	else:
 		return false
 		
+func setBought():
+	bought = true
+	
 	

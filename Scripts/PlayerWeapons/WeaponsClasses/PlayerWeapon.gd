@@ -8,11 +8,22 @@ var damage : float
 var reload_time : float
 var current_weapon: Weapon 
 
+@onready var weapon_save = get_node("/root/WeaponSave")
+
 ##MOMENTANEO##
 func _ready() -> void:
-	current_weapon = Gun.new()
+	# loading weapons
+	var saved_weapons = weapon_save.load_weapon_data()
+	
+	# if I have the gun then load it as the first weapon free
+	if saved_weapons.has("Gun"):
+		current_weapon = saved_weapons["Gun"]
+	else:
+		current_weapon = Gun.new()
+	
 	load_weapon(current_weapon)
-
+	
+	
 #Load new stats when needed
 #This function is called by the shop buttons
 func load_weapon(weapon) -> void:
@@ -55,5 +66,7 @@ func getDamage():
 func getReload():
 	return current_weapon.reload_time
 	
+func getBought():
+	current_weapon.setBought()
 	
 	

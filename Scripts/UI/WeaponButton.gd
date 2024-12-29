@@ -8,18 +8,41 @@ var weapon: Node2D
 @export var new_weapon : Weapon
 
 func _ready() -> void:
-	#Get the player weapon
 	weapon = get_tree().get_first_node_in_group("PlayerWeapon")
+	var saved_weapons = WeaponSave.load_weapon_data()
+	# checking if we have the weapon
+	if saved_weapons.has(new_weapon.name):
+		var data = WeaponSave.weapon_stats[new_weapon.name]
+		# each weapon has a variable called bought 
+		if data["bought"] == true:
+			show()
+		else:
+			hide()
+	else:
+		hide()
 
 #When pressed, change the player weapon parameters
 func _on_button_down() -> void:
-	weapon.load_weapon(new_weapon)
+	var saved_weapons = WeaponSave.load_weapon_data()
+	if saved_weapons.has(new_weapon.name):
+		weapon.load_weapon(saved_weapons[new_weapon.name])
+	else:
+		weapon.load_weapon(new_weapon)
 
 
+# signal called by the buy button that lets us hide the button 
 func _on_buy_button_button_down() -> void:
-	if weapon.pri() < Stats.current_money:
+	if new_weapon.price < Stats.current_money:
 		show()
 		
-
+# we need to load the weapon before upgrading 
 func _on_up_gun_button_button_down() -> void:
-	weapon.load_weapon(new_weapon)
+	var saved_weapons = WeaponSave.load_weapon_data()
+	
+	if saved_weapons.has(new_weapon.name):
+		weapon.load_weapon(saved_weapons[new_weapon.name])
+	else:
+		weapon.load_weapon(new_weapon)
+
+func _on_reset_shop_button_down() -> void:
+	hide()

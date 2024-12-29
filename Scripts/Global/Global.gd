@@ -10,7 +10,6 @@ var shop_opened : bool = false
 var player
 var computer
 var spawner_container 
-
 #Take note of the enemies active
 var enemies : Array
 

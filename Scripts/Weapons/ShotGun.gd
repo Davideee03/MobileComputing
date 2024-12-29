@@ -10,7 +10,11 @@ var level = 1
 var reload_reduction = 0.008
 var price = 200
 var name = "ShotGun"
-
+var weapon_save = WeaponSave
+var bought = false
+	
+func _init():
+	print("Nuova arma creata: " + name)
 
 func up():
 	if upgradingCost():
@@ -22,8 +26,9 @@ func up():
 		print("level: "+ str(level))
 		print("Upgraded ShotGun: New damage = " + str(damage))
 		print("price" + str(price))
+		weapon_save.save_weapon(self)
 	else:
-		print("not enough moneysir")
+		print("not enough money sir")
 	
 func upgradingCost():
 	if Stats.current_money>price:
@@ -32,5 +37,9 @@ func upgradingCost():
 		return true
 	else:
 		return false
+
+func setBought() -> void:
+	bought = true
+	print(name + " è stato acquistato!")
 		
 	
