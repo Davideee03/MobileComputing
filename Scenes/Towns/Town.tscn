@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=4 uid="uid://cu3i1p3knb8dp"]
+[gd_scene load_steps=17 format=4 uid="uid://cu3i1p3knb8dp"]
 
 [ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
 [ext_resource type="PackedScene" uid="uid://cftrkiyi740hw" path="res://Scenes/UI/Shop.tscn" id="3_iquj0"]
 [ext_resource type="Texture2D" uid="uid://d3cuppqtwq30" path="res://Sprites/Explosives/Mine.png" id="5_xkbsr"]
+[ext_resource type="Script" path="res://Scripts/UI/ExplosivesButton.gd" id="6_jdtkt"]
+[ext_resource type="PackedScene" uid="uid://cdqnsmky25kr1" path="res://Scenes/Explosives/Mine.tscn" id="7_iuk4v"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Computer.gd" id="7_mpx2t"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Spawners.gd" id="8_1d40r"]
 [ext_resource type="Texture2D" uid="uid://yb31726ijnte" path="res://Sprites/Enviroment/Floor.png" id="8_mmq2u"]
@@ -94,14 +96,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("10_avg3d")
-
-[node name="Mine" type="Button" parent="Player/UI/UI"]
-layout_mode = 0
-offset_left = 577.0
-offset_top = 135.0
-offset_right = 594.0
-offset_bottom = 157.0
-icon = ExtResource("5_xkbsr")
 
 [node name="Buttons" type="Control" parent="Player/UI/UI"]
 layout_mode = 1
@@ -279,6 +273,22 @@ offset_right = 155.0
 offset_bottom = 283.0
 text = "CoreLegendary: 0"
 
+[node name="Explosives" type="Control" parent="Player/UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 80.6783
+offset_top = 357.425
+offset_right = 120.678
+offset_bottom = 397.425
+script = ExtResource("6_jdtkt")
+mine = ExtResource("7_iuk4v")
+
+[node name="Mine" type="Button" parent="Player/UI/Explosives"]
+layout_mode = 0
+offset_right = 17.0
+offset_bottom = 22.0
+icon = ExtResource("5_xkbsr")
+
 [node name="Computer" type="Node2D" parent="." groups=["Computer"]]
 unique_name_in_owner = true
 script = ExtResource("7_mpx2t")
@@ -330,10 +340,10 @@ tile_set = SubResource("TileSet_edgt6")
 
 [node name="BulletContainer" type="Node" parent="."]
 
-[connection signal="button_down" from="Player/UI/UI/Mine" to="Player/UI/UI" method="_on_mine_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/Spawners" method="_on_start_wave_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI" method="_on_start_wave_button_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/ShopButton" to="Player/UI/UI" method="_on_shop_button_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/ResetGame" to="Player/UI/UI" method="_on_reset_game_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/Cheats" to="Player/UI/UI" method="_on_cheats_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Shop/ShopBack" to="Player/UI/UI" method="_on_shop_back_button_down"]
+[connection signal="button_down" from="Player/UI/Explosives/Mine" to="Player/UI/Explosives" method="_on_mine_button_down"]

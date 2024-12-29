@@ -1,4 +1,4 @@
-extends Node2D
+extends Explosives
 
 var damage : float = 5.0
 var time : float = 0.1
@@ -17,3 +17,8 @@ func _on_detector_area_entered(area):
 	area.take_damage(damage)
 	print("Danno")
 	queue_free()
+
+func _on_button_down() -> void:
+	var explosive = mine.instantiate()
+	add_child(explosive)
+	explosive.global_position = position

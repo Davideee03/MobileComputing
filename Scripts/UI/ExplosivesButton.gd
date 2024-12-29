@@ -1,9 +1,7 @@
 class_name ExplosivesShopButton
-extends Button
+extends Control
 
-var explosives : Node2D
-
-@export var new_explosives : Explosives
+@export var mine: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,3 +11,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_mine_button_down() -> void:
+	var explosive = mine.instantiate()
+	get_tree().root.add_child(explosive)
+	explosive.global_position = Vector2(200,200)
