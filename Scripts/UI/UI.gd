@@ -66,3 +66,10 @@ func _on_cheats_button_down() -> void:
 	Stats.current_coreLegendary = 1000000
 	Stats.current_exp = 1000000
 	Stats.emit_stats()
+
+var mine : PackedScene = preload("res://Scenes/Explosives/Mine.tscn")
+var Mineposition = Vector2 (300,300)
+func _on_mine_button_down() -> void:
+	var explosive = mine.instantiate()
+	add_child(explosive)
+	explosive.global_position = Mineposition
