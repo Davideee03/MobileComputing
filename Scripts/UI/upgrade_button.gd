@@ -22,8 +22,14 @@ func _on_button_down() -> void:
 	Stats.emit_stats()
 
 func _on_buy_button_button_down() -> void:
-	if new_weapon.price < Stats.current_money:
-		show()
+	var saved_weapons = WeaponSave.load_weapon_data()
+	if saved_weapons.has(new_weapon.name):
+		var data = WeaponSave.weapon_stats[new_weapon.name]
+		# each weapon has a variable called bought 
+		if data["bought"] == true:
+			show()
+		else:
+			hide()
 
 func _on_reset_shop_button_down() -> void:
 	hide()
