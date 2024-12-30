@@ -47,6 +47,8 @@ func _on_start_wave_button_down() -> void:
 
 #Set up the wave
 func set_up():
+	WaveController.set_enemies()
+	
 	#Enemies are setted to zero
 	enemies_defeated = 0
 	
