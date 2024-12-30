@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cftrkiyi740hw"]
+[gd_scene load_steps=55 format=3 uid="uid://cftrkiyi740hw"]
 
 [ext_resource type="Script" path="res://Scripts/UI/WeaponButton.gd" id="1_jvfwi"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Gun.gd" id="2_faleo"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://csv8pj1rjopvw" path="res://Sprites/ShopUI/Sprite-0001.png" id="15_nk242"]
 [ext_resource type="Texture2D" uid="uid://dbkf2qofgtgp6" path="res://Sprites/Weapons/Submachine - MP5A3 [80x48].png" id="16_epxkd"]
 [ext_resource type="Script" path="res://Scripts/Weapons/MachineGun.gd" id="17_ekcxq"]
+[ext_resource type="Texture2D" uid="uid://bwqbm08wyo3gc" path="res://Sprites/Weapons/[SHOOT WITH CASING AND MUZZLE FLASH] Submachine - MP5A3.png" id="17_w6dio"]
 
 [sub_resource type="Resource" id="Resource_gfcii"]
 script = ExtResource("2_faleo")
@@ -65,6 +66,98 @@ script = ExtResource("5_slk5c")
 
 [sub_resource type="Resource" id="Resource_bbyjx"]
 script = ExtResource("5_slk5c")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4niyj"]
+atlas = ExtResource("17_w6dio")
+region = Rect2(0, 0, 80, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s7ij"]
+atlas = ExtResource("17_w6dio")
+region = Rect2(80, 0, 80, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wlbv"]
+atlas = ExtResource("17_w6dio")
+region = Rect2(160, 0, 80, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cg0ot"]
+atlas = ExtResource("17_w6dio")
+region = Rect2(240, 0, 80, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks5vn"]
+atlas = ExtResource("17_w6dio")
+region = Rect2(320, 0, 80, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6ag0"]
+atlas = ExtResource("17_w6dio")
+region = Rect2(400, 0, 80, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnagq"]
+atlas = ExtResource("17_w6dio")
+region = Rect2(480, 0, 80, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ydlt"]
+atlas = ExtResource("17_w6dio")
+region = Rect2(560, 0, 80, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaolg"]
+atlas = ExtResource("17_w6dio")
+region = Rect2(640, 0, 80, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bheh"]
+atlas = ExtResource("17_w6dio")
+region = Rect2(720, 0, 80, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ccij"]
+atlas = ExtResource("17_w6dio")
+region = Rect2(800, 0, 80, 37)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhror"]
+atlas = ExtResource("17_w6dio")
+region = Rect2(880, 0, 80, 37)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bcq6b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4niyj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7s7ij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wlbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cg0ot")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks5vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6ag0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnagq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ydlt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaolg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bheh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ccij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhror")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="Resource" id="Resource_0tomv"]
 script = ExtResource("17_ekcxq")
@@ -318,12 +411,21 @@ layout_mode = 2
 texture = ExtResource("15_nk242")
 
 [node name="MachineGunSprite" type="TextureRect" parent="Weapons/VBoxContainer/MachineGun"]
+visible = false
 layout_mode = 0
 offset_left = 19.0
 offset_top = 34.0
 offset_right = 182.0
 offset_bottom = 141.0
 texture = ExtResource("16_epxkd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weapons/VBoxContainer/MachineGun"]
+position = Vector2(106, 81)
+scale = Vector2(2.07674, 2.05405)
+sprite_frames = SubResource("SpriteFrames_bcq6b")
+autoplay = "default"
+frame_progress = 0.784921
+speed_scale = 2.0
 
 [node name="BuyMachine" type="Button" parent="Weapons/VBoxContainer/MachineGun"]
 layout_mode = 0
