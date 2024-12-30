@@ -528,18 +528,6 @@ texture = ExtResource("6_cx44u")
 layout_mode = 2
 texture = ExtResource("6_cx44u")
 
-[node name="TextureRect5" type="TextureRect" parent="Upgrades/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("6_cx44u")
-
-[node name="TextureRect6" type="TextureRect" parent="Upgrades/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("6_cx44u")
-
-[node name="TextureRect7" type="TextureRect" parent="Upgrades/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("6_cx44u")
-
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/BuyGun" to="Weapons/VBoxContainer/Gun/BuyGun" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/BuyGun" to="Weapons/VBoxContainer/Gun/SelectGun" method="_on_buy_button_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/BuyGun" to="Weapons/VBoxContainer/Gun/UpgradeGun" method="_on_buy_button_button_down"]
