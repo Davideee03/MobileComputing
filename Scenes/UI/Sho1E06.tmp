@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cftrkiyi740hw"]
+[gd_scene load_steps=33 format=3 uid="uid://cftrkiyi740hw"]
 
 [ext_resource type="Script" path="res://Scripts/UI/WeaponButton.gd" id="1_jvfwi"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Gun.gd" id="2_faleo"]
@@ -17,10 +17,6 @@
 [ext_resource type="Script" path="res://Scripts/UI/reset_button_weapons.gd" id="9_gx07f"]
 [ext_resource type="Texture2D" uid="uid://dreafflwq03ut" path="res://Sprites/Weapons/AssaultRifle.png" id="10_hvtsb"]
 [ext_resource type="Script" path="res://Scripts/UI/ButtonResetShop.gd" id="10_q7mde"]
-[ext_resource type="Texture2D" uid="uid://csv8pj1rjopvw" path="res://Sprites/ShopUI/Sprite-0001.png" id="15_nk242"]
-[ext_resource type="Texture2D" uid="uid://dbkf2qofgtgp6" path="res://Sprites/Weapons/Submachine - MP5A3 [80x48].png" id="16_epxkd"]
-[ext_resource type="Script" path="res://Scripts/Weapons/MachineGun.gd" id="17_ekcxq"]
-[ext_resource type="Texture2D" uid="uid://bwqbm08wyo3gc" path="res://Sprites/Weapons/[SHOOT WITH CASING AND MUZZLE FLASH] Submachine - MP5A3.png" id="17_w6dio"]
 
 [sub_resource type="Resource" id="Resource_gfcii"]
 script = ExtResource("2_faleo")
@@ -67,117 +63,10 @@ script = ExtResource("5_slk5c")
 [sub_resource type="Resource" id="Resource_bbyjx"]
 script = ExtResource("5_slk5c")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4niyj"]
-atlas = ExtResource("17_w6dio")
-region = Rect2(0, 0, 80, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7s7ij"]
-atlas = ExtResource("17_w6dio")
-region = Rect2(80, 0, 80, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1wlbv"]
-atlas = ExtResource("17_w6dio")
-region = Rect2(160, 0, 80, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cg0ot"]
-atlas = ExtResource("17_w6dio")
-region = Rect2(240, 0, 80, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ks5vn"]
-atlas = ExtResource("17_w6dio")
-region = Rect2(320, 0, 80, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u6ag0"]
-atlas = ExtResource("17_w6dio")
-region = Rect2(400, 0, 80, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lnagq"]
-atlas = ExtResource("17_w6dio")
-region = Rect2(480, 0, 80, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ydlt"]
-atlas = ExtResource("17_w6dio")
-region = Rect2(560, 0, 80, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jaolg"]
-atlas = ExtResource("17_w6dio")
-region = Rect2(640, 0, 80, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6bheh"]
-atlas = ExtResource("17_w6dio")
-region = Rect2(720, 0, 80, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ccij"]
-atlas = ExtResource("17_w6dio")
-region = Rect2(800, 0, 80, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rhror"]
-atlas = ExtResource("17_w6dio")
-region = Rect2(880, 0, 80, 37)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bcq6b"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4niyj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7s7ij")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1wlbv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cg0ot")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ks5vn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_u6ag0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lnagq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3ydlt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jaolg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6bheh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ccij")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rhror")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="Resource" id="Resource_0tomv"]
-script = ExtResource("17_ekcxq")
-
-[sub_resource type="Resource" id="Resource_s7ubf"]
-script = ExtResource("17_ekcxq")
-
-[sub_resource type="Resource" id="Resource_tfk8u"]
-script = ExtResource("17_ekcxq")
-
-[sub_resource type="Resource" id="Resource_23o5g"]
-script = ExtResource("17_ekcxq")
-
-[sub_resource type="Resource" id="Resource_601y1"]
-script = ExtResource("17_ekcxq")
-
 [node name="Shop" type="TabContainer"]
 offset_top = -400.0
 offset_right = 613.0
-offset_bottom = 488.0
+offset_bottom = 100.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 tab_alignment = 1
@@ -206,6 +95,7 @@ script = ExtResource("2_m2wpg")
 new_weapon = SubResource("Resource_gfcii")
 
 [node name="SelectGun" type="Button" parent="Weapons/VBoxContainer/Gun"]
+visible = false
 layout_mode = 2
 offset_left = 350.0
 offset_top = 26.0
@@ -216,6 +106,7 @@ script = ExtResource("1_jvfwi")
 new_weapon = SubResource("Resource_qekxy")
 
 [node name="UpgradeGun" type="Button" parent="Weapons/VBoxContainer/Gun"]
+visible = false
 layout_mode = 0
 offset_left = 348.0
 offset_top = 73.0
@@ -251,10 +142,10 @@ new_weapon = SubResource("Resource_01fav")
 
 [node name="GunSprite" type="TextureRect" parent="Weapons/VBoxContainer/Gun"]
 layout_mode = 0
-offset_left = 29.0
-offset_top = 46.0
-offset_right = 104.0
-offset_bottom = 107.0
+offset_left = 31.0
+offset_top = 43.0
+offset_right = 97.0
+offset_bottom = 104.0
 texture = ExtResource("4_bt35v")
 
 [node name="ResetButtonWeapons" type="Button" parent="Weapons/VBoxContainer/Gun"]
@@ -290,6 +181,7 @@ script = ExtResource("2_m2wpg")
 new_weapon = SubResource("Resource_jyvki")
 
 [node name="SelectShotGun" type="Button" parent="Weapons/VBoxContainer/ShotGun"]
+visible = false
 layout_mode = 2
 offset_left = 349.0
 offset_top = 23.0
@@ -300,6 +192,7 @@ script = ExtResource("1_jvfwi")
 new_weapon = SubResource("Resource_2350j")
 
 [node name="UpgradeShotGun" type="Button" parent="Weapons/VBoxContainer/ShotGun"]
+visible = false
 layout_mode = 0
 offset_left = 347.0
 offset_top = 76.0
@@ -332,12 +225,12 @@ Price: 200"
 script = ExtResource("7_xvl4a")
 new_weapon = SubResource("Resource_hacjo")
 
-[node name="ShotGunSprite" type="TextureRect" parent="Weapons/VBoxContainer/ShotGun"]
+[node name="TextureRect" type="TextureRect" parent="Weapons/VBoxContainer/ShotGun"]
 layout_mode = 0
-offset_left = 31.0
-offset_top = 52.0
-offset_right = 142.0
-offset_bottom = 112.0
+offset_left = 33.0
+offset_top = 50.0
+offset_right = 127.0
+offset_bottom = 101.0
 texture = ExtResource("8_1opsl")
 
 [node name="Assault" type="TextureRect" parent="Weapons/VBoxContainer"]
@@ -400,85 +293,19 @@ new_weapon = SubResource("Resource_bbyjx")
 
 [node name="GunSprite" type="TextureRect" parent="Weapons/VBoxContainer/Assault"]
 layout_mode = 0
-offset_left = 19.0
+offset_left = 31.0
 offset_top = 43.0
-offset_right = 136.0
-offset_bottom = 115.0
+offset_right = 125.0
+offset_bottom = 101.0
 texture = ExtResource("10_hvtsb")
 
-[node name="MachineGun" type="TextureRect" parent="Weapons/VBoxContainer"]
+[node name="MachineGunShopButton" type="Button" parent="Weapons/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("15_nk242")
+text = "MachineGun"
 
-[node name="MachineGunSprite" type="TextureRect" parent="Weapons/VBoxContainer/MachineGun"]
-visible = false
-layout_mode = 0
-offset_left = 19.0
-offset_top = 34.0
-offset_right = 182.0
-offset_bottom = 141.0
-texture = ExtResource("16_epxkd")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Weapons/VBoxContainer/MachineGun"]
-position = Vector2(106, 81)
-scale = Vector2(2.07674, 2.05405)
-sprite_frames = SubResource("SpriteFrames_bcq6b")
-autoplay = "default"
-frame_progress = 0.784921
-speed_scale = 2.0
-
-[node name="BuyMachine" type="Button" parent="Weapons/VBoxContainer/MachineGun"]
-layout_mode = 0
-offset_left = 344.0
-offset_top = 14.0
-offset_right = 460.0
-offset_bottom = 48.0
-text = "Buy"
-script = ExtResource("2_m2wpg")
-new_weapon = SubResource("Resource_0tomv")
-
-[node name="SelectMachine" type="Button" parent="Weapons/VBoxContainer/MachineGun"]
+[node name="AssaultRifleShopButton" type="Button" parent="Weapons/VBoxContainer"]
 layout_mode = 2
-offset_left = 344.0
-offset_top = 16.0
-offset_right = 464.0
-offset_bottom = 47.0
-text = "Select"
-script = ExtResource("1_jvfwi")
-new_weapon = SubResource("Resource_s7ubf")
-
-[node name="UpgradeMachine" type="Button" parent="Weapons/VBoxContainer/MachineGun"]
-layout_mode = 0
-offset_left = 344.0
-offset_top = 68.0
-offset_right = 462.0
-offset_bottom = 100.0
-text = "Upgrade"
-script = ExtResource("5_vysrr")
-new_weapon = SubResource("Resource_tfk8u")
-
-[node name="LevelMachine" type="Label" parent="Weapons/VBoxContainer/MachineGun"]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 10.0
-offset_right = 152.0
-offset_bottom = 41.0
-text = "MachineGun lv. 1"
-script = ExtResource("7_jxy6n")
-new_weapon = SubResource("Resource_23o5g")
-
-[node name="StatsMachine" type="Label" parent="Weapons/VBoxContainer/MachineGun"]
-layout_mode = 0
-offset_left = 179.0
-offset_top = 19.0
-offset_right = 290.0
-offset_bottom = 108.0
-text = "Stats:
-Damage: 15
-Reload: 0.1
-Price: 1500"
-script = ExtResource("7_xvl4a")
-new_weapon = SubResource("Resource_601y1")
+text = "AssaultRifle"
 
 [node name="Upgrades" type="ScrollContainer" parent="."]
 visible = false
@@ -513,7 +340,7 @@ offset_left = 355.0
 offset_top = 38.0
 offset_right = 443.0
 offset_bottom = 103.0
-text = "armatura,  scudo elettrico, modulo velocità player. modulo peso player"
+text = "Lesscoins"
 script = ExtResource("8_tcgbb")
 
 [node name="TextureRect2" type="TextureRect" parent="Upgrades/VBoxContainer"]
@@ -555,8 +382,6 @@ texture = ExtResource("6_cx44u")
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetButtonWeapons" to="Weapons/VBoxContainer/ShotGun/StatsShotGun" method="_on_reset_button_weapons_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetButtonWeapons" to="Weapons/VBoxContainer/Assault/LevelAssault" method="_on_reset_button_weapons_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetButtonWeapons" to="Weapons/VBoxContainer/Assault/StatsAssault" method="_on_reset_button_weapons_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetButtonWeapons" to="Weapons/VBoxContainer/MachineGun/LevelMachine" method="_on_reset_button_weapons_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetButtonWeapons" to="Weapons/VBoxContainer/MachineGun/StatsMachine" method="_on_reset_button_weapons_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/Gun/BuyGun" method="_on_reset_shop_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/Gun/SelectGun" method="_on_reset_shop_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/Gun/UpgradeGun" method="_on_reset_shop_button_down"]
@@ -564,12 +389,6 @@ texture = ExtResource("6_cx44u")
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/ShotGun/BuyShotGun" method="_on_reset_shop_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/ShotGun/SelectShotGun" method="_on_reset_shop_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/ShotGun/UpgradeShotGun" method="_on_reset_shop_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/Assault/BuyAssault" method="_on_reset_shop_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/Assault/SelectAssault" method="_on_reset_shop_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/Assault/UpgradeAssault" method="_on_reset_shop_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/MachineGun/BuyMachine" method="_on_reset_shop_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/MachineGun/SelectMachine" method="_on_reset_shop_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/MachineGun/UpgradeMachine" method="_on_reset_shop_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/BuyShotGun" to="Weapons/VBoxContainer/ShotGun/BuyShotGun" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/BuyShotGun" to="Weapons/VBoxContainer/ShotGun/SelectShotGun" method="_on_buy_button_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/BuyShotGun" to="Weapons/VBoxContainer/ShotGun/UpgradeShotGun" method="_on_buy_button_button_down"]
@@ -586,12 +405,6 @@ texture = ExtResource("6_cx44u")
 [connection signal="button_down" from="Weapons/VBoxContainer/Assault/UpgradeAssault" to="Weapons/VBoxContainer/Assault/UpgradeAssault" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Assault/UpgradeAssault" to="Weapons/VBoxContainer/Assault/LevelAssault" method="_on_upgrade_gun_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Assault/UpgradeAssault" to="Weapons/VBoxContainer/Assault/StatsAssault" method="_on_upgrade_gun_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/MachineGun/BuyMachine" to="Weapons/VBoxContainer/MachineGun/BuyMachine" method="_on_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/MachineGun/BuyMachine" to="Weapons/VBoxContainer/MachineGun/SelectMachine" method="_on_buy_button_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/MachineGun/BuyMachine" to="Weapons/VBoxContainer/MachineGun/UpgradeMachine" method="_on_buy_button_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/MachineGun/SelectMachine" to="Weapons/VBoxContainer/MachineGun/SelectMachine" method="_on_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/MachineGun/UpgradeMachine" to="Weapons/VBoxContainer/MachineGun/SelectMachine" method="_on_up_gun_button_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/MachineGun/UpgradeMachine" to="Weapons/VBoxContainer/MachineGun/UpgradeMachine" method="_on_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/MachineGun/UpgradeMachine" to="Weapons/VBoxContainer/MachineGun/LevelMachine" method="_on_upgrade_gun_button_down"]
-[connection signal="button_down" from="Weapons/VBoxContainer/MachineGun/UpgradeMachine" to="Weapons/VBoxContainer/MachineGun/StatsMachine" method="_on_upgrade_gun_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/MachineGunShopButton" to="Weapons/VBoxContainer/MachineGunShopButton" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/AssaultRifleShopButton" to="Weapons/VBoxContainer/AssaultRifleShopButton" method="_on_button_down"]
 [connection signal="button_down" from="Upgrades/VBoxContainer/TextureRect/Button" to="Upgrades/VBoxContainer/TextureRect/Button" method="_on_button_down"]
