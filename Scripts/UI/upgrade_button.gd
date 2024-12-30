@@ -4,17 +4,17 @@ func _ready() -> void:
 	weapon = get_tree().get_first_node_in_group("PlayerWeapon")
 	var saved_weapons = WeaponSave.load_weapon_data()
 	
-	# Controllo se l'arma corrente esiste nei dati salvati
+	# Check if we already have the weapon
 	if saved_weapons.has(new_weapon.name):
 		var data = WeaponSave.weapon_stats[new_weapon.name]
 		
-		# Se è stata acquistata, nascondi il pulsante Buy e mostra Select/Upgrade
+		# If bought true it means we already have it
 		if data["bought"] == true:
 			show()
 		else:
 			hide()
 	else:
-		# Se l'arma non è stata salvata, mostra solo il pulsante Buy
+		# debugging
 		hide()
 		
 func _on_button_down() -> void:

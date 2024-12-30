@@ -48,6 +48,8 @@ func load_weapon_data() -> Dictionary:
 					weapon = ShotGun.new()
 				"AssaultRifle":
 					weapon = AssaultRifle.new()
+				"MachineGun":
+					weapon = MachineGun.new()
 			
 			# if we have it we store it and get the stats
 			if weapon != null:
@@ -87,9 +89,10 @@ func reset_weapons() -> void:
 	var gun = Gun.new()
 	var shotgun = ShotGun.new()
 	var assaultRifle = AssaultRifle.new()
+	var machineGun = MachineGun.new()
 	
 	save_weapon(gun)
 	save_weapon(shotgun)
 	save_weapon(assaultRifle)
-	
+	save_weapon(machineGun)
 	print("Reset completed. Armi Stats di default")

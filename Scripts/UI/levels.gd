@@ -13,7 +13,7 @@ func _ready() -> void:
 	update_level_label()
 
 func update_level_label() -> void:
-	var weapon_data = WeaponSave.load_weapon_data()  # Ritorna un dizionario
+	var weapon_data = WeaponSave.load_weapon_data() 
 	
 	# Cerco l'arma con lo stesso nome, se esiste prendo le statistiche da lui
 	if weapon_data.has(new_weapon.name):
