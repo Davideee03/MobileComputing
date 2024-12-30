@@ -27,7 +27,7 @@ func _ready() -> void:
 	else:
 		current_weapon = Gun.new()
 	
-	#load_weapon(current_weapon)
+	load_weapon(current_weapon)
 	
 #Load new stats when needed
 #This function is called by the shop buttons
