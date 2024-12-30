@@ -273,7 +273,7 @@ offset_right = 155.0
 offset_bottom = 283.0
 text = "CoreLegendary: 0"
 
-[node name="Explosives" type="Control" parent="Player/UI"]
+[node name="Explosives" type="Control" parent="Player/UI/UI"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 80.6783
@@ -283,10 +283,11 @@ offset_bottom = 397.425
 script = ExtResource("6_jdtkt")
 mine = ExtResource("7_iuk4v")
 
-[node name="Mine" type="Button" parent="Player/UI/Explosives"]
+[node name="Mine" type="Button" parent="Player/UI/UI/Explosives"]
 layout_mode = 0
 offset_right = 17.0
 offset_bottom = 22.0
+text = "Mine : 0"
 icon = ExtResource("5_xkbsr")
 
 [node name="Computer" type="Node2D" parent="." groups=["Computer"]]
@@ -346,4 +347,4 @@ tile_set = SubResource("TileSet_edgt6")
 [connection signal="button_down" from="Player/UI/UI/Buttons/ResetGame" to="Player/UI/UI" method="_on_reset_game_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/Cheats" to="Player/UI/UI" method="_on_cheats_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Shop/ShopBack" to="Player/UI/UI" method="_on_shop_back_button_down"]
-[connection signal="button_down" from="Player/UI/Explosives/Mine" to="Player/UI/Explosives" method="_on_mine_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Explosives/Mine" to="Player/UI/UI/Explosives" method="_on_mine_button_down"]

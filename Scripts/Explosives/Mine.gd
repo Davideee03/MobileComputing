@@ -1,6 +1,6 @@
 extends Explosives
 
-var damage : float = 5.0
+var damage : float = 5000000000
 var time : float = 0.1
 
 # Called when the node enters the scene tree for the first time.
@@ -15,14 +15,21 @@ func _process(delta: float) -> void:
 # Check if enemies have entered the area
 func _on_detector_area_entered(area):
 	await get_tree().create_timer(time).timeout
-	area.take_damage(damage)
-	print("Danno")
+	damage_area()
+	
+func damage_area() -> void:
+	var DamageArea = get_child(1)
+	var overlapping_areas = DamageArea.get_overlapping_areas()
+	print(overlapping_areas)
+	for area in overlapping_areas:
+		area.take_damage(damage)
+		print("Danno")
 	queue_free()
 
-func _on_button_down() -> void:
-	var player = get_node("Player")
-	print("Ok")
-	print(player.global_position)
-	var explosive = mine.instantiate()
-	add_child(explosive)
-	explosive.global_position = player.global_position
+#func _on_button_down() -> void:
+	#var player = get_node("Player")
+	#print("Ok")
+	#print(player.global_position)
+	#var explosive = mine.instantiate()
+	#add_child(explosive)
+	#explosive.global_position = player.global_position
