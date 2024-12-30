@@ -47,6 +47,7 @@ sources/0 = SubResource("TileSetAtlasSource_xgg58")
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_ko0f8")]
+unique_name_in_owner = true
 
 [node name="Spawners" type="Node2D" parent="Player" groups=["SpawnerContainer"]]
 script = ExtResource("8_1d40r")
