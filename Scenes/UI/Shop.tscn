@@ -1,19 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://cftrkiyi740hw"]
+[gd_scene load_steps=10 format=3 uid="uid://cftrkiyi740hw"]
 
-[ext_resource type="Script" path="res://Scripts/UI/shop.gd" id="1_h7e3h"]
+[ext_resource type="Script" path="res://Scripts/UI/WeaponButton.gd" id="1_jvfwi"]
+[ext_resource type="Script" path="res://Scripts/Weapons/Gun.gd" id="2_faleo"]
+[ext_resource type="Script" path="res://Scripts/Weapons/ShotGun.gd" id="3_p4bx3"]
+[ext_resource type="Script" path="res://Scripts/Weapons/MachineGun.gd" id="4_vcum0"]
+[ext_resource type="Script" path="res://Scripts/Weapons/AssaultRifle.gd" id="5_slk5c"]
+
+[sub_resource type="Resource" id="Resource_sslcc"]
+script = ExtResource("2_faleo")
+
+[sub_resource type="Resource" id="Resource_cjhw7"]
+script = ExtResource("3_p4bx3")
+
+[sub_resource type="Resource" id="Resource_c1m8t"]
+script = ExtResource("4_vcum0")
+
+[sub_resource type="Resource" id="Resource_pb7jp"]
+script = ExtResource("5_slk5c")
 
 [node name="Shop" type="TabContainer"]
-anchors_preset = 13
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_right = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
+offset_right = 500.0
+offset_bottom = 200.0
+tab_alignment = 1
 current_tab = 0
-script = ExtResource("1_h7e3h")
 
 [node name="Weapons" type="ScrollContainer" parent="."]
 layout_mode = 2
@@ -23,10 +32,29 @@ metadata/_tab_index = 0
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Gun" type="Button" parent="Weapons/VBoxContainer"]
+[node name="GunShopButton" type="Button" parent="Weapons/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 3
 text = "Gun"
+script = ExtResource("1_jvfwi")
+new_weapon = SubResource("Resource_sslcc")
+
+[node name="ShotGunShopButton" type="Button" parent="Weapons/VBoxContainer"]
+layout_mode = 2
+text = "ShotGun"
+script = ExtResource("1_jvfwi")
+new_weapon = SubResource("Resource_cjhw7")
+
+[node name="MachineGunShopButton" type="Button" parent="Weapons/VBoxContainer"]
+layout_mode = 2
+text = "MachineGun"
+script = ExtResource("1_jvfwi")
+new_weapon = SubResource("Resource_c1m8t")
+
+[node name="AssaultRifleShopButton" type="Button" parent="Weapons/VBoxContainer"]
+layout_mode = 2
+text = "AssaultRifle"
+script = ExtResource("1_jvfwi")
+new_weapon = SubResource("Resource_pb7jp")
 
 [node name="Upgrades" type="ScrollContainer" parent="."]
 visible = false
@@ -42,3 +70,8 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Armor
 "
+
+[connection signal="button_down" from="Weapons/VBoxContainer/GunShopButton" to="Weapons/VBoxContainer/GunShopButton" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/ShotGunShopButton" to="Weapons/VBoxContainer/ShotGunShopButton" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/MachineGunShopButton" to="Weapons/VBoxContainer/MachineGunShopButton" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/AssaultRifleShopButton" to="Weapons/VBoxContainer/AssaultRifleShopButton" method="_on_button_down"]

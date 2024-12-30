@@ -1,4 +1,5 @@
-extends EnemyHealth
+#don't see
+extends EnemyHealthSystem
 
 @export_category("Movement")
 @export var speed : float = 200.0

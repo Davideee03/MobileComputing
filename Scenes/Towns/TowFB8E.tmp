@@ -1,0 +1,133 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu3i1p3knb8dp"]
+
+[ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
+[ext_resource type="PackedScene" uid="uid://cftrkiyi740hw" path="res://Scenes/UI/Shop.tscn" id="3_iquj0"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Spawners.gd" id="8_1d40r"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Spawner.gd" id="9_bfess"]
+[ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="10_avg3d"]
+[ext_resource type="PackedScene" uid="uid://pr1ilbeewdmj" path="res://Scenes/Enemies/EnemyDefault.tscn" id="11_dj6o8"]
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_ko0f8")]
+position = Vector2(133, -99)
+
+[node name="Spawners" type="Node2D" parent="Player"]
+position = Vector2(-133, 99)
+script = ExtResource("8_1d40r")
+
+[node name="Spawner" type="Node2D" parent="Player/Spawners"]
+position = Vector2(0, -800)
+script = ExtResource("9_bfess")
+enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
+
+[node name="Spawner2" type="Node2D" parent="Player/Spawners"]
+position = Vector2(550, 0)
+script = ExtResource("9_bfess")
+enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
+
+[node name="Spawner3" type="Node2D" parent="Player/Spawners"]
+position = Vector2(0, 800)
+script = ExtResource("9_bfess")
+enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
+
+[node name="Spawner4" type="Node2D" parent="Player/Spawners"]
+position = Vector2(-500, 0)
+script = ExtResource("9_bfess")
+enemies = Array[PackedScene]([ExtResource("11_dj6o8")])
+
+[node name="UI" type="CanvasLayer" parent="Player"]
+
+[node name="UI" type="Control" parent="Player/UI"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("10_avg3d")
+
+[node name="Buttons" type="Control" parent="Player/UI/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="StartWaveButton" type="Button" parent="Player/UI/UI/Buttons"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 1138.0
+offset_right = 642.0
+offset_bottom = 1169.0
+text = "Start Wave
+"
+
+[node name="ShopButton" type="Button" parent="Player/UI/UI/Buttons"]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 1138.0
+offset_right = 124.0
+offset_bottom = 1169.0
+text = "Shop
+"
+
+[node name="Shop" type="Control" parent="Player/UI/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ShopBack" type="Button" parent="Player/UI/UI/Shop"]
+layout_mode = 0
+offset_left = 550.0
+offset_top = 748.0
+offset_right = 595.0
+offset_bottom = 779.0
+text = "Back
+"
+
+[node name="Shop" parent="Player/UI/UI/Shop" instance=ExtResource("3_iquj0")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = 266.0
+offset_right = 250.0
+offset_bottom = 466.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stats" type="Control" parent="Player/UI/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Waves" type="Label" parent="Player/UI/UI/Stats"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 20.0
+offset_top = 110.0
+offset_right = 80.0
+offset_bottom = 133.0
+text = "Wave: 0"
+
+[connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/Spawners" method="_on_start_wave_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI" method="_on_start_wave_button_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/ShopButton" to="Player/UI/UI" method="_on_shop_button_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Shop/ShopBack" to="Player/UI/UI" method="_on_shop_back_button_down"]

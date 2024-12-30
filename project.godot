@@ -17,9 +17,12 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Utilities="*res://Scripts/Global/Utilities.gd"
-Score="*res://Scripts/Global/Score.gd"
 Global="*res://Scripts/Global/Global.gd"
+Stats="*res://Scripts/Global/Stats.gd"
+Utilities="*res://Scripts/Global/Utilities.gd"
+SaveAndLoad="*res://Scripts/Global/SaveAndLoad.gd"
+UniversalAudioPlayer="*res://Scenes/Sounds/UniversalAudioPlayer.tscn"
+WaveController="*res://Scripts/Global/WaveController.gd"
 
 [display]
 
@@ -28,6 +31,19 @@ window/size/viewport_height=1280
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
+
+[file_customization]
+
+folder_colors={
+"res://Scenes/Enemies/": "red",
+"res://Scenes/Weapon/": "blue",
+"res://Scripts/Enemies/": "red",
+"res://Scripts/Fuel/": "blue",
+"res://Scripts/Player/": "blue",
+"res://Scripts/PlayerWeapons/": "blue",
+"res://Scripts/UI/": "green",
+"res://Scripts/Weapons/": "blue"
+}
 
 [input]
 

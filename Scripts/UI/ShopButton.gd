@@ -1,11 +1,15 @@
 extends Control
 
-@export_category("Animation")
-@export var animation_speed : float = 5.0
-@onready var animation_player = %AnimationPlayer
+@onready var buttons: Control = %Buttons
 
 func _on_button_down():
-	animation_player.play("Shop", -1, animation_speed)
+	#If the "Shop" button is pressed show the shop
+	buttons.visible = false
+	visible = true
+	Global.shop_opened = true
 
 func _on_exit_button_button_down():
-	animation_player.play("Shop", -1, -animation_speed, false)
+	#Close the shop
+	buttons.visible = true
+	visible = false
+	Global.shop_opened = false

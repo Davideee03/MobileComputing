@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_osxyn"]
 size = Vector2(20, 6)
 
-[node name="PlayerBullet" type="Node2D"]
+[node name="GunBullet" type="Node2D"]
 top_level = true
 script = ExtResource("1_cuy0u")
 

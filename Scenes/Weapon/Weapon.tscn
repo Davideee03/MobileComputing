@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://11fh8kk8xko4"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerWeapons/WeaponsClasses/PlayerWeapon.gd" id="1_wvq1q"]
+
+[node name="Weapon" type="Node2D" groups=["PlayerWeapon"]]
+script = ExtResource("1_wvq1q")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]

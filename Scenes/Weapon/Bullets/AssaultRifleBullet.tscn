@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://daqwsmxkfx5d0"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerWeapons/Bullets/GunBullet.gd" id="1_3ifrn"]
+[ext_resource type="Texture2D" uid="uid://bseh0ntmfrnik" path="res://Sprites/Bullets/AssaultRifleBullet.png" id="2_wo3pi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfddh"]
+size = Vector2(10, 5)
+
+[node name="AssaultRfileBullet" type="Node2D"]
+top_level = true
+script = ExtResource("1_3ifrn")
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+position = Vector2(1, 0)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+shape = SubResource("RectangleShape2D_wfddh")
+
+[node name="AssaultRifleBullet" type="Sprite2D" parent="."]
+texture = ExtResource("2_wo3pi")
+
+[connection signal="area_entered" from="EnemyDetector" to="." method="_on_enemy_detector_area_entered"]
