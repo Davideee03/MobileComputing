@@ -9,4 +9,4 @@ func _ready() -> void:
 func take_damage(damage : float):
 	health-=damage
 	if health<=0:
-		owner.die()
+		owner.die() 
