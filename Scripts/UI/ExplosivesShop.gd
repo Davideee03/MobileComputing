@@ -7,5 +7,6 @@ func _ready():
 #Update purchased mine counter
 func _on_mine_pressed() -> void:
 	mine_count += 1
-	mine_button.text = str(mine_count)
-	print(mine_count)
+	mine_button.text = "Mine: " + str(mine_count)
+	print("Mine Purchased")
+	

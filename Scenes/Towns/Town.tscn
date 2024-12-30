@@ -285,6 +285,7 @@ script = ExtResource("6_jdtkt")
 mine = ExtResource("7_iuk4v")
 
 [node name="Mine" type="Button" parent="Player/UI/UI/Explosives"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_right = 17.0
 offset_bottom = 22.0
