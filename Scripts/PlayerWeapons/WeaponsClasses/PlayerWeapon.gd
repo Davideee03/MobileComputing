@@ -1,7 +1,12 @@
 class_name PlayerWeapon
 extends Node2D
 
-#Weapons stats
+#Weapon Shoot Stats
+@export var can_shoot : bool = true
+var fire_timer : float = 10.0
+var no_fire_timer : float = 5.0
+
+#Weapons Stats
 @onready var sprite: Sprite2D = $Sprite
 var bullet : PackedScene
 var damage : float
@@ -24,7 +29,6 @@ func _ready() -> void:
 	
 	#load_weapon(current_weapon)
 	
-	
 #Load new stats when needed
 #This function is called by the shop buttons
 func load_weapon(weapon) -> void:
@@ -36,11 +40,24 @@ func load_weapon(weapon) -> void:
 	reload_time = weapon.reload_time
 	price = weapon.price
 	
+	#Check if Weapon is Machine Gun
+	if weapon is MachineGun:
+		shoot_time()
+
 	print("Weapon: " + str(weapon))
 	print("Sprite: " + str(sprite.texture))
 	print("Damage: " + str(damage))
 	print("Reload time: " + str(reload_time))
 	print("Price: " + str(price))
+
+#Manages Overheating Time
+func shoot_time() -> void:
+		while true:
+			await get_tree().create_timer(fire_timer).timeout
+			can_shoot = false
+			print("Overheating")
+			await get_tree().create_timer(no_fire_timer).timeout
+			can_shoot = true
 
 # function used for flippin the weapon's sprite when the enemy is on the left side of the screen
 func check_flip(enemy_position : Vector2):

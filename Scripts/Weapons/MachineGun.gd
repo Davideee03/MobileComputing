@@ -1,8 +1,8 @@
 class_name MachineGun
 extends Weapon
 
+var bullet = preload("res://Scenes/Weapon/Bullets/MachineGunBullet.tscn")
 var sprite = preload("res://Sprites/Weapons/Submachine - MP5A3 [80x48].png")
-var bullet = preload("res://Scenes/Weapon/Bullets/GunBullet.tscn")
 var damage = 15.0
 var reload_time = 0.1
 var reload_reduction = 0.008

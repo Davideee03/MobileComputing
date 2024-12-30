@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdqnsmky25kr1"]
+
+[ext_resource type="Script" path="res://Scripts/Explosives/Mine.gd" id="1_4ubus"]
+[ext_resource type="Texture2D" uid="uid://d3cuppqtwq30" path="res://Sprites/Explosives/Mine.png" id="1_27nc3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_le4kn"]
+size = Vector2(34, 31)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7c1ye"]
+radius = 33.0
+
+[node name="Mine" type="Node2D"]
+script = ExtResource("1_4ubus")
+
+[node name="Detector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="ShapeDetector" type="CollisionShape2D" parent="Detector"]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_le4kn")
+
+[node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="ShapeDamage" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_7c1ye")
+
+[node name="Mine" type="Sprite2D" parent="."]
+texture = ExtResource("1_27nc3")
+
+[connection signal="area_entered" from="Detector" to="." method="_on_detector_area_entered"]
