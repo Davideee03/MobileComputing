@@ -7,6 +7,7 @@ var bullet : PackedScene
 var damage : float
 var reload_time : float
 var current_weapon: Weapon 
+var price : float
 
 @onready var weapon_save = get_node("/root/WeaponSave")
 
@@ -21,7 +22,7 @@ func _ready() -> void:
 	else:
 		current_weapon = Gun.new()
 	
-	load_weapon(current_weapon)
+	#load_weapon(current_weapon)
 	
 	
 #Load new stats when needed
@@ -33,11 +34,13 @@ func load_weapon(weapon) -> void:
 	bullet = weapon.bullet
 	damage = weapon.damage
 	reload_time = weapon.reload_time
+	price = weapon.price
 	
 	print("Weapon: " + str(weapon))
 	print("Sprite: " + str(sprite.texture))
 	print("Damage: " + str(damage))
 	print("Reload time: " + str(reload_time))
+	print("Price: " + str(price))
 
 # function used for flippin the weapon's sprite when the enemy is on the left side of the screen
 func check_flip(enemy_position : Vector2):
@@ -48,7 +51,7 @@ func check_flip(enemy_position : Vector2):
 
 
 func upgrade():
-	load_weapon(current_weapon)
+	# load_weapon(current_weapon)
 	current_weapon.up()
 
 func pri():

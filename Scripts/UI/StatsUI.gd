@@ -18,7 +18,8 @@ func update_stat_label() -> void:
 		level_label.text = "Stats\n" + "Damage: " + str(new_weapon.damage) + "\nReload time: " + str(new_weapon.reload_time) + "\nPrice: " + str(new_weapon.price)
 
 func _on_upgrade_gun_button_down() -> void:
-	if weapon.pri() < Stats.current_money:
+	# Stats.current_money will be updated before we check the price of our weapon so we need to add the price of the weapon to the sum.
+	if weapon.pri() < Stats.current_money + weapon.pri():
 		update_stat_label()
 
 
