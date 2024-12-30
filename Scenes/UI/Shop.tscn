@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cftrkiyi740hw"]
+[gd_scene load_steps=10 format=3 uid="uid://cftrkiyi740hw"]
 
 [ext_resource type="Script" path="res://Scripts/UI/WeaponButton.gd" id="1_jvfwi"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Gun.gd" id="2_faleo"]
 [ext_resource type="Script" path="res://Scripts/Weapons/ShotGun.gd" id="3_p4bx3"]
 [ext_resource type="Script" path="res://Scripts/Weapons/MachineGun.gd" id="4_vcum0"]
 [ext_resource type="Script" path="res://Scripts/Weapons/AssaultRifle.gd" id="5_slk5c"]
-[ext_resource type="Script" path="res://Scripts/UI/ExplosivesShop.gd" id="6_ouukq"]
 
 [sub_resource type="Resource" id="Resource_sslcc"]
 script = ExtResource("2_faleo")
@@ -57,24 +56,10 @@ text = "AssaultRifle"
 script = ExtResource("1_jvfwi")
 new_weapon = SubResource("Resource_pb7jp")
 
-[node name="Explosives" type="ScrollContainer" parent="."]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Explosives"]
-layout_mode = 2
-size_flags_horizontal = 3
-script = ExtResource("6_ouukq")
-
-[node name="MineShop" type="Button" parent="Explosives/VBoxContainer"]
-layout_mode = 2
-text = "Mine"
-
 [node name="Upgrades" type="ScrollContainer" parent="."]
 visible = false
 layout_mode = 2
-metadata/_tab_index = 2
+metadata/_tab_index = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Upgrades"]
 layout_mode = 2
@@ -90,4 +75,3 @@ text = "Armor
 [connection signal="button_down" from="Weapons/VBoxContainer/ShotGunShopButton" to="Weapons/VBoxContainer/ShotGunShopButton" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/MachineGunShopButton" to="Weapons/VBoxContainer/MachineGunShopButton" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/AssaultRifleShopButton" to="Weapons/VBoxContainer/AssaultRifleShopButton" method="_on_button_down"]
-[connection signal="pressed" from="Explosives/VBoxContainer/MineShop" to="Explosives/VBoxContainer" method="_on_mine_pressed"]

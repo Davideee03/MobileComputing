@@ -287,8 +287,10 @@ mine = ExtResource("7_iuk4v")
 [node name="Mine" type="Button" parent="Player/UI/UI/Explosives"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 17.0
-offset_bottom = 22.0
+offset_left = -57.6783
+offset_top = -52.425
+offset_right = 24.3217
+offset_bottom = -21.425
 text = "Mine : 0"
 icon = ExtResource("5_xkbsr")
 
