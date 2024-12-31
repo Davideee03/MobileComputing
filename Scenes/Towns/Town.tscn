@@ -363,6 +363,7 @@ tile_set = SubResource("TileSet_edgt6")
 
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/Spawners" method="_on_start_wave_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI" method="_on_start_wave_button_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI/Explosives" method="_on_start_wave_button_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/ShopButton" to="Player/UI/UI" method="_on_shop_button_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/ResetGame" to="Player/UI/UI" method="_on_reset_game_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/Cheats" to="Player/UI/UI" method="_on_cheats_button_down"]
