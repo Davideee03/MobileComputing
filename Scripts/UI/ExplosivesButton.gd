@@ -2,8 +2,11 @@ class_name ExplosivesButton
 extends Control
 
 @export var mine: PackedScene
-var mine_count : float = 0
+@export var grenade: PackedScene
+var mine_count : float = 1
+var grenade_count : float = 1
 @onready var mine_button : Button = $Mine
+@onready var grenade_button : Button = $Grenade
 var player : CharacterBody2D
 
 # Called when the node enters the scene tree for the first time.
@@ -24,8 +27,21 @@ func _on_mine_button_down() -> void:
 		get_tree().root.add_child(explosive)
 		explosive.global_position = player.global_position
 		mine_count -= 1
+		print("Mines available: "+ str(mine_count))
 		mine_button.text = "Mine: " + str(mine_count)
 	else:
 		print ("No mines available")
-	
-	
+
+#Creates the Grenade at the player's position
+func _on_grenade_button_down() -> void:
+	if grenade_count > 0:
+		player = get_parent().get_parent().get_parent()
+		await get_tree().create_timer(2).timeout
+		var explosive = grenade.instantiate()
+		get_tree().root.add_child(explosive)
+		explosive.global_position = player.global_position
+		grenade_count -= 1
+		print("Grenades available: "+ str(grenade_count))
+		grenade_button.text = "Grenade: " + str(grenade_count)
+	else:
+		print ("No Grenades available")

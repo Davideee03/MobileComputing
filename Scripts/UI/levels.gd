@@ -1,4 +1,4 @@
-class_name levelButton
+#class_name levelButton
 extends Label
 
 # this script is used in the shop for showing the level of the weapons.

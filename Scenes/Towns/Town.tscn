@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cu3i1p3knb8dp"]
+[gd_scene load_steps=19 format=4 uid="uid://cu3i1p3knb8dp"]
 
 [ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
 [ext_resource type="PackedScene" uid="uid://cftrkiyi740hw" path="res://Scenes/UI/Shop.tscn" id="3_iquj0"]
@@ -7,8 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cdqnsmky25kr1" path="res://Scenes/Explosives/Mine.tscn" id="7_iuk4v"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Computer.gd" id="7_mpx2t"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Spawners.gd" id="8_1d40r"]
+[ext_resource type="PackedScene" uid="uid://cbbe6qoahmwoc" path="res://Scenes/Explosives/Grenade.tscn" id="8_1wh1x"]
 [ext_resource type="Texture2D" uid="uid://yb31726ijnte" path="res://Sprites/Enviroment/Floor.png" id="8_mmq2u"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Spawner.gd" id="9_bfess"]
+[ext_resource type="Texture2D" uid="uid://cnyc6kyupuj4b" path="res://Sprites/Explosives/Grenade.png" id="9_hjgof"]
 [ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="10_avg3d"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m7dyb"]
@@ -286,6 +288,7 @@ offset_right = 120.678
 offset_bottom = 397.425
 script = ExtResource("6_jdtkt")
 mine = ExtResource("7_iuk4v")
+grenade = ExtResource("8_1wh1x")
 
 [node name="Mine" type="Button" parent="Player/UI/UI/Explosives"]
 unique_name_in_owner = true
@@ -296,6 +299,16 @@ offset_right = 24.3217
 offset_bottom = -21.425
 text = "Mine : 0"
 icon = ExtResource("5_xkbsr")
+
+[node name="Grenade" type="Button" parent="Player/UI/UI/Explosives"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -57.6783
+offset_top = -16.425
+offset_right = 51.3217
+offset_bottom = 14.575
+text = "Grenade : 0"
+icon = ExtResource("9_hjgof")
 
 [node name="Computer" type="Node2D" parent="." groups=["Computer"]]
 unique_name_in_owner = true
@@ -355,3 +368,4 @@ tile_set = SubResource("TileSet_edgt6")
 [connection signal="button_down" from="Player/UI/UI/Buttons/Cheats" to="Player/UI/UI" method="_on_cheats_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Shop/ShopBack" to="Player/UI/UI" method="_on_shop_back_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Explosives/Mine" to="Player/UI/UI/Explosives" method="_on_mine_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Explosives/Grenade" to="Player/UI/UI/Explosives" method="_on_grenade_button_down"]
