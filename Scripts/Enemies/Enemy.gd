@@ -47,12 +47,12 @@ func _ready() -> void:
 	player = get_tree().get_first_node_in_group("Player")
 
 func die():
-	#Once dead reduce the number of current enemies on the field
-	get_parent().update_wave(-value)
-	
 	#Dropping the core item of the enemy 
 	#Add money and exp to the playwer
 	if !reset:
+		#Once dead reduce the number of current enemies on the field
+		get_parent().update_wave(-value)
+		
 		Stats.add_money(choose_random_money_drop())
 		Stats.add_exp(choose_random_exp_drop())
 		drop_item()

@@ -8,8 +8,11 @@ var current_health : int
 @export_category("Invincibility")
 @export var invincibility_time : float = 0.25
 
+var spawner_container 
+
 func _ready():
 	restore_health()
+	spawner_container = get_tree().get_first_node_in_group("SpawnerContainer")
 
 func restore_health():
 	#Set up the health
@@ -34,7 +37,7 @@ func take_damage(damage : int):
 	#Reload current scene if negative health
 	#Momentaneo
 	if current_health<=0:
-		Global.reset_wave()
+		spawner_container.end_wave()
 
 func invincibility():
 	#Invicibility duration
