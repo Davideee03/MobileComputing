@@ -39,7 +39,7 @@ func _input(event):
 			player.flip_h = !player.flip_h
 		is_dragging = true
 
-func _process(delta):
+func _process(_delta):
 	if is_dragging && !Global.shop_opened:
 		#global_position += direction * speed * delta
 		velocity = direction*speed

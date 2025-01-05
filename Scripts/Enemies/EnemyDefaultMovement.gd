@@ -9,3 +9,6 @@ func _process(delta: float) -> void:
 	var target_position : Vector2 = target.global_position
 	if (target_position.x>global_position.x&&!enemy_sprite.flip_h)||(target_position.x<global_position.x&&enemy_sprite.flip_h):
 		enemy_sprite.flip_h = !enemy_sprite.flip_h
+
+func _on_player_detector_body_entered(body: Node2D) -> void:
+	target = body

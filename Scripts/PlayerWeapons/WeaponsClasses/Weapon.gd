@@ -5,12 +5,12 @@ var current_enemy
 var is_reloading : bool = false
 
 ###DEBUG###
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("a"):
 		can_shoot = !can_shoot
 		print("Can shoot: " + str(can_shoot))
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if enemies.is_empty() || !can_shoot: return #If there's no enemy near return
 	
 	#Select the enemy target

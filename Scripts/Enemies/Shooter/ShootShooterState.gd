@@ -16,7 +16,7 @@ func enter() -> void:
 	await get_tree().create_timer(reload_time).timeout
 	can_shoot = true
 
-func update(delta):
+func update(_delta):
 	var direction : Vector2 = SHOOTER.global_position.direction_to(TARGET.global_position)
 	SHOOTER.update_direction(direction)
 	
@@ -40,5 +40,5 @@ func reload():
 	await get_tree().create_timer(reload_time).timeout
 	can_shoot = true
 
-func _on_stop_shooting_area_exited(area: Area2D) -> void:
+func _on_stop_shooting_area_exited(_area: Area2D) -> void:
 	idle = true

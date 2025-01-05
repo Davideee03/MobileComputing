@@ -6,15 +6,6 @@ var mine_count : float = 0
 @onready var mine_button : Button = $Mine
 var player : CharacterBody2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
-
 #Creates the mine at the player's position
 func _on_mine_button_down() -> void:
 	if mine_count > 0:
@@ -27,5 +18,3 @@ func _on_mine_button_down() -> void:
 		mine_button.text = "Mine: " + str(mine_count)
 	else:
 		print ("No mines available")
-	
-	

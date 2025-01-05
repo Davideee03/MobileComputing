@@ -3,12 +3,13 @@ extends Control
 #Ui references
 @onready var buttons: Control = $Buttons
 @onready var shop: Control = $Shop
+@onready var explosives: ExplosivesButton = %Explosives
 
 #Stats
 @onready var money: Label = %Money
 @onready var waves: Label = %Waves
 @onready var exp: Label = %Exp
-@onready var health: Label = %Health
+@onready var health: ProgressBar = %Health
 @onready var coreNormal: Label = %CoreNormal
 @onready var coreRare: Label = %CoreRare
 @onready var coreEpic: Label = %CoreEpic
@@ -30,14 +31,16 @@ func display_new_stats(current_money, current_exp, current_wave, current_health,
 	money.text = "Money: " + str(current_money)
 	waves.text = "Waves: " + str(current_wave)
 	exp.text = "Exp: " + str(current_exp)
-	health.text = "Health: " + str(current_health)
-	coreNormal.text = "coreNormal: " + str(current_coreNormal)
-	coreRare.text = "coreRare: " + str(current_coreRare)
-	coreEpic.text = "coreEpic: " + str(current_coreEpic)
-	coreLegendary.text = "coreLegendary: " + str(current_coreLegendary)
+	#health.text = "Health: " + str(current_health)
+	health.update_health(current_health)
+	coreNormal.text = "Titanium: " + str(current_coreNormal)
+	coreRare.text = "Silver: " + str(current_coreRare)
+	coreEpic.text = "Gold: " + str(current_coreEpic)
+	coreLegendary.text = "Diamond: " + str(current_coreLegendary)
 
 #Start a new wave
 func _on_start_wave_button_button_down() -> void:
+	explosives.visible = true
 	change_buttons_visibility()
 
 #Open the shop
