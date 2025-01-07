@@ -16,7 +16,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/reset_button_weapons.gd" id="9_gx07f"]
 [ext_resource type="Texture2D" uid="uid://dreafflwq03ut" path="res://Sprites/Weapons/AssaultRifle.png" id="10_hvtsb"]
 [ext_resource type="Script" path="res://Scripts/UI/ButtonResetShop.gd" id="10_q7mde"]
-[ext_resource type="Texture2D" uid="uid://csv8pj1rjopvw" path="res://Scenes/Sprite-0001.png" id="15_nk242"]
+[ext_resource type="Texture2D" uid="uid://csv8pj1rjopvw" path="res://Sprites/ShopUI/Sprite-0001.png" id="15_nk242"]
 [ext_resource type="Texture2D" uid="uid://dbkf2qofgtgp6" path="res://Sprites/Weapons/Submachine - MP5A3 [80x48].png" id="16_epxkd"]
 [ext_resource type="Script" path="res://Scripts/Weapons/MachineGun.gd" id="17_ekcxq"]
 [ext_resource type="Texture2D" uid="uid://bwqbm08wyo3gc" path="res://Sprites/Weapons/[SHOOT WITH CASING AND MUZZLE FLASH] Submachine - MP5A3.png" id="17_w6dio"]
