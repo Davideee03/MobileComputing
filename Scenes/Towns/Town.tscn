@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://cu3i1p3knb8dp"]
+[gd_scene load_steps=21 format=4 uid="uid://cu3i1p3knb8dp"]
 
 [ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
 [ext_resource type="PackedScene" uid="uid://cftrkiyi740hw" path="res://Scenes/UI/Shop.tscn" id="3_iquj0"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/Stats/Health.gd" id="8_irv3n"]
 [ext_resource type="Texture2D" uid="uid://yb31726ijnte" path="res://Sprites/Enviroment/Floor.png" id="8_mmq2u"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Spawner.gd" id="9_bfess"]
+[ext_resource type="Script" path="res://Scripts/UI/Stats/Exp.gd" id="9_n7x3u"]
 [ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="10_avg3d"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m7dyb"]
@@ -351,9 +352,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -70.0
-offset_top = 50.0
+offset_top = 125.0
 offset_right = 10.0
-offset_bottom = -30.0
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -436,11 +437,15 @@ mouse_filter = 2
 
 [node name="Waves" type="Label" parent="Player/UI/UI/Stats"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 20.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 174.0
 offset_top = 97.0
-offset_right = 140.0
+offset_right = 294.0
 offset_bottom = 122.0
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 25
 text = "Wave: 0"
@@ -455,39 +460,35 @@ offset_right = 680.0
 offset_bottom = 97.0
 text = "Money: 0"
 
-[node name="Exp" type="Label" parent="Player/UI/UI/Stats"]
+[node name="ExpLabel" type="Label" parent="Player/UI/UI/Stats"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 20.0
-offset_top = 26.0
-offset_right = 66.0
-offset_bottom = 49.0
+offset_left = 27.0
+offset_top = 97.0
+offset_right = 127.0
+offset_bottom = 122.0
 theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 25
-text = "Exp: 0"
+text = "Exp:"
 
-[node name="HealthLabel" type="Label" parent="Player/UI/UI/Stats"]
-layout_mode = 0
-offset_left = 372.0
-offset_top = 28.0
-offset_right = 492.0
-offset_bottom = 56.0
-theme_override_fonts/font = ExtResource("5_38p5k")
-theme_override_font_sizes/font_size = 25
-text = "Health:"
-
-[node name="Health" type="ProgressBar" parent="Player/UI/UI/Stats"]
+[node name="Exp" type="ProgressBar" parent="Player/UI/UI/Stats/ExpLabel"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 504.0
-offset_top = 30.0
-offset_right = 704.0
-offset_bottom = 57.0
-max_value = 15.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 82.0
+offset_top = -12.5
+offset_right = 282.0
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
 show_percentage = false
-script = ExtResource("8_irv3n")
+script = ExtResource("9_n7x3u")
 
-[node name="HealthLabel" type="Label" parent="Player/UI/UI/Stats/Health"]
+[node name="HealthLabel" type="Label" parent="Player/UI/UI/Stats/ExpLabel/Exp"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -502,7 +503,53 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 20
-text = "15"
+text = "15/15"
+
+[node name="HealthLabel" type="Label" parent="Player/UI/UI/Stats"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 154.0
+offset_right = 147.0
+offset_bottom = 182.0
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 25
+text = "Health:"
+
+[node name="Health" type="ProgressBar" parent="Player/UI/UI/Stats/HealthLabel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 72.0
+offset_top = -14.0
+offset_right = 272.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 15.0
+value = 5.58
+show_percentage = false
+script = ExtResource("8_irv3n")
+
+[node name="HealthLabel" type="Label" parent="Player/UI/UI/Stats/HealthLabel/Health"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 20
+text = "15/15"
 
 [node name="Explosives" type="Control" parent="Player/UI/UI"]
 unique_name_in_owner = true

@@ -10,7 +10,7 @@ func _input(_event: InputEvent) -> void:
 		can_shoot = !can_shoot
 		print("Can shoot: " + str(can_shoot))
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if enemies.is_empty() || !can_shoot: return #If there's no enemy near return
 	
 	#Select the enemy target
