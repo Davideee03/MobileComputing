@@ -29,12 +29,12 @@ func _on_start_wave_button_button_down() -> void:
 #Creates the mine at the player's position
 func _on_mine_button_down() -> void:
 	if (mine_count > 0) and game_started:
+		mine_count -= 1
 		player = get_parent().get_parent().get_parent()
 		await get_tree().create_timer(2).timeout
 		var explosive = mine.instantiate()
 		get_tree().root.add_child(explosive)
 		explosive.global_position = player.global_position
-		mine_count -= 1
 		print("Mines available: "+ str(mine_count))
 		mine_button.text = "Mine: " + str(mine_count)
 	elif (mine_count == 0):
@@ -45,15 +45,15 @@ func _on_mine_button_down() -> void:
 #Creates the Grenade at the player's position
 func _on_grenade_button_down() -> void:
 	if (grenade_count > 0) and game_started:
+		grenade_count -= 1
 		player = get_parent().get_parent().get_parent()
 		await get_tree().create_timer(2).timeout
 		var explosive = grenade.instantiate()
 		get_tree().root.add_child(explosive)
 		explosive.global_position = player.global_position
-		grenade_count -= 1
 		print("Grenades available: "+ str(grenade_count))
 		grenade_button.text = "Grenade: " + str(grenade_count)
-	elif (mine_count == 0):
+	elif (grenade_count == 0):
 		print("No Grenades available")
 	else:
 		print("Game not started yet")
