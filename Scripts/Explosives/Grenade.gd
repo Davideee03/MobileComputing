@@ -1,7 +1,7 @@
 extends Explosives
 
 var damage : float = 5000
-var time : float = 0.1
+var time : float = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,18 +10,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
-#Check if enemies have entered the area
-func _on_detector_area_entered(area):
-	await get_tree().create_timer(time).timeout
 	damage_area()
 
 #Deals damage to enemies within the DamageArea
 func damage_area() -> void:
-	var DamageArea = get_child(1)
+	await get_tree().create_timer(time).timeout
+	var DamageArea = get_child(0)
 	var overlapping_areas = DamageArea.get_overlapping_areas()
 	for area in overlapping_areas:
 		area.take_damage(damage)
 	queue_free()
-	print("Mine exploded")
+	print("Grenade exploded")
