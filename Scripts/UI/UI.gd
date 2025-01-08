@@ -7,7 +7,7 @@ extends Control
 
 #Stats
 @onready var money: Label = %Money
-@onready var waves: Label = %Waves
+#@onready var waves: Label = %Waves
 @onready var exp: ProgressBar = %Exp
 @onready var health: ProgressBar = %Health
 @onready var coreNormal: Label = %CoreNormal
@@ -29,7 +29,7 @@ func change_buttons_visibility():
 #Display the stats
 func display_new_stats(current_money, current_exp, current_wave, current_health, current_coreNormal,current_coreRare,current_coreEpic, current_coreLegendary ):
 	money.text = "Money: " + str(current_money)
-	waves.text = "Wave: " + str(current_wave)
+	#waves.text = "Wave: " + str(current_wave)
 	#exp.text = "Exp: " + str(current_exp)
 	exp.update_exp(current_exp)
 	#health.text = "Health: " + str(current_health)

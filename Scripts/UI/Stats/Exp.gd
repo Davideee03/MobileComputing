@@ -1,17 +1,19 @@
 extends ProgressBar
 
-@export var increase_max_value : int = 50
+@export var increase_max_value : int = 150
 
 @onready var health_label: Label = $HealthLabel
 
 func update_exp(exp : int):
-	print(exp)
+	if max_value<Stats.current_max_exp:
+		max_value = Stats.current_max_exp
 	value = exp
-	print(value)
 	
 	if value>=max_value:
 		value -= max_value
 		max_value+=increase_max_value
+		Stats.current_max_exp = max_value
 		Stats.current_exp = value
+		Stats.current_lvl+=1
 	
-	health_label.text = str(value)+"/"+str(max_value)
+	health_label.text = "Exp: "+str(Stats.current_lvl)
