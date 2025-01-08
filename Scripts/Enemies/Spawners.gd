@@ -8,11 +8,15 @@ var enemies_defeated : int = 0
 
 ##UI##
 @onready var ui: Control = %UI
+@onready var wave: ProgressBar = %Wave
 
 #Start a new wave
 #Called by StartWaveButton
 func new_wave() -> void:
 	set_up()
+	
+	#Show the wave on screen
+	wave.display_wave(0, max_enemies)
 	
 	#Make the spawners active
 	for spawner in get_children():
@@ -21,6 +25,10 @@ func new_wave() -> void:
 func update_wave(enemy_value : int):
 	#Take note of the current number of enemies on the field
 	if enemy_value<0: enemies_defeated-=enemy_value
+	
+	#Show the wave on screen
+	display_wave()
+	
 	#Wave ended, no more enemies present
 	if enemies_defeated>=max_enemies:
 		end_wave()
@@ -70,3 +78,7 @@ func player_won() -> void:
 #Called by Global if the player is defeated
 func player_is_dead():
 	print("Player has lost")
+
+#Called by update_wave
+func display_wave():
+	wave.display_wave(enemies_defeated)

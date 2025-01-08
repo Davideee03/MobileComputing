@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 	global_position = global_position.move_toward(player.global_position, speed*delta)
 
 #Whenever the player enter the drop item area, start following the player
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(_area: Area2D) -> void:
 	follow_player()
 
 #Called also at the end of every wave by "Spawners"
@@ -56,5 +56,5 @@ func random_rarity():
 	return randi_range(0,cores.size()-1)
 
 #Notify that the player can collect the item
-func _on_collect_area_area_entered(area: Area2D) -> void:
+func _on_collect_area_area_entered(_area: Area2D) -> void:
 	item_collected()

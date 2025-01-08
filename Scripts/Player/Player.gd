@@ -11,6 +11,7 @@ var is_dragging : bool = false
 @onready var hitbox: Area2D = %Hitbox
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var player: Sprite2D = $Player
+@onready var computer_container: Node2D = $ComputerContainer
 
 func _ready():
 	first_position = global_position
@@ -37,9 +38,10 @@ func _input(event):
 		direction = first_position.direction_to(target).normalized()
 		if (direction.x>0&&!player.flip_h)||(direction.x<0&&player.flip_h):
 			player.flip_h = !player.flip_h
+			computer_container.position.x *= -1
 		is_dragging = true
 
-func _process(delta):
+func _process(_delta):
 	if is_dragging && !Global.shop_opened:
 		#global_position += direction * speed * delta
 		velocity = direction*speed

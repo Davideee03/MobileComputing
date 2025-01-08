@@ -88,5 +88,3 @@ func getReload():
 	
 func getBought():
 	current_weapon.setBought()
-	
-	
