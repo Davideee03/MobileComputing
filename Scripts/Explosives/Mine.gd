@@ -12,8 +12,7 @@ func _on_detector_area_entered(_area):
 func damage_area() -> void:
 	var DamageArea = get_child(1)
 	var overlapping_areas = DamageArea.get_overlapping_areas()
-	print(overlapping_areas)
 	for area in overlapping_areas:
 		area.take_damage(damage)
-		print("Danno")
 	queue_free()
+	print("Mine exploded")
