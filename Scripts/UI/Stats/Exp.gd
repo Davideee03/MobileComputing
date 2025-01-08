@@ -16,4 +16,4 @@ func update_exp(exp : int):
 		Stats.current_exp = value
 		Stats.current_lvl+=1
 	
-	health_label.text = "Exp: "+str(Stats.current_lvl)
+	health_label.text = "Level "+str(Stats.current_lvl)

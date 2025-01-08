@@ -3,7 +3,8 @@ extends Control
 #Ui references
 @onready var buttons: Control = $Buttons
 @onready var shop: Control = $Shop
-@onready var explosives: ExplosivesButton = %Explosives
+@onready var explosives: Control = $Explosives
+
 
 #Stats
 @onready var money: Label = %Money
@@ -20,8 +21,9 @@ func _ready() -> void:
 	Stats.on_stats_changed.connect(display_new_stats)
 
 #Hide or show the buttons when necessary
-#Called in UI
+#Called in UI and Spawners
 func change_buttons_visibility():
+	explosives.change_visibility()
 	for button in buttons.get_children():
 		button.visible = !button.visible
 		button.disabled = !button.disabled
@@ -41,7 +43,6 @@ func display_new_stats(current_money, current_exp, current_wave, current_health,
 
 #Start a new wave
 func _on_start_wave_button_button_down() -> void:
-	explosives.visible = true
 	change_buttons_visibility()
 
 #Open the shop

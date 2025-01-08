@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://7lfiufia8slp"]
+[gd_scene load_steps=17 format=3 uid="uid://7lfiufia8slp"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_q7gve"]
 [ext_resource type="Texture2D" uid="uid://fihrd7dx35sc" path="res://Sprites/Player/Player.png" id="2_hx48d"]
 [ext_resource type="Script" path="res://Scripts/Player/Camera.gd" id="2_nrn82"]
 [ext_resource type="Script" path="res://Scripts/Player/HealthSystem.gd" id="4_t5p63"]
-[ext_resource type="Script" path="res://Scripts/Explosives/Explosives.gd" id="5_h8t7a"]
 [ext_resource type="Script" path="res://Scripts/PlayerWeapons/WeaponsClasses/Weapon.gd" id="6_2h1e7"]
 [ext_resource type="PackedScene" uid="uid://11fh8kk8xko4" path="res://Scenes/Weapon/Weapon.tscn" id="6_mjxid"]
 [ext_resource type="Script" path="res://Scripts/Player/EnemyTargets.gd" id="7_oit74"]
@@ -160,9 +159,6 @@ script = ExtResource("6_2h1e7")
 [node name="ComputerContainer" type="Node2D" parent="." groups=["ComputerContainer"]]
 position = Vector2(48, 16)
 
-[node name="Explosives" type="Node" parent="."]
-script = ExtResource("5_h8t7a")
-
 [node name="Areas" type="Node2D" parent="."]
 
 [node name="EmeyDetector" type="Area2D" parent="Areas"]
@@ -240,6 +236,9 @@ color = Color(0.103744, 0.103744, 0.103744, 1)
 position = Vector2(0, 22)
 scale = Vector2(3, 3)
 texture = ExtResource("9_gh2a3")
+
+[node name="ExplosiveContainer" type="Node2D" parent="." groups=["ExplosiveContainer"]]
+unique_name_in_owner = true
 
 [connection signal="area_entered" from="Areas/EmeyDetector" to="Weapon" method="_on_emey_detector_area_entered"]
 [connection signal="area_exited" from="Areas/EmeyDetector" to="Weapon" method="_on_emey_detector_area_exited"]
