@@ -45,7 +45,7 @@ func item_collected():
 	Global.remove_drops(self)
 	
 	#Player collect sound
-	audio_stream_player.pitch_scale = randf_range(1.0, 1.05)
+	audio_stream_player.pitch_scale = randf_range(0.8, 1.1)
 	audio_stream_player.play()
 	
 	#Destroy the item once the audio is finished

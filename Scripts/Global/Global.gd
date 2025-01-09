@@ -35,13 +35,12 @@ func remove_drops(drop):
 func player_is_dead():
 	#Reset player and computer
 	player.reset()
-	computer.disconnect_from_player(true)
 	
 	#Don't pass to the next wave
 	Stats.update_wave(true)
 
 func player_won():
-	computer.disconnect_from_player()
+	return
 
 #Called by the script Spawners
 func end_wave(player_has_won : bool):
@@ -49,7 +48,6 @@ func end_wave(player_has_won : bool):
 		player_won()
 	else:
 		player_is_dead()
-	
 	#Delete all enemies
 	while !enemies.is_empty():
 		#Destroy every enemy

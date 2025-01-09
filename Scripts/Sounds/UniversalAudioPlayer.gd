@@ -4,5 +4,5 @@ extends AudioStreamPlayer
 
 func play_expolosion() -> void:
 	stream = default_enemy_sound.pick_random()
-	pitch_scale = randf_range(0.95,1.05)
+	pitch_scale = randf_range(0.6,0.9)
 	play()

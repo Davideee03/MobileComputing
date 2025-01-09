@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://cftrkiyi740hw" path="res://Scenes/UI/Shop.tscn" id="3_iquj0"]
 [ext_resource type="FontFile" uid="uid://dflx50tvhjet4" path="res://Fonts/TMT-Paint-Regular.otf" id="5_38p5k"]
 [ext_resource type="Texture2D" uid="uid://gosyriwthtd6" path="res://Sprites/UI/Button.png" id="5_pi5n0"]
-[ext_resource type="Script" path="res://Scripts/Weapons/Computer.gd" id="7_mpx2t"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Spawners.gd" id="8_1d40r"]
 [ext_resource type="Script" path="res://Scripts/UI/Stats/Health.gd" id="8_irv3n"]
 [ext_resource type="Texture2D" uid="uid://yb31726ijnte" path="res://Sprites/Enviroment/Floor.png" id="8_mmq2u"]
@@ -17,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cbbe6qoahmwoc" path="res://Scenes/Explosives/Grenade.tscn" id="13_cetdv"]
 [ext_resource type="Texture2D" uid="uid://d3cuppqtwq30" path="res://Sprites/Explosives/Mine.png" id="14_q2mew"]
 [ext_resource type="Texture2D" uid="uid://cnyc6kyupuj4b" path="res://Sprites/Explosives/Grenade.png" id="15_ky46n"]
+[ext_resource type="PackedScene" uid="uid://dyux3pqy0wmvu" path="res://Scenes/Player/Pet.tscn" id="17_pjj81"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m7dyb"]
 normal = Vector2(-1, 0)
@@ -219,9 +219,9 @@ script = ExtResource("9_bfess")
 position = Vector2(-800, 748)
 script = ExtResource("9_bfess")
 
-[node name="UI2" type="CanvasLayer" parent="Player"]
+[node name="UI" type="CanvasLayer" parent="Player"]
 
-[node name="UI" type="Control" parent="Player/UI2"]
+[node name="UI" type="Control" parent="Player/UI"]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 15
@@ -232,7 +232,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("10_avg3d")
 
-[node name="Buttons" type="Control" parent="Player/UI2/UI"]
+[node name="Buttons" type="Control" parent="Player/UI/UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -241,7 +241,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="StartWaveButton" type="Button" parent="Player/UI2/UI/Buttons"]
+[node name="StartWaveButton" type="Button" parent="Player/UI/UI/Buttons"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -260,12 +260,12 @@ text = "Start Wave
 "
 flat = true
 
-[node name="Button" type="Sprite2D" parent="Player/UI2/UI/Buttons/StartWaveButton"]
+[node name="Button" type="Sprite2D" parent="Player/UI/UI/Buttons/StartWaveButton"]
 z_index = -1
 position = Vector2(105, 62)
 texture = ExtResource("5_pi5n0")
 
-[node name="Label" type="Label" parent="Player/UI2/UI/Buttons/StartWaveButton"]
+[node name="Label" type="Label" parent="Player/UI/UI/Buttons/StartWaveButton"]
 z_index = -1
 layout_mode = 0
 offset_left = 7.0
@@ -278,7 +278,7 @@ theme_override_font_sizes/font_size = 28
 text = "Start
 "
 
-[node name="Label2" type="Label" parent="Player/UI2/UI/Buttons/StartWaveButton"]
+[node name="Label2" type="Label" parent="Player/UI/UI/Buttons/StartWaveButton"]
 z_index = -1
 layout_mode = 0
 offset_left = 121.3
@@ -290,7 +290,7 @@ theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 28
 text = "Wave"
 
-[node name="ShopButton" type="Button" parent="Player/UI2/UI/Buttons"]
+[node name="ShopButton" type="Button" parent="Player/UI/UI/Buttons"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -306,12 +306,12 @@ text = "Shop
 "
 flat = true
 
-[node name="Button" type="Sprite2D" parent="Player/UI2/UI/Buttons/ShopButton"]
+[node name="Button" type="Sprite2D" parent="Player/UI/UI/Buttons/ShopButton"]
 z_index = -1
 position = Vector2(105, 62)
 texture = ExtResource("5_pi5n0")
 
-[node name="Label" type="Label" parent="Player/UI2/UI/Buttons/ShopButton"]
+[node name="Label" type="Label" parent="Player/UI/UI/Buttons/ShopButton"]
 z_index = -1
 layout_mode = 0
 offset_left = 58.0
@@ -324,19 +324,19 @@ theme_override_font_sizes/font_size = 28
 text = "Shop
 "
 
-[node name="ResetGame" type="Button" parent="Player/UI2/UI/Buttons"]
+[node name="ResetGame" type="Button" parent="Player/UI/UI/Buttons"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -962.0
-offset_top = 235.0
-offset_right = -781.0
-offset_bottom = 266.0
+offset_left = -999.0
+offset_top = 178.0
+offset_right = -818.0
+offset_bottom = 209.0
 grow_horizontal = 0
 text = "Reset Game to Wave 0"
 
-[node name="Cheats" type="Button" parent="Player/UI2/UI/Buttons"]
+[node name="Cheats" type="Button" parent="Player/UI/UI/Buttons"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -348,7 +348,7 @@ offset_bottom = 329.0
 grow_horizontal = 0
 text = "Inf resources"
 
-[node name="Shop" type="Control" parent="Player/UI2/UI"]
+[node name="Shop" type="Control" parent="Player/UI/UI"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -362,7 +362,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ShopBack" type="Button" parent="Player/UI2/UI/Shop"]
+[node name="ShopBack" type="Button" parent="Player/UI/UI/Shop"]
 layout_mode = 0
 offset_left = 409.0
 offset_top = 232.0
@@ -372,7 +372,7 @@ theme_override_fonts/font = ExtResource("5_38p5k")
 text = "Back
 "
 
-[node name="Shop" parent="Player/UI2/UI/Shop" instance=ExtResource("3_iquj0")]
+[node name="Shop" parent="Player/UI/UI/Shop" instance=ExtResource("3_iquj0")]
 layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
@@ -385,7 +385,7 @@ offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CoreNormal" type="Label" parent="Player/UI2/UI/Shop"]
+[node name="CoreNormal" type="Label" parent="Player/UI/UI/Shop"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 133.0
@@ -396,7 +396,7 @@ theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 25
 text = "Titanium: 0"
 
-[node name="CoreRare" type="Label" parent="Player/UI2/UI/Shop"]
+[node name="CoreRare" type="Label" parent="Player/UI/UI/Shop"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 591.0
@@ -407,7 +407,7 @@ theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 25
 text = "Silver: 0"
 
-[node name="CoreEpic" type="Label" parent="Player/UI2/UI/Shop"]
+[node name="CoreEpic" type="Label" parent="Player/UI/UI/Shop"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 133.0
@@ -418,7 +418,7 @@ theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 25
 text = "Gold: 0"
 
-[node name="CoreLegendary" type="Label" parent="Player/UI2/UI/Shop"]
+[node name="CoreLegendary" type="Label" parent="Player/UI/UI/Shop"]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 591.0
@@ -429,7 +429,7 @@ theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 25
 text = "Diamond: 0"
 
-[node name="Stats" type="Control" parent="Player/UI2/UI"]
+[node name="Stats" type="Control" parent="Player/UI/UI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -438,7 +438,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Money" type="Label" parent="Player/UI2/UI/Stats"]
+[node name="Money" type="Label" parent="Player/UI/UI/Stats"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 0
@@ -448,23 +448,21 @@ offset_right = 680.0
 offset_bottom = 97.0
 text = "Money: 0"
 
-[node name="Health" type="ProgressBar" parent="Player/UI2/UI/Stats"]
+[node name="Health" type="ProgressBar" parent="Player/UI/UI/Stats"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -340.0
-offset_top = 50.0
-offset_right = -20.0
-offset_bottom = 77.0
+offset_left = -360.0
+offset_bottom = 40.0
 grow_horizontal = 2
 max_value = 15.0
 value = 5.58
 show_percentage = false
 script = ExtResource("8_irv3n")
 
-[node name="HealthLabel" type="Label" parent="Player/UI2/UI/Stats/Health"]
+[node name="HealthLabel" type="Label" parent="Player/UI/UI/Stats/Health"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -481,21 +479,19 @@ theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 20
 text = "Health: 15/15"
 
-[node name="Exp" type="ProgressBar" parent="Player/UI2/UI/Stats"]
+[node name="Exp" type="ProgressBar" parent="Player/UI/UI/Stats"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 20.0
-offset_top = 50.0
-offset_right = 340.0
-offset_bottom = 77.0
+offset_right = 360.0
+offset_bottom = 40.0
 grow_horizontal = 2
 show_percentage = false
 script = ExtResource("9_n7x3u")
 
-[node name="HealthLabel" type="Label" parent="Player/UI2/UI/Stats/Exp"]
+[node name="HealthLabel" type="Label" parent="Player/UI/UI/Stats/Exp"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -512,23 +508,23 @@ theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 20
 text = "Level 0"
 
-[node name="Wave" type="ProgressBar" parent="Player/UI2/UI/Stats"]
+[node name="Wave" type="ProgressBar" parent="Player/UI/UI/Stats"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -340.0
-offset_top = 100.0
-offset_right = 340.0
-offset_bottom = 127.0
+offset_left = -360.0
+offset_top = 40.0
+offset_right = 360.0
+offset_bottom = 70.0
 grow_horizontal = 2
 max_value = 0.0
 show_percentage = false
 script = ExtResource("10_o0yex")
 
-[node name="WaveLabel" type="Label" parent="Player/UI2/UI/Stats/Wave"]
+[node name="WaveLabel" type="Label" parent="Player/UI/UI/Stats/Wave"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -542,7 +538,7 @@ theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 20
 text = "Wave 0"
 
-[node name="Explosives" type="Control" parent="Player/UI2/UI" groups=["ExplosivesControl"]]
+[node name="Explosives" type="Control" parent="Player/UI/UI" groups=["ExplosivesControl"]]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -555,7 +551,7 @@ script = ExtResource("11_51ntn")
 mine = ExtResource("12_q45tx")
 granade = ExtResource("13_cetdv")
 
-[node name="Mine" type="Button" parent="Player/UI2/UI/Explosives"]
+[node name="Mine" type="Button" parent="Player/UI/UI/Explosives"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -567,12 +563,12 @@ offset_bottom = -200.0
 grow_vertical = 0
 flat = true
 
-[node name="MineSprite" type="Sprite2D" parent="Player/UI2/UI/Explosives/Mine"]
+[node name="MineSprite" type="Sprite2D" parent="Player/UI/UI/Explosives/Mine"]
 position = Vector2(37, 50)
 scale = Vector2(5, 5)
 texture = ExtResource("14_q2mew")
 
-[node name="Granade" type="Button" parent="Player/UI2/UI/Explosives"]
+[node name="Granade" type="Button" parent="Player/UI/UI/Explosives"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -584,22 +580,10 @@ offset_bottom = -50.0
 grow_vertical = 0
 flat = true
 
-[node name="GrenadeSprite" type="Sprite2D" parent="Player/UI2/UI/Explosives/Granade"]
+[node name="GrenadeSprite" type="Sprite2D" parent="Player/UI/UI/Explosives/Granade"]
 position = Vector2(37, 50)
 scale = Vector2(5, 5)
 texture = ExtResource("15_ky46n")
-
-[node name="Computer" type="Node2D" parent="." groups=["Computer"]]
-unique_name_in_owner = true
-script = ExtResource("7_mpx2t")
-
-[node name="Computer" type="ColorRect" parent="Computer"]
-z_index = -1
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-color = Color(0, 0, 0, 1)
 
 [node name="Walls" type="Node" parent="."]
 
@@ -639,11 +623,14 @@ tile_set = SubResource("TileSet_q8e11")
 
 [node name="BulletContainer" type="Node" parent="."]
 
-[connection signal="button_down" from="Player/UI2/UI/Buttons/StartWaveButton" to="Player/Spawners" method="_on_start_wave_button_down"]
-[connection signal="button_down" from="Player/UI2/UI/Buttons/StartWaveButton" to="Player/UI2/UI" method="_on_start_wave_button_button_down"]
-[connection signal="button_down" from="Player/UI2/UI/Buttons/ShopButton" to="Player/UI2/UI" method="_on_shop_button_button_down"]
-[connection signal="button_down" from="Player/UI2/UI/Buttons/ResetGame" to="Player/UI2/UI" method="_on_reset_game_button_down"]
-[connection signal="button_down" from="Player/UI2/UI/Buttons/Cheats" to="Player/UI2/UI" method="_on_cheats_button_down"]
-[connection signal="button_down" from="Player/UI2/UI/Shop/ShopBack" to="Player/UI2/UI" method="_on_shop_back_button_down"]
-[connection signal="button_down" from="Player/UI2/UI/Explosives/Mine" to="Player/UI2/UI/Explosives" method="_on_mine_button_down"]
-[connection signal="button_down" from="Player/UI2/UI/Explosives/Granade" to="Player/UI2/UI/Explosives" method="_on_granate_button_down"]
+[node name="Pet" parent="." instance=ExtResource("17_pjj81")]
+position = Vector2(47, 18)
+
+[connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/Spawners" method="_on_start_wave_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI" method="_on_start_wave_button_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/ShopButton" to="Player/UI/UI" method="_on_shop_button_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/ResetGame" to="Player/UI/UI" method="_on_reset_game_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/Cheats" to="Player/UI/UI" method="_on_cheats_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Shop/ShopBack" to="Player/UI/UI" method="_on_shop_back_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Explosives/Mine" to="Player/UI/UI/Explosives" method="_on_mine_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Explosives/Granade" to="Player/UI/UI/Explosives" method="_on_granate_button_down"]

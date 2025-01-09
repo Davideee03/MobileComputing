@@ -77,7 +77,9 @@ func update_wave(reset_wave = false):
 # Reset the game to zero
 func reset_to_zero():
 	current_health = 15
+	current_lvl = 0
 	current_exp = 0
+	current_max_exp = 100
 	current_money = 0
 	current_wave = 0
 	current_coreNormal = 0
