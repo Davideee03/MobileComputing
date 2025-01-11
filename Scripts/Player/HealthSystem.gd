@@ -10,6 +10,9 @@ var current_health : int
 
 var spawner_container 
 
+#Animation player
+@onready var damage_animator: AnimationPlayer = %DamageAnimator
+
 func _ready():
 	restore_health()
 	spawner_container = get_tree().get_first_node_in_group("SpawnerContainer")
@@ -38,6 +41,9 @@ func take_damage(damage : int):
 	#Momentaneo
 	if current_health<=0:
 		spawner_container.end_wave()
+	else:
+		#Play the animation (Red Color rect)
+		damage_animator.play("TakeDamage")
 
 func invincibility():
 	#Invicibility duration
