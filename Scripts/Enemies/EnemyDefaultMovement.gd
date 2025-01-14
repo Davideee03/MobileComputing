@@ -1,6 +1,6 @@
 extends Enemy
 
-const SPEED : float = 150.0
+const SPEED : float = 125.0
 
 #Simple movement script that follows the target
 func _process(delta: float) -> void:

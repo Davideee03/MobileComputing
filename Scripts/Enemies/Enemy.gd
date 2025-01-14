@@ -36,6 +36,9 @@ var direction : Vector2
 
 #Animation
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+const ENEMY_EXPLOSION = preload("res://Scenes/Enemies/EnemyExplosion.tscn")
+
+var is_dead : bool = false
 
 func _init() -> void:
 	top_level = true
@@ -45,8 +48,23 @@ func _ready() -> void:
 	var target_parent = get_tree().get_first_node_in_group("Target")
 	target = target_parent.get_target()
 	player = get_tree().get_first_node_in_group("Player")
+	
+	destroy_if_not_on_screen()
+
+func destroy_if_not_on_screen():
+	await get_tree().create_timer(10.0).timeout
+	if global_position.distance_to(target.global_position)>=800:
+		reset = true
+		die()
+		return
+	destroy_if_not_on_screen()
 
 func die():
+	#If it's already dead, do nothing
+	if is_dead: reset = true
+	is_dead = true
+	
+	
 	#Dropping the core item of the enemy 
 	#Add money and exp to the playwer
 	if !reset:
@@ -59,6 +77,8 @@ func die():
 		
 		#Play a sound when destroyed
 		UniversalAudioPlayer.play_expolosion()
+		
+		explode()
 	
 	#Update the Global enemies array
 	Global.remove_enemy(self)
@@ -84,3 +104,10 @@ func drop_item():
 	)
 	item.global_position = global_position + random_offset
 	Global.drops.append(item)
+
+func explode():
+	var container = get_node("/root/World")
+	var explosion = ENEMY_EXPLOSION.instantiate()
+	container.add_child(explosion)
+	
+	explosion.global_position = global_position

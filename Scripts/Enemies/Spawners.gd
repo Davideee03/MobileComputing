@@ -3,17 +3,20 @@ extends Node2D
 var max_enemies : int = 0
 var enemies_defeated : int = 0
 
-#Gameplay
-@onready var computer: Node2D = %Computer
-
 ##UI##
 @onready var ui: Control = %UI
 @onready var wave: ProgressBar = %Wave
+
+#Item spawner
+@onready var item_spawner: Node2D = %ItemSpawner
 
 #Start a new wave
 #Called by StartWaveButton
 func new_wave() -> void:
 	set_up()
+	
+	#Start spawning items
+	item_spawner.spawn()
 	
 	#Show the wave on screen
 	wave.display_wave(0, max_enemies)
@@ -40,14 +43,20 @@ func end_wave():
 	if player_has_won: player_won()
 	else: player_is_dead()
 	
-	#Stop spawning
+	#Stop spawning enemies
 	for child in get_children(): child.end_wave()
+	
+	#Stop spawning items
+	item_spawner.stop_spawning()
 	
 	Global.end_wave(player_has_won)
 	
 	ui.change_buttons_visibility()
 	
 	SaveAndLoad.save()
+	
+	#Hyde the wave counter
+	wave.hyde()
 
 #Called by StartWaveButton
 func _on_start_wave_button_down() -> void:
@@ -66,9 +75,6 @@ func set_up():
 	#Get the number of the enemies for this wave
 	max_enemies = int(Utilities.get_max_enemy_number())
 	print("Max enemies: " + str(max_enemies))
-	
-	#Attach the computer to the players
-	computer.attach_to_player()
 
 ###We'll add a victory ui from here
 func player_won() -> void: 

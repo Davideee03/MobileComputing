@@ -36,7 +36,7 @@ func display_new_stats(current_money, current_exp, current_wave, current_health,
 	exp.update_exp(current_exp)
 	#health.text = "Health: " + str(current_health)
 	health.update_health(current_health)
-	coreNormal.text = "Titanium: " + str(current_coreNormal)
+	coreNormal.text = "Carbon: " + str(current_coreNormal)
 	coreRare.text = "Silver: " + str(current_coreRare)
 	coreEpic.text = "Gold: " + str(current_coreEpic)
 	coreLegendary.text = "Diamond: " + str(current_coreLegendary)

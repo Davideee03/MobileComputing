@@ -1,26 +1,33 @@
 extends Node2D
 
-@export var speed : float = 200.0
+#Movement
+@export var speed : float = 300.0
+@export var run_speed : float = 550.0
+@export var acelleration : float = 100.0
+var actual_speed : float
 
-@onready var player: Node2D = $"../Player"
-var computer_container : Node2D
+#Player references
+var player: Node2D
 
-func _ready() -> void:
-	computer_container = get_tree().get_first_node_in_group("ComputerContainer")
+var too_distant : bool = false
+
+func _init() -> void:
+	actual_speed = speed
 
 func _process(delta: float) -> void:
-	global_position = global_position.move_toward(computer_container.global_position, speed*delta)
+	if !player: return
+	global_position = global_position.move_toward(player.global_position, actual_speed*delta)
+	
+	if too_distant: 
+		actual_speed = move_toward(actual_speed, run_speed, delta*acelleration)
 
-#The computer will follow the player
-func attach_to_player():
-	return
-	global_position = player.global_position
-	reparent(player)
+func _on_player_detector_body_entered(_body: Node2D) -> void:
+	player = null
+	actual_speed = speed
+	too_distant = false
+func _on_player_detector_body_exited(body: Node2D) -> void:
+	player = body
 
-#It'll stop follow the player
-#Called by Spawners and Global
-func disconnect_from_player(reset_position = false):
-	return
-	reparent(owner)
-	if reset_position:
-		global_position = Vector2.ZERO
+
+func _on_increase_speed_area_body_exited(_body: Node2D) -> void:
+	too_distant = true

@@ -1,11 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://hpb33bjogo3t"]
+[gd_scene load_steps=3 format=3 uid="uid://hpb33bjogo3t"]
 
 [ext_resource type="Script" path="res://Scripts/Sounds/UniversalAudioPlayer.gd" id="1_opn3d"]
-[ext_resource type="AudioStream" uid="uid://bo7m6v1skyfco" path="res://Soundeffects/Enemy/EnemyExplosion1.wav" id="2_cmqv5"]
-[ext_resource type="AudioStream" uid="uid://bux6sp2ix2old" path="res://Soundeffects/Enemy/EnemyExplosion2.wav" id="3_7c4nv"]
-[ext_resource type="AudioStream" uid="uid://boaac4m6ecq12" path="res://Soundeffects/Enemy/EnemyExplosion3.wav" id="4_oyfkq"]
+[ext_resource type="AudioStream" uid="uid://o73ecds65gcc" path="res://Soundeffects/Enemy/Impact.wav" id="2_lxfvb"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
-volume_db = -15.0
+stream = ExtResource("2_lxfvb")
 script = ExtResource("1_opn3d")
-default_enemy_sound = Array[AudioStreamWAV]([ExtResource("2_cmqv5"), ExtResource("3_7c4nv"), ExtResource("4_oyfkq")])
+default_enemy_sound = Array[AudioStreamWAV]([ExtResource("2_lxfvb")])
