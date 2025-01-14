@@ -48,6 +48,16 @@ func _ready() -> void:
 	var target_parent = get_tree().get_first_node_in_group("Target")
 	target = target_parent.get_target()
 	player = get_tree().get_first_node_in_group("Player")
+	
+	destroy_if_not_on_screen()
+
+func destroy_if_not_on_screen():
+	await get_tree().create_timer(10.0).timeout
+	if global_position.distance_to(target.global_position)>=800:
+		reset = true
+		die()
+		return
+	destroy_if_not_on_screen()
 
 func die():
 	#If it's already dead, do nothing

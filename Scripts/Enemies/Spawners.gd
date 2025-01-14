@@ -7,10 +7,16 @@ var enemies_defeated : int = 0
 @onready var ui: Control = %UI
 @onready var wave: ProgressBar = %Wave
 
+#Item spawner
+@onready var item_spawner: Node2D = %ItemSpawner
+
 #Start a new wave
 #Called by StartWaveButton
 func new_wave() -> void:
 	set_up()
+	
+	#Start spawning items
+	item_spawner.spawn()
 	
 	#Show the wave on screen
 	wave.display_wave(0, max_enemies)
@@ -37,8 +43,11 @@ func end_wave():
 	if player_has_won: player_won()
 	else: player_is_dead()
 	
-	#Stop spawning
+	#Stop spawning enemies
 	for child in get_children(): child.end_wave()
+	
+	#Stop spawning items
+	item_spawner.stop_spawning()
 	
 	Global.end_wave(player_has_won)
 	

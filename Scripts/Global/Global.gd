@@ -40,6 +40,7 @@ func player_is_dead():
 	Stats.update_wave(true)
 
 func player_won():
+	get_tree().call_group("item", "follow_player")
 	return
 
 #Called by the script Spawners
@@ -56,5 +57,5 @@ func end_wave(player_has_won : bool):
 			enemy.die()
 	
 	#Collect all the remaining cores
-	await get_tree().create_timer(get_process_delta_time()).timeout
-	get_tree().call_group("item", "follow_player")
+	#await get_tree().create_timer(get_process_delta_time()).timeout
+	#get_tree().call_group("item", "follow_player")

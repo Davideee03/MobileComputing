@@ -12,6 +12,7 @@ var is_dragging : bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var player: Sprite2D = $Player
 @onready var computer_container: Node2D = $ComputerContainer
+@onready var enemy_spawners: Node2D = $EnemySpawners
 
 func _ready():
 	first_position = global_position
@@ -39,6 +40,7 @@ func _input(event):
 		if (direction.x>0&&!player.flip_h)||(direction.x<0&&player.flip_h):
 			player.flip_h = !player.flip_h
 			computer_container.position.x *= -1
+			enemy_spawners.rotation += 180
 		is_dragging = true
 
 func _process(_delta):

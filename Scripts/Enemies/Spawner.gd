@@ -6,8 +6,14 @@ var wave_ended : bool = false
 #Is it the first spawn of the wave?
 var first_spawn : bool = true
 
+#Parent reference
+var parent
+
 #Start spawning
 func set_up(): 
+	if !parent:
+		parent = get_parent()
+	
 	first_spawn = true
 	wave_ended = false
 	
@@ -42,4 +48,4 @@ func end_wave():
 
 #Update the wave
 func update_wave(value):
-	get_parent().update_wave(value)
+	parent.update_wave(value)
