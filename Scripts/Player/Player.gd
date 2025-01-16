@@ -12,7 +12,7 @@ var is_dragging : bool = false
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var player: Sprite2D = $Player
 @onready var computer_container: Node2D = $ComputerContainer
-@onready var enemy_spawners: Node2D = $EnemySpawners
+@onready var pet: Node2D = $"../Pet"
 
 func _ready():
 	first_position = global_position
@@ -37,10 +37,9 @@ func _input(event):
 	elif event is InputEventScreenDrag:
 		var target : Vector2 = (event.position - (get_viewport().size*0.5))
 		direction = first_position.direction_to(target).normalized()
-		if (direction.x>0&&!player.flip_h)||(direction.x<0&&player.flip_h):
+		if (direction.x>0&&player.flip_h)||(direction.x<0&&!player.flip_h):
 			player.flip_h = !player.flip_h
 			computer_container.position.x *= -1
-			enemy_spawners.rotation += 180
 		is_dragging = true
 
 func _process(_delta):
@@ -54,3 +53,4 @@ func _process(_delta):
 func reset():
 	global_position = Vector2.ZERO
 	hitbox.restore_health()
+	pet.reset()

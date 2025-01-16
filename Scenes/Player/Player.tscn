@@ -1,14 +1,14 @@
-[gd_scene load_steps=20 format=3 uid="uid://7lfiufia8slp"]
+[gd_scene load_steps=21 format=3 uid="uid://7lfiufia8slp"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_q7gve"]
-[ext_resource type="Texture2D" uid="uid://fihrd7dx35sc" path="res://Sprites/Player/Player.png" id="2_hx48d"]
 [ext_resource type="Script" path="res://Scripts/Player/Camera.gd" id="2_nrn82"]
+[ext_resource type="Texture2D" uid="uid://vwl65r2qnqe8" path="res://Sprites/Enviroment/WorldDelimiter.png" id="3_ogyjf"]
 [ext_resource type="Script" path="res://Scripts/Player/HealthSystem.gd" id="4_t5p63"]
 [ext_resource type="Script" path="res://Scripts/PlayerWeapons/WeaponsClasses/Weapon.gd" id="6_2h1e7"]
 [ext_resource type="PackedScene" uid="uid://11fh8kk8xko4" path="res://Scenes/Weapon/Weapon.tscn" id="6_mjxid"]
+[ext_resource type="AudioStream" uid="uid://d26i6hxldpy28" path="res://Soundeffects/Player/PlayerHitted.wav" id="6_psd0k"]
 [ext_resource type="Script" path="res://Scripts/Player/EnemyTargets.gd" id="7_oit74"]
-[ext_resource type="AudioStream" uid="uid://bxojw1owjpmms" path="res://Soundeffects/Player/Footsteps.wav" id="8_ddqoa"]
-[ext_resource type="Texture2D" uid="uid://cq4irhh5imy38" path="res://Sprites/Player/PlayerShadow.png" id="9_gh2a3"]
+[ext_resource type="Texture2D" uid="uid://bjlotnc0jry2s" path="res://Sprites/Player/PlayerBlack.png" id="9_3yxpj"]
 
 [sub_resource type="Animation" id="Animation_w1f0m"]
 length = 0.001
@@ -38,7 +38,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.0333333, 0.233333, 0.866667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0.160784, 0, 0, 0.654902), Color(0.168627, 0, 0, 0.592157), Color(0.227451, 0, 0, 0)]
+"values": [Color(0, 0, 0, 0.654902), Color(0, 0, 0, 0.592157), Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mahuy"]
@@ -57,20 +57,32 @@ size = Vector2(50, 50)
 
 [sub_resource type="Animation" id="Animation_cp11l"]
 resource_name = "Idle"
-length = 0.6
-loop_mode = 1
-step = 0.025
+length = 0.35
+loop_mode = 2
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player:frame_coords")
+tracks/0/path = NodePath("Player:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2i(4, 0), Vector2i(5, 0)]
+"update": 0,
+"values": [Vector2(3, 3), Vector2(3.35, 3.35)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_lex7a"]
@@ -78,98 +90,55 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player:frame_coords")
+tracks/0/path = NodePath("Player:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 0)]
+"update": 0,
+"values": [Vector2(3, 3)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer:pitch_scale")
+tracks/1/path = NodePath("Player:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("PlayerShadow:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 22)]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_lm157"]
 resource_name = "Walk"
-length = 1.1
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player:frame_coords")
+tracks/0/path = NodePath("Player:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.566667, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(2, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0698132, -0.0698132]
 }
-tracks/1/type = "audio"
+tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.00407522,
-"stream": ExtResource("8_ddqoa")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("8_ddqoa")
-}],
-"times": PackedFloat32Array(0.266667, 0.8)
-}
-tracks/1/use_blend = true
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("AudioStreamPlayer:pitch_scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.266667, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 1.1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("PlayerShadow:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.266667, 0.566667, 0.8),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 22), Vector2(0, 20), Vector2(0, 22), Vector2(0, 20)]
+"values": [Vector2(3, 3), Vector2(3.2, 3.2), Vector2(2.8, 2.8), Vector2(3.2, 3.2)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a82nh"]
@@ -178,6 +147,10 @@ _data = {
 "RESET": SubResource("Animation_lex7a"),
 "Walk": SubResource("Animation_lm157")
 }
+
+[sub_resource type="Curve" id="Curve_g653s"]
+_data = [Vector2(0, 0.989011), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
@@ -213,8 +186,14 @@ libraries = {
 "": SubResource("AnimationLibrary_mahuy")
 }
 
+[node name="WorldDelimiter" type="Sprite2D" parent="Camera2D"]
+visible = false
+modulate = Color(1, 1, 1, 0.8)
+texture = ExtResource("3_ogyjf")
+
 [node name="Weapon" parent="." instance=ExtResource("6_mjxid")]
-position = Vector2(0, -54)
+z_index = 11
+position = Vector2(0, -24)
 script = ExtResource("6_2h1e7")
 
 [node name="ComputerContainer" type="Node2D" parent="." groups=["ComputerContainer"]]
@@ -240,6 +219,26 @@ script = ExtResource("4_t5p63")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/Hitbox"]
 shape = SubResource("RectangleShape2D_klpek")
 
+[node name="HitParticleSystem" type="CPUParticles2D" parent="Areas/Hitbox"]
+emitting = false
+amount = 50
+lifetime = 1.2
+one_shot = true
+explosiveness = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 400.0
+initial_velocity_max = 600.0
+linear_accel_min = -100.0
+linear_accel_max = -83.34
+scale_amount_min = 0.0
+scale_amount_max = 5.0
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Areas/Hitbox"]
+stream = ExtResource("6_psd0k")
+pitch_scale = 0.4
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8lyj5")
 
@@ -258,12 +257,6 @@ position = Vector2(48, 0)
 [node name="Left" type="Marker2D" parent="EnemyTargets"]
 position = Vector2(-48, 0)
 
-[node name="Player" type="Sprite2D" parent="."]
-z_index = 10
-scale = Vector2(3, 3)
-texture = ExtResource("2_hx48d")
-hframes = 6
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -6.0
 
@@ -274,32 +267,31 @@ libraries = {
 autoplay = "Idle"
 
 [node name="ParticleSystem" type="Node2D" parent="."]
-visible = false
 
 [node name="RightFoot" type="CPUParticles2D" parent="ParticleSystem"]
 z_index = -5
 position = Vector2(0, 24)
 emitting = false
 amount = 10
-lifetime = 0.2
+lifetime = 0.1
 one_shot = true
 explosiveness = 1.0
-emission_shape = 1
-emission_sphere_radius = 4.61
-direction = Vector2(0, -1)
-initial_velocity_min = 100.0
-initial_velocity_max = 200.0
+emission_shape = 2
+emission_sphere_radius = 12.38
+direction = Vector2(1, 1)
+initial_velocity_min = 400.0
+initial_velocity_max = 500.0
 scale_amount_min = 2.0
 scale_amount_max = 5.0
+scale_amount_curve = SubResource("Curve_g653s")
 color = Color(0.103744, 0.103744, 0.103744, 1)
-
-[node name="PlayerShadow" type="Sprite2D" parent="."]
-position = Vector2(0, 22)
-scale = Vector2(3, 3)
-texture = ExtResource("9_gh2a3")
 
 [node name="ExplosiveContainer" type="Node2D" parent="." groups=["ExplosiveContainer"]]
 unique_name_in_owner = true
+
+[node name="Player" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("9_3yxpj")
 
 [connection signal="area_entered" from="Areas/EmeyDetector" to="Weapon" method="_on_emey_detector_area_entered"]
 [connection signal="area_exited" from="Areas/EmeyDetector" to="Weapon" method="_on_emey_detector_area_exited"]

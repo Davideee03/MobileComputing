@@ -38,12 +38,13 @@ func _on_area_entered(_area: Area2D) -> void:
 func follow_player():
 	#Get the player node
 	player = get_tree().get_first_node_in_group("Player")
+	if global_position.distance_to(player.global_position)>=750:
+		destroy()
 
 #Used to collect an item when the player is very close
 func item_collected():
 	#Update the core stats
 	Stats.add_core(cores.find_key(item_type))     #It passes the core name
-	Global.remove_drops(self)
 	
 	#Player collect sound
 	audio_stream_player.pitch_scale = randf_range(0.8, 1.1)
@@ -54,7 +55,7 @@ func item_collected():
 	
 	#Destroy the item once the audio is finished
 	await audio_stream_player.finished
-	queue_free()
+	destroy()
 
 #With this method, it is possibile to choose a rarity for the item
 #Rarity possibilities:
@@ -87,22 +88,16 @@ func choose_rarity():
 	
 	return cores.size()-1
 
+func destroy():
+	Global.remove_drops(self)
+	queue_free()
+
 #Notify that the player can collect the item
 func _on_collect_area_area_entered(_area: Area2D) -> void:
 	item_collected()
 
 func _on_visible_on_screen_enabler_2d_screen_exited() -> void:
-	Global.remove_drops(self)
-	queue_free()
-
-func collect_after_wave():
-	if can_collected:
-		follow_player()
-		return
-	
-	Global.remove_drops(self)
-	queue_free()
-
+	destroy()
 
 func _on_collect_after_wave_enabler_screen_entered() -> void:
 	can_collected = true

@@ -9,6 +9,8 @@ var can_shoot : bool = false
 func enter() -> void:
 	can_shoot = false
 	SHOOTER.update_speed(speed)
+	
+	ANIMATOR.play("Walk")
 
 func update(delta):
 	var direction : Vector2 = SHOOTER.global_position.direction_to(TARGET.global_position)

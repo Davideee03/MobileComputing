@@ -34,6 +34,7 @@ func shoot():
 	bullet.set_up(shooting_point.global_position, shooting_dir, SHOOTER.damage)
 	
 	can_shoot = false
+	ANIMATOR.play("Shoot")
 	reload()
 
 func reload():
