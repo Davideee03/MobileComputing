@@ -6,3 +6,8 @@ func play_expolosion() -> void:
 	stream = default_enemy_sound.pick_random()
 	pitch_scale = randf_range(0.6,0.9)
 	play()
+
+func play_default_pitch(audio : AudioStreamWAV):
+	stream = audio
+	pitch_scale = 1.0
+	play()

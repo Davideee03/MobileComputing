@@ -7,6 +7,8 @@ const FLOOR = preload("res://Scenes/Enviroment/Floor.tscn")
 #It stores the floors position
 @onready var floor: Node = $".."
 
+@export var first_tile : bool = false
+
 #Add to the parent it's position
 func _ready() -> void:
 	floor.add(global_position)
@@ -44,6 +46,7 @@ func spawn():
 
 #Remove the node from the tree and from the floor_container
 func delete():
+	if first_tile: return
 	floor.delete(global_position)
 	queue_free()
 

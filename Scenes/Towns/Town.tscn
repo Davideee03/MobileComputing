@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cu3i1p3knb8dp"]
+[gd_scene load_steps=22 format=3 uid="uid://cu3i1p3knb8dp"]
 
 [ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
 [ext_resource type="Script" path="res://Scripts/ItemDrops/ItemContainer.gd" id="2_vjykl"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/Spawner.gd" id="9_bfess"]
 [ext_resource type="Script" path="res://Scripts/UI/Stats/Exp.gd" id="9_n7x3u"]
 [ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="10_avg3d"]
+[ext_resource type="Theme" uid="uid://dxusat8n2pb7h" path="res://Themes/ProgressBars.tres" id="10_c1jpn"]
 [ext_resource type="Script" path="res://Scripts/UI/Stats/Wave.gd" id="10_o0yex"]
 [ext_resource type="Script" path="res://Scripts/Explosives/ExplosivesSpawner.gd" id="11_51ntn"]
 [ext_resource type="PackedScene" uid="uid://cdqnsmky25kr1" path="res://Scenes/Explosives/Mine.tscn" id="12_q45tx"]
@@ -108,6 +109,18 @@ script = ExtResource("9_bfess")
 
 [node name="Spawner11" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
 position = Vector2(-375, -750)
+script = ExtResource("9_bfess")
+
+[node name="Spawner12" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(-750, -375)
+script = ExtResource("9_bfess")
+
+[node name="Spawner13" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(-750, 0)
+script = ExtResource("9_bfess")
+
+[node name="Spawner14" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(-750, 375)
 script = ExtResource("9_bfess")
 
 [node name="UI" type="CanvasLayer" parent="Player"]
@@ -220,10 +233,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -990.0
-offset_top = 145.0
-offset_right = -809.0
-offset_bottom = 176.0
+offset_left = -962.0
+offset_top = 179.0
+offset_right = -781.0
+offset_bottom = 210.0
 grow_horizontal = 0
 text = "Reset Game to Wave 0"
 
@@ -348,6 +361,7 @@ anchor_right = 0.5
 offset_left = -360.0
 offset_bottom = 40.0
 grow_horizontal = 2
+theme = ExtResource("10_c1jpn")
 max_value = 15.0
 value = 5.58
 show_percentage = false
@@ -379,6 +393,7 @@ anchor_right = 0.5
 offset_right = 360.0
 offset_bottom = 40.0
 grow_horizontal = 2
+theme = ExtResource("10_c1jpn")
 show_percentage = false
 script = ExtResource("9_n7x3u")
 
@@ -411,6 +426,7 @@ offset_top = 40.0
 offset_right = 360.0
 offset_bottom = 70.0
 grow_horizontal = 2
+theme = ExtResource("10_c1jpn")
 max_value = 0.0
 show_percentage = false
 script = ExtResource("10_o0yex")
@@ -488,6 +504,7 @@ position = Vector2(47, 18)
 script = ExtResource("17_h1k4o")
 
 [node name="FloorOneTile" parent="Floor" instance=ExtResource("16_l2qit")]
+first_tile = true
 
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/EnemySpawners" method="_on_start_wave_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI" method="_on_start_wave_button_button_down"]

@@ -7,10 +7,8 @@ _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.351648), -1.40376, 0.0, 0, 
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_j2h3g"]
-colors = PackedColorArray(0.376471, 0, 0, 1, 0.713718, 0.713719, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_5r2vt"]
-colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
 
 [node name="Explosion" type="Node2D"]
 script = ExtResource("1_4xsl3")
@@ -29,7 +27,6 @@ initial_velocity_max = 150.0
 scale_amount_min = 15.0
 scale_amount_max = 30.0
 scale_amount_curve = SubResource("Curve_dtrd4")
-color = Color(0.501961, 0, 0, 1)
 color_ramp = SubResource("Gradient_j2h3g")
 color_initial_ramp = SubResource("Gradient_5r2vt")
 

@@ -6,5 +6,6 @@ extends ShooterMovementState
 @export var max_idle_time : float = 0.2
 
 func enter() -> void:
+	ANIMATOR.play("Idle")
 	await get_tree().create_timer(max_idle_time).timeout
 	transition.emit("ChaseShooterState")

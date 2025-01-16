@@ -11,8 +11,13 @@ var player: Node2D
 
 var too_distant : bool = false
 
+var first_position : Vector2
+
 func _init() -> void:
 	actual_speed = speed
+
+func _ready() -> void:
+	first_position = global_position
 
 func _process(delta: float) -> void:
 	if !player: return
@@ -20,6 +25,9 @@ func _process(delta: float) -> void:
 	
 	if too_distant: 
 		actual_speed = move_toward(actual_speed, run_speed, delta*acelleration)
+
+func reset():
+	global_position = first_position
 
 func _on_player_detector_body_entered(_body: Node2D) -> void:
 	player = null
