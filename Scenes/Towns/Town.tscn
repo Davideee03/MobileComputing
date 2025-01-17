@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cu3i1p3knb8dp"]
+[gd_scene load_steps=27 format=3 uid="uid://cu3i1p3knb8dp"]
 
 [ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
 [ext_resource type="Script" path="res://Scripts/ItemDrops/ItemContainer.gd" id="2_vjykl"]
@@ -26,7 +26,6 @@
 [ext_resource type="Script" path="res://Scripts/Enviroment/FloorContainer.gd" id="17_h1k4o"]
 [ext_resource type="PackedScene" uid="uid://dyux3pqy0wmvu" path="res://Scenes/Player/Pet.tscn" id="17_pjj81"]
 [ext_resource type="Texture2D" uid="uid://c46iv5lwn3hyn" path="res://Sprites/Items/GEM 2 - PURPLE - 0008.png" id="18_xk8xw"]
-[ext_resource type="AudioStream" uid="uid://1pwgklfkusbb" path="res://Soundeffects/Enviroment/Ambient.wav" id="27_bq3j2"]
 
 [node name="World" type="Node2D"]
 
@@ -525,9 +524,7 @@ script = ExtResource("17_h1k4o")
 first_tile = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("27_bq3j2")
 volume_db = 5.0
-autoplay = true
 bus = &"Enviroment"
 
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/EnemySpawners" method="_on_start_wave_button_down"]
