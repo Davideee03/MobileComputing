@@ -76,7 +76,7 @@ _data = {
 [node name="Giant" type="Node2D"]
 script = ExtResource("1_c5nhx")
 value = 3
-damage = 6
+damage = 3
 health = 21
 
 [node name="HealthSystem" type="Area2D" parent="."]
