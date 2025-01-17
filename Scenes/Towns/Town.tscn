@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cu3i1p3knb8dp"]
+[gd_scene load_steps=27 format=3 uid="uid://cu3i1p3knb8dp"]
 
 [ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
 [ext_resource type="Script" path="res://Scripts/ItemDrops/ItemContainer.gd" id="2_vjykl"]
@@ -14,13 +14,18 @@
 [ext_resource type="Theme" uid="uid://dxusat8n2pb7h" path="res://Themes/ProgressBars.tres" id="10_c1jpn"]
 [ext_resource type="Script" path="res://Scripts/UI/Stats/Wave.gd" id="10_o0yex"]
 [ext_resource type="Script" path="res://Scripts/Explosives/ExplosivesSpawner.gd" id="11_51ntn"]
+[ext_resource type="PackedScene" uid="uid://ccgo2jmnn5064" path="res://Scenes/Player/Heart.tscn" id="12_ahd65"]
 [ext_resource type="PackedScene" uid="uid://cdqnsmky25kr1" path="res://Scenes/Explosives/Mine.tscn" id="12_q45tx"]
 [ext_resource type="PackedScene" uid="uid://cbbe6qoahmwoc" path="res://Scenes/Explosives/Grenade.tscn" id="13_cetdv"]
 [ext_resource type="Texture2D" uid="uid://d3cuppqtwq30" path="res://Sprites/Explosives/Mine.png" id="14_q2mew"]
 [ext_resource type="Texture2D" uid="uid://cnyc6kyupuj4b" path="res://Sprites/Explosives/Grenade.png" id="15_ky46n"]
+[ext_resource type="Texture2D" uid="uid://bgvxi6v15shix" path="res://Sprites/Items/Carbon.png" id="15_s8g22"]
+[ext_resource type="Texture2D" uid="uid://mcg6njyik3dv" path="res://Sprites/Items/GEM 2 - GOLD - 0008.png" id="16_d4434"]
 [ext_resource type="PackedScene" uid="uid://bhaif6fyye5rx" path="res://Scenes/Enviroment/Floor.tscn" id="16_l2qit"]
+[ext_resource type="Texture2D" uid="uid://nx0vj6ttp1od" path="res://Sprites/Items/GEM 2 - LIGHT GREEN - 0008.png" id="17_bh1g1"]
 [ext_resource type="Script" path="res://Scripts/Enviroment/FloorContainer.gd" id="17_h1k4o"]
 [ext_resource type="PackedScene" uid="uid://dyux3pqy0wmvu" path="res://Scenes/Player/Pet.tscn" id="17_pjj81"]
+[ext_resource type="Texture2D" uid="uid://c46iv5lwn3hyn" path="res://Sprites/Items/GEM 2 - PURPLE - 0008.png" id="18_xk8xw"]
 
 [node name="World" type="Node2D"]
 
@@ -234,9 +239,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -962.0
-offset_top = 179.0
+offset_top = 186.0
 offset_right = -781.0
-offset_bottom = 210.0
+offset_bottom = 217.0
 grow_horizontal = 0
 text = "Reset Game to Wave 0"
 
@@ -289,50 +294,6 @@ offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CoreNormal" type="Label" parent="Player/UI/UI/Shop"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 133.0
-offset_top = 185.0
-offset_right = 313.0
-offset_bottom = 210.0
-theme_override_fonts/font = ExtResource("5_38p5k")
-theme_override_font_sizes/font_size = 25
-text = "Carbon: 0"
-
-[node name="CoreRare" type="Label" parent="Player/UI/UI/Shop"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 591.0
-offset_top = 185.0
-offset_right = 734.0
-offset_bottom = 210.0
-theme_override_fonts/font = ExtResource("5_38p5k")
-theme_override_font_sizes/font_size = 25
-text = "Silver: 0"
-
-[node name="CoreEpic" type="Label" parent="Player/UI/UI/Shop"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 133.0
-offset_top = 255.0
-offset_right = 246.0
-offset_bottom = 280.0
-theme_override_fonts/font = ExtResource("5_38p5k")
-theme_override_font_sizes/font_size = 25
-text = "Gold: 0"
-
-[node name="CoreLegendary" type="Label" parent="Player/UI/UI/Shop"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 591.0
-offset_top = 255.0
-offset_right = 764.0
-offset_bottom = 280.0
-theme_override_fonts/font = ExtResource("5_38p5k")
-theme_override_font_sizes/font_size = 25
-text = "Diamond: 0"
-
 [node name="Stats" type="Control" parent="Player/UI/UI"]
 layout_mode = 1
 anchors_preset = 15
@@ -352,37 +313,31 @@ offset_right = 680.0
 offset_bottom = 97.0
 text = "Money: 0"
 
-[node name="Health" type="ProgressBar" parent="Player/UI/UI/Stats"]
+[node name="Health" type="Control" parent="Player/UI/UI/Stats"]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -360.0
-offset_bottom = 40.0
-grow_horizontal = 2
-theme = ExtResource("10_c1jpn")
-max_value = 15.0
-value = 5.58
-show_percentage = false
-script = ExtResource("8_irv3n")
-
-[node name="HealthLabel" type="Label" parent="Player/UI/UI/Stats/Health"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -11.5
-offset_right = 30.0
-offset_bottom = 11.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("5_38p5k")
-theme_override_font_sizes/font_size = 20
-text = "Health: 15/15"
+mouse_filter = 2
+theme = ExtResource("10_c1jpn")
+script = ExtResource("8_irv3n")
+
+[node name="Heart" parent="Player/UI/UI/Stats/Health" instance=ExtResource("12_ahd65")]
+
+[node name="Heart2" parent="Player/UI/UI/Stats/Health" instance=ExtResource("12_ahd65")]
+position = Vector2(50, 320)
+
+[node name="Heart3" parent="Player/UI/UI/Stats/Health" instance=ExtResource("12_ahd65")]
+position = Vector2(50, 400)
+
+[node name="Heart4" parent="Player/UI/UI/Stats/Health" instance=ExtResource("12_ahd65")]
+position = Vector2(50, 480)
+
+[node name="Heart5" parent="Player/UI/UI/Stats/Health" instance=ExtResource("12_ahd65")]
+position = Vector2(50, 560)
 
 [node name="Exp" type="ProgressBar" parent="Player/UI/UI/Stats"]
 unique_name_in_owner = true
@@ -390,8 +345,8 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_right = 360.0
-offset_bottom = 40.0
+offset_left = -360.0
+offset_bottom = 60.0
 grow_horizontal = 2
 theme = ExtResource("10_c1jpn")
 show_percentage = false
@@ -399,16 +354,13 @@ script = ExtResource("9_n7x3u")
 
 [node name="HealthLabel" type="Label" parent="Player/UI/UI/Stats/Exp"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -9.695
-offset_right = 64.0
-offset_bottom = 13.305
-grow_horizontal = 2
+offset_left = 50.0
+offset_top = -11.5
+offset_right = 178.0
+offset_bottom = 11.5
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 20
@@ -416,34 +368,99 @@ text = "Level 0"
 
 [node name="Wave" type="ProgressBar" parent="Player/UI/UI/Stats"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -360.0
-offset_top = 40.0
 offset_right = 360.0
-offset_bottom = 70.0
+offset_bottom = 60.0
 grow_horizontal = 2
 theme = ExtResource("10_c1jpn")
-max_value = 0.0
+value = 21.72
+fill_mode = 1
 show_percentage = false
 script = ExtResource("10_o0yex")
 
 [node name="WaveLabel" type="Label" parent="Player/UI/UI/Stats/Wave"]
 layout_mode = 1
-anchors_preset = 4
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = 10.0
+offset_left = -128.0
 offset_top = -11.5
-offset_right = 138.0
 offset_bottom = 11.5
+grow_horizontal = 0
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 20
 text = "Wave 0"
+
+[node name="CoreNormal" type="Label" parent="Player/UI/UI/Stats"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -670.0
+offset_top = 90.0
+offset_right = -490.0
+offset_bottom = 115.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 25
+text = ":0"
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/UI/UI/Stats/CoreNormal"]
+position = Vector2(-21, 10)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("15_s8g22")
+
+[node name="CoreRare" type="Label" parent="Player/UI/UI/Stats"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 230.0
+offset_top = 90.0
+offset_right = 373.0
+offset_bottom = 115.0
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 25
+text = ":0"
+
+[node name="Rare" type="Sprite2D" parent="Player/UI/UI/Stats/CoreRare"]
+position = Vector2(-21, 10)
+texture = ExtResource("17_bh1g1")
+
+[node name="CoreEpic" type="Label" parent="Player/UI/UI/Stats"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 410.0
+offset_top = 90.0
+offset_right = 523.0
+offset_bottom = 115.0
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 25
+text = ":0"
+
+[node name="Epic" type="Sprite2D" parent="Player/UI/UI/Stats/CoreEpic"]
+position = Vector2(-21, 10)
+texture = ExtResource("18_xk8xw")
+
+[node name="CoreLegendary" type="Label" parent="Player/UI/UI/Stats"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 590.0
+offset_top = 90.0
+offset_right = 763.0
+offset_bottom = 115.0
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 25
+text = ":0"
+
+[node name="Legendary" type="Sprite2D" parent="Player/UI/UI/Stats/CoreLegendary"]
+position = Vector2(-21, 10)
+texture = ExtResource("16_d4434")
 
 [node name="Explosives" type="Control" parent="Player/UI/UI" groups=["ExplosivesControl"]]
 visible = false
@@ -505,6 +522,10 @@ script = ExtResource("17_h1k4o")
 
 [node name="FloorOneTile" parent="Floor" instance=ExtResource("16_l2qit")]
 first_tile = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 5.0
+bus = &"Enviroment"
 
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/EnemySpawners" method="_on_start_wave_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI" method="_on_start_wave_button_button_down"]

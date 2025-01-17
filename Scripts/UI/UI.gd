@@ -10,7 +10,7 @@ extends Control
 @onready var money: Label = %Money
 #@onready var waves: Label = %Waves
 @onready var exp: ProgressBar = %Exp
-@onready var health: ProgressBar = %Health
+@onready var health: Control = %Health
 @onready var coreNormal: Label = %CoreNormal
 @onready var coreRare: Label = %CoreRare
 @onready var coreEpic: Label = %CoreEpic
@@ -36,10 +36,10 @@ func display_new_stats(current_money, current_exp, current_wave, current_health,
 	exp.update_exp(current_exp)
 	#health.text = "Health: " + str(current_health)
 	health.update_health(current_health)
-	coreNormal.text = "Carbon: " + str(current_coreNormal)
-	coreRare.text = "Silver: " + str(current_coreRare)
-	coreEpic.text = "Gold: " + str(current_coreEpic)
-	coreLegendary.text = "Diamond: " + str(current_coreLegendary)
+	coreNormal.text = ": " + str(current_coreNormal)
+	coreRare.text = ": " + str(current_coreRare)
+	coreEpic.text = ": " + str(current_coreEpic)
+	coreLegendary.text = ": " + str(current_coreLegendary)
 
 #Start a new wave
 func _on_start_wave_button_button_down() -> void:
@@ -48,19 +48,20 @@ func _on_start_wave_button_button_down() -> void:
 #Open the shop
 func _on_shop_button_button_down() -> void:
 	change_buttons_visibility()
+	health.visible = false
 	Global.shop_opened = true
 	shop.visible = true
 
 #Close the shop
 func _on_shop_back_button_down() -> void:
 	change_buttons_visibility()
+	health.visible = true
 	Global.shop_opened = false
 	shop.visible = false
 
 #Developer button  for resetting the game to zero
 func _on_reset_game_button_down() -> void:
 	Stats.reset_to_zero()
-	Stats.emit_stats()
 
 #Adding almost infinite resources for the player 
 func _on_cheats_button_down() -> void:
