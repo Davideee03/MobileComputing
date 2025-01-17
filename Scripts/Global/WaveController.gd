@@ -11,7 +11,7 @@ var current_enemies : Array[PackedScene]
 
 func set_enemies():
 	var wave : int = Stats.current_wave
-	var wave_to_enemy : int = int(wave/10)
+	var wave_to_enemy : int = int(wave/5)
 	if wave_to_enemy+1>enemies.size(): return current_enemies
 	for i in wave_to_enemy+1:
 		if !current_enemies.has(enemies[wave_to_enemy]):

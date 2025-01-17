@@ -1,18 +1,25 @@
 extends Area2D
 
 @export_category("Health")
-@export var total_health : int = 15
+@export var total_health : int = 5
 var current_health : int
 @export var can_take_damage : bool = true
 
 @export_category("Invincibility")
-@export var invincibility_time : float = 0.25
+@export var invincibility_time : float = 1.0
 
 var spawner_container 
 
+#Hit effects
+@onready var damage_animator: AnimationPlayer = %DamageAnimator
+@onready var hit_particle_system: CPUParticles2D = $HitParticleSystem
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
 func _ready():
-	restore_health()
 	spawner_container = get_tree().get_first_node_in_group("SpawnerContainer")
+	
+	await get_tree().create_timer(0.2).timeout
+	current_health = Stats.current_health
 
 func restore_health():
 	#Set up the health
@@ -38,6 +45,12 @@ func take_damage(damage : int):
 	#Momentaneo
 	if current_health<=0:
 		spawner_container.end_wave()
+	else:
+		#Play the animation (Black Color rect)
+		damage_animator.play("TakeDamage")
+		
+		hit_particle_system.emitting = true
+		audio_stream_player.play()
 
 func invincibility():
 	#Invicibility duration

@@ -4,15 +4,20 @@
 [ext_resource type="Script" path="res://Scripts/Explosives/Grenade.gd" id="1_d0bwb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oot5c"]
-radius = 23.0
+radius = 100.0
 
 [node name="Grenade" type="Node2D"]
+top_level = true
 script = ExtResource("1_d0bwb")
 
 [node name="DamageArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
 
 [node name="DamageShape" type="CollisionShape2D" parent="DamageArea"]
 shape = SubResource("CircleShape2D_oot5c")
 
-[node name="Grenade" type="Sprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
 texture = ExtResource("1_40fyx")

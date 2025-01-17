@@ -23,8 +23,8 @@ func choose_random_wait_time():
 	var x : int = Stats.current_wave
 	#The wait time depends on the current wave
 	#With x small, the wait time is small too
-	var max_wait_time : float = 3*pow(x,0.3)
-	var min_wait_time : float = 2*pow(x, 0.3)
+	var max_wait_time : float = 5*pow(x,0.2)
+	var min_wait_time : float = 2*pow(x, 0.2)
 	return randf_range(min_wait_time, max_wait_time)
 
 func choose_random_enemy():

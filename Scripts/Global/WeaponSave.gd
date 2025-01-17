@@ -27,15 +27,14 @@ func save_weapon(weapon: Weapon) -> void:
 	
 	print("Arma salvata: " + weapon.name)
 
-# Loading weapons
+#Loading weapons
 func load_weapon_data() -> Dictionary:
 	if FileAccess.file_exists(weapon_save_path):
 		var save = FileAccess.open(weapon_save_path, FileAccess.READ)
 		weapon_stats = save.get_var()
 		save.close()
 		print("Dati delle armi caricati!")
-
-		# dictionary of the loaded weapons
+		#Dictionary of the loaded weapons
 		var loaded_weapons = {}
 		
 		# loop to create the weapons in the game if we have them in the dictionary with upgraded stats
@@ -58,16 +57,15 @@ func load_weapon_data() -> Dictionary:
 				weapon.reload_time = data["reload_time"]
 				weapon.level = data["level"]
 				weapon.price = data["price"]
-				weapon.bought = data.get("bought", false)	
+				weapon.bought = data.get("bought", false)
 				loaded_weapons[weapon_name] = weapon
-
+				
 		return loaded_weapons
-		
 	else:
 		print("Nessun file di salvataggio.")
 		return {}
 
-# we load the stats to the weapon in game we have
+#We load the stats to the weapon in game we have
 func load_weapon(weapon: Weapon) -> void:
 	if weapon_stats.has(weapon.name):
 		var data = weapon_stats[weapon.name]
