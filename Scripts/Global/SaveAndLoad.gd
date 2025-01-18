@@ -29,7 +29,7 @@ func load_data():
 		stats = save.get_var()
 		save.close()
 		
-		
+		print("Current max exp: " +str(stats["MaxExp"]))
 		print("Loaded!")
 	#Or create a new file with the dafault values
 	else:
@@ -39,7 +39,11 @@ func load_data():
 #Set the current stats values
 func set_stats():
 	stats["Wave"] = Stats.current_wave
+	
 	stats["Exp"] = Stats.current_exp
+	stats["Lvl"] = Stats.current_lvl
+	stats["MaxExp"] = Stats.current_max_exp
+	
 	stats["Money"] = Stats.current_money
 	stats["Health"] = Stats.current_health
 	

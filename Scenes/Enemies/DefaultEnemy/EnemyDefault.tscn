@@ -4,7 +4,6 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/Health/EnemyHealthSystem.gd" id="1_e5dgr"]
 [ext_resource type="Script" path="res://Scripts/Enemies/DefaultEnemy/DamageArea.gd" id="3_xfmkv"]
 [ext_resource type="Texture2D" uid="uid://bcgb7nwhpyl14" path="res://Sprites/Enemies/DefaultEnemy.png" id="4_p2thn"]
-[ext_resource type="Texture2D" uid="uid://cq4irhh5imy38" path="res://Sprites/Player/PlayerShadow.png" id="5_ly11t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8f483"]
 size = Vector2(35, 35)
@@ -17,32 +16,56 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DefaultEnemy/EnemySprite:frame_coords")
+tracks/0/path = NodePath("DefaultEnemy/EnemySprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 0)]
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DefaultEnemy/EnemySprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3, 3)]
 }
 
 [sub_resource type="Animation" id="Animation_27yhv"]
 resource_name = "Walk"
-length = 0.4
+length = 0.8
 loop_mode = 1
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("DefaultEnemy/EnemySprite:frame_coords")
+tracks/0/path = NodePath("DefaultEnemy/EnemySprite:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0872665, -0.0872665]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DefaultEnemy/EnemySprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(2, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
+"update": 0,
+"values": [Vector2(3, 3), Vector2(3.15, 3.15), Vector2(2.85, 2.85), Vector2(3.15, 3.15)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_icqwn"]
@@ -51,10 +74,13 @@ _data = {
 "Walk": SubResource("Animation_27yhv")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_l3qtj"]
+radius = 100.0
+
 [node name="DefaultEnemy" type="Node2D"]
 top_level = true
 script = ExtResource("1_byofy")
-health = 7
+health = 8
 
 [node name="HealthSystem" type="Area2D" parent="."]
 collision_layer = 4
@@ -78,13 +104,6 @@ shape = SubResource("RectangleShape2D_7kq0v")
 z_index = 5
 scale = Vector2(3, 3)
 texture = ExtResource("4_p2thn")
-hframes = 4
-frame = 2
-
-[node name="PlayerShadow" type="Sprite2D" parent="."]
-position = Vector2(0, 20)
-scale = Vector2(3, 3)
-texture = ExtResource("5_ly11t")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../..")
@@ -93,4 +112,13 @@ libraries = {
 }
 autoplay = "Walk"
 
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("CircleShape2D_l3qtj")
+
 [connection signal="area_entered" from="Hitbox" to="Hitbox" method="_on_area_entered"]
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]

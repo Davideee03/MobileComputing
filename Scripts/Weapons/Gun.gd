@@ -4,7 +4,7 @@ extends Weapon
 var sprite = preload("res://Sprites/Weapons/Gun.png")
 var bullet = preload("res://Scenes/Weapon/Bullets/GunBullet.tscn")
 var damage = 5.0
-var reload_time = 0.5
+var reload_time = 0.75
 var level = 1
 var reload_reduction = 0.008
 var price = 100

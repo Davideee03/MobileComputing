@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhaif6fyye5rx"]
+
+[ext_resource type="Texture2D" uid="uid://dtmlohhsrr586" path="res://Sprites/Enviroment/FloorOneTile.png" id="1_mpqyr"]
+[ext_resource type="Script" path="res://Scripts/Enviroment/Floor.gd" id="2_vk1xm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djjwx"]
+size = Vector2(800, 1380)
+
+[node name="FloorOneTile" type="Sprite2D"]
+z_index = -100
+texture = ExtResource("1_mpqyr")
+script = ExtResource("2_vk1xm")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("RectangleShape2D_djjwx")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, 3.05176e-05)
+scale = Vector2(144, 256)
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

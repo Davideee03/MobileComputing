@@ -1,8 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://dp356qdg4yhii"]
+[gd_scene load_steps=7 format=3 uid="uid://dp356qdg4yhii"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/Shooter/ShooterSrojectile.gd" id="1_r68yc"]
+[ext_resource type="Texture2D" uid="uid://c3v3ud7mcs4xh" path="res://Sprites/Enemies/Bullet.png" id="2_mh7d3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dmi7x"]
+
+[sub_resource type="Animation" id="Animation_jkltp"]
+resource_name = "Idle"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bullet:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_7xry3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bullet:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0hwf"]
+_data = {
+"Idle": SubResource("Animation_jkltp"),
+"RESET": SubResource("Animation_7xry3")
+}
 
 [node name="ShooterProjectile" type="Area2D"]
 collision_layer = 0
@@ -13,10 +52,14 @@ script = ExtResource("1_r68yc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dmi7x")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0
-offset_bottom = 5.0
+[node name="Bullet" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("2_mh7d3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_i0hwf")
+}
+autoplay = "Idle"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

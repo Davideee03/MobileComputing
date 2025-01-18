@@ -1,5 +1,6 @@
 [gd_scene load_steps=55 format=3 uid="uid://cftrkiyi740hw"]
 
+[ext_resource type="FontFile" uid="uid://dflx50tvhjet4" path="res://Fonts/TMT-Paint-Regular.otf" id="1_ee2sf"]
 [ext_resource type="Script" path="res://Scripts/UI/WeaponButton.gd" id="1_jvfwi"]
 [ext_resource type="Script" path="res://Scripts/Weapons/Gun.gd" id="2_faleo"]
 [ext_resource type="Script" path="res://Scripts/UI/buy_button.gd" id="2_m2wpg"]
@@ -13,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://deo03cvskmou2" path="res://Sprites/Items/Cores.png" id="7_k7bhb"]
 [ext_resource type="Script" path="res://Scripts/UI/StatsUI.gd" id="7_xvl4a"]
 [ext_resource type="Texture2D" uid="uid://cvrdekbuxei15" path="res://Sprites/Weapons/ShotGun.png" id="8_1opsl"]
-[ext_resource type="Script" path="res://Scenes/UI/button.gd" id="8_tcgbb"]
 [ext_resource type="Script" path="res://Scripts/UI/reset_button_weapons.gd" id="9_gx07f"]
 [ext_resource type="Texture2D" uid="uid://dreafflwq03ut" path="res://Sprites/Weapons/AssaultRifle.png" id="10_hvtsb"]
 [ext_resource type="Script" path="res://Scripts/UI/ButtonResetShop.gd" id="10_q7mde"]
@@ -180,6 +180,8 @@ offset_right = 613.0
 offset_bottom = 488.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("1_ee2sf")
+theme_override_font_sizes/font_size = 15
 tab_alignment = 1
 current_tab = 0
 
@@ -514,7 +516,6 @@ offset_top = 38.0
 offset_right = 443.0
 offset_bottom = 103.0
 text = "armatura,  scudo elettrico, modulo velocità player. modulo peso player"
-script = ExtResource("8_tcgbb")
 
 [node name="TextureRect2" type="TextureRect" parent="Upgrades/VBoxContainer"]
 layout_mode = 2

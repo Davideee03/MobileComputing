@@ -9,6 +9,4 @@ func _ready() -> void:
 
 #Hit the player
 func _on_area_entered(area: Area2D) -> void:
-	######SI DOVRA' ASPETTARE UN ATTIMO PRIMA DI POTER ATTACCARE######
-	######CODICE NON COMPLETO######
 	area.take_damage(damage)

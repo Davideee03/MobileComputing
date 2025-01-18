@@ -4,9 +4,11 @@ extends Node
 signal on_stats_changed(current_money, current_exp, current_wave, current_health, current_coreNormal, current_coreRare, current_coreEpic, current_coreLegendary )
 
 var current_money : int = 0
+var current_lvl : int = 0
 var current_exp : int = 0
+var current_max_exp : int = 100
 var current_wave : int = 0
-var current_health : int = 15
+var current_health : int = 5
 var current_coreNormal : int = 0
 var current_coreRare : int = 0
 var current_coreEpic : int = 0
@@ -18,13 +20,19 @@ func _ready() -> void:
 	
 	#Load all the stats
 	current_wave = SaveAndLoad.get_stat("Wave")
+	
 	current_exp = SaveAndLoad.get_stat("Exp")
+	current_lvl = SaveAndLoad.get_stat("Lvl")
+	current_max_exp = SaveAndLoad.get_stat("MaxExp")
+	
 	current_money = SaveAndLoad.get_stat("Money")
 	current_health = SaveAndLoad.get_stat("Health")
+	
 	current_coreNormal = SaveAndLoad.get_stat("CoreNormal")
 	current_coreRare = SaveAndLoad.get_stat("CoreRare")
 	current_coreEpic = SaveAndLoad.get_stat("CoreEpic")
 	current_coreLegendary = SaveAndLoad.get_stat("CoreLegendary")
+	
 	
 	#Set the stats
 	emit_stats()
@@ -69,8 +77,10 @@ func update_wave(reset_wave = false):
 
 # Reset the game to zero
 func reset_to_zero():
-	current_health = 15
+	current_health = 5
+	current_lvl = 0
 	current_exp = 0
+	current_max_exp = 100
 	current_money = 0
 	current_wave = 0
 	current_coreNormal = 0
@@ -79,6 +89,7 @@ func reset_to_zero():
 	current_coreLegendary = 0
 	
 	SaveAndLoad.save()
+	emit_stats()
 
 #Update the stats
 #Connected in UI
