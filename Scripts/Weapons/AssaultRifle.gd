@@ -12,9 +12,6 @@ var name = "AssaultRifle"
 var bought = false
 var weapon_save = WeaponSave
 
-func _init():
-	print("Nuova arma creata: " + name)
-	
 # Upgrading the weapon called by the playerWeapon
 func up():
 	if upgradingCost():

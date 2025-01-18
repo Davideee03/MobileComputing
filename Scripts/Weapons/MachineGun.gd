@@ -13,9 +13,6 @@ var weight = 400
 var weapon_save = WeaponSave
 var bought = false
 
-func _init():
-	print("Nuova arma creata: " + name)
-
 func up():
 	if upgradingCost():
 		damage = 2.5*pow(damage, 0.7)

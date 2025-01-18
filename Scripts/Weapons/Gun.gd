@@ -16,10 +16,6 @@ var weight = 100
 var weapon_save = WeaponSave
 var bought = true # the gun is the first weapon the player has so we set the variable to true
 	
-# just a print to check if the code runs here when we open the game 
-func _init():
-	print("Nuova arma creata: " + name)
-	
 # Upgrading the weapon called by the playerWeapon
 func up():
 	if upgradingCost():
