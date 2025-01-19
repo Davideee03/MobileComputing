@@ -179,9 +179,8 @@ script = ExtResource("17_ekcxq")
 script = ExtResource("17_ekcxq")
 
 [node name="Shop" type="TabContainer"]
-offset_top = -400.0
+offset_top = -600.0
 offset_right = 613.0
-offset_bottom = 488.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_ee2sf")
@@ -539,6 +538,7 @@ layout_mode = 2
 metadata/_tab_index = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Consumables"]
+layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -554,11 +554,11 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="MineRectangle" type="TextureRect" parent="Consumables/VBoxContainer"]
+[node name="Mine" type="TextureRect" parent="Consumables/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("6_lj35b")
 
-[node name="NameMine" type="Label" parent="Consumables/VBoxContainer/MineRectangle"]
+[node name="NameMine" type="Label" parent="Consumables/VBoxContainer/Mine"]
 layout_mode = 0
 offset_left = 33.0
 offset_top = 6.0
@@ -566,7 +566,7 @@ offset_right = 73.0
 offset_bottom = 29.0
 text = "Mine"
 
-[node name="StatsMine" type="Label" parent="Consumables/VBoxContainer/MineRectangle"]
+[node name="StatsMine" type="Label" parent="Consumables/VBoxContainer/Mine"]
 layout_mode = 0
 offset_left = 140.0
 offset_top = 6.0
@@ -577,7 +577,7 @@ Damage: 20
 CoreNormal: x3
 CoreRare: x1"
 
-[node name="MineSprite" type="TextureRect" parent="Consumables/VBoxContainer/MineRectangle"]
+[node name="MineSprite" type="TextureRect" parent="Consumables/VBoxContainer/Mine"]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 37.0
@@ -585,7 +585,7 @@ offset_right = 87.0
 offset_bottom = 107.0
 texture = ExtResource("22_j1m2c")
 
-[node name="AmountMine" type="Label" parent="Consumables/VBoxContainer/MineRectangle"]
+[node name="AmountMine" type="Label" parent="Consumables/VBoxContainer/Mine"]
 layout_mode = 0
 offset_left = 68.0
 offset_top = 81.0
@@ -595,7 +595,7 @@ theme_override_fonts/font = ExtResource("23_qmmtf")
 theme_override_font_sizes/font_size = 32
 text = "x1"
 
-[node name="MineButtonBuy" type="Button" parent="Consumables/VBoxContainer/MineRectangle"]
+[node name="MineButtonBuy" type="Button" parent="Consumables/VBoxContainer/Mine"]
 layout_mode = 2
 offset_left = 423.0
 offset_top = 20.0
@@ -606,11 +606,11 @@ script = ExtResource("24_cd5xm")
 consumable_name = "Mine"
 label_path = NodePath("/root/World/Player/UI/UI/Explosives/Mine/AmountMines")
 
-[node name="GranadeRectangle" type="TextureRect" parent="Consumables/VBoxContainer"]
+[node name="Granade" type="TextureRect" parent="Consumables/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("6_lj35b")
 
-[node name="NameMine" type="Label" parent="Consumables/VBoxContainer/GranadeRectangle"]
+[node name="NameMine" type="Label" parent="Consumables/VBoxContainer/Granade"]
 layout_mode = 0
 offset_left = 33.0
 offset_top = 6.0
@@ -618,7 +618,7 @@ offset_right = 73.0
 offset_bottom = 29.0
 text = "Mine"
 
-[node name="StatsMine" type="Label" parent="Consumables/VBoxContainer/GranadeRectangle"]
+[node name="StatsMine" type="Label" parent="Consumables/VBoxContainer/Granade"]
 layout_mode = 0
 offset_left = 140.0
 offset_top = 6.0
@@ -629,7 +629,7 @@ Damage: 20
 CoreNormal: x3
 CoreRare: x1"
 
-[node name="MineSprite" type="TextureRect" parent="Consumables/VBoxContainer/GranadeRectangle"]
+[node name="MineSprite" type="TextureRect" parent="Consumables/VBoxContainer/Granade"]
 layout_mode = 0
 offset_left = 28.0
 offset_top = 37.0
@@ -637,7 +637,7 @@ offset_right = 87.0
 offset_bottom = 107.0
 texture = ExtResource("25_hpmec")
 
-[node name="GranadeButtonBuy" type="Button" parent="Consumables/VBoxContainer/GranadeRectangle"]
+[node name="GranadeButtonBuy" type="Button" parent="Consumables/VBoxContainer/Granade"]
 layout_mode = 0
 offset_left = 423.0
 offset_top = 26.0
@@ -648,7 +648,7 @@ script = ExtResource("24_cd5xm")
 consumable_name = "Granade"
 label_path = NodePath("/root/World/Player/UI/UI/Explosives/Granade/AmountGranades")
 
-[node name="AmountMine" type="Label" parent="Consumables/VBoxContainer/GranadeRectangle"]
+[node name="AmountMine" type="Label" parent="Consumables/VBoxContainer/Granade"]
 layout_mode = 0
 offset_left = 68.0
 offset_top = 81.0
@@ -657,6 +657,16 @@ offset_bottom = 123.0
 theme_override_fonts/font = ExtResource("23_qmmtf")
 theme_override_font_sizes/font_size = 32
 text = "x1"
+
+[node name="Potion" type="TextureRect" parent="Consumables/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("15_nk242")
+
+[node name="Sprite2D" type="Sprite2D" parent="Consumables/VBoxContainer/Potion"]
+visible = false
+position = Vector2(307, 55)
+scale = Vector2(4.75, 0.90625)
+texture = ExtResource("15_nk242")
 
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/BuyGun" to="Weapons/VBoxContainer/Gun/BuyGun" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/BuyGun" to="Weapons/VBoxContainer/Gun/SelectGun" method="_on_buy_button_button_down"]
@@ -713,6 +723,6 @@ text = "x1"
 [connection signal="button_down" from="Weapons/VBoxContainer/MachineGun/UpgradeMachine" to="Weapons/VBoxContainer/MachineGun/LevelMachine" method="_on_upgrade_gun_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/MachineGun/UpgradeMachine" to="Weapons/VBoxContainer/MachineGun/StatsMachine" method="_on_upgrade_gun_button_down"]
 [connection signal="button_down" from="Upgrades/VBoxContainer/TextureRect/Button" to="Upgrades/VBoxContainer/TextureRect/Button" method="_on_button_down"]
-[connection signal="button_down" from="Consumables/VBoxContainer/MineRectangle/MineButtonBuy" to="Consumables/VBoxContainer/MineRectangle/StatsMine" method="_on_mine_button_buy_button_down"]
-[connection signal="button_down" from="Consumables/VBoxContainer/MineRectangle/MineButtonBuy" to="Consumables/VBoxContainer/MineRectangle/MineButtonBuy" method="_on_button_down"]
-[connection signal="button_down" from="Consumables/VBoxContainer/GranadeRectangle/GranadeButtonBuy" to="Consumables/VBoxContainer/GranadeRectangle/GranadeButtonBuy" method="_on_button_down"]
+[connection signal="button_down" from="Consumables/VBoxContainer/Mine/MineButtonBuy" to="Consumables/VBoxContainer/Mine/StatsMine" method="_on_mine_button_buy_button_down"]
+[connection signal="button_down" from="Consumables/VBoxContainer/Mine/MineButtonBuy" to="Consumables/VBoxContainer/Mine/MineButtonBuy" method="_on_button_down"]
+[connection signal="button_down" from="Consumables/VBoxContainer/Granade/GranadeButtonBuy" to="Consumables/VBoxContainer/Granade/GranadeButtonBuy" method="_on_button_down"]
