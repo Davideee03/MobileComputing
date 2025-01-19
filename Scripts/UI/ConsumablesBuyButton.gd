@@ -26,6 +26,6 @@ func _on_button_down() -> void:
 			label_node.text = str(consumables[consumable_name]["amount"])
 		else:
 			print("Nodopocdkfadslkfnon storoavao!")
-		# just for testing we save when we buy, as it was made the save happens only after the wave
-		SaveConsumables.save_consume()
+		# if we want to save the file when we buy it. As the game is made, we save only after the wave is ended
+		#SaveConsumables.save_consume()
 		
