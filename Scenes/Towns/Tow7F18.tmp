@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dyux3pqy0wmvu" path="res://Scenes/Player/Pet.tscn" id="17_pjj81"]
 [ext_resource type="Texture2D" uid="uid://c46iv5lwn3hyn" path="res://Sprites/Items/GEM 2 - PURPLE - 0008.png" id="18_xk8xw"]
 [ext_resource type="FontFile" uid="uid://ba8dt86yqwf0f" path="res://Fonts/Bytesized-Regular.ttf" id="23_2ufwt"]
-[ext_resource type="Script" path="res://Scripts/Explosives/AmountConsumablesUI.gd" id="23_a3jdo"]
+[ext_resource type="Script" path="res://Scripts/Explosives/MineAmountLabel.gd" id="23_a3jdo"]
 
 [node name="World" type="Node2D"]
 
@@ -519,21 +519,9 @@ grow_vertical = 0
 flat = true
 
 [node name="GrenadeSprite" type="Sprite2D" parent="Player/UI/UI/Explosives/Granade"]
-position = Vector2(40.5, 41.9375)
-scale = Vector2(6.125, 6.125)
+position = Vector2(37, 50)
+scale = Vector2(5, 5)
 texture = ExtResource("15_ky46n")
-
-[node name="AmountGranades" type="Label" parent="Player/UI/UI/Explosives/Granade"]
-layout_mode = 0
-offset_left = 43.0
-offset_top = 30.0
-offset_right = 71.0
-offset_bottom = 102.0
-theme_override_fonts/font = ExtResource("23_2ufwt")
-theme_override_font_sizes/font_size = 55
-text = "0"
-script = ExtResource("23_a3jdo")
-consumable_name = "Granade"
 
 [node name="Items" type="Node" parent="."]
 unique_name_in_owner = true
@@ -547,7 +535,6 @@ position = Vector2(47, 18)
 script = ExtResource("17_h1k4o")
 
 [node name="FloorOneTile" parent="Floor" instance=ExtResource("16_l2qit")]
-position = Vector2(7, -4)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = 5.0
@@ -562,4 +549,3 @@ bus = &"Enviroment"
 [connection signal="button_down" from="Player/UI/UI/Explosives/Mine" to="Player/UI/UI/Explosives" method="_on_mine_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Explosives/Mine" to="Player/UI/UI/Explosives/Mine/AmountMines" method="_on_mine_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Explosives/Granade" to="Player/UI/UI/Explosives" method="_on_granate_button_down"]
-[connection signal="button_down" from="Player/UI/UI/Explosives/Granade" to="Player/UI/UI/Explosives/Granade/AmountGranades" method="_on_mine_button_down"]

@@ -22,9 +22,9 @@
 [ext_resource type="Script" path="res://Scripts/Weapons/MachineGun.gd" id="17_ekcxq"]
 [ext_resource type="Texture2D" uid="uid://bwqbm08wyo3gc" path="res://Sprites/Weapons/[SHOOT WITH CASING AND MUZZLE FLASH] Submachine - MP5A3.png" id="17_w6dio"]
 [ext_resource type="Texture2D" uid="uid://d3cuppqtwq30" path="res://Sprites/Explosives/Mine.png" id="22_j1m2c"]
+[ext_resource type="Script" path="res://Scripts/UI/Consum.gd" id="22_q284r"]
 [ext_resource type="FontFile" uid="uid://ba8dt86yqwf0f" path="res://Fonts/Bytesized-Regular.ttf" id="23_qmmtf"]
 [ext_resource type="Script" path="res://Scripts/UI/ConsumablesBuyButton.gd" id="24_cd5xm"]
-[ext_resource type="Texture2D" uid="uid://cnyc6kyupuj4b" path="res://Sprites/Explosives/Grenade.png" id="25_hpmec"]
 
 [sub_resource type="Resource" id="Resource_gfcii"]
 script = ExtResource("2_faleo")
@@ -543,17 +543,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextureButton" type="TextureButton" parent="Consumables/VBoxContainer"]
-visible = false
-layout_mode = 2
-stretch_mode = 0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Consumables/VBoxContainer/TextureButton"]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="MineRectangle" type="TextureRect" parent="Consumables/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("6_lj35b")
@@ -574,8 +563,10 @@ offset_right = 312.0
 offset_bottom = 101.0
 text = "Stats:
 Damage: 20
-CoreNormal: x3
-CoreRare: x1"
+Price: 100
+Bought: 0"
+script = ExtResource("22_q284r")
+consumable_name = "Mine"
 
 [node name="MineSprite" type="TextureRect" parent="Consumables/VBoxContainer/MineRectangle"]
 layout_mode = 0
@@ -604,59 +595,7 @@ offset_bottom = 105.0
 text = "Buy"
 script = ExtResource("24_cd5xm")
 consumable_name = "Mine"
-label_path = NodePath("/root/World/Player/UI/UI/Explosives/Mine/AmountMines")
-
-[node name="GranadeRectangle" type="TextureRect" parent="Consumables/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("6_lj35b")
-
-[node name="NameMine" type="Label" parent="Consumables/VBoxContainer/GranadeRectangle"]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 6.0
-offset_right = 73.0
-offset_bottom = 29.0
-text = "Mine"
-
-[node name="StatsMine" type="Label" parent="Consumables/VBoxContainer/GranadeRectangle"]
-layout_mode = 0
-offset_left = 140.0
-offset_top = 6.0
-offset_right = 312.0
-offset_bottom = 101.0
-text = "Stats:
-Damage: 20
-CoreNormal: x3
-CoreRare: x1"
-
-[node name="MineSprite" type="TextureRect" parent="Consumables/VBoxContainer/GranadeRectangle"]
-layout_mode = 0
-offset_left = 28.0
-offset_top = 37.0
-offset_right = 87.0
-offset_bottom = 107.0
-texture = ExtResource("25_hpmec")
-
-[node name="GranadeButtonBuy" type="Button" parent="Consumables/VBoxContainer/GranadeRectangle"]
-layout_mode = 0
-offset_left = 423.0
-offset_top = 26.0
-offset_right = 540.0
-offset_bottom = 116.0
-text = "Buy"
-script = ExtResource("24_cd5xm")
-consumable_name = "Granade"
-label_path = NodePath("/root/World/Player/UI/UI/Explosives/Granade/AmountGranades")
-
-[node name="AmountMine" type="Label" parent="Consumables/VBoxContainer/GranadeRectangle"]
-layout_mode = 0
-offset_left = 68.0
-offset_top = 81.0
-offset_right = 108.0
-offset_bottom = 123.0
-theme_override_fonts/font = ExtResource("23_qmmtf")
-theme_override_font_sizes/font_size = 32
-text = "x1"
+label_path = NodePath("Town.tscn/Player/UI/Explosives/AmountMines")
 
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/BuyGun" to="Weapons/VBoxContainer/Gun/BuyGun" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/BuyGun" to="Weapons/VBoxContainer/Gun/SelectGun" method="_on_buy_button_button_down"]
@@ -715,4 +654,3 @@ text = "x1"
 [connection signal="button_down" from="Upgrades/VBoxContainer/TextureRect/Button" to="Upgrades/VBoxContainer/TextureRect/Button" method="_on_button_down"]
 [connection signal="button_down" from="Consumables/VBoxContainer/MineRectangle/MineButtonBuy" to="Consumables/VBoxContainer/MineRectangle/StatsMine" method="_on_mine_button_buy_button_down"]
 [connection signal="button_down" from="Consumables/VBoxContainer/MineRectangle/MineButtonBuy" to="Consumables/VBoxContainer/MineRectangle/MineButtonBuy" method="_on_button_down"]
-[connection signal="button_down" from="Consumables/VBoxContainer/GranadeRectangle/GranadeButtonBuy" to="Consumables/VBoxContainer/GranadeRectangle/GranadeButtonBuy" method="_on_button_down"]

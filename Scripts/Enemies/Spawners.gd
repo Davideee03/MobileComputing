@@ -80,10 +80,12 @@ func set_up():
 func player_won() -> void: 
 	#Player didn't win if he's dead
 	print("Player won!")
+	SaveConsumables.save_consume()
 
 #Called by Global if the player is defeated
 func player_is_dead():
 	print("Player has lost")
+	SaveConsumables.save_consume()
 
 #Called by update_wave
 func display_wave():
