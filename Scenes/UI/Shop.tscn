@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=3 uid="uid://cftrkiyi740hw"]
+[gd_scene load_steps=64 format=3 uid="uid://cftrkiyi740hw"]
 
 [ext_resource type="FontFile" uid="uid://dflx50tvhjet4" path="res://Fonts/TMT-Paint-Regular.otf" id="1_ee2sf"]
 [ext_resource type="Script" path="res://Scripts/UI/WeaponButton.gd" id="1_jvfwi"]
@@ -25,12 +25,11 @@
 [ext_resource type="Texture2D" uid="uid://bwqbm08wyo3gc" path="res://Sprites/Weapons/[SHOOT WITH CASING AND MUZZLE FLASH] Submachine - MP5A3.png" id="17_w6dio"]
 [ext_resource type="Texture2D" uid="uid://fdhohndg0rti" path="res://Sprites/Weapons/machinegunn.png" id="17_x11hv"]
 [ext_resource type="Texture2D" uid="uid://dqonsmyllymr5" path="res://Sprites/Items/coregreen.png" id="18_nvfpi"]
-[ext_resource type="Texture2D" uid="uid://d3cuppqtwq30" path="res://Sprites/Explosives/Mine.png" id="22_j1m2c"]
 [ext_resource type="Texture2D" uid="uid://m57ae6addipk" path="res://Sprites/Items/corepurple.png" id="23_3byir"]
 [ext_resource type="FontFile" uid="uid://ba8dt86yqwf0f" path="res://Fonts/Bytesized-Regular.ttf" id="23_qmmtf"]
 [ext_resource type="Script" path="res://Scripts/UI/ConsumablesBuyButton.gd" id="24_cd5xm"]
-[ext_resource type="Texture2D" uid="uid://cnyc6kyupuj4b" path="res://Sprites/Explosives/Grenade.png" id="25_hpmec"]
-[ext_resource type="Texture2D" uid="uid://dc6lo872ehytx" path="res://Scenes/animationstart-Sheet.png" id="27_te5nb"]
+[ext_resource type="Texture2D" uid="uid://d1ga2detqcbpj" path="res://Sprites/ShopUI/Minee.png" id="27_qd11j"]
+[ext_resource type="Texture2D" uid="uid://dj3i5fr3l8flq" path="res://Sprites/ShopUI/granadee.png" id="30_ts5fo"]
 
 [sub_resource type="Resource" id="Resource_gfcii"]
 script = ExtResource("2_faleo")
@@ -184,234 +183,6 @@ script = ExtResource("17_ekcxq")
 [sub_resource type="Resource" id="Resource_601y1"]
 script = ExtResource("17_ekcxq")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ts8ly"]
-load_path = "res://.godot/imported/Sprite-0004.png-10439469939e307df947fcef3309034d.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m4k52"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_656ob"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gacxw"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jfodt"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ueeub"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uiksb"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wid1b"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(192, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tvjnj"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(224, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k0ndu"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(256, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y7l8b"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(288, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e4vkk"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(320, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_q87wp"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(352, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_38rjl"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(384, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_keta5"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(416, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2bm7p"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(448, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j7ctn"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(480, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p28uy"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(512, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kcs75"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(544, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_axqb4"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(576, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yf0m8"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(608, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n6ovo"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(640, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_drcwu"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(672, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8ob07"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(704, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1jty4"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(736, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ktfny"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(768, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k15u8"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(800, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tbbxq"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(832, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y82jc"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(864, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hwalc"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(896, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ba0sv"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(928, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kv71o"]
-atlas = ExtResource("27_te5nb")
-region = Rect2(960, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_0jxmp"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m4k52")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_656ob")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gacxw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jfodt")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ueeub")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uiksb")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wid1b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tvjnj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k0ndu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y7l8b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e4vkk")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_q87wp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_38rjl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_keta5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2bm7p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j7ctn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p28uy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kcs75")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_axqb4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yf0m8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_n6ovo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_drcwu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8ob07")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1jty4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ktfny")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k15u8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tbbxq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y82jc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hwalc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ba0sv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kv71o")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Shop" type="TabContainer"]
 offset_top = -600.0
 offset_right = 613.0
@@ -421,9 +192,10 @@ size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_ee2sf")
 theme_override_font_sizes/font_size = 27
 tab_alignment = 1
-current_tab = 0
+current_tab = 2
 
 [node name="Weapons" type="ScrollContainer" parent="."]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -1001,7 +773,6 @@ layout_mode = 2
 texture = ExtResource("6_cx44u")
 
 [node name="Consumables" type="ScrollContainer" parent="."]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
@@ -1013,51 +784,67 @@ size_flags_vertical = 3
 
 [node name="Mine" type="TextureRect" parent="Consumables/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("6_lj35b")
+texture = ExtResource("16_owed7")
 
 [node name="NameMine" type="Label" parent="Consumables/VBoxContainer/Mine"]
 layout_mode = 0
-offset_left = 33.0
-offset_top = 6.0
-offset_right = 73.0
-offset_bottom = 29.0
+offset_left = 37.0
+offset_top = 18.0
+offset_right = 118.0
+offset_bottom = 47.0
+theme_override_fonts/font = ExtResource("1_ee2sf")
+theme_override_font_sizes/font_size = 25
 text = "Mine"
+
+[node name="Sprite2D2" type="Sprite2D" parent="Consumables/VBoxContainer/Mine"]
+position = Vector2(294.25, 145.25)
+scale = Vector2(2.21875, 2.21875)
+texture = ExtResource("15_mesl3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Consumables/VBoxContainer/Mine"]
+position = Vector2(194.75, 145.75)
+scale = Vector2(2.15625, 2.15625)
+texture = ExtResource("9_7m7r0")
 
 [node name="StatsMine" type="Label" parent="Consumables/VBoxContainer/Mine"]
 layout_mode = 0
-offset_left = 140.0
-offset_top = 6.0
-offset_right = 312.0
-offset_bottom = 101.0
-text = "Stats:
-Damage: 20
-CoreNormal: x3
-CoreRare: x1"
+offset_left = 180.0
+offset_top = 23.0
+offset_right = 368.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("1_ee2sf")
+text = "Informations:
+
+Damage (area): 20
+
+Price:
+
+    x3        x1"
 
 [node name="MineSprite" type="TextureRect" parent="Consumables/VBoxContainer/Mine"]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 37.0
-offset_right = 87.0
-offset_bottom = 107.0
-texture = ExtResource("22_j1m2c")
+offset_left = 24.0
+offset_top = 44.0
+offset_right = 142.0
+offset_bottom = 164.0
+texture = ExtResource("27_qd11j")
 
 [node name="AmountMine" type="Label" parent="Consumables/VBoxContainer/Mine"]
 layout_mode = 0
-offset_left = 68.0
-offset_top = 81.0
-offset_right = 108.0
-offset_bottom = 123.0
+offset_left = 96.0
+offset_top = 135.0
+offset_right = 137.0
+offset_bottom = 187.0
 theme_override_fonts/font = ExtResource("23_qmmtf")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 text = "x1"
 
 [node name="MineButtonBuy" type="Button" parent="Consumables/VBoxContainer/Mine"]
 layout_mode = 2
-offset_left = 423.0
-offset_top = 20.0
-offset_right = 573.0
-offset_bottom = 105.0
+offset_left = 401.0
+offset_top = 59.0
+offset_right = 551.0
+offset_bottom = 144.0
 flat = true
 script = ExtResource("24_cd5xm")
 consumable_name = "Mine"
@@ -1079,41 +866,56 @@ text = "Buy"
 
 [node name="Granade" type="TextureRect" parent="Consumables/VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("6_lj35b")
+texture = ExtResource("16_owed7")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Consumables/VBoxContainer/Granade"]
+position = Vector2(305.25, 156.25)
+scale = Vector2(2.21875, 2.21875)
+texture = ExtResource("15_mesl3")
+
+[node name="Sprite2D" type="Sprite2D" parent="Consumables/VBoxContainer/Granade"]
+position = Vector2(206.75, 156.75)
+scale = Vector2(2.15625, 2.15625)
+texture = ExtResource("9_7m7r0")
 
 [node name="NameMine" type="Label" parent="Consumables/VBoxContainer/Granade"]
 layout_mode = 0
-offset_left = 33.0
-offset_top = 6.0
-offset_right = 73.0
-offset_bottom = 29.0
-text = "Mine"
+offset_left = 25.0
+offset_top = 21.0
+offset_right = 163.0
+offset_bottom = 46.0
+theme_override_fonts/font = ExtResource("1_ee2sf")
+theme_override_font_sizes/font_size = 25
+text = "Granade"
 
-[node name="StatsMine" type="Label" parent="Consumables/VBoxContainer/Granade"]
-layout_mode = 0
-offset_left = 140.0
-offset_top = 6.0
-offset_right = 312.0
-offset_bottom = 101.0
-text = "Stats:
-Damage: 20
-CoreNormal: x3
-CoreRare: x1"
+[node name="StatsMine2" type="Label" parent="Consumables/VBoxContainer/Granade"]
+offset_left = 189.0
+offset_top = 32.0
+offset_right = 377.0
+offset_bottom = 209.0
+theme_override_fonts/font = ExtResource("1_ee2sf")
+text = "Informations:
+
+Damage (area): 20
+
+Price:
+
+    x3        x1"
 
 [node name="MineSprite" type="TextureRect" parent="Consumables/VBoxContainer/Granade"]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 37.0
-offset_right = 87.0
-offset_bottom = 107.0
-texture = ExtResource("25_hpmec")
+offset_left = 24.0
+offset_top = 56.0
+offset_right = 166.0
+offset_bottom = 199.0
+texture = ExtResource("30_ts5fo")
 
 [node name="GranadeButtonBuy" type="Button" parent="Consumables/VBoxContainer/Granade"]
 layout_mode = 0
-offset_left = 423.0
-offset_top = 26.0
-offset_right = 574.0
-offset_bottom = 116.0
+offset_left = 405.0
+offset_top = 67.0
+offset_right = 556.0
+offset_bottom = 157.0
 text = "Buy"
 script = ExtResource("24_cd5xm")
 consumable_name = "Granade"
@@ -1135,38 +937,13 @@ text = "Buy"
 
 [node name="AmountMine" type="Label" parent="Consumables/VBoxContainer/Granade"]
 layout_mode = 0
-offset_left = 68.0
-offset_top = 81.0
-offset_right = 108.0
-offset_bottom = 123.0
+offset_left = 99.0
+offset_top = 135.0
+offset_right = 139.0
+offset_bottom = 177.0
 theme_override_fonts/font = ExtResource("23_qmmtf")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 text = "x1"
-
-[node name="Potion" type="TextureRect" parent="Consumables/VBoxContainer"]
-layout_mode = 2
-texture = SubResource("CompressedTexture2D_ts8ly")
-
-[node name="Sprite2D" type="Sprite2D" parent="Consumables/VBoxContainer/Potion"]
-visible = false
-position = Vector2(309, 10)
-scale = Vector2(13.9092, 12.0566)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Consumables/VBoxContainer/Potion/Sprite2D"]
-visible = false
-sprite_frames = SubResource("SpriteFrames_0jxmp")
-frame = 30
-frame_progress = 1.0
-speed_scale = 3.0
-
-[node name="Label" type="Label" parent="Consumables/VBoxContainer/Potion"]
-visible = false
-layout_mode = 0
-offset_left = 11.0
-offset_top = 14.0
-offset_right = 655.0
-offset_bottom = 55.0
-text = "Potion can be used when the life of the player goes below 2 hearth restore 1 hearth"
 
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/BuyGun" to="Weapons/VBoxContainer/Gun/BuyGun" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/Gun/BuyGun" to="Weapons/VBoxContainer/Gun/SelectGun" method="_on_buy_button_button_down"]
