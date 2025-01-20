@@ -192,10 +192,9 @@ size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_ee2sf")
 theme_override_font_sizes/font_size = 27
 tab_alignment = 1
-current_tab = 2
+current_tab = 0
 
 [node name="Weapons" type="ScrollContainer" parent="."]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -773,6 +772,7 @@ layout_mode = 2
 texture = ExtResource("6_cx44u")
 
 [node name="Consumables" type="ScrollContainer" parent="."]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 

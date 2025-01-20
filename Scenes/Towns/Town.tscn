@@ -18,8 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://ccgo2jmnn5064" path="res://Scenes/Player/Heart.tscn" id="12_ahd65"]
 [ext_resource type="PackedScene" uid="uid://cdqnsmky25kr1" path="res://Scenes/Explosives/Mine.tscn" id="12_q45tx"]
 [ext_resource type="PackedScene" uid="uid://cbbe6qoahmwoc" path="res://Scenes/Explosives/Grenade.tscn" id="13_cetdv"]
-[ext_resource type="Texture2D" uid="uid://d3cuppqtwq30" path="res://Sprites/Explosives/Mine.png" id="14_q2mew"]
-[ext_resource type="Texture2D" uid="uid://cnyc6kyupuj4b" path="res://Sprites/Explosives/Grenade.png" id="15_ky46n"]
 [ext_resource type="Texture2D" uid="uid://cyo573a7fdt0s" path="res://Sprites/Items/corered.png" id="16_4ljdr"]
 [ext_resource type="PackedScene" uid="uid://bhaif6fyye5rx" path="res://Scenes/Enviroment/Floor.tscn" id="16_l2qit"]
 [ext_resource type="Texture2D" uid="uid://cmlrm183f7twn" path="res://Sprites/Items/Sprite-0018.png" id="17_babrv"]
@@ -28,7 +26,9 @@
 [ext_resource type="Texture2D" uid="uid://dqonsmyllymr5" path="res://Sprites/Items/coregreen.png" id="18_brlbe"]
 [ext_resource type="Texture2D" uid="uid://m57ae6addipk" path="res://Sprites/Items/corepurple.png" id="19_5jyyo"]
 [ext_resource type="FontFile" uid="uid://ba8dt86yqwf0f" path="res://Fonts/Bytesized-Regular.ttf" id="23_2ufwt"]
+[ext_resource type="Texture2D" uid="uid://d1ga2detqcbpj" path="res://Sprites/ShopUI/Minee.png" id="23_3e031"]
 [ext_resource type="Script" path="res://Scripts/Explosives/AmountConsumablesUI.gd" id="23_a3jdo"]
+[ext_resource type="Texture2D" uid="uid://dj3i5fr3l8flq" path="res://Sprites/ShopUI/granadee.png" id="26_u2awc"]
 
 [node name="World" type="Node2D"]
 
@@ -500,7 +500,7 @@ flat = true
 [node name="MineSprite" type="Sprite2D" parent="Player/UI/UI/Explosives/Mine"]
 position = Vector2(37, 50)
 scale = Vector2(5, 5)
-texture = ExtResource("14_q2mew")
+texture = ExtResource("23_3e031")
 
 [node name="AmountMines" type="Label" parent="Player/UI/UI/Explosives/Mine"]
 layout_mode = 0
@@ -527,9 +527,9 @@ grow_vertical = 0
 flat = true
 
 [node name="GrenadeSprite" type="Sprite2D" parent="Player/UI/UI/Explosives/Granade"]
-position = Vector2(40.5, 41.9375)
-scale = Vector2(6.125, 6.125)
-texture = ExtResource("15_ky46n")
+position = Vector2(40.75, 44.7509)
+scale = Vector2(6.15625, 5.77332)
+texture = ExtResource("26_u2awc")
 
 [node name="AmountGranades" type="Label" parent="Player/UI/UI/Explosives/Granade"]
 layout_mode = 0
@@ -555,7 +555,7 @@ position = Vector2(47, 18)
 script = ExtResource("17_h1k4o")
 
 [node name="FloorOneTile" parent="Floor" instance=ExtResource("16_l2qit")]
-position = Vector2(7, -4)
+position = Vector2(15, -4)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = 5.0
