@@ -9,6 +9,7 @@ var loaded_weapons = {}
 
 func _ready() -> void:
 	loaded_weapons = load_weapon_data()
+	print(loaded_weapons)
 
 # Saving the weapon 
 func save_weapon(weapon: Weapon) -> void:

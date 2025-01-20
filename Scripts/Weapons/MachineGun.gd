@@ -2,12 +2,12 @@ class_name MachineGun
 extends Weapon
 
 var bullet = preload("res://Scenes/Weapon/Bullets/MachineGunBullet.tscn")
-var sprite = preload("res://Sprites/Weapons/Submachine - MP5A3 [80x48].png")
+var sprite = preload("res://Sprites/Weapons/machinegunn.png")
 var damage = 15.0
 var reload_time = 0.1
 var reload_reduction = 0.008
 var level = 1
-var price = 1500
+var price = 10
 var name = "MachineGun"
 var weight = 400
 var weapon_save = WeaponSave
@@ -28,9 +28,9 @@ func up():
 		print("not enough money sir")
 	
 func upgradingCost():
-	if Stats.current_money>price:
-		Stats.current_money -= price
-		price += 150
+	if Stats.current_coreLegendary>price:
+		Stats.current_coreLegendary -= price
+		price += 10
 		return true
 	else:
 		return false

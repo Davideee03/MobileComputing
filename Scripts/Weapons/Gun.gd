@@ -1,13 +1,13 @@
 class_name Gun
 extends Weapon
 
-var sprite = preload("res://Sprites/Weapons/Gun.png")
+var sprite = preload("res://Sprites/Weapons/pistol.png")
 var bullet = preload("res://Scenes/Weapon/Bullets/GunBullet.tscn")
 var damage = 5.0
 var reload_time = 0.75
 var level = 1
 var reload_reduction = 0.008
-var price = 100
+var price = 1
 var name = "Gun"
 # variable that slows down the player based on the weight of the weaopon. NEEDS TO BE IMPLEMENTED
 var weight = 100
@@ -35,10 +35,10 @@ func up():
 		print("not enough moneysir")
 	
 func upgradingCost():
-	if Stats.current_money>price:
-		Stats.current_money -= price
+	if Stats.current_coreNormal>price:
+		Stats.current_coreNormal -= price
 		# momentary increase number
-		price += 50
+		price += 2
 		return true
 	else:
 		return false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://cftrkiyi740hw"]
+[gd_scene load_steps=98 format=3 uid="uid://cftrkiyi740hw"]
 
 [ext_resource type="FontFile" uid="uid://dflx50tvhjet4" path="res://Fonts/TMT-Paint-Regular.otf" id="1_ee2sf"]
 [ext_resource type="Script" path="res://Scripts/UI/WeaponButton.gd" id="1_jvfwi"]
@@ -13,16 +13,20 @@
 [ext_resource type="Script" path="res://Scripts/UI/Levels.gd" id="7_jxy6n"]
 [ext_resource type="Texture2D" uid="uid://deo03cvskmou2" path="res://Sprites/Items/Cores.png" id="7_k7bhb"]
 [ext_resource type="Script" path="res://Scripts/UI/StatsUI.gd" id="7_xvl4a"]
+[ext_resource type="Texture2D" uid="uid://cyo573a7fdt0s" path="res://Sprites/Items/corered.png" id="9_7m7r0"]
 [ext_resource type="Script" path="res://Scripts/UI/reset_button_weapons.gd" id="9_gx07f"]
 [ext_resource type="Texture2D" uid="uid://l776x5hkpgwt" path="res://Sprites/Weapons/pistol.png" id="9_pvmpi"]
 [ext_resource type="Script" path="res://Scripts/UI/ButtonResetShop.gd" id="10_q7mde"]
 [ext_resource type="Texture2D" uid="uid://cvrdekbuxei15" path="res://Sprites/Weapons/shotgun.png" id="13_fj7j1"]
 [ext_resource type="Texture2D" uid="uid://hnjbntnc7rsk" path="res://Sprites/Weapons/assault.png" id="15_1g5xs"]
+[ext_resource type="Texture2D" uid="uid://cmlrm183f7twn" path="res://Sprites/Items/Sprite-0018.png" id="15_mesl3"]
 [ext_resource type="Texture2D" uid="uid://b2y35kxpmhxwc" path="res://Sprites/ShopUI/prova2.png" id="16_owed7"]
 [ext_resource type="Script" path="res://Scripts/Weapons/MachineGun.gd" id="17_ekcxq"]
 [ext_resource type="Texture2D" uid="uid://bwqbm08wyo3gc" path="res://Sprites/Weapons/[SHOOT WITH CASING AND MUZZLE FLASH] Submachine - MP5A3.png" id="17_w6dio"]
 [ext_resource type="Texture2D" uid="uid://fdhohndg0rti" path="res://Sprites/Weapons/machinegunn.png" id="17_x11hv"]
+[ext_resource type="Texture2D" uid="uid://dqonsmyllymr5" path="res://Sprites/Items/coregreen.png" id="18_nvfpi"]
 [ext_resource type="Texture2D" uid="uid://d3cuppqtwq30" path="res://Sprites/Explosives/Mine.png" id="22_j1m2c"]
+[ext_resource type="Texture2D" uid="uid://m57ae6addipk" path="res://Sprites/Items/corepurple.png" id="23_3byir"]
 [ext_resource type="FontFile" uid="uid://ba8dt86yqwf0f" path="res://Fonts/Bytesized-Regular.ttf" id="23_qmmtf"]
 [ext_resource type="Script" path="res://Scripts/UI/ConsumablesBuyButton.gd" id="24_cd5xm"]
 [ext_resource type="Texture2D" uid="uid://cnyc6kyupuj4b" path="res://Sprites/Explosives/Grenade.png" id="25_hpmec"]
@@ -520,12 +524,17 @@ text = "Gun lv. 1"
 script = ExtResource("7_jxy6n")
 new_weapon = SubResource("Resource_gicd6")
 
+[node name="Sprite2D" type="Sprite2D" parent="Weapons/VBoxContainer/Gun"]
+position = Vector2(323.125, 147.94)
+scale = Vector2(1.98529, 1.80378)
+texture = ExtResource("9_7m7r0")
+
 [node name="Stats" type="Label" parent="Weapons/VBoxContainer/Gun"]
 layout_mode = 0
-offset_left = 224.0
-offset_top = 14.0
-offset_right = 416.0
-offset_bottom = 165.0
+offset_left = 223.0
+offset_top = 10.0
+offset_right = 415.0
+offset_bottom = 168.0
 theme_override_fonts/font = ExtResource("1_ee2sf")
 theme_override_font_sizes/font_size = 20
 text = "
@@ -658,6 +667,11 @@ text = "ShotGun lv. 1"
 script = ExtResource("7_jxy6n")
 new_weapon = SubResource("Resource_4hkwb")
 
+[node name="Sprite2D" type="Sprite2D" parent="Weapons/VBoxContainer/ShotGun"]
+position = Vector2(324, 160)
+scale = Vector2(1.9375, 1.9375)
+texture = ExtResource("15_mesl3")
+
 [node name="StatsShotGun" type="Label" parent="Weapons/VBoxContainer/ShotGun"]
 layout_mode = 0
 offset_left = 224.0
@@ -774,6 +788,11 @@ theme_override_font_sizes/font_size = 25
 text = "Assault lv. 1"
 script = ExtResource("7_jxy6n")
 new_weapon = SubResource("Resource_klymg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Weapons/VBoxContainer/Assault"]
+position = Vector2(328, 155)
+scale = Vector2(1.9375, 1.9375)
+texture = ExtResource("18_nvfpi")
 
 [node name="StatsAssault" type="Label" parent="Weapons/VBoxContainer/Assault"]
 layout_mode = 0
@@ -911,6 +930,11 @@ text = "MachineGun lv. 1"
 script = ExtResource("7_jxy6n")
 new_weapon = SubResource("Resource_23o5g")
 
+[node name="Sprite2D" type="Sprite2D" parent="Weapons/VBoxContainer/MachineGun"]
+position = Vector2(330.5, 155)
+scale = Vector2(2.0625, 2)
+texture = ExtResource("23_3byir")
+
 [node name="StatsMachine" type="Label" parent="Weapons/VBoxContainer/MachineGun"]
 layout_mode = 0
 offset_left = 226.0
@@ -987,17 +1011,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextureButton" type="TextureButton" parent="Consumables/VBoxContainer"]
-visible = false
-layout_mode = 2
-stretch_mode = 0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Consumables/VBoxContainer/TextureButton"]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="Mine" type="TextureRect" parent="Consumables/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("6_lj35b")
@@ -1043,12 +1056,26 @@ text = "x1"
 layout_mode = 2
 offset_left = 423.0
 offset_top = 20.0
-offset_right = 539.0
+offset_right = 573.0
 offset_bottom = 105.0
-text = "Buy"
+flat = true
 script = ExtResource("24_cd5xm")
 consumable_name = "Mine"
 label_path = NodePath("/root/World/Player/UI/UI/Explosives/Mine/AmountMines")
+
+[node name="Sprite2D" type="Sprite2D" parent="Consumables/VBoxContainer/Mine/MineButtonBuy"]
+position = Vector2(72, 43)
+scale = Vector2(5.50781, 6.10938)
+texture = ExtResource("6_6brxq")
+
+[node name="Label" type="Label" parent="Consumables/VBoxContainer/Mine/MineButtonBuy"]
+offset_left = 31.0
+offset_top = 25.0
+offset_right = 110.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("1_ee2sf")
+theme_override_font_sizes/font_size = 33
+text = "Buy"
 
 [node name="Granade" type="TextureRect" parent="Consumables/VBoxContainer"]
 layout_mode = 2
@@ -1085,12 +1112,26 @@ texture = ExtResource("25_hpmec")
 layout_mode = 0
 offset_left = 423.0
 offset_top = 26.0
-offset_right = 540.0
+offset_right = 574.0
 offset_bottom = 116.0
 text = "Buy"
 script = ExtResource("24_cd5xm")
 consumable_name = "Granade"
 label_path = NodePath("/root/World/Player/UI/UI/Explosives/Granade/AmountGranades")
+
+[node name="Sprite2D" type="Sprite2D" parent="Consumables/VBoxContainer/Granade/GranadeButtonBuy"]
+position = Vector2(72, 42)
+scale = Vector2(5.50781, 6.10938)
+texture = ExtResource("6_6brxq")
+
+[node name="Label" type="Label" parent="Consumables/VBoxContainer/Granade/GranadeButtonBuy"]
+offset_left = 31.0
+offset_top = 25.0
+offset_right = 110.0
+offset_bottom = 59.0
+theme_override_fonts/font = ExtResource("1_ee2sf")
+theme_override_font_sizes/font_size = 33
+text = "Buy"
 
 [node name="AmountMine" type="Label" parent="Consumables/VBoxContainer/Granade"]
 layout_mode = 0
@@ -1107,16 +1148,19 @@ layout_mode = 2
 texture = SubResource("CompressedTexture2D_ts8ly")
 
 [node name="Sprite2D" type="Sprite2D" parent="Consumables/VBoxContainer/Potion"]
+visible = false
 position = Vector2(309, 10)
 scale = Vector2(13.9092, 12.0566)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Consumables/VBoxContainer/Potion/Sprite2D"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_0jxmp")
 frame = 30
 frame_progress = 1.0
 speed_scale = 3.0
 
 [node name="Label" type="Label" parent="Consumables/VBoxContainer/Potion"]
+visible = false
 layout_mode = 0
 offset_left = 11.0
 offset_top = 14.0
