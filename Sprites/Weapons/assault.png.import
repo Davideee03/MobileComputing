@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvrdekbuxei15"
-path="res://.godot/imported/shotgun.png-a60529078209b70d87a069cd24701792.ctex"
+uid="uid://hnjbntnc7rsk"
+path="res://.godot/imported/assault.png-c74336faab84b92375ef8697cbc2109d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Weapons/shotgun.png"
-dest_files=["res://.godot/imported/shotgun.png-a60529078209b70d87a069cd24701792.ctex"]
+source_file="res://Sprites/Weapons/assault.png"
+dest_files=["res://.godot/imported/assault.png-c74336faab84b92375ef8697cbc2109d.ctex"]
 
 [params]
 

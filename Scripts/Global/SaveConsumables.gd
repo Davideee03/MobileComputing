@@ -8,7 +8,12 @@ var consume_save_path = "user://consume.dat"
 # by writing save_consume() in the ready func before consume_stats.
 var consume_stats = {
 	"Mine": {"count": 0, "priceNormal": 3, "priceRare": 1, "amount": 0, "damage": 20},
-	"Granade": {"count": 0, "priceNormal": 3, "priceRare": 1, "amount": 0, "damage": 20}
+	"Granade": {"count": 0, "priceNormal": 3, "priceRare": 1, "amount": 0, "damage": 20},
+	"Potion": {"amount":100, "priceRare": 1},
+	"SpeedDrug": {"amount": 100, "priceNormal": 1, "priceRare": 2},
+	"Elisir": {"amount": 100, "priceLegendary": 1},
+	"AngelBlessing":{"amount": 100, "priceLegendary": 1}
+	
 }
 
 func _ready() -> void:

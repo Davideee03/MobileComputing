@@ -19,15 +19,15 @@ func _ready() -> void:
 
 #When pressed, change the player weapon parameters
 func _on_button_down() -> void:
-	if WeaponSave.weapon_stats.has(new_weapon.name):
-		weapon.load_weapon(WeaponSave.loaded_weapons[new_weapon.name])
-	else:
-		weapon.load_weapon(new_weapon)	
-	#var saved_weapons = WeaponSave.load_weapon_data()
-	#if saved_weapons.has(new_weapon.name):
-	#	weapon.load_weapon(saved_weapons[new_weapon.name])
+	#if WeaponSave.weapon_stats.has(new_weapon.name):
+		#weapon.load_weapon(WeaponSave.loaded_weapons[new_weapon.name])
 	#else:
-	#	weapon.load_weapon(new_weapon)
+		#weapon.load_weapon(new_weapon)	
+	var saved_weapons = WeaponSave.load_weapon_data()
+	if saved_weapons.has(new_weapon.name):
+		weapon.load_weapon(saved_weapons[new_weapon.name])
+	else:
+		weapon.load_weapon(new_weapon)
 
 # signal called by the buy button that lets us hide the button 
 func _on_buy_button_button_down() -> void:
