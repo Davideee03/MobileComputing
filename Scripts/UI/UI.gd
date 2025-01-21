@@ -15,6 +15,7 @@ extends Control
 @onready var coreRare: Label = %CoreRare
 @onready var coreEpic: Label = %CoreEpic
 @onready var coreLegendary: Label = %CoreLegendary
+@onready var consumables: Control = $Consumables
 
 #Connect the signal in stats to update the currents statistics
 func _ready() -> void:
@@ -23,7 +24,7 @@ func _ready() -> void:
 #Hide or show the buttons when necessary
 #Called in UI and Spawners
 func change_buttons_visibility():
-	explosives.change_visibility()
+	#explosives.change_visibility()
 	for button in buttons.get_children():
 		button.visible = !button.visible
 		button.disabled = !button.disabled

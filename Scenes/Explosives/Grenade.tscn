@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbbe6qoahmwoc"]
 
-[ext_resource type="Texture2D" uid="uid://cnyc6kyupuj4b" path="res://Sprites/Explosives/Grenade.png" id="1_40fyx"]
 [ext_resource type="Script" path="res://Scripts/Explosives/Grenade.gd" id="1_d0bwb"]
+[ext_resource type="Texture2D" uid="uid://dj3i5fr3l8flq" path="res://Sprites/ShopUI/granadee.png" id="2_wfo0q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oot5c"]
 radius = 100.0
@@ -20,4 +20,4 @@ shape = SubResource("CircleShape2D_oot5c")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
-texture = ExtResource("1_40fyx")
+texture = ExtResource("2_wfo0q")

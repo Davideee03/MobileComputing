@@ -1,4 +1,5 @@
 extends Label
+
 var consumables
 
 # for identification
@@ -9,7 +10,6 @@ var consumables
 func _ready() -> void:
 	# print(self.get_path())
 	update()
-	
 
 # load the dictionary with consumables saved locally and load the right amount of consumables we had 
 func update() -> void:
