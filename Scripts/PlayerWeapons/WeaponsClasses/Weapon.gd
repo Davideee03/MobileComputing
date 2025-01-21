@@ -4,6 +4,9 @@ var enemies : Array
 var current_enemy
 var is_reloading : bool = false
 
+#Small area reference
+@onready var small_enemy_detector: Area2D = %CloserArea
+
 ###DEBUG###
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("a"):
@@ -41,8 +44,29 @@ func reload() -> void:
 	is_reloading = false
 
 #The enemy target is the first one entered in the area
+#It's assumed that there's at least one enemy close enough
 func get_target():
-	return enemies[0].global_position
+	#If the enemy is quite far away, shoot to the first 
+	#which entered the area
+	if !small_enemy_detector.has_overlapping_areas():
+		return enemies[0].global_position
+	
+	#Get all the closer enemies
+	var closer_enemies : Array[Area2D] = small_enemy_detector.get_overlapping_areas()
+	
+	var min_distance : float = INF
+	var closest_enemy : Area2D = enemies[0]
+	
+	for enemy in closer_enemies:
+		#Get the distance to the player
+		var distance : float = enemy.global_position.distance_to(global_position)
+		#Find the closest enemy
+		if distance<=min_distance:
+			min_distance = distance
+			closest_enemy = enemy
+	
+	return closest_enemy.global_position
+
 
 #Append a new enemy once entered in the area
 func _on_emey_detector_area_entered(area: Area2D) -> void:

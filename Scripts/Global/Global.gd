@@ -40,6 +40,7 @@ func player_is_dead():
 	Stats.update_wave(true)
 
 func player_won():
+	await get_tree().create_timer(0.05).timeout
 	get_tree().call_group("item", "follow_player")
 	return
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://7lfiufia8slp"]
+[gd_scene load_steps=25 format=3 uid="uid://7lfiufia8slp"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_q7gve"]
 [ext_resource type="Script" path="res://Scripts/Player/Camera.gd" id="2_nrn82"]
@@ -9,6 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://d26i6hxldpy28" path="res://Soundeffects/Player/PlayerHitted.wav" id="6_psd0k"]
 [ext_resource type="Script" path="res://Scripts/Player/EnemyTargets.gd" id="7_oit74"]
 [ext_resource type="Texture2D" uid="uid://bjlotnc0jry2s" path="res://Sprites/Player/PlayerBlack.png" id="9_3yxpj"]
+[ext_resource type="Script" path="res://Scripts/Explosives/ExplosiveContainer.gd" id="9_up7r6"]
+[ext_resource type="PackedScene" uid="uid://cdqnsmky25kr1" path="res://Scenes/Explosives/Mine.tscn" id="10_pwlnm"]
+[ext_resource type="PackedScene" uid="uid://cbbe6qoahmwoc" path="res://Scenes/Explosives/Grenade.tscn" id="11_x3cxx"]
 
 [sub_resource type="Animation" id="Animation_w1f0m"]
 length = 0.001
@@ -52,6 +55,9 @@ size = Vector2(500, 800)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klpek"]
 size = Vector2(50, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cilyu"]
+radius = 200.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lyj5"]
 
@@ -240,6 +246,15 @@ stream = ExtResource("6_psd0k")
 volume_db = 5.0
 pitch_scale = 0.4
 
+[node name="CloserArea" type="Area2D" parent="Areas"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/CloserArea"]
+shape = SubResource("CircleShape2D_cilyu")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8lyj5")
 
@@ -288,6 +303,9 @@ color = Color(0.103744, 0.103744, 0.103744, 1)
 
 [node name="ExplosiveContainer" type="Node2D" parent="." groups=["ExplosiveContainer"]]
 unique_name_in_owner = true
+script = ExtResource("9_up7r6")
+mine = ExtResource("10_pwlnm")
+grenade = ExtResource("11_x3cxx")
 
 [node name="Player" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)

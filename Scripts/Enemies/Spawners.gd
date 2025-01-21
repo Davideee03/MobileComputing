@@ -1,5 +1,7 @@
 extends Node2D
 
+signal wave_ended
+
 var max_enemies : int = 0
 var enemies_defeated : int = 0
 
@@ -57,10 +59,12 @@ func end_wave():
 	
 	#Hyde the wave counter
 	wave.hyde()
+	
+	wave_ended.emit()
 
 #Called by StartWaveButton
-func _on_start_wave_button_down() -> void:
-	new_wave()
+#func _on_start_wave_button_down() -> void:
+	#new_wave()
 
 #Set up the wave
 func set_up():
