@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://gosyriwthtd6" path="res://Sprites/UI/Button.png" id="5_pi5n0"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Spawners.gd" id="8_1d40r"]
 [ext_resource type="Script" path="res://Scripts/UI/Stats/Health.gd" id="8_irv3n"]
-[ext_resource type="Texture2D" path="res://Sprites/UI/Button1.png" id="8_txq55"]
+[ext_resource type="Texture2D" uid="uid://b72tpe0vtmfpv" path="res://Sprites/UI/Button1.png" id="8_txq55"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Spawner.gd" id="9_bfess"]
 [ext_resource type="Script" path="res://Scripts/UI/Stats/Exp.gd" id="9_n7x3u"]
 [ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="10_avg3d"]

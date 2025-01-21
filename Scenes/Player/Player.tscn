@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://7lfiufia8slp"]
+[gd_scene load_steps=22 format=3 uid="uid://7lfiufia8slp"]
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_q7gve"]
 [ext_resource type="Script" path="res://Scripts/Player/Camera.gd" id="2_nrn82"]
@@ -52,6 +52,9 @@ size = Vector2(500, 800)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_klpek"]
 size = Vector2(50, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qssph"]
+radius = 205.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8lyj5"]
 
@@ -239,6 +242,15 @@ color = Color(0, 0, 0, 1)
 stream = ExtResource("6_psd0k")
 volume_db = 5.0
 pitch_scale = 0.4
+
+[node name="SmallEnemyDetector" type="Area2D" parent="Areas"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Areas/SmallEnemyDetector"]
+shape = SubResource("CircleShape2D_qssph")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8lyj5")
