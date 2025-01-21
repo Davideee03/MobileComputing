@@ -28,7 +28,6 @@ func load_data():
 		var save = FileAccess.open(player_save_path, FileAccess.READ)
 		stats = save.get_var()
 		save.close()
-		
 		print("Current max exp: " +str(stats["MaxExp"]))
 		print("Loaded!")
 	#Or create a new file with the dafault values

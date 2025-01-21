@@ -7,14 +7,11 @@ var damage = 15.0
 var reload_time = 1.2
 var level = 1
 var reload_reduction = 0.008
-var price = 200
+var price = 2
 var name = "ShotGun"
 var weapon_save = WeaponSave
 var bought = false
 	
-func _init():
-	print("Nuova arma creata: " + name)
-
 func up():
 	if upgradingCost():
 		damage = 2.5*pow(damage, 0.7)
@@ -30,9 +27,9 @@ func up():
 		print("not enough money sir")
 	
 func upgradingCost():
-	if Stats.current_money>price:
-		Stats.current_money -= price
-		price += 70
+	if Stats.current_coreRare>price:
+		Stats.current_coreRare -= price
+		price += 2
 		return true
 	else:
 		return false

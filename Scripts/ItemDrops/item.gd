@@ -2,10 +2,10 @@ extends Area2D
 
 var item_type : int = 0
 
-var coreNormal = preload("res://Sprites/Items/Carbon.png")
-var coreRare = preload("res://Sprites/Items/GEM 2 - LIGHT GREEN - 0008.png")
-var coreEpic = preload("res://Sprites/Items/GEM 2 - PURPLE - 0008.png")
-var coreLegendary = preload("res://Sprites/Items/GEM 2 - GOLD - 0008.png")
+var coreNormal = preload("res://Sprites/Items/corered.png")
+var coreRare = preload("res://Sprites/Items/Sprite-0018.png")
+var coreEpic = preload("res://Sprites/Items/coregreen.png")
+var coreLegendary = preload("res://Sprites/Items/corepurple.png")
 
 enum cores {coreNormal, coreRare, coreEpic, coreLegendary}
 

@@ -24,6 +24,7 @@ SaveAndLoad="*res://Scripts/Global/SaveAndLoad.gd"
 UniversalAudioPlayer="*res://Scenes/Sounds/UniversalAudioPlayer.tscn"
 WaveController="*res://Scripts/Global/WaveController.gd"
 WeaponSave="*res://Scripts/Global/WeaponSave.gd"
+SaveConsumables="*res://Scripts/Global/SaveConsumables.gd"
 
 [display]
 

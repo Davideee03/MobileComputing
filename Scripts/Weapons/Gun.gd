@@ -1,13 +1,13 @@
 class_name Gun
 extends Weapon
 
-var sprite = preload("res://Sprites/Weapons/Gun.png")
+var sprite = preload("res://Sprites/Weapons/pistol.png")
 var bullet = preload("res://Scenes/Weapon/Bullets/GunBullet.tscn")
 var damage = 5.0
 var reload_time = 0.75
 var level = 1
 var reload_reduction = 0.008
-var price = 100
+var price = 1
 var name = "Gun"
 # variable that slows down the player based on the weight of the weaopon. NEEDS TO BE IMPLEMENTED
 var weight = 100
@@ -15,10 +15,6 @@ var weight = 100
 # variable used to store the weapon in the registry for saving the statistics
 var weapon_save = WeaponSave
 var bought = true # the gun is the first weapon the player has so we set the variable to true
-	
-# just a print to check if the code runs here when we open the game 
-func _init():
-	print("Nuova arma creata: " + name)
 	
 # Upgrading the weapon called by the playerWeapon
 func up():
@@ -39,10 +35,10 @@ func up():
 		print("not enough moneysir")
 	
 func upgradingCost():
-	if Stats.current_money>price:
-		Stats.current_money -= price
+	if Stats.current_coreNormal>price:
+		Stats.current_coreNormal -= price
 		# momentary increase number
-		price += 50
+		price += 2
 		return true
 	else:
 		return false

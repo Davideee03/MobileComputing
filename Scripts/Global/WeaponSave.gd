@@ -4,10 +4,12 @@ var weapon_save_path = "user://weapons.dat"
 
 # Dictionary to store the weapons
 var weapon_stats = {}
+var loaded_weapons = {}
 
 
 func _ready() -> void:
-	load_weapon_data()
+	loaded_weapons = load_weapon_data()
+	print(loaded_weapons)
 
 # Saving the weapon 
 func save_weapon(weapon: Weapon) -> void:
