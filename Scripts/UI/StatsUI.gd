@@ -15,7 +15,7 @@ func update_stat_label() -> void:
 		var current_weapon = weapon_data[new_weapon.name]
 		level_label.text = "\n\n" + "Damage: " + str(current_weapon["damage"]) + "\n\nReload: " + str(current_weapon["reload_time"]) + "\n\nPrice:   x" + str(current_weapon["price"])
 	else:
-		level_label.text = new_weapon.name + " lv. " + str(new_weapon.level)
+		level_label.text = "\n\n" + "Damage: " + str(new_weapon.damage) + "\n\nReload: " + str(new_weapon.reload_time) + "\n\nPrice:   x" + str(new_weapon.price)
 	#var weapon_data = WeaponSave.load_weapon_data()
 	
 	#if weapon_data.has(new_weapon.name):
