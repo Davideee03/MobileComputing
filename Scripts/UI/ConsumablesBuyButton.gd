@@ -13,8 +13,7 @@ var consumables
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	consumables = SaveConsumables.consume_stats
-	
-	
+
 func _on_button_down() -> void:
 	# the mine costs normal cores
 	if consumables.has(consumable_name) and consumables[consumable_name]["priceNormal"] <= Stats.current_coreNormal and consumables[consumable_name]["priceRare"] <= Stats.current_coreRare:
@@ -28,4 +27,3 @@ func _on_button_down() -> void:
 			print("Nodopocdkfadslkfnon storoavao!")
 		# if we want to save the file when we buy it. As the game is made, we save only after the wave is ended
 		#SaveConsumables.save_consume()
-		

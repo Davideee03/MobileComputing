@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cdqnsmky25kr1"]
 
 [ext_resource type="Script" path="res://Scripts/Explosives/Mine.gd" id="1_4ubus"]
-[ext_resource type="Texture2D" uid="uid://d3cuppqtwq30" path="res://Sprites/Explosives/Mine.png" id="1_27nc3"]
+[ext_resource type="Texture2D" uid="uid://d1ga2detqcbpj" path="res://Sprites/ShopUI/Minee.png" id="2_tynac"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m6v16"]
 radius = 100.0
@@ -32,6 +32,6 @@ shape = SubResource("CircleShape2D_7c1ye")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
-texture = ExtResource("1_27nc3")
+texture = ExtResource("2_tynac")
 
 [connection signal="area_entered" from="Detector" to="." method="_on_detector_area_entered"]

@@ -2,6 +2,7 @@ extends Control
 
 @export var mine : PackedScene
 @export var granade : PackedScene
+
 #Explosives parent
 var explosive_container: Node
 
@@ -13,7 +14,7 @@ func _on_mine_button_down() -> void:
 		spawn_explosive(mine)
 
 func _on_granate_button_down() -> void:
-	if SaveConsumables.consume_stats["Granade"]["amount"] >0:
+	if SaveConsumables.consume_stats["Grenade"]["amount"] >0:
 		spawn_explosive(granade)
 
 func spawn_explosive(bomb : PackedScene):

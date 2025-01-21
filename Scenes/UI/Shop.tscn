@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://Scripts/UI/reset_button_weapons.gd" id="9_gx07f"]
 [ext_resource type="Texture2D" uid="uid://l776x5hkpgwt" path="res://Sprites/Weapons/pistol.png" id="9_pvmpi"]
 [ext_resource type="Script" path="res://Scripts/UI/ButtonResetShop.gd" id="10_q7mde"]
-[ext_resource type="Texture2D" uid="uid://cvrdekbuxei15" path="res://Sprites/Weapons/shotgun.png" id="13_fj7j1"]
+[ext_resource type="Texture2D" uid="uid://cvrdekbuxei15" path="res://Sprites/Weapons/ShotGun.png" id="13_fj7j1"]
 [ext_resource type="Texture2D" uid="uid://hnjbntnc7rsk" path="res://Sprites/Weapons/assault.png" id="15_1g5xs"]
 [ext_resource type="Texture2D" uid="uid://cmlrm183f7twn" path="res://Sprites/Items/Sprite-0018.png" id="15_mesl3"]
 [ext_resource type="Texture2D" uid="uid://b2y35kxpmhxwc" path="res://Sprites/ShopUI/prova2.png" id="16_owed7"]
@@ -856,6 +856,7 @@ scale = Vector2(5.50781, 6.10938)
 texture = ExtResource("6_6brxq")
 
 [node name="Label" type="Label" parent="Consumables/VBoxContainer/Mine/MineButtonBuy"]
+layout_mode = 0
 offset_left = 31.0
 offset_top = 25.0
 offset_right = 110.0
@@ -864,21 +865,21 @@ theme_override_fonts/font = ExtResource("1_ee2sf")
 theme_override_font_sizes/font_size = 33
 text = "Buy"
 
-[node name="Granade" type="TextureRect" parent="Consumables/VBoxContainer"]
+[node name="Grenade" type="TextureRect" parent="Consumables/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("16_owed7")
 
-[node name="Sprite2D2" type="Sprite2D" parent="Consumables/VBoxContainer/Granade"]
+[node name="Sprite2D2" type="Sprite2D" parent="Consumables/VBoxContainer/Grenade"]
 position = Vector2(305.25, 156.25)
 scale = Vector2(2.21875, 2.21875)
 texture = ExtResource("15_mesl3")
 
-[node name="Sprite2D" type="Sprite2D" parent="Consumables/VBoxContainer/Granade"]
+[node name="Sprite2D" type="Sprite2D" parent="Consumables/VBoxContainer/Grenade"]
 position = Vector2(206.75, 156.75)
 scale = Vector2(2.15625, 2.15625)
 texture = ExtResource("9_7m7r0")
 
-[node name="NameMine" type="Label" parent="Consumables/VBoxContainer/Granade"]
+[node name="NameMine" type="Label" parent="Consumables/VBoxContainer/Grenade"]
 layout_mode = 0
 offset_left = 25.0
 offset_top = 21.0
@@ -888,7 +889,8 @@ theme_override_fonts/font = ExtResource("1_ee2sf")
 theme_override_font_sizes/font_size = 25
 text = "Granade"
 
-[node name="StatsMine2" type="Label" parent="Consumables/VBoxContainer/Granade"]
+[node name="StatsMine2" type="Label" parent="Consumables/VBoxContainer/Grenade"]
+layout_mode = 0
 offset_left = 189.0
 offset_top = 32.0
 offset_right = 377.0
@@ -902,7 +904,7 @@ Price:
 
     x3        x1"
 
-[node name="MineSprite" type="TextureRect" parent="Consumables/VBoxContainer/Granade"]
+[node name="MineSprite" type="TextureRect" parent="Consumables/VBoxContainer/Grenade"]
 layout_mode = 0
 offset_left = 24.0
 offset_top = 56.0
@@ -910,7 +912,7 @@ offset_right = 166.0
 offset_bottom = 199.0
 texture = ExtResource("30_ts5fo")
 
-[node name="GranadeButtonBuy" type="Button" parent="Consumables/VBoxContainer/Granade"]
+[node name="GrenadeButtonBuy" type="Button" parent="Consumables/VBoxContainer/Grenade"]
 layout_mode = 0
 offset_left = 405.0
 offset_top = 67.0
@@ -918,15 +920,16 @@ offset_right = 556.0
 offset_bottom = 157.0
 text = "Buy"
 script = ExtResource("24_cd5xm")
-consumable_name = "Granade"
+consumable_name = "Grenade"
 label_path = NodePath("/root/World/Player/UI/UI/Explosives/Granade/AmountGranades")
 
-[node name="Sprite2D" type="Sprite2D" parent="Consumables/VBoxContainer/Granade/GranadeButtonBuy"]
+[node name="Sprite2D" type="Sprite2D" parent="Consumables/VBoxContainer/Grenade/GrenadeButtonBuy"]
 position = Vector2(72, 42)
 scale = Vector2(5.50781, 6.10938)
 texture = ExtResource("6_6brxq")
 
-[node name="Label" type="Label" parent="Consumables/VBoxContainer/Granade/GranadeButtonBuy"]
+[node name="Label" type="Label" parent="Consumables/VBoxContainer/Grenade/GrenadeButtonBuy"]
+layout_mode = 0
 offset_left = 31.0
 offset_top = 25.0
 offset_right = 110.0
@@ -935,7 +938,7 @@ theme_override_fonts/font = ExtResource("1_ee2sf")
 theme_override_font_sizes/font_size = 33
 text = "Buy"
 
-[node name="AmountMine" type="Label" parent="Consumables/VBoxContainer/Granade"]
+[node name="AmountMine" type="Label" parent="Consumables/VBoxContainer/Grenade"]
 layout_mode = 0
 offset_left = 99.0
 offset_top = 135.0
@@ -1002,4 +1005,4 @@ text = "x1"
 [connection signal="button_down" from="Upgrades/VBoxContainer/TextureRect/Button" to="Upgrades/VBoxContainer/TextureRect/Button" method="_on_button_down"]
 [connection signal="button_down" from="Consumables/VBoxContainer/Mine/MineButtonBuy" to="Consumables/VBoxContainer/Mine/StatsMine" method="_on_mine_button_buy_button_down"]
 [connection signal="button_down" from="Consumables/VBoxContainer/Mine/MineButtonBuy" to="Consumables/VBoxContainer/Mine/MineButtonBuy" method="_on_button_down"]
-[connection signal="button_down" from="Consumables/VBoxContainer/Granade/GranadeButtonBuy" to="Consumables/VBoxContainer/Granade/GranadeButtonBuy" method="_on_button_down"]
+[connection signal="button_down" from="Consumables/VBoxContainer/Grenade/GrenadeButtonBuy" to="Consumables/VBoxContainer/Grenade/GrenadeButtonBuy" method="_on_button_down"]

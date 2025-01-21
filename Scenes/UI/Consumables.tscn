@@ -1,0 +1,192 @@
+[gd_scene load_steps=11 format=3 uid="uid://cigox5t4icda4"]
+
+[ext_resource type="Script" path="res://Scripts/UI/ConsumablesSelector.gd" id="1_xn2ad"]
+[ext_resource type="Texture2D" uid="uid://d1ga2detqcbpj" path="res://Sprites/ShopUI/Minee.png" id="2_5fn4g"]
+[ext_resource type="Texture2D" uid="uid://b2y35kxpmhxwc" path="res://Sprites/ShopUI/prova2.png" id="3_5vvi8"]
+[ext_resource type="FontFile" uid="uid://ba8dt86yqwf0f" path="res://Fonts/Bytesized-Regular.ttf" id="4_3v2pa"]
+[ext_resource type="Texture2D" uid="uid://ddcrofb64o3hw" path="res://Sprites/ShopUI/closingshopbutton.png" id="4_56jfc"]
+[ext_resource type="Texture2D" uid="uid://dj3i5fr3l8flq" path="res://Sprites/ShopUI/granadee.png" id="4_v4x27"]
+[ext_resource type="Script" path="res://Scripts/Explosives/AmountConsumablesUI.gd" id="5_fn6ob"]
+
+[sub_resource type="Animation" id="Animation_abqt2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [100.0]
+}
+
+[sub_resource type="Animation" id="Animation_x2rw0"]
+resource_name = "WaitTime"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [100.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bkxi3"]
+_data = {
+"RESET": SubResource("Animation_abqt2"),
+"WaitTime": SubResource("Animation_x2rw0")
+}
+
+[node name="Consumables" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_xn2ad")
+wait_time = 3.5
+
+[node name="BackGround" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -180.0
+offset_right = 180.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_5vvi8")
+
+[node name="Mine" type="Button" parent="BackGround"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -94.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mines"
+
+[node name="TextureRect" type="TextureRect" parent="BackGround/Mine"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = -11.0
+offset_right = 13.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5fn4g")
+
+[node name="AmountMines" type="Label" parent="BackGround/Mine"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 149.0
+offset_top = 1.0
+offset_right = 177.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("4_3v2pa")
+theme_override_font_sizes/font_size = 55
+text = "1"
+script = ExtResource("5_fn6ob")
+consumable_name = "Mine"
+
+[node name="Grenade" type="Button" parent="BackGround"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -94.0
+offset_right = 180.0
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Granade"
+
+[node name="TextureRect" type="TextureRect" parent="BackGround/Grenade"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_v4x27")
+
+[node name="AmountGrenades" type="Label" parent="BackGround/Grenade"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 142.0
+offset_top = 1.0
+offset_right = 170.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("4_3v2pa")
+theme_override_font_sizes/font_size = 55
+text = "0"
+script = ExtResource("5_fn6ob")
+consumable_name = "Grenade"
+
+[node name="WaitTime" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -208.0
+offset_right = 130.0
+offset_bottom = -181.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+show_percentage = false
+
+[node name="Exit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 540.0
+offset_top = 460.0
+offset_right = 590.0
+offset_bottom = 510.0
+rotation = 3.14159
+text = "Exit"
+
+[node name="TextureRect" type="TextureRect" parent="Exit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_56jfc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../WaitTime")
+libraries = {
+"": SubResource("AnimationLibrary_bkxi3")
+}
+
+[connection signal="button_down" from="BackGround/Mine" to="." method="_on_mines_button_down"]
+[connection signal="button_down" from="BackGround/Grenade" to="." method="_on_granade_button_down"]
+[connection signal="button_down" from="Exit" to="." method="_on_exit_button_down"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

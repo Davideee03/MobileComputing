@@ -1,7 +1,7 @@
 class_name Explosive
 extends Node2D
 
-@export var damage : float = 20.0
+@export var damage : float = 12.0
 
 #Damage area
 @onready var damage_area: Area2D = $DamageArea
