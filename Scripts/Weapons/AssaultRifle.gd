@@ -1,20 +1,17 @@
 class_name AssaultRifle
 extends Weapon
 
-var sprite = preload("res://Sprites/Weapons/AssaultRifle.png")
+var sprite = preload("res://Sprites/Weapons/assault.png")
 var bullet = preload("res://Scenes/Weapon/Bullets/AssaultRifleBullet.tscn")
 var damage = 7.5
 var reload_time = 0.2
 var level = 1
 var reload_reduction = 0.008
-var price = 500
+var price = 5
 var name = "AssaultRifle"
 var bought = false
 var weapon_save = WeaponSave
 
-func _init():
-	print("Nuova arma creata: " + name)
-	
 # Upgrading the weapon called by the playerWeapon
 func up():
 	if upgradingCost():
@@ -31,9 +28,9 @@ func up():
 		print("not enough moneysir")
 	
 func upgradingCost():
-	if Stats.current_money>price:
-		Stats.current_money -= price
-		price += 100
+	if Stats.current_coreEpic>price:
+		Stats.current_coreEpic -= price
+		price += 5
 		return true
 	else:
 		return false

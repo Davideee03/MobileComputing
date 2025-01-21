@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvrdekbuxei15"
-path="res://.godot/imported/shotgun.png-a60529078209b70d87a069cd24701792.ctex"
+uid="uid://dj3i5fr3l8flq"
+path="res://.godot/imported/granadee.png-70897018791e3d3a78faa9d4560c96e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Weapons/shotgun.png"
-dest_files=["res://.godot/imported/shotgun.png-a60529078209b70d87a069cd24701792.ctex"]
+source_file="res://Sprites/ShopUI/granadee.png"
+dest_files=["res://.godot/imported/granadee.png-70897018791e3d3a78faa9d4560c96e0.ctex"]
 
 [params]
 

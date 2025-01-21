@@ -56,6 +56,7 @@ func end_wave(player_has_won : bool):
 			enemy.reset = true
 			enemy.die()
 	
+	
 	#Collect all the remaining cores
 	#await get_tree().create_timer(get_process_delta_time()).timeout
 	#get_tree().call_group("item", "follow_player")
