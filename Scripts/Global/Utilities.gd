@@ -28,5 +28,5 @@ func choose_random_wait_time():
 	return randf_range(min_wait_time, max_wait_time)
 
 func choose_random_enemy():
-	var enemies = WaveController.current_enemies
+	var enemies = WaveController.set_enemies()
 	return enemies.pick_random()

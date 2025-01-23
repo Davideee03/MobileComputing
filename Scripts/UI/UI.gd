@@ -7,7 +7,7 @@ extends Control
 
 
 #Stats
-@onready var money: Label = %Money
+#@onready var money: Label = %Money
 #@onready var waves: Label = %Waves
 @onready var exp: ProgressBar = %Exp
 @onready var health: Control = %Health
@@ -19,7 +19,10 @@ extends Control
 
 #Connect the signal in stats to update the currents statistics
 func _ready() -> void:
-	Stats.on_stats_changed.connect(display_new_stats)
+	#Stats.on_stats_changed.connect(display_new_stats)
+	Stats.exp_changed.connect(display_exp)
+	Stats.health_changed.connect(display_health)
+	Stats.cores_changed.connect(display_cores)
 
 #Hide or show the buttons when necessary
 #Called in UI and Spawners
@@ -29,18 +32,25 @@ func change_buttons_visibility():
 		button.visible = !button.visible
 		button.disabled = !button.disabled
 
-#Display the stats
-func display_new_stats(current_money, current_exp, current_wave, current_health, current_coreNormal,current_coreRare,current_coreEpic, current_coreLegendary ):
-	money.text = "Money: " + str(current_money)
-	#waves.text = "Wave: " + str(current_wave)
-	#exp.text = "Exp: " + str(current_exp)
+func display_exp(current_exp):
 	exp.update_exp(current_exp)
-	#health.text = "Health: " + str(current_health)
+func display_health(current_health):
 	health.update_health(current_health)
+func display_cores(current_coreNormal,current_coreRare,current_coreEpic, current_coreLegendary):
 	coreNormal.text = ": " + str(current_coreNormal)
 	coreRare.text = ": " + str(current_coreRare)
 	coreEpic.text = ": " + str(current_coreEpic)
 	coreLegendary.text = ": " + str(current_coreLegendary)
+
+#Display the stats
+#func display_new_stats(current_money, current_exp, current_wave, current_health, current_coreNormal,current_coreRare,current_coreEpic, current_coreLegendary ):
+	##money.text = "Money: " + str(current_money)
+	#exp.update_exp(current_exp)
+	##health.update_health(current_health)
+	#coreNormal.text = ": " + str(current_coreNormal)
+	#coreRare.text = ": " + str(current_coreRare)
+	#coreEpic.text = ": " + str(current_coreEpic)
+	#coreLegendary.text = ": " + str(current_coreLegendary)
 
 #Start a new wave
 func _on_start_wave_button_button_down() -> void:
@@ -73,3 +83,7 @@ func _on_cheats_button_down() -> void:
 	Stats.current_coreLegendary = 1000000
 	Stats.current_exp = 1000000
 	Stats.emit_stats()
+
+
+func _on_enemy_spawners_wave_ended(player_won: Variant) -> void:
+	change_buttons_visibility()

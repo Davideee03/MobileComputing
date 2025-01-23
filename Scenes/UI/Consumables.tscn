@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cigox5t4icda4"]
+[gd_scene load_steps=12 format=3 uid="uid://cigox5t4icda4"]
 
 [ext_resource type="Script" path="res://Scripts/UI/ConsumablesSelector.gd" id="1_xn2ad"]
 [ext_resource type="Texture2D" uid="uid://d1ga2detqcbpj" path="res://Sprites/ShopUI/Minee.png" id="2_5fn4g"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://ddcrofb64o3hw" path="res://Sprites/ShopUI/closingshopbutton.png" id="4_56jfc"]
 [ext_resource type="Texture2D" uid="uid://dj3i5fr3l8flq" path="res://Sprites/ShopUI/granadee.png" id="4_v4x27"]
 [ext_resource type="Script" path="res://Scripts/Explosives/AmountConsumablesUI.gd" id="5_fn6ob"]
+[ext_resource type="FontFile" uid="uid://dflx50tvhjet4" path="res://Fonts/TMT-Paint-Regular.otf" id="7_tcvi3"]
 
 [sub_resource type="Animation" id="Animation_abqt2"]
 length = 0.001
@@ -65,7 +66,7 @@ anchor_bottom = 0.5
 offset_left = -180.0
 offset_top = -180.0
 offset_right = 180.0
-offset_bottom = 180.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_5vvi8")
@@ -78,8 +79,8 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -180.0
-offset_top = -94.0
-offset_bottom = 86.0
+offset_top = -60.0
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Mines"
@@ -117,9 +118,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -94.0
+offset_top = -60.0
 offset_right = 180.0
-offset_bottom = 86.0
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Granade"
@@ -145,6 +146,21 @@ theme_override_font_sizes/font_size = 55
 text = "0"
 script = ExtResource("5_fn6ob")
 consumable_name = "Grenade"
+
+[node name="ConsumablesLabel" type="Label" parent="BackGround"]
+z_index = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -170.0
+offset_top = 28.0
+offset_right = 170.0
+offset_bottom = 68.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("7_tcvi3")
+theme_override_font_sizes/font_size = 40
+text = "Consumables"
 
 [node name="WaitTime" type="ProgressBar" parent="."]
 layout_mode = 1

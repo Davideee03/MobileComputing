@@ -1,7 +1,7 @@
 extends Node
 
 #File where the stats are stored
-var player_save_path = "user://player.dat"
+var player_save_path = "user://PlayerStats.dat"
 
 #Default stats
 var stats = {}
@@ -43,7 +43,6 @@ func set_stats():
 	stats["Lvl"] = Stats.current_lvl
 	stats["MaxExp"] = Stats.current_max_exp
 	
-	stats["Money"] = Stats.current_money
 	stats["Health"] = Stats.current_health
 	
 	# Core drops stats
