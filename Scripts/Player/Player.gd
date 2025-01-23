@@ -48,9 +48,8 @@ func _process(_delta):
 		velocity = direction*speed
 		move_and_slide()
 
-#Reset the position and health if dead
-#Called by Global
-func reset():
-	global_position = Vector2.ZERO
-	#hitbox.restore_health()
-	pet.reset()
+func _on_enemy_spawners_wave_ended(player_won: Variant) -> void:
+	#If player lost reset to deafult
+	if !player_won:
+		global_position = Vector2.ZERO
+		pet.reset()

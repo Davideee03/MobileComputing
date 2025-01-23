@@ -5,9 +5,9 @@ extends Node2D
 @export var damage : int = 1
 @export var health : int = 20
 
-@export_subgroup("Money")
-@export var min_money_drop : int = 1
-@export var max_money_drop : int = 100
+#@export_subgroup("Money")
+#@export var min_money_drop : int = 1
+#@export var max_money_drop : int = 100
 
 @export_subgroup("Exp")
 @export var min_exp_drop : int = 1
@@ -71,7 +71,7 @@ func die():
 		#Once dead reduce the number of current enemies on the field
 		get_parent().update_wave(-value)
 		
-		Stats.add_money(choose_random_money_drop())
+		#Stats.add_money(choose_random_money_drop())
 		Stats.add_exp(choose_random_exp_drop())
 		drop_item()
 		
@@ -86,8 +86,8 @@ func die():
 	#Delete the enemy
 	queue_free()
 
-func choose_random_money_drop():
-	return randi_range(min_money_drop, max_money_drop)
+#func choose_random_money_drop():
+	#return randi_range(min_money_drop, max_money_drop)
 
 func choose_random_exp_drop():
 	return randi_range(min_exp_drop, max_exp_drop)

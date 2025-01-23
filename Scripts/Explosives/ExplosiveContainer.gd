@@ -17,7 +17,7 @@ func _ready() -> void:
 	enemy_spawners = get_node("/root/World/Player/EnemySpawners")
 	enemy_spawners.wave_ended.connect(stop_spawning)
 
-func stop_spawning():
+func stop_spawning(player_won: Variant):
 	can_spawn = false
 
 func start_spawning(explosive : String):
@@ -37,33 +37,3 @@ func spawn_explosive(explosive : PackedScene):
 	EXPLOSIVE.global_position = global_position
 	
 	spawn_explosive(explosive) 
-
-#func select_explosive(bomb : String):
-	#print(bomb)
-#
-#func spawn_mine():
-	#SaveConsumables.consume_stats["Mine"]["amount"] -= 1
-	#start_spawning_mines()
-#
-#func start_spawning_mines():
-	#await get_tree().create_timer(mine_spawning_time).timeout
-	#if spawn(mine):
-		#start_spawning_mines()
-#
-#
-#func spawn_granade():
-	#SaveConsumables.consume_stats["Granade"]["amount"] -= 1
-	#start_spawning_granades()
-#
-#func start_spawning_granades():
-	#await get_tree().create_timer(mine_spawning_time).timeout
-	#if spawn(granades):
-		#start_spawning_granades()
-#
-#
-#func spawn(EXPLOSIVE : PackedScene):
-	#if !can_spawn: return can_spawn
-	#var explosive = EXPLOSIVE.instantiate()
-	#add_child(explosive)
-	#
-	#explosive.global_position = global_position
