@@ -52,5 +52,5 @@ func _process(_delta):
 #Called by Global
 func reset():
 	global_position = Vector2.ZERO
-	hitbox.restore_health()
+	#hitbox.restore_health()
 	pet.reset()

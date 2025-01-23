@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cu3i1p3knb8dp"]
+[gd_scene load_steps=35 format=3 uid="uid://cu3i1p3knb8dp"]
 
 [ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
 [ext_resource type="Script" path="res://Scripts/ItemDrops/ItemContainer.gd" id="2_vjykl"]
@@ -30,6 +30,60 @@
 [ext_resource type="Script" path="res://Scripts/Explosives/AmountConsumablesUI.gd" id="23_a3jdo"]
 [ext_resource type="Texture2D" uid="uid://dj3i5fr3l8flq" path="res://Sprites/ShopUI/granadee.png" id="26_u2awc"]
 [ext_resource type="PackedScene" uid="uid://cigox5t4icda4" path="res://Scenes/UI/Consumables.tscn" id="27_xwq4t"]
+
+[sub_resource type="Animation" id="Animation_p8jxl"]
+resource_name = "Death"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w1f0m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0uw0e"]
+resource_name = "TakeDamage"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.233333, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.654902), Color(0, 0, 0, 0.592157), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mahuy"]
+_data = {
+"Death": SubResource("Animation_p8jxl"),
+"RESET": SubResource("Animation_w1f0m"),
+"TakeDamage": SubResource("Animation_0uw0e")
+}
 
 [node name="World" type="Node2D"]
 
@@ -137,6 +191,8 @@ script = ExtResource("9_bfess")
 
 [node name="UI" type="Control" parent="Player/UI"]
 unique_name_in_owner = true
+z_index = -4
+z_as_relative = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -243,10 +299,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -977.0
-offset_top = 147.0
-offset_right = -796.0
-offset_bottom = 178.0
+offset_left = -111.0
+offset_top = 240.0
+offset_right = 70.0
+offset_bottom = 271.0
 grow_horizontal = 0
 text = "Reset Game to Wave 0"
 
@@ -255,10 +311,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -962.0
-offset_top = 298.0
-offset_right = -762.0
-offset_bottom = 329.0
+offset_left = -1102.0
+offset_top = 144.0
+offset_right = -902.0
+offset_bottom = 175.0
 grow_horizontal = 0
 text = "Inf resources"
 
@@ -549,6 +605,36 @@ consumable_name = "Grenade"
 visible = false
 layout_mode = 1
 
+[node name="DamageUI" type="Control" parent="Player/UI/UI"]
+z_index = 3
+z_as_relative = false
+y_sort_enabled = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Player/UI/UI/DamageUI"]
+z_index = 150
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="DamageAnimator" type="AnimationPlayer" parent="Player/UI/UI/DamageUI"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_mahuy")
+}
+
 [node name="Items" type="Node" parent="."]
 unique_name_in_owner = true
 
@@ -568,6 +654,10 @@ first_tile = true
 volume_db = 5.0
 bus = &"Enviroment"
 
+[connection signal="wave_ended" from="Player/EnemySpawners" to="Player/ItemSpawner" method="_on_enemy_spawners_wave_ended"]
+[connection signal="wave_ended" from="Player/EnemySpawners" to="Player/EnemySpawners" method="_on_wave_ended"]
+[connection signal="wave_ended" from="Player/EnemySpawners" to="Player/UI/UI" method="_on_enemy_spawners_wave_ended"]
+[connection signal="wave_ended" from="Player/EnemySpawners" to="Player/UI/UI/Stats/Wave" method="_on_enemy_spawners_wave_ended"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/EnemySpawners" method="_on_start_wave_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI" method="_on_start_wave_button_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI/Consumables" method="_on_start_wave_button_button_down"]

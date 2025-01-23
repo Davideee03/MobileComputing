@@ -73,3 +73,7 @@ func _on_cheats_button_down() -> void:
 	Stats.current_coreLegendary = 1000000
 	Stats.current_exp = 1000000
 	Stats.emit_stats()
+
+
+func _on_enemy_spawners_wave_ended(player_won: Variant) -> void:
+	change_buttons_visibility()

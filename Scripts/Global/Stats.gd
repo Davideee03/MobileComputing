@@ -2,6 +2,7 @@ extends Node
 
 #Signal connected to UI
 signal on_stats_changed(current_money, current_exp, current_wave, current_health, current_coreNormal, current_coreRare, current_coreEpic, current_coreLegendary )
+signal reset
 
 var current_money : int = 0
 var current_lvl : int = 0
@@ -69,14 +70,17 @@ func update_wave(reset_wave = false):
 	#is not dead
 	#Called by Global
 	if reset_wave:
+		print("Lost")
 		current_wave-=1
 	else:
+		print("Won")
 		current_wave+=1
 	
 	emit_stats()
 
 # Reset the game to zero
 func reset_to_zero():
+	reset.emit()
 	current_health = 5
 	current_lvl = 0
 	current_exp = 0

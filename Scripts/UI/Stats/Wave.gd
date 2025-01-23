@@ -16,3 +16,6 @@ func display_wave(enemies_defeated : int, max_enemies : int = max_value):
 
 func hyde():
 	visible = false
+
+func _on_enemy_spawners_wave_ended(player_won: Variant) -> void:
+	hyde()

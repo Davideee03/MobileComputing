@@ -37,7 +37,7 @@ func player_is_dead():
 	player.reset()
 	
 	#Don't pass to the next wave
-	Stats.update_wave(true)
+	#Stats.update_wave(true)
 
 func player_won():
 	await get_tree().create_timer(0.05).timeout
