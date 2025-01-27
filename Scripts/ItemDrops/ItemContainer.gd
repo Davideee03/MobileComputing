@@ -13,3 +13,9 @@ func spawn():
 
 func stop_spawning():
 	can_spawn = false
+
+func _on_enemy_spawners_wave_ended(player_won: Variant) -> void:
+	stop_spawning()
+
+func _on_enemy_spawners_wave_started(max_enemies: Variant) -> void:
+	spawn()
