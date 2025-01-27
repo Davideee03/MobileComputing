@@ -1,13 +1,32 @@
-class_name Explosives
-extends Node
+class_name Explosive
+extends Node2D
 
+@export var damage : float = 12.0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
+#Damage area
+@onready var damage_area: Area2D = $DamageArea
 
+#Sprite reference
+@onready var sprite: Sprite2D = $Sprite
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+const explosion_reference = preload("res://Scenes/Explosives/ExplosiveExplosion.tscn")
+var explosion : Node2D
+
+#Deals damage to enemies within the damage area
+func damage_enemies() -> void:
+	var overlapping_areas = damage_area.get_overlapping_areas()
+	for area in overlapping_areas:
+		area.take_damage(damage)
 	
+	spawn_explosion()
+	sprite.visible = false
+	await explosion.finished
+	
+	queue_free()
+
+func spawn_explosion():
+	explosion = explosion_reference.instantiate()
+	add_child(explosion)
+	
+	explosion.global_position = global_position
+	explosion.play()

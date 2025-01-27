@@ -1,0 +1,410 @@
+[gd_scene load_steps=33 format=3 uid="uid://cftrkiyi740hw"]
+
+[ext_resource type="Script" path="res://Scripts/UI/WeaponButton.gd" id="1_jvfwi"]
+[ext_resource type="Script" path="res://Scripts/Weapons/Gun.gd" id="2_faleo"]
+[ext_resource type="Script" path="res://Scripts/UI/buy_button.gd" id="2_m2wpg"]
+[ext_resource type="Texture2D" uid="uid://eqf2btskdko3" path="res://Sprites/Weapons/Gun.png" id="4_bt35v"]
+[ext_resource type="Script" path="res://Scripts/Weapons/AssaultRifle.gd" id="5_slk5c"]
+[ext_resource type="Script" path="res://Scripts/UI/upgrade_button.gd" id="5_vysrr"]
+[ext_resource type="Texture2D" uid="uid://yb31726ijnte" path="res://Sprites/Enviroment/Floor.png" id="6_cx44u"]
+[ext_resource type="Texture2D" uid="uid://dy2275q4wo1yu" path="res://Sprites/Items/Sprite-0001.png" id="6_lj35b"]
+[ext_resource type="Script" path="res://Scripts/Weapons/ShotGun.gd" id="7_a5lli"]
+[ext_resource type="Script" path="res://Scripts/UI/Levels.gd" id="7_jxy6n"]
+[ext_resource type="Texture2D" uid="uid://deo03cvskmou2" path="res://Sprites/Items/Cores.png" id="7_k7bhb"]
+[ext_resource type="Script" path="res://Scripts/UI/StatsUI.gd" id="7_xvl4a"]
+[ext_resource type="Texture2D" uid="uid://cvrdekbuxei15" path="res://Sprites/Weapons/ShotGun.png" id="8_1opsl"]
+[ext_resource type="Script" path="res://Scenes/UI/button.gd" id="8_tcgbb"]
+[ext_resource type="Script" path="res://Scripts/UI/reset_button_weapons.gd" id="9_gx07f"]
+[ext_resource type="Texture2D" uid="uid://dreafflwq03ut" path="res://Sprites/Weapons/AssaultRifle.png" id="10_hvtsb"]
+[ext_resource type="Script" path="res://Scripts/UI/ButtonResetShop.gd" id="10_q7mde"]
+
+[sub_resource type="Resource" id="Resource_gfcii"]
+script = ExtResource("2_faleo")
+
+[sub_resource type="Resource" id="Resource_qekxy"]
+script = ExtResource("2_faleo")
+
+[sub_resource type="Resource" id="Resource_1ko4t"]
+script = ExtResource("2_faleo")
+
+[sub_resource type="Resource" id="Resource_gicd6"]
+script = ExtResource("2_faleo")
+
+[sub_resource type="Resource" id="Resource_01fav"]
+script = ExtResource("2_faleo")
+
+[sub_resource type="Resource" id="Resource_jyvki"]
+script = ExtResource("7_a5lli")
+
+[sub_resource type="Resource" id="Resource_2350j"]
+script = ExtResource("7_a5lli")
+
+[sub_resource type="Resource" id="Resource_fjm36"]
+script = ExtResource("7_a5lli")
+
+[sub_resource type="Resource" id="Resource_4hkwb"]
+script = ExtResource("7_a5lli")
+
+[sub_resource type="Resource" id="Resource_hacjo"]
+script = ExtResource("7_a5lli")
+
+[sub_resource type="Resource" id="Resource_ujn17"]
+script = ExtResource("5_slk5c")
+
+[sub_resource type="Resource" id="Resource_kiwvb"]
+script = ExtResource("5_slk5c")
+
+[sub_resource type="Resource" id="Resource_lqkcy"]
+script = ExtResource("5_slk5c")
+
+[sub_resource type="Resource" id="Resource_klymg"]
+script = ExtResource("5_slk5c")
+
+[sub_resource type="Resource" id="Resource_bbyjx"]
+script = ExtResource("5_slk5c")
+
+[node name="Shop" type="TabContainer"]
+offset_top = -400.0
+offset_right = 613.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tab_alignment = 1
+current_tab = 0
+
+[node name="Weapons" type="ScrollContainer" parent="."]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Weapons"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Gun" type="TextureRect" parent="Weapons/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_lj35b")
+
+[node name="BuyGun" type="Button" parent="Weapons/VBoxContainer/Gun"]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 24.0
+offset_right = 458.0
+offset_bottom = 57.0
+text = "Buy"
+script = ExtResource("2_m2wpg")
+new_weapon = SubResource("Resource_gfcii")
+
+[node name="SelectGun" type="Button" parent="Weapons/VBoxContainer/Gun"]
+visible = false
+layout_mode = 2
+offset_left = 350.0
+offset_top = 26.0
+offset_right = 460.0
+offset_bottom = 57.0
+text = "Select"
+script = ExtResource("1_jvfwi")
+new_weapon = SubResource("Resource_qekxy")
+
+[node name="UpgradeGun" type="Button" parent="Weapons/VBoxContainer/Gun"]
+visible = false
+layout_mode = 0
+offset_left = 348.0
+offset_top = 73.0
+offset_right = 461.0
+offset_bottom = 105.0
+text = "Upgrade"
+script = ExtResource("5_vysrr")
+new_weapon = SubResource("Resource_1ko4t")
+
+[node name="LevelGun" type="Label" parent="Weapons/VBoxContainer/Gun"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 9.0
+offset_right = 216.0
+offset_bottom = 37.0
+text = "Gun lv. 1"
+script = ExtResource("7_jxy6n")
+new_weapon = SubResource("Resource_gicd6")
+
+[node name="Stats" type="Label" parent="Weapons/VBoxContainer/Gun"]
+layout_mode = 0
+offset_left = 179.0
+offset_top = 10.0
+offset_right = 312.0
+offset_bottom = 111.0
+text = "Stats:
+Damage:  5
+Reload: 0.5
+Price: 100
+"
+script = ExtResource("7_xvl4a")
+new_weapon = SubResource("Resource_01fav")
+
+[node name="GunSprite" type="TextureRect" parent="Weapons/VBoxContainer/Gun"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 43.0
+offset_right = 97.0
+offset_bottom = 104.0
+texture = ExtResource("4_bt35v")
+
+[node name="ResetButtonWeapons" type="Button" parent="Weapons/VBoxContainer/Gun"]
+layout_mode = 2
+offset_left = 470.0
+offset_top = 26.0
+offset_right = 587.0
+offset_bottom = 57.0
+text = "Reset weapon"
+script = ExtResource("9_gx07f")
+
+[node name="ResetShop" type="Button" parent="Weapons/VBoxContainer/Gun"]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 72.0
+offset_right = 590.0
+offset_bottom = 106.0
+text = "Reset Shop"
+script = ExtResource("10_q7mde")
+
+[node name="ShotGun" type="TextureRect" parent="Weapons/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_lj35b")
+
+[node name="BuyShotGun" type="Button" parent="Weapons/VBoxContainer/ShotGun"]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 22.0
+offset_right = 458.0
+offset_bottom = 55.0
+text = "Buy"
+script = ExtResource("2_m2wpg")
+new_weapon = SubResource("Resource_jyvki")
+
+[node name="SelectShotGun" type="Button" parent="Weapons/VBoxContainer/ShotGun"]
+visible = false
+layout_mode = 2
+offset_left = 349.0
+offset_top = 23.0
+offset_right = 458.0
+offset_bottom = 54.0
+text = "Select"
+script = ExtResource("1_jvfwi")
+new_weapon = SubResource("Resource_2350j")
+
+[node name="UpgradeShotGun" type="Button" parent="Weapons/VBoxContainer/ShotGun"]
+visible = false
+layout_mode = 0
+offset_left = 347.0
+offset_top = 76.0
+offset_right = 460.0
+offset_bottom = 108.0
+text = "Upgrade"
+script = ExtResource("5_vysrr")
+new_weapon = SubResource("Resource_fjm36")
+
+[node name="LevelShotGun" type="Label" parent="Weapons/VBoxContainer/ShotGun"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 10.0
+offset_right = 123.0
+offset_bottom = 33.0
+text = "ShotGun lv. 1"
+script = ExtResource("7_jxy6n")
+new_weapon = SubResource("Resource_4hkwb")
+
+[node name="StatsShotGun" type="Label" parent="Weapons/VBoxContainer/ShotGun"]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 11.0
+offset_right = 311.0
+offset_bottom = 112.0
+text = "Stats:
+Damage: 15
+Reload: 0.8
+Price: 200"
+script = ExtResource("7_xvl4a")
+new_weapon = SubResource("Resource_hacjo")
+
+[node name="TextureRect" type="TextureRect" parent="Weapons/VBoxContainer/ShotGun"]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 50.0
+offset_right = 127.0
+offset_bottom = 101.0
+texture = ExtResource("8_1opsl")
+
+[node name="Assault" type="TextureRect" parent="Weapons/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_lj35b")
+
+[node name="BuyAssault" type="Button" parent="Weapons/VBoxContainer/Assault"]
+layout_mode = 0
+offset_left = 348.0
+offset_top = 24.0
+offset_right = 458.0
+offset_bottom = 57.0
+text = "Buy"
+script = ExtResource("2_m2wpg")
+new_weapon = SubResource("Resource_ujn17")
+
+[node name="SelectAssault" type="Button" parent="Weapons/VBoxContainer/Assault"]
+layout_mode = 2
+offset_left = 349.0
+offset_top = 23.0
+offset_right = 459.0
+offset_bottom = 57.0
+text = "Select"
+script = ExtResource("1_jvfwi")
+new_weapon = SubResource("Resource_kiwvb")
+
+[node name="UpgradeAssault" type="Button" parent="Weapons/VBoxContainer/Assault"]
+layout_mode = 0
+offset_left = 346.0
+offset_top = 73.0
+offset_right = 459.0
+offset_bottom = 106.0
+text = "Upgrade"
+script = ExtResource("5_vysrr")
+new_weapon = SubResource("Resource_lqkcy")
+
+[node name="LevelAssault" type="Label" parent="Weapons/VBoxContainer/Assault"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 9.0
+offset_right = 216.0
+offset_bottom = 37.0
+text = "Assault lv. 1"
+script = ExtResource("7_jxy6n")
+new_weapon = SubResource("Resource_klymg")
+
+[node name="StatsAssault" type="Label" parent="Weapons/VBoxContainer/Assault"]
+layout_mode = 0
+offset_left = 176.0
+offset_top = 8.0
+offset_right = 309.0
+offset_bottom = 109.0
+text = "Stats:
+Damage: 7.5
+Reload: 0.2
+Price: 500
+"
+script = ExtResource("7_xvl4a")
+new_weapon = SubResource("Resource_bbyjx")
+
+[node name="GunSprite" type="TextureRect" parent="Weapons/VBoxContainer/Assault"]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 43.0
+offset_right = 125.0
+offset_bottom = 101.0
+texture = ExtResource("10_hvtsb")
+
+[node name="MachineGunShopButton" type="Button" parent="Weapons/VBoxContainer"]
+layout_mode = 2
+text = "MachineGun"
+
+[node name="AssaultRifleShopButton" type="Button" parent="Weapons/VBoxContainer"]
+layout_mode = 2
+text = "AssaultRifle"
+
+[node name="Upgrades" type="ScrollContainer" parent="."]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Upgrades"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Armor" type="Button" parent="Upgrades/VBoxContainer"]
+layout_mode = 2
+text = "Armor
+"
+
+[node name="TextureRect" type="TextureRect" parent="Upgrades/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_lj35b")
+
+[node name="TextureRect" type="TextureRect" parent="Upgrades/VBoxContainer/TextureRect"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 20.0
+offset_right = 219.0
+offset_bottom = 106.0
+texture = ExtResource("7_k7bhb")
+
+[node name="Button" type="Button" parent="Upgrades/VBoxContainer/TextureRect"]
+layout_mode = 0
+offset_left = 355.0
+offset_top = 38.0
+offset_right = 443.0
+offset_bottom = 103.0
+text = "Lesscoins"
+script = ExtResource("8_tcgbb")
+
+[node name="TextureRect2" type="TextureRect" parent="Upgrades/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_cx44u")
+
+[node name="TextureRect3" type="TextureRect" parent="Upgrades/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_cx44u")
+
+[node name="TextureRect4" type="TextureRect" parent="Upgrades/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_cx44u")
+
+[node name="TextureRect5" type="TextureRect" parent="Upgrades/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_cx44u")
+
+[node name="TextureRect6" type="TextureRect" parent="Upgrades/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_cx44u")
+
+[node name="TextureRect7" type="TextureRect" parent="Upgrades/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("6_cx44u")
+
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/BuyGun" to="Weapons/VBoxContainer/Gun/BuyGun" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/BuyGun" to="Weapons/VBoxContainer/Gun/SelectGun" method="_on_buy_button_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/BuyGun" to="Weapons/VBoxContainer/Gun/UpgradeGun" method="_on_buy_button_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/SelectGun" to="Weapons/VBoxContainer/Gun/SelectGun" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/UpgradeGun" to="Weapons/VBoxContainer/Gun/SelectGun" method="_on_up_gun_button_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/UpgradeGun" to="Weapons/VBoxContainer/Gun/UpgradeGun" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/UpgradeGun" to="Weapons/VBoxContainer/Gun/LevelGun" method="_on_upgrade_gun_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/UpgradeGun" to="Weapons/VBoxContainer/Gun/Stats" method="_on_upgrade_gun_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetButtonWeapons" to="Weapons/VBoxContainer/Gun/LevelGun" method="_on_reset_button_weapons_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetButtonWeapons" to="Weapons/VBoxContainer/Gun/Stats" method="_on_reset_button_weapons_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetButtonWeapons" to="Weapons/VBoxContainer/Gun/ResetButtonWeapons" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetButtonWeapons" to="Weapons/VBoxContainer/ShotGun/LevelShotGun" method="_on_reset_button_weapons_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetButtonWeapons" to="Weapons/VBoxContainer/ShotGun/StatsShotGun" method="_on_reset_button_weapons_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetButtonWeapons" to="Weapons/VBoxContainer/Assault/LevelAssault" method="_on_reset_button_weapons_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetButtonWeapons" to="Weapons/VBoxContainer/Assault/StatsAssault" method="_on_reset_button_weapons_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/Gun/BuyGun" method="_on_reset_shop_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/Gun/SelectGun" method="_on_reset_shop_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/Gun/UpgradeGun" method="_on_reset_shop_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/Gun/ResetShop" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/ShotGun/BuyShotGun" method="_on_reset_shop_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/ShotGun/SelectShotGun" method="_on_reset_shop_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Gun/ResetShop" to="Weapons/VBoxContainer/ShotGun/UpgradeShotGun" method="_on_reset_shop_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/BuyShotGun" to="Weapons/VBoxContainer/ShotGun/BuyShotGun" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/BuyShotGun" to="Weapons/VBoxContainer/ShotGun/SelectShotGun" method="_on_buy_button_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/BuyShotGun" to="Weapons/VBoxContainer/ShotGun/UpgradeShotGun" method="_on_buy_button_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/SelectShotGun" to="Weapons/VBoxContainer/ShotGun/SelectShotGun" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/UpgradeShotGun" to="Weapons/VBoxContainer/ShotGun/SelectShotGun" method="_on_up_gun_button_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/UpgradeShotGun" to="Weapons/VBoxContainer/ShotGun/UpgradeShotGun" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/UpgradeShotGun" to="Weapons/VBoxContainer/ShotGun/LevelShotGun" method="_on_upgrade_gun_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/ShotGun/UpgradeShotGun" to="Weapons/VBoxContainer/ShotGun/StatsShotGun" method="_on_upgrade_gun_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Assault/BuyAssault" to="Weapons/VBoxContainer/Assault/BuyAssault" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Assault/BuyAssault" to="Weapons/VBoxContainer/Assault/SelectAssault" method="_on_buy_button_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Assault/BuyAssault" to="Weapons/VBoxContainer/Assault/UpgradeAssault" method="_on_buy_button_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Assault/SelectAssault" to="Weapons/VBoxContainer/Assault/SelectAssault" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Assault/UpgradeAssault" to="Weapons/VBoxContainer/Assault/SelectAssault" method="_on_up_gun_button_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Assault/UpgradeAssault" to="Weapons/VBoxContainer/Assault/UpgradeAssault" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Assault/UpgradeAssault" to="Weapons/VBoxContainer/Assault/LevelAssault" method="_on_upgrade_gun_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/Assault/UpgradeAssault" to="Weapons/VBoxContainer/Assault/StatsAssault" method="_on_upgrade_gun_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/MachineGunShopButton" to="Weapons/VBoxContainer/MachineGunShopButton" method="_on_button_down"]
+[connection signal="button_down" from="Weapons/VBoxContainer/AssaultRifleShopButton" to="Weapons/VBoxContainer/AssaultRifleShopButton" method="_on_button_down"]
+[connection signal="button_down" from="Upgrades/VBoxContainer/TextureRect/Button" to="Upgrades/VBoxContainer/TextureRect/Button" method="_on_button_down"]

@@ -1,79 +1,59 @@
 extends Node2D
 
-@export var max_enemies : int = 10
-var current_enemies : int = 0
+signal wave_ended(player_won)
+signal wave_started(max_enemies)
+signal wave_updated(enemies_defeated)
+
+var max_enemies : int = 0
 var enemies_defeated : int = 0
-
-#Gameplay
-@onready var computer: Node2D = %Computer
-
-##UI##
-@onready var ui: Control = %UI
-
-var player_is_dead : bool = false
-
-#Rotate to increase randomness
-#func _process(delta: float) -> void:
-	#rotation += delta
 
 #Start a new wave
 #Called by StartWaveButton
 func new_wave() -> void:
 	set_up()
 	
+	#Received by:
+	#ItemSpawner, Wave
+	wave_started.emit(max_enemies)
+	
 	#Make the spawners active
 	for spawner in get_children():
-		spawner.spawn()
+		spawner.set_up()
 
 func update_wave(enemy_value : int):
 	#Take note of the current number of enemies on the field
-	if enemy_value>0: current_enemies+=enemy_value
-	else: enemies_defeated-=enemy_value
+	if enemy_value<0: enemies_defeated-=enemy_value
+	
+	#Received by:
+	#ItemSpawner, Wave
+	wave_updated.emit(enemies_defeated)
 	
 	#Wave ended, no more enemies present
-	if enemies_defeated>=current_enemies:
+	if enemies_defeated>=max_enemies:
 		end_wave()
+		enemies_defeated = 0
 
-###We'll add a victory ui from here
-func player_won() -> void: 
-	#Player didn't win if he's dead
-	print("Player won!")
-
-#End the wave
 func end_wave():
-	#Notify that player is dead if the wave isn't finished
-	if !player_is_dead: player_won()
+	#Check if the player is alive
+	var player_has_won : bool = Stats.current_health>0
 	
-	#Wait a frame
-	await get_tree().create_timer(get_process_delta_time()).timeout
+	#Stop spawning enemies
+	for child in get_children(): child.end_wave()
 	
-	#Collect all the remaining cores
-	get_tree().call_group("item", "follow_player")
+	Global.end_wave(player_has_won)
 	
-	ui.change_buttons_visibility()
-	
-	#The computer is on the ground
-	computer.disconnect_from_player()
-	
-	#Save files
+	#Saving systems
 	SaveAndLoad.save()
-
-#Check if the wave is finished
-func wave_ended():
-	return max_enemies <= current_enemies 
-
-#Called by StartWaveButton
-func _on_start_wave_button_down() -> void:
-	new_wave()
+	SaveConsumables.save_consume()
+	
+	#Signal received by:
+	#UI, Wave, ItemSpawner
+	wave_ended.emit(player_has_won)
 
 #Set up the wave
 func set_up():
 	#Enemies are setted to zero
-	current_enemies = 0
 	enemies_defeated = 0
-	
-	#Player is alive
-	player_is_dead = false
 	
 	#Update the Gloabl Wave stat
 	Stats.update_wave()
@@ -81,11 +61,8 @@ func set_up():
 	#Get the number of the enemies for this wave
 	max_enemies = int(Utilities.get_max_enemy_number())
 	print("Max enemies: " + str(max_enemies))
-	
-	#Attach the computer to the players
-	computer.attach_to_player()
 
-#Called by Global if the player is defeated
-func defeat():
-	player_is_dead = true
-	print("Player has lost")
+#Reset the current wave if the player lost
+func _on_wave_ended(player_won: Variant) -> void:
+	if player_won: return
+	Stats.update_wave(true)

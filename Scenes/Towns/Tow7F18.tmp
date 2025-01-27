@@ -1,0 +1,551 @@
+[gd_scene load_steps=29 format=3 uid="uid://cu3i1p3knb8dp"]
+
+[ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
+[ext_resource type="Script" path="res://Scripts/ItemDrops/ItemContainer.gd" id="2_vjykl"]
+[ext_resource type="Script" path="res://Scripts/ItemDrops/ItemSpawner.gd" id="2_yjx6m"]
+[ext_resource type="PackedScene" uid="uid://cftrkiyi740hw" path="res://Scenes/UI/Shop.tscn" id="3_iquj0"]
+[ext_resource type="FontFile" uid="uid://dflx50tvhjet4" path="res://Fonts/TMT-Paint-Regular.otf" id="5_38p5k"]
+[ext_resource type="Texture2D" uid="uid://gosyriwthtd6" path="res://Sprites/UI/Button.png" id="5_pi5n0"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Spawners.gd" id="8_1d40r"]
+[ext_resource type="Script" path="res://Scripts/UI/Stats/Health.gd" id="8_irv3n"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Spawner.gd" id="9_bfess"]
+[ext_resource type="Script" path="res://Scripts/UI/Stats/Exp.gd" id="9_n7x3u"]
+[ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="10_avg3d"]
+[ext_resource type="Theme" uid="uid://dxusat8n2pb7h" path="res://Themes/ProgressBars.tres" id="10_c1jpn"]
+[ext_resource type="Script" path="res://Scripts/UI/Stats/Wave.gd" id="10_o0yex"]
+[ext_resource type="Script" path="res://Scripts/Explosives/ExplosivesSpawner.gd" id="11_51ntn"]
+[ext_resource type="PackedScene" uid="uid://ccgo2jmnn5064" path="res://Scenes/Player/Heart.tscn" id="12_ahd65"]
+[ext_resource type="PackedScene" uid="uid://cdqnsmky25kr1" path="res://Scenes/Explosives/Mine.tscn" id="12_q45tx"]
+[ext_resource type="PackedScene" uid="uid://cbbe6qoahmwoc" path="res://Scenes/Explosives/Grenade.tscn" id="13_cetdv"]
+[ext_resource type="Texture2D" uid="uid://d3cuppqtwq30" path="res://Sprites/Explosives/Mine.png" id="14_q2mew"]
+[ext_resource type="Texture2D" uid="uid://cnyc6kyupuj4b" path="res://Sprites/Explosives/Grenade.png" id="15_ky46n"]
+[ext_resource type="Texture2D" uid="uid://bgvxi6v15shix" path="res://Sprites/Items/Carbon.png" id="15_s8g22"]
+[ext_resource type="Texture2D" uid="uid://mcg6njyik3dv" path="res://Sprites/Items/GEM 2 - GOLD - 0008.png" id="16_d4434"]
+[ext_resource type="PackedScene" uid="uid://bhaif6fyye5rx" path="res://Scenes/Enviroment/Floor.tscn" id="16_l2qit"]
+[ext_resource type="Texture2D" uid="uid://nx0vj6ttp1od" path="res://Sprites/Items/GEM 2 - LIGHT GREEN - 0008.png" id="17_bh1g1"]
+[ext_resource type="Script" path="res://Scripts/Enviroment/FloorContainer.gd" id="17_h1k4o"]
+[ext_resource type="PackedScene" uid="uid://dyux3pqy0wmvu" path="res://Scenes/Player/Pet.tscn" id="17_pjj81"]
+[ext_resource type="Texture2D" uid="uid://c46iv5lwn3hyn" path="res://Sprites/Items/GEM 2 - PURPLE - 0008.png" id="18_xk8xw"]
+[ext_resource type="FontFile" uid="uid://ba8dt86yqwf0f" path="res://Fonts/Bytesized-Regular.ttf" id="23_2ufwt"]
+[ext_resource type="Script" path="res://Scripts/Explosives/MineAmountLabel.gd" id="23_a3jdo"]
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_ko0f8")]
+unique_name_in_owner = true
+
+[node name="ItemSpawner" type="Node2D" parent="Player"]
+unique_name_in_owner = true
+script = ExtResource("2_vjykl")
+
+[node name="Spawner" type="Node2D" parent="Player/ItemSpawner"]
+position = Vector2(0, 750)
+script = ExtResource("2_yjx6m")
+
+[node name="Spawner2" type="Node2D" parent="Player/ItemSpawner"]
+position = Vector2(0, -750)
+script = ExtResource("2_yjx6m")
+
+[node name="Spawner3" type="Node2D" parent="Player/ItemSpawner"]
+position = Vector2(750, 0)
+script = ExtResource("2_yjx6m")
+
+[node name="Spawner4" type="Node2D" parent="Player/ItemSpawner"]
+position = Vector2(-750, 0)
+script = ExtResource("2_yjx6m")
+
+[node name="Spawner5" type="Node2D" parent="Player/ItemSpawner"]
+position = Vector2(750, -750)
+script = ExtResource("2_yjx6m")
+
+[node name="Spawner6" type="Node2D" parent="Player/ItemSpawner"]
+position = Vector2(-750, -750)
+script = ExtResource("2_yjx6m")
+
+[node name="Spawner7" type="Node2D" parent="Player/ItemSpawner"]
+position = Vector2(750, 750)
+script = ExtResource("2_yjx6m")
+
+[node name="Spawner8" type="Node2D" parent="Player/ItemSpawner"]
+position = Vector2(-750, 750)
+script = ExtResource("2_yjx6m")
+
+[node name="EnemySpawners" type="Node2D" parent="Player" groups=["SpawnerContainer"]]
+rotation = -3.14159
+script = ExtResource("8_1d40r")
+
+[node name="Spawner" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(750, 0)
+script = ExtResource("9_bfess")
+
+[node name="Spawner2" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(750, -750)
+script = ExtResource("9_bfess")
+
+[node name="Spawner3" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(0, -750)
+script = ExtResource("9_bfess")
+
+[node name="Spawner4" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(0, 750)
+script = ExtResource("9_bfess")
+
+[node name="Spawner5" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(750, 750)
+script = ExtResource("9_bfess")
+
+[node name="Spawner6" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(750, 375)
+script = ExtResource("9_bfess")
+
+[node name="Spawner7" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(750, -375)
+script = ExtResource("9_bfess")
+
+[node name="Spawner8" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(375, -750)
+script = ExtResource("9_bfess")
+
+[node name="Spawner9" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(375, 750)
+script = ExtResource("9_bfess")
+
+[node name="Spawner10" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(-375, 750)
+script = ExtResource("9_bfess")
+
+[node name="Spawner11" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(-375, -750)
+script = ExtResource("9_bfess")
+
+[node name="Spawner12" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(-750, -375)
+script = ExtResource("9_bfess")
+
+[node name="Spawner13" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(-750, 0)
+script = ExtResource("9_bfess")
+
+[node name="Spawner14" type="Node2D" parent="Player/EnemySpawners" groups=["Spawner"]]
+position = Vector2(-750, 375)
+script = ExtResource("9_bfess")
+
+[node name="UI" type="CanvasLayer" parent="Player"]
+
+[node name="UI" type="Control" parent="Player/UI"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("10_avg3d")
+
+[node name="Buttons" type="Control" parent="Player/UI/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="StartWaveButton" type="Button" parent="Player/UI/UI/Buttons"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -259.3
+offset_top = -166.0
+offset_right = -49.3
+offset_bottom = -66.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 27
+text = "Start Wave
+"
+flat = true
+
+[node name="Button" type="Sprite2D" parent="Player/UI/UI/Buttons/StartWaveButton"]
+z_index = -1
+position = Vector2(105, 62)
+texture = ExtResource("5_pi5n0")
+
+[node name="Label" type="Label" parent="Player/UI/UI/Buttons/StartWaveButton"]
+z_index = -1
+layout_mode = 0
+offset_left = 7.0
+offset_top = 40.0
+offset_right = 217.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(0.111197, 0.111197, 0.111197, 1)
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 28
+text = "Start
+"
+
+[node name="Label2" type="Label" parent="Player/UI/UI/Buttons/StartWaveButton"]
+z_index = -1
+layout_mode = 0
+offset_left = 121.3
+offset_top = 40.0
+offset_right = 331.3
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(0.111197, 0.111197, 0.111197, 1)
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 28
+text = "Wave"
+
+[node name="ShopButton" type="Button" parent="Player/UI/UI/Buttons"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -166.0
+offset_right = 250.0
+offset_bottom = -66.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 27
+text = "Shop
+"
+flat = true
+
+[node name="Button" type="Sprite2D" parent="Player/UI/UI/Buttons/ShopButton"]
+z_index = -1
+position = Vector2(105, 62)
+texture = ExtResource("5_pi5n0")
+
+[node name="Label" type="Label" parent="Player/UI/UI/Buttons/ShopButton"]
+z_index = -1
+layout_mode = 0
+offset_left = 58.0
+offset_top = 39.0
+offset_right = 268.0
+offset_bottom = 68.0
+theme_override_colors/font_color = Color(0.111197, 0.111197, 0.111197, 1)
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 28
+text = "Shop
+"
+
+[node name="ResetGame" type="Button" parent="Player/UI/UI/Buttons"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -962.0
+offset_top = 186.0
+offset_right = -781.0
+offset_bottom = 217.0
+grow_horizontal = 0
+text = "Reset Game to Wave 0"
+
+[node name="Cheats" type="Button" parent="Player/UI/UI/Buttons"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -962.0
+offset_top = 298.0
+offset_right = -762.0
+offset_bottom = 329.0
+grow_horizontal = 0
+text = "Inf resources"
+
+[node name="Shop" type="Control" parent="Player/UI/UI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = 125.0
+offset_right = 10.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ShopBack" type="Button" parent="Player/UI/UI/Shop"]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 232.0
+offset_right = 469.0
+offset_bottom = 264.0
+theme_override_fonts/font = ExtResource("5_38p5k")
+text = "Back
+"
+
+[node name="Shop" parent="Player/UI/UI/Shop" instance=ExtResource("3_iquj0")]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -267.0
+offset_top = 295.0
+offset_right = 346.0
+offset_bottom = -78.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Stats" type="Control" parent="Player/UI/UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Money" type="Label" parent="Player/UI/UI/Stats"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 609.0
+offset_top = 74.0
+offset_right = 680.0
+offset_bottom = 97.0
+text = "Money: 0"
+
+[node name="Health" type="Control" parent="Player/UI/UI/Stats"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("10_c1jpn")
+script = ExtResource("8_irv3n")
+
+[node name="Heart" parent="Player/UI/UI/Stats/Health" instance=ExtResource("12_ahd65")]
+
+[node name="Heart2" parent="Player/UI/UI/Stats/Health" instance=ExtResource("12_ahd65")]
+position = Vector2(50, 320)
+
+[node name="Heart3" parent="Player/UI/UI/Stats/Health" instance=ExtResource("12_ahd65")]
+position = Vector2(50, 400)
+
+[node name="Heart4" parent="Player/UI/UI/Stats/Health" instance=ExtResource("12_ahd65")]
+position = Vector2(50, 480)
+
+[node name="Heart5" parent="Player/UI/UI/Stats/Health" instance=ExtResource("12_ahd65")]
+position = Vector2(50, 560)
+
+[node name="Exp" type="ProgressBar" parent="Player/UI/UI/Stats"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -360.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme = ExtResource("10_c1jpn")
+show_percentage = false
+script = ExtResource("9_n7x3u")
+
+[node name="HealthLabel" type="Label" parent="Player/UI/UI/Stats/Exp"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -11.5
+offset_right = 178.0
+offset_bottom = 11.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 20
+text = "Level 0"
+
+[node name="Wave" type="ProgressBar" parent="Player/UI/UI/Stats"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_right = 360.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme = ExtResource("10_c1jpn")
+value = 21.72
+fill_mode = 1
+show_percentage = false
+script = ExtResource("10_o0yex")
+
+[node name="WaveLabel" type="Label" parent="Player/UI/UI/Stats/Wave"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 20
+text = "Wave 0"
+
+[node name="CoreNormal" type="Label" parent="Player/UI/UI/Stats"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -670.0
+offset_top = 90.0
+offset_right = -490.0
+offset_bottom = 115.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 25
+text = ":0"
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/UI/UI/Stats/CoreNormal"]
+position = Vector2(-21, 10)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("15_s8g22")
+
+[node name="CoreRare" type="Label" parent="Player/UI/UI/Stats"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 230.0
+offset_top = 90.0
+offset_right = 373.0
+offset_bottom = 115.0
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 25
+text = ":0"
+
+[node name="Rare" type="Sprite2D" parent="Player/UI/UI/Stats/CoreRare"]
+position = Vector2(-21, 10)
+texture = ExtResource("17_bh1g1")
+
+[node name="CoreEpic" type="Label" parent="Player/UI/UI/Stats"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 410.0
+offset_top = 90.0
+offset_right = 523.0
+offset_bottom = 115.0
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 25
+text = ":0"
+
+[node name="Epic" type="Sprite2D" parent="Player/UI/UI/Stats/CoreEpic"]
+position = Vector2(-21, 10)
+texture = ExtResource("18_xk8xw")
+
+[node name="CoreLegendary" type="Label" parent="Player/UI/UI/Stats"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 590.0
+offset_top = 90.0
+offset_right = 763.0
+offset_bottom = 115.0
+theme_override_fonts/font = ExtResource("5_38p5k")
+theme_override_font_sizes/font_size = 25
+text = ":0"
+
+[node name="Legendary" type="Sprite2D" parent="Player/UI/UI/Stats/CoreLegendary"]
+position = Vector2(-21, 10)
+texture = ExtResource("16_d4434")
+
+[node name="Explosives" type="Control" parent="Player/UI/UI" groups=["ExplosivesControl"]]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("11_51ntn")
+mine = ExtResource("12_q45tx")
+granade = ExtResource("13_cetdv")
+
+[node name="Mine" type="Button" parent="Player/UI/UI/Explosives"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -300.0
+offset_right = 125.0
+offset_bottom = -200.0
+grow_vertical = 0
+flat = true
+
+[node name="MineSprite" type="Sprite2D" parent="Player/UI/UI/Explosives/Mine"]
+position = Vector2(37, 50)
+scale = Vector2(5, 5)
+texture = ExtResource("14_q2mew")
+
+[node name="AmountMines" type="Label" parent="Player/UI/UI/Explosives/Mine"]
+layout_mode = 0
+offset_left = 49.0
+offset_top = 52.0
+offset_right = 69.0
+offset_bottom = 102.0
+theme_override_fonts/font = ExtResource("23_2ufwt")
+theme_override_font_sizes/font_size = 55
+text = "1"
+script = ExtResource("23_a3jdo")
+consumable_name = "Mine"
+
+[node name="Granade" type="Button" parent="Player/UI/UI/Explosives"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = -150.0
+offset_right = 125.0
+offset_bottom = -50.0
+grow_vertical = 0
+flat = true
+
+[node name="GrenadeSprite" type="Sprite2D" parent="Player/UI/UI/Explosives/Granade"]
+position = Vector2(37, 50)
+scale = Vector2(5, 5)
+texture = ExtResource("15_ky46n")
+
+[node name="Items" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="BulletContainer" type="Node" parent="."]
+
+[node name="Pet" parent="." instance=ExtResource("17_pjj81")]
+position = Vector2(47, 18)
+
+[node name="Floor" type="Node" parent="."]
+script = ExtResource("17_h1k4o")
+
+[node name="FloorOneTile" parent="Floor" instance=ExtResource("16_l2qit")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 5.0
+bus = &"Enviroment"
+
+[connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/EnemySpawners" method="_on_start_wave_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI" method="_on_start_wave_button_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/ShopButton" to="Player/UI/UI" method="_on_shop_button_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/ResetGame" to="Player/UI/UI" method="_on_reset_game_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/Cheats" to="Player/UI/UI" method="_on_cheats_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Shop/ShopBack" to="Player/UI/UI" method="_on_shop_back_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Explosives/Mine" to="Player/UI/UI/Explosives" method="_on_mine_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Explosives/Mine" to="Player/UI/UI/Explosives/Mine/AmountMines" method="_on_mine_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Explosives/Granade" to="Player/UI/UI/Explosives" method="_on_granate_button_down"]

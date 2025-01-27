@@ -1,7 +1,7 @@
 extends Node
 
 #File where the stats are stored
-var player_save_path = "user://player.dat"
+var player_save_path = "user://PlayerStats.dat"
 
 #Default stats
 var stats = {}
@@ -28,8 +28,7 @@ func load_data():
 		var save = FileAccess.open(player_save_path, FileAccess.READ)
 		stats = save.get_var()
 		save.close()
-		
-		
+		print("Current max exp: " +str(stats["MaxExp"]))
 		print("Loaded!")
 	#Or create a new file with the dafault values
 	else:
@@ -39,8 +38,11 @@ func load_data():
 #Set the current stats values
 func set_stats():
 	stats["Wave"] = Stats.current_wave
+	
 	stats["Exp"] = Stats.current_exp
-	stats["Money"] = Stats.current_money
+	stats["Lvl"] = Stats.current_lvl
+	stats["MaxExp"] = Stats.current_max_exp
+	
 	stats["Health"] = Stats.current_health
 	
 	# Core drops stats
@@ -48,6 +50,7 @@ func set_stats():
 	stats["CoreRare"] = Stats.current_coreRare
 	stats["CoreEpic"] = Stats.current_coreEpic
 	stats["CoreLegendary"] = Stats.current_coreLegendary
+	
 
 #Get the requested statistic
 #Called by Statistics
