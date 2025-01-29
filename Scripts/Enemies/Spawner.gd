@@ -25,10 +25,10 @@ func spawn():
 		await get_tree().create_timer(randf_range(0.1,2.0)).timeout
 		first_spawn = false
 	else:
-		await get_tree().create_timer(Utilities.choose_random_wait_time()).timeout
+		await get_tree().create_timer(Utilities2.choose_random_wait_time()).timeout
 	if wave_ended: return
 	
-	var new_enemy = Utilities.choose_random_enemy()
+	var new_enemy = Utilities2.choose_random_enemy()
 	
 	var enemy = new_enemy.instantiate()
 	add_child(enemy)

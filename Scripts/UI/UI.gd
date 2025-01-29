@@ -4,7 +4,7 @@ extends Control
 @onready var buttons: Control = $Buttons
 @onready var shop: Control = $Shop
 @onready var explosives: Control = $Explosives
-
+@onready var auth: Control = $Auth
 
 #Stats
 #@onready var money: Label = %Money
@@ -76,14 +76,27 @@ func _on_reset_game_button_down() -> void:
 
 #Adding almost infinite resources for the player 
 func _on_cheats_button_down() -> void:
-	Stats.current_money = 10000000000
+	#Stats.current_money = 10000000000
 	Stats.current_coreNormal = 1000000
 	Stats.current_coreRare = 1000000
 	Stats.current_coreEpic = 1000000
 	Stats.current_coreLegendary = 1000000
 	Stats.current_exp = 1000000
-	Stats.emit_stats()
+	Stats.cores_changed.emit()
 
 
 func _on_enemy_spawners_wave_ended(player_won: Variant) -> void:
 	change_buttons_visibility()
+
+
+func _on_auth_button_button_down() -> void:
+	change_buttons_visibility()
+	health.visible = false
+	auth.visible = true
+
+
+func _on_auth_back_button_down() -> void:
+	change_buttons_visibility()
+	print("cioao")
+	health.visible = true
+	auth.visible = false

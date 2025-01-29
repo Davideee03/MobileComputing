@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbyxyh4mlf5bt"]
+
+[ext_resource type="Script" path="res://Scripts/UI/AuthenticationLogin.gd" id="1_6dvms"]
+[ext_resource type="Texture2D" uid="uid://csv8pj1rjopvw" path="res://Sprites/ShopUI/Sprite-0001.png" id="2_3de3o"]
+
+[node name="Authentication" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6dvms")
+
+[node name="Back" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 90.0
+offset_top = 132.0
+offset_right = 599.0
+offset_bottom = 516.0
+texture = ExtResource("2_3de3o")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 210.0
+offset_right = 550.0
+offset_bottom = 475.0
+
+[node name="LoginStatusLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Email" type="LineEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Email"
+
+[node name="Password" type="LineEdit" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Password"
+secret = true
+
+[node name="Login" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Login"
+
+[node name="SignUp" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "SignUp"
+
+[node name="Logout" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "LogOut"
+
+[node name="SyncData" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "SyncData"
+
+[connection signal="button_down" from="VBoxContainer/Login" to="." method="_on_login_button_pressed"]
+[connection signal="button_down" from="VBoxContainer/SignUp" to="." method="_on_signup_button_pressed"]
+[connection signal="button_down" from="VBoxContainer/Logout" to="." method="_on_logout_button_pressed"]
+[connection signal="button_down" from="VBoxContainer/SyncData" to="." method="_on_sync_data_button_down"]

@@ -12,7 +12,7 @@ func _ready() -> void:
 		
 func _on_button_down() -> void:
 	weapon.upgrade()
-	Stats.emit_stats()
+	Stats.cores_changed.emit(Stats.current_coreNormal,Stats.current_coreRare, Stats.current_coreEpic, Stats.current_coreLegendary)
 
 func _on_buy_button_button_down() -> void:
 	if WeaponSave.weapon_stats.has(new_weapon.name):

@@ -59,7 +59,7 @@ func set_up():
 	Stats.update_wave()
 	
 	#Get the number of the enemies for this wave
-	max_enemies = int(Utilities.get_max_enemy_number())
+	max_enemies = int(Utilities2.get_max_enemy_number())
 	print("Max enemies: " + str(max_enemies))
 
 #Reset the current wave if the player lost

@@ -207,6 +207,7 @@ layout_mode = 2
 texture = ExtResource("16_owed7")
 
 [node name="BuyGun" type="Button" parent="Weapons/VBoxContainer/Gun"]
+visible = false
 layout_mode = 0
 offset_left = 418.0
 offset_top = 33.0
@@ -848,7 +849,7 @@ offset_bottom = 144.0
 flat = true
 script = ExtResource("24_cd5xm")
 consumable_name = "Mine"
-label_path = NodePath("/root/World/Player/UI/UI/Explosives/Mine/AmountMines")
+label_path = NodePath("/root/World/Player/UI/UI/Shop/AmountMines")
 
 [node name="Sprite2D" type="Sprite2D" parent="Consumables/VBoxContainer/Mine/MineButtonBuy"]
 position = Vector2(72, 43)
@@ -921,7 +922,7 @@ offset_bottom = 157.0
 text = "Buy"
 script = ExtResource("24_cd5xm")
 consumable_name = "Grenade"
-label_path = NodePath("/root/World/Player/UI/UI/Explosives/Granade/AmountGranades")
+label_path = NodePath("/root/World/Player/UI/UI/Shop/AmountGranades")
 
 [node name="Sprite2D" type="Sprite2D" parent="Consumables/VBoxContainer/Grenade/GrenadeButtonBuy"]
 position = Vector2(72, 42)

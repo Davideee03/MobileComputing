@@ -35,7 +35,7 @@ func up():
 		print("not enough moneysir")
 	
 func upgradingCost():
-	if Stats.current_coreNormal>price:
+	if Stats.current_coreNormal>=price:
 		Stats.current_coreNormal -= price
 		# momentary increase number
 		price += 2

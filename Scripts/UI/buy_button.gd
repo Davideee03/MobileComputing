@@ -1,5 +1,7 @@
 extends ShopButton
 
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:	
 	weapon = get_tree().get_first_node_in_group("PlayerWeapon")
@@ -24,16 +26,24 @@ func _ready() -> void:
 		#show()
 
 func _on_button_down() -> void:
-		if new_weapon.price <= Stats.current_money:
-			Stats.current_money -= new_weapon.price
-			Stats.emit_stats()
-		
-			# we need to set the value to true here
+		if new_weapon.price == 2 and new_weapon.price <= Stats.current_coreRare:
+			Stats.current_coreRare -= new_weapon.price
 			new_weapon.bought = true
 			WeaponSave.save_weapon(new_weapon)
 			hide()
-		else:
-			print("Non hai abbastanza soldi.")
+		elif new_weapon.price == 5 and new_weapon.price <= Stats.current_coreEpic:
+			Stats.current_coreEpic -= new_weapon.price
+			new_weapon.bought = true
+			WeaponSave.save_weapon(new_weapon)
+			hide()
+		elif new_weapon.price == 10 and new_weapon.price <= Stats.current_coreLegendary:
+			Stats.current_coreLegendary -= new_weapon.price
+			new_weapon.bought = true
+			WeaponSave.save_weapon(new_weapon)
+			hide()
+		else: 
+			print("non hai abbastanza soldi bro")
+		Stats.cores_changed.emit(Stats.current_coreNormal, Stats.current_coreRare, Stats.current_coreEpic, Stats.current_coreLegendary)
 
 func _on_reset_shop_button_down() -> void:
 	show()
