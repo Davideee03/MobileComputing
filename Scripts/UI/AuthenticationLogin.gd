@@ -30,7 +30,7 @@ func on_login_succeeded(auth):
 	%LoginStatus.text = "Login success!"
 	Firebase.Auth.save_auth(auth)
 	load_data_from_cloud()
-	%SyncData.show()
+	#%SyncData.show()
 	%Logout.show()
 	logged = true
 
@@ -52,7 +52,7 @@ func on_signup_failed(error_code, message):
 func _on_logout_button_pressed():
 	Firebase.Auth.logout()
 	%LoginStatus.text = "Logged Out!"
-	%SyncData.hide()
+	#%SyncData.hide()
 	%Logout.hide()
 	logged = false
 
