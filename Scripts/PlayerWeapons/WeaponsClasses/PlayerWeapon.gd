@@ -41,7 +41,7 @@ func load_weapon(weapon) -> void:
 	price = weapon.price
 	
 	#Check if Weapon is Machine Gun
-	if weapon is MachineGun:
+	if current_weapon is MachineGun:
 		shoot_time()
 
 	print("Weapon: " + str(weapon))
@@ -52,12 +52,14 @@ func load_weapon(weapon) -> void:
 
 #Manages Overheating Time
 func shoot_time() -> void:
-		while true:
-			await get_tree().create_timer(fire_timer).timeout
-			can_shoot = false
-			print("Overheating")
-			await get_tree().create_timer(no_fire_timer).timeout
-			can_shoot = true
+	while true:
+		await get_tree().create_timer(fire_timer).timeout
+		if current_weapon is not MachineGun:
+			break
+		can_shoot = false
+		print("Overheating")
+		await get_tree().create_timer(no_fire_timer).timeout
+		can_shoot = true
 
 # function used for flippin the weapon's sprite when the enemy is on the left side of the screen
 func check_flip(enemy_position : Vector2):
