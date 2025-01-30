@@ -7,6 +7,9 @@ signal wave_updated(enemies_defeated)
 var max_enemies : int = 0
 var enemies_defeated : int = 0
 
+@export var label_path: NodePath
+@onready var label_node = get_node(label_path)
+
 #Start a new wave
 #Called by StartWaveButton
 func new_wave() -> void:
@@ -43,8 +46,11 @@ func end_wave():
 	Global.end_wave(player_has_won)
 	
 	#Saving systems
+	# should wait a second before saving the stats because after we end the wave we still collect some items
 	SaveAndLoad.save()
 	SaveConsumables.save_consume()
+	if label_node.logged == true:
+		label_node.save_data_to_cloud()
 	
 	#Signal received by:
 	#UI, Wave, ItemSpawner

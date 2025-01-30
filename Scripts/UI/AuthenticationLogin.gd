@@ -1,54 +1,60 @@
 extends Control
 
 var COLLECTION_ID = "player_stats"
+var logged = false
 
 func _ready():
 	Firebase.Auth.login_succeeded.connect(on_login_succeeded)
 	Firebase.Auth.signup_succeeded.connect(on_signup_succeeded)
 	Firebase.Auth.login_failed.connect(on_login_failed)
 	Firebase.Auth.signup_failed.connect(on_signup_failed)
-	
 	if Firebase.Auth.check_auth_file():
-		%LoginStatusLabel.text = "Logged in"
+		%LoginStatus.text = "Logged in"
+		logged = true
 		load_data_from_cloud()
 
 func _on_login_button_pressed():
 	var email = %Email.text
 	var password = %Password.text
 	Firebase.Auth.login_with_email_and_password(email, password)
-	%LoginStatusLabel.text = "Logging in"
+	%LoginStatus.text = "Logging in"
 
 func _on_signup_button_pressed():
 	var email = %Email.text
 	var password = %Password.text
 	Firebase.Auth.signup_with_email_and_password(email, password)
-	%LoginStatusLabel.text = "Signing up"
+	%LoginStatus.text = "Signing up"
 
 func on_login_succeeded(auth):
 	print(auth)
-	%LoginStatusLabel.text = "Login success!"
+	%LoginStatus.text = "Login success!"
 	Firebase.Auth.save_auth(auth)
 	load_data_from_cloud()
 	%SyncData.show()
 	%Logout.show()
+	logged = true
 
 func on_signup_succeeded(auth):
 	print(auth)
-	%LoginStatusLabel.text = "Sign up success!"
+	%LoginStatus.text = "Sign up success!"
 	Firebase.Auth.save_auth(auth)
 	load_data_from_cloud()
+	logged = true
 
 func on_login_failed(error_code, message):
 	print(error_code, message)
-	%LoginStatusLabel.text = "Login failed. Error: %s" % message
+	%LoginStatus.text = "Login failed. Error: %s" % message
 
 func on_signup_failed(error_code, message):
 	print(error_code, message)
-	%LoginStatusLabel.text = "Sign up failed. Error: %s" % message
+	%LoginStatus.text = "Sign up failed. Error: %s" % message
 
 func _on_logout_button_pressed():
 	Firebase.Auth.logout()
-	%LoginStatusLabel.text = "Logged Out!"
+	%LoginStatus.text = "Logged Out!"
+	%SyncData.hide()
+	%Logout.hide()
+	logged = false
 
 # Sincronizza i dati locali con Firestore
 func _on_sync_data_button_pressed():

@@ -97,6 +97,5 @@ func _on_auth_button_button_down() -> void:
 
 func _on_auth_back_button_down() -> void:
 	change_buttons_visibility()
-	print("cioao")
 	health.visible = true
 	auth.visible = false
