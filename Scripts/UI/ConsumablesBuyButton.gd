@@ -19,11 +19,12 @@ func _on_button_down() -> void:
 	if consumables.has(consumable_name) and consumables[consumable_name]["priceNormal"] <= Stats.current_coreNormal and consumables[consumable_name]["priceRare"] <= Stats.current_coreRare:
 		Stats.current_coreNormal -= consumables[consumable_name]["priceNormal"]
 		Stats.current_coreRare -= consumables[consumable_name]["priceRare"]
-		Stats.emit_stats()
+		Stats.cores_changed.emit(Stats.current_coreNormal, Stats.current_coreRare, Stats.current_coreEpic, Stats.current_coreLegendary)
 		consumables[consumable_name]["amount"] += 1
 		if label_path:
 			label_node.text = str(consumables[consumable_name]["amount"])
+			#label_node.update_amount((consumables[consumable_name]["amount"]))
 		else:
-			print("Nodopocdkfadslkfnon storoavao!")
+			pass
 		# if we want to save the file when we buy it. As the game is made, we save only after the wave is ended
 		#SaveConsumables.save_consume()

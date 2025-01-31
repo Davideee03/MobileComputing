@@ -19,12 +19,13 @@ config/icon="res://icon.svg"
 
 Global="*res://Scripts/Global/Global.gd"
 Stats="*res://Scripts/Global/Stats.gd"
-Utilities="*res://Scripts/Global/Utilities.gd"
+Utilities2="*res://Scripts/Global/Utilities2.gd"
 SaveAndLoad="*res://Scripts/Global/SaveAndLoad.gd"
 UniversalAudioPlayer="*res://Scenes/Sounds/UniversalAudioPlayer.tscn"
 WaveController="*res://Scripts/Global/WaveController.gd"
 WeaponSave="*res://Scripts/Global/WeaponSave.gd"
 SaveConsumables="*res://Scripts/Global/SaveConsumables.gd"
+Firebase="*res://addons/godot-firebase/firebase/firebase.tscn"
 
 [display]
 
@@ -33,6 +34,10 @@ window/size/viewport_height=1280
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-firebase/plugin.cfg")
 
 [file_customization]
 

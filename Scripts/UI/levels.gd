@@ -21,7 +21,7 @@ func update_level_label() -> void:
 		level_label.text = new_weapon.name + " lv. " + str(new_weapon.level)
 
 func _on_upgrade_gun_button_down() -> void:
-	if weapon.pri() < Stats.current_money + weapon.pri():
+	if weapon.pri() < Stats.current_coreNormal + weapon.pri():
 		update_level_label()
 
 func _on_reset_button_weapons_button_down() -> void:

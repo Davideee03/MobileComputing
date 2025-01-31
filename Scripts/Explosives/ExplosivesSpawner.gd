@@ -7,7 +7,8 @@ extends Control
 var explosive_container: Node
 
 func _ready() -> void:
-	explosive_container = get_tree().get_first_node_in_group("ExplosiveContainer")
+	pass
+	#explosive_container = get_tree().get_first_node_in_group("ExplosiveContainer")
 
 func _on_mine_button_down() -> void:
 	if SaveConsumables.consume_stats["Mine"]["amount"] >0:

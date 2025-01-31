@@ -27,7 +27,7 @@ func up():
 		print("not enough money sir")
 	
 func upgradingCost():
-	if Stats.current_coreRare>price:
+	if Stats.current_coreRare>=price:
 		Stats.current_coreRare -= price
 		price += 2
 		return true
