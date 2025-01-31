@@ -1,6 +1,6 @@
 extends Node
 
-const FLOOR = preload("res://Scenes/Enviroment/Floor.tscn")
+const FLOOR = preload("res://Scenes/Environment/Floor.tscn")
 
 #Stores the position of its children
 var floors_position : Array[Vector2]

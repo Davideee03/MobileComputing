@@ -1,7 +1,7 @@
 extends Sprite2D
 
 #Reference to the floor
-const FLOOR = preload("res://Scenes/Enviroment/Floor.tscn")
+const FLOOR = preload("res://Scenes/Environment/Floor.tscn")
 
 #Reference to the parent
 #It stores the floors position

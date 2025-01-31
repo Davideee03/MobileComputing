@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dv4so6gush73e"]
+[gd_scene load_steps=3 format=3 uid="uid://bsnfn8nvia2ix"]
 
 [ext_resource type="Script" path="res://Scripts/UI/Settings.gd" id="1_8h13f"]
 [ext_resource type="FontFile" uid="uid://dflx50tvhjet4" path="res://Fonts/TMT-Paint-Regular.otf" id="2_st4mt"]
