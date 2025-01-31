@@ -28,7 +28,7 @@ func update_level_label() -> void:
 		
 		
 func _on_upgrade_gun_button_down() -> void:
-	if weapon.pri() < Stats.current_money + weapon.pri():
+	if weapon.pri() < Stats.current_coreNormal + weapon.pri():
 		update_level_label()
 
 

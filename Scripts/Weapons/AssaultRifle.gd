@@ -28,7 +28,7 @@ func up():
 		print("not enough moneysir")
 	
 func upgradingCost():
-	if Stats.current_coreEpic>price:
+	if Stats.current_coreEpic>=price:
 		Stats.current_coreEpic -= price
 		price += 5
 		return true

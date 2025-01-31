@@ -10,6 +10,11 @@ var explosive_container : Node2D
 @onready var amount_mines: Label = %AmountMines
 @onready var amount_grenades: Label = %AmountGrenades
 
+@export var label_pathMine: NodePath
+@onready var label_nodeMine = get_node(label_pathMine)
+@export var label_pathGrenade: NodePath
+@onready var label_nodeGrenade = get_node(label_pathGrenade)
+
 var labels : Array
 
 func _ready() -> void:
@@ -22,6 +27,8 @@ func _ready() -> void:
 func _on_granade_button_down() -> void:
 	if SaveConsumables.consume_stats["Grenade"]["amount"] > 0:
 		SaveConsumables.consume_stats["Grenade"]["amount"]-=1
+		if label_pathGrenade:
+			label_nodeGrenade.text = str(SaveConsumables.consume_stats["Grenade"]["amount"])
 		explosive_container.start_spawning("grenade")
 		disable_choice()
 		#explosive_container.select_explosive("granade")
@@ -29,6 +36,8 @@ func _on_granade_button_down() -> void:
 func _on_mines_button_down() -> void:
 	if SaveConsumables.consume_stats["Mine"]["amount"] > 0:
 		SaveConsumables.consume_stats["Mine"]["amount"]-=1
+		if label_pathMine:
+			label_nodeMine.text = str(SaveConsumables.consume_stats["Mine"]["amount"])
 		explosive_container.start_spawning("mine")
 		disable_choice()
 		#explosive_container.select_explosive("mine")

@@ -26,7 +26,7 @@ func update_stat_label() -> void:
 
 func _on_upgrade_gun_button_down() -> void:
 	# Stats.current_money will be updated before we check the price of our weapon so we need to add the price of the weapon to the sum.
-	if weapon.pri() < Stats.current_money + weapon.pri():
+	if weapon.pri() < Stats.current_coreNormal + weapon.pri():
 		update_stat_label()
 
 
