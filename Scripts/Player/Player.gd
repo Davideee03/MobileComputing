@@ -43,7 +43,7 @@ func _input(event):
 		is_dragging = true
 
 func _process(_delta):
-	if is_dragging && !Global.shop_opened:
+	if is_dragging && Global.can_move:
 		#global_position += direction * speed * delta
 		velocity = direction*speed
 		move_and_slide()

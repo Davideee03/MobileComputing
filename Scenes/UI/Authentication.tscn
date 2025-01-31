@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbyxyh4mlf5bt"]
+[gd_scene load_steps=5 format=3 uid="uid://bbyxyh4mlf5bt"]
 
 [ext_resource type="Script" path="res://Scripts/UI/AuthenticationLogin.gd" id="1_6dvms"]
 [ext_resource type="Texture2D" uid="uid://bnkfyu4s1q08l" path="res://Sprites/ShopUI/backlogin.png" id="2_kwvul"]
 [ext_resource type="FontFile" uid="uid://dflx50tvhjet4" path="res://Fonts/TMT-Paint-Regular.otf" id="3_tbd4l"]
+[ext_resource type="PackedScene" uid="uid://bsnfn8nvia2ix" path="res://Scenes/UI/Settings.tscn" id="4_bvfao"]
 
 [node name="Authentication" type="Control"]
 layout_mode = 3
@@ -17,9 +18,9 @@ script = ExtResource("1_6dvms")
 
 [node name="Back" type="TextureRect" parent="."]
 layout_mode = 2
-offset_left = 84.0
+offset_left = 115.0
 offset_top = 143.0
-offset_right = 575.0
+offset_right = 605.0
 offset_bottom = 711.0
 texture = ExtResource("2_kwvul")
 
@@ -36,19 +37,19 @@ text = "Login/Sign Cloud Save"
 [node name="LoginStatus" type="Label" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
-offset_left = 136.0
-offset_top = 245.0
-offset_right = 396.0
-offset_bottom = 262.0
+offset_left = 185.0
+offset_top = 220.0
+offset_right = 445.0
+offset_bottom = 237.0
 theme_override_fonts/font = ExtResource("3_tbd4l")
 text = "Login Status"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 136.0
-offset_top = 268.0
-offset_right = 396.0
-offset_bottom = 525.0
+offset_left = 164.0
+offset_top = 243.0
+offset_right = 424.0
+offset_bottom = 500.0
 scale = Vector2(1.5, 1.5)
 
 [node name="Email" type="LineEdit" parent="VBoxContainer"]
@@ -85,6 +86,13 @@ visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tbd4l")
 text = "SyncData"
+
+[node name="Audio" parent="." instance=ExtResource("4_bvfao")]
+layout_mode = 1
+offset_left = -55.5
+offset_top = 25.5
+offset_right = 55.5
+offset_bottom = 55.5
 
 [connection signal="button_down" from="VBoxContainer/Login" to="." method="_on_login_button_pressed"]
 [connection signal="button_down" from="VBoxContainer/SignUp" to="." method="_on_signup_button_pressed"]

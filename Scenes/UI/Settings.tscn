@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsnfn8nvia2ix"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Settings.gd" id="1_8h13f"]
+[ext_resource type="FontFile" uid="uid://dflx50tvhjet4" path="res://Fonts/TMT-Paint-Regular.otf" id="2_st4mt"]
+
+[node name="Audio" type="Label"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -210.0
+offset_right = 56.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_st4mt")
+theme_override_font_sizes/font_size = 30
+text = "Audio"
+script = ExtResource("1_8h13f")
+
+[node name="HSlider" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.5
+offset_top = 30.0
+offset_right = 179.5
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+min_value = -100.0
+max_value = 0.0
+
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
