@@ -70,6 +70,7 @@ shape = SubResource("CircleShape2D_c8u4c")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_rnr5o")
+volume_db = -20.0
 bus = &"Items"
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
