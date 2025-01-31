@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="1_q7gve"]
 [ext_resource type="Script" path="res://Scripts/Player/Camera.gd" id="2_nrn82"]
-[ext_resource type="Texture2D" uid="uid://vwl65r2qnqe8" path="res://Sprites/Enviroment/WorldDelimiter.png" id="3_ogyjf"]
+[ext_resource type="Texture2D" uid="uid://vwl65r2qnqe8" path="res://Sprites/Environment/WorldDelimiter.png" id="3_ogyjf"]
 [ext_resource type="Script" path="res://Scripts/Player/HealthSystem.gd" id="4_t5p63"]
 [ext_resource type="Script" path="res://Scripts/PlayerWeapons/WeaponsClasses/Weapon.gd" id="6_2h1e7"]
 [ext_resource type="PackedScene" uid="uid://11fh8kk8xko4" path="res://Scenes/Weapon/Weapon.tscn" id="6_mjxid"]
