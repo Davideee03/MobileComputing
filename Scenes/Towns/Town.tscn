@@ -693,6 +693,7 @@ libraries = {
 
 [node name="LoadingScreen" parent="Player/UI/UI" instance=ExtResource("30_huxkm")]
 layout_mode = 1
+show_loading_screen = false
 
 [node name="Items" type="Node" parent="."]
 unique_name_in_owner = true

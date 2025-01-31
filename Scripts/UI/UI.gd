@@ -100,4 +100,4 @@ func _on_auth_back_button_down() -> void:
 	change_buttons_visibility()
 	health.visible = true
 	auth.visible = false
-	Global.can_move = false
+	Global.can_move = true

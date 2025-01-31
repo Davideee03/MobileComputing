@@ -8,7 +8,7 @@ room_size = 0.2
 resource_name = "Reverb"
 
 [resource]
-bus/0/volume_db = -0.128275
+bus/0/volume_db = 3.63801
 bus/1/name = &"Items"
 bus/1/solo = false
 bus/1/mute = false
