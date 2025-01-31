@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cu3i1p3knb8dp"]
+[gd_scene load_steps=40 format=3 uid="uid://cu3i1p3knb8dp"]
 
 [ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
 [ext_resource type="Script" path="res://Scripts/ItemDrops/ItemContainer.gd" id="2_vjykl"]
@@ -32,6 +32,9 @@
 [ext_resource type="Script" path="res://Scripts/Explosives/AmountConsumablesUI.gd" id="23_a3jdo"]
 [ext_resource type="Texture2D" uid="uid://dj3i5fr3l8flq" path="res://Sprites/ShopUI/granadee.png" id="26_u2awc"]
 [ext_resource type="PackedScene" uid="uid://cigox5t4icda4" path="res://Scenes/UI/Consumables.tscn" id="27_xwq4t"]
+[ext_resource type="PackedScene" uid="uid://dvyecaeexqbeb" path="res://Scenes/UI/LoadingScreen.tscn" id="30_huxkm"]
+[ext_resource type="AudioStream" uid="uid://b71dg6u3yd3wa" path="res://Soundeffects/Enviroment/Enviroment.wav" id="33_wccl7"]
+[ext_resource type="Script" path="res://Scripts/Environment/EnivironmentSound.gd" id="34_kld8c"]
 
 [sub_resource type="Animation" id="Animation_p8jxl"]
 resource_name = "Death"
@@ -688,6 +691,9 @@ libraries = {
 "": SubResource("AnimationLibrary_mahuy")
 }
 
+[node name="LoadingScreen" parent="Player/UI/UI" instance=ExtResource("30_huxkm")]
+layout_mode = 1
+
 [node name="Items" type="Node" parent="."]
 unique_name_in_owner = true
 
@@ -704,8 +710,10 @@ position = Vector2(15, -4)
 first_tile = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_wccl7")
 volume_db = 5.0
 bus = &"Enviroment"
+script = ExtResource("34_kld8c")
 
 [connection signal="wave_ended" from="Player/EnemySpawners" to="Player" method="_on_enemy_spawners_wave_ended"]
 [connection signal="wave_ended" from="Player/EnemySpawners" to="Player/ItemSpawner" method="_on_enemy_spawners_wave_ended"]
