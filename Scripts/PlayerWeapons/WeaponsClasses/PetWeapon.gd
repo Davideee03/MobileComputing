@@ -4,7 +4,7 @@ extends Node2D
 var damage : float = 10.0
 var reload_time : float = 0.5
 var is_reloading : bool = false
-
+@onready var EnemyDetector : Area2D = $EnemyDetector
 @onready var sprite : Sprite2D = %PetSprite
 
 var enemies : Array = []
@@ -23,7 +23,6 @@ func _process(delta: float) -> void:
 	if !is_reloading:
 		shoot()
 
-
 #Manage Shoot
 func shoot():
 	#Spawn a new bullet
@@ -41,9 +40,27 @@ func reload() -> void:
 	await get_tree().create_timer(reload_time).timeout
 	is_reloading = false
 	
-#The enemy target is the first one entered in the area
+#The target is the closer enemy
 func get_target():
-	return enemies[0].global_position
+	#If the enemy is quite far away, shoot to the first 
+	#which entered the area
+	if !EnemyDetector.has_overlapping_areas():
+		return enemies[0].global_position
+	
+	#Get all the closer enemies
+	var closer_enemies : Array[Area2D] = EnemyDetector.get_overlapping_areas()
+	
+	var distance : Array
+	
+	#Sort enemies by distance
+	closer_enemies.sort_custom(func(a,b):
+		return a.global_position.distance_to(global_position) < b.global_position.distance_to(global_position))
+	
+	#Return the second closest enemy if possible
+	if closer_enemies.size()>=2:
+		return closer_enemies[1].global_position
+	else:
+		return closer_enemies[0].global_position
 
 #Append a new enemy once entered in the area
 func _on_enemy_detector_area_entered(area: Area2D) -> void:
