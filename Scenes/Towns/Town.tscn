@@ -1,19 +1,21 @@
-[gd_scene load_steps=40 format=3 uid="uid://cu3i1p3knb8dp"]
+[gd_scene load_steps=42 format=3 uid="uid://cu3i1p3knb8dp"]
 
 [ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
 [ext_resource type="Script" path="res://Scripts/ItemDrops/ItemContainer.gd" id="2_vjykl"]
 [ext_resource type="Script" path="res://Scripts/ItemDrops/ItemSpawner.gd" id="2_yjx6m"]
 [ext_resource type="PackedScene" uid="uid://cftrkiyi740hw" path="res://Scenes/UI/Shop.tscn" id="3_iquj0"]
 [ext_resource type="FontFile" uid="uid://dflx50tvhjet4" path="res://Fonts/TMT-Paint-Regular.otf" id="5_38p5k"]
-[ext_resource type="Texture2D" uid="uid://gosyriwthtd6" path="res://Sprites/UI/Button.png" id="5_pi5n0"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Spawners.gd" id="8_1d40r"]
 [ext_resource type="Script" path="res://Scripts/UI/Stats/Health.gd" id="8_irv3n"]
+[ext_resource type="Texture2D" uid="uid://b37gnogr251fe" path="res://Sprites/UI/StartWave.png" id="8_uycci"]
 [ext_resource type="Texture2D" uid="uid://d2coqcha62k3j" path="res://Sprites/ShopUI/settings.png" id="9_3vl7v"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Spawner.gd" id="9_bfess"]
+[ext_resource type="Texture2D" uid="uid://dv3n6r0b51wyu" path="res://Sprites/UI/ShopButton.png" id="9_gubi2"]
 [ext_resource type="Script" path="res://Scripts/UI/Stats/Exp.gd" id="9_n7x3u"]
 [ext_resource type="Texture2D" uid="uid://ddcrofb64o3hw" path="res://Sprites/ShopUI/closingshopbutton.png" id="9_onf8e"]
 [ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="10_avg3d"]
 [ext_resource type="Theme" uid="uid://dxusat8n2pb7h" path="res://Themes/ProgressBars.tres" id="10_c1jpn"]
+[ext_resource type="Texture2D" uid="uid://br8xpwhn3me40" path="res://Sprites/UI/Shadow.png" id="10_gidmi"]
 [ext_resource type="Script" path="res://Scripts/UI/Stats/Wave.gd" id="10_o0yex"]
 [ext_resource type="Script" path="res://Scripts/Explosives/ExplosivesSpawner.gd" id="11_51ntn"]
 [ext_resource type="PackedScene" uid="uid://bbyxyh4mlf5bt" path="res://Scenes/UI/Authentication.tscn" id="11_vu0xc"]
@@ -232,16 +234,10 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 27
-text = "Start Wave
-"
 flat = true
 
-[node name="Button" type="Sprite2D" parent="Player/UI/UI/Buttons/StartWaveButton"]
-z_index = -1
-position = Vector2(105, 62)
-texture = ExtResource("5_pi5n0")
-
 [node name="Label" type="Label" parent="Player/UI/UI/Buttons/StartWaveButton"]
+visible = false
 z_index = -1
 layout_mode = 0
 offset_left = 7.0
@@ -255,6 +251,7 @@ text = "Start
 "
 
 [node name="Label2" type="Label" parent="Player/UI/UI/Buttons/StartWaveButton"]
+visible = false
 z_index = -1
 layout_mode = 0
 offset_left = 121.3
@@ -265,6 +262,21 @@ theme_override_colors/font_color = Color(0.111197, 0.111197, 0.111197, 1)
 theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 28
 text = "Wave"
+
+[node name="TextureRect" type="TextureRect" parent="Player/UI/UI/Buttons/StartWaveButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_uycci")
 
 [node name="ShopButton" type="Button" parent="Player/UI/UI/Buttons"]
 layout_mode = 1
@@ -278,37 +290,55 @@ offset_bottom = -66.0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 27
-text = "Shop
-"
 flat = true
 
-[node name="Button" type="Sprite2D" parent="Player/UI/UI/Buttons/ShopButton"]
-z_index = -1
-position = Vector2(105, 62)
-texture = ExtResource("5_pi5n0")
+[node name="TextureRect" type="TextureRect" parent="Player/UI/UI/Buttons/ShopButton"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 16.0
+offset_right = 146.0
+offset_bottom = 116.0
+texture = ExtResource("9_gubi2")
+
+[node name="TextureRect2" type="TextureRect" parent="Player/UI/UI/Buttons/ShopButton"]
+visible = false
+layout_mode = 0
+offset_left = 21.0
+offset_top = 116.0
+offset_right = 171.0
+offset_bottom = 166.0
+texture = ExtResource("10_gidmi")
 
 [node name="Label" type="Label" parent="Player/UI/UI/Buttons/ShopButton"]
-z_index = -1
-layout_mode = 0
-offset_left = 58.0
-offset_top = 39.0
-offset_right = 268.0
-offset_bottom = 68.0
-theme_override_colors/font_color = Color(0.111197, 0.111197, 0.111197, 1)
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = 66.0
+offset_right = 105.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 28
 text = "Shop
 "
+horizontal_alignment = 1
 
 [node name="ResetGame" type="Button" parent="Player/UI/UI/Buttons"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -111.0
-offset_top = 240.0
-offset_right = 70.0
-offset_bottom = 271.0
+offset_left = -1102.0
+offset_top = 232.0
+offset_right = -921.0
+offset_bottom = 263.0
 grow_horizontal = 0
 text = "Reset Game to Wave 0"
 
@@ -326,10 +356,10 @@ text = "Inf resources"
 
 [node name="AuthButton" type="Button" parent="Player/UI/UI/Buttons"]
 layout_mode = 0
-offset_left = 639.0
-offset_top = 154.0
-offset_right = 677.0
-offset_bottom = 188.0
+offset_left = 557.0
+offset_top = 18.0
+offset_right = 595.0
+offset_bottom = 52.0
 flat = true
 
 [node name="AuthButtonSprite" type="Sprite2D" parent="Player/UI/UI/Buttons/AuthButton"]
@@ -692,6 +722,7 @@ libraries = {
 }
 
 [node name="LoadingScreen" parent="Player/UI/UI" instance=ExtResource("30_huxkm")]
+visible = false
 layout_mode = 1
 show_loading_screen = false
 
