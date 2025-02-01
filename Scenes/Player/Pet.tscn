@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyux3pqy0wmvu"]
+[gd_scene load_steps=12 format=3 uid="uid://dyux3pqy0wmvu"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/Computer.gd" id="1_44j76"]
 [ext_resource type="Script" path="res://Scripts/PlayerWeapons/WeaponsClasses/PetWeapon.gd" id="2_o03xp"]
 [ext_resource type="PackedScene" uid="uid://cf1h0nd8dnj0l" path="res://Scenes/Weapon/Bullets/GunBullet.tscn" id="3_7ifsy"]
+[ext_resource type="Texture2D" uid="uid://bgbou16770irx" path="res://Sprites/Player/Pet.png" id="4_m5sby"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_opc21"]
 radius = 75.0
@@ -13,15 +14,76 @@ radius = 400.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_q7g3p"]
 radius = 354.035
 
+[sub_resource type="Animation" id="Animation_t3g4e"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PetSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2, 2), Vector2(2.2, 2.2)]
+}
+
+[sub_resource type="Animation" id="Animation_p75fd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PetSprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2, 2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PetSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_o5s5u"]
+resource_name = "Walk"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PetSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0698132, -0.0698132]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h151q"]
+_data = {
+"Idle": SubResource("Animation_t3g4e"),
+"RESET": SubResource("Animation_p75fd"),
+"Walk": SubResource("Animation_o5s5u")
+}
+
 [node name="Pet" type="Node2D"]
 script = ExtResource("1_44j76")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-color = Color(0, 0, 0, 1)
 
 [node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -52,6 +114,14 @@ shape = SubResource("CircleShape2D_q7g3p")
 
 [node name="PetSprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+scale = Vector2(2, 2)
+texture = ExtResource("4_m5sby")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_h151q")
+}
+autoplay = "Idle"
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_player_detector_body_exited"]
