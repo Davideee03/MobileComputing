@@ -113,7 +113,6 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_q7g3p")
 
 [node name="PetSprite" type="Sprite2D" parent="."]
-unique_name_in_owner = true
 scale = Vector2(2, 2)
 texture = ExtResource("4_m5sby")
 
