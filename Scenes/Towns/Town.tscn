@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://br8xpwhn3me40" path="res://Sprites/UI/Shadow.png" id="10_gidmi"]
 [ext_resource type="Script" path="res://Scripts/UI/Stats/Wave.gd" id="10_o0yex"]
 [ext_resource type="Script" path="res://Scripts/Explosives/ExplosivesSpawner.gd" id="11_51ntn"]
-[ext_resource type="PackedScene" uid="uid://bbyxyh4mlf5bt" path="res://Scenes/UI/Authentication.tscn" id="11_vu0xc"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/Authentication.tscn" id="11_vu0xc"]
 [ext_resource type="PackedScene" uid="uid://ccgo2jmnn5064" path="res://Scenes/Player/Heart.tscn" id="12_ahd65"]
 [ext_resource type="PackedScene" uid="uid://cdqnsmky25kr1" path="res://Scenes/Explosives/Mine.tscn" id="12_q45tx"]
 [ext_resource type="PackedScene" uid="uid://cbbe6qoahmwoc" path="res://Scenes/Explosives/Grenade.tscn" id="13_cetdv"]
@@ -34,7 +34,7 @@
 [ext_resource type="Script" path="res://Scripts/Explosives/AmountConsumablesUI.gd" id="23_a3jdo"]
 [ext_resource type="Texture2D" uid="uid://dj3i5fr3l8flq" path="res://Sprites/ShopUI/granadee.png" id="26_u2awc"]
 [ext_resource type="PackedScene" uid="uid://cigox5t4icda4" path="res://Scenes/UI/Consumables.tscn" id="27_xwq4t"]
-[ext_resource type="PackedScene" uid="uid://dvyecaeexqbeb" path="res://Scenes/UI/LoadingScreen.tscn" id="30_huxkm"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/LoadingScreen.tscn" id="30_huxkm"]
 [ext_resource type="AudioStream" uid="uid://b71dg6u3yd3wa" path="res://Soundeffects/Enviroment/Enviroment.wav" id="33_wccl7"]
 [ext_resource type="Script" path="res://Scripts/Environment/EnivironmentSound.gd" id="34_kld8c"]
 
@@ -226,9 +226,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -259.3
+offset_left = -230.0
 offset_top = -166.0
-offset_right = -49.3
+offset_right = -20.0
 offset_bottom = -66.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -278,6 +278,21 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("8_uycci")
 
+[node name="TextureRect2" type="TextureRect" parent="Player/UI/UI/Buttons/StartWaveButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = 40.0
+offset_right = 75.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_gidmi")
+
 [node name="ShopButton" type="Button" parent="Player/UI/UI/Buttons"]
 layout_mode = 1
 anchors_preset = 2
@@ -301,12 +316,18 @@ offset_bottom = 116.0
 texture = ExtResource("9_gubi2")
 
 [node name="TextureRect2" type="TextureRect" parent="Player/UI/UI/Buttons/ShopButton"]
-visible = false
-layout_mode = 0
-offset_left = 21.0
-offset_top = 116.0
-offset_right = 171.0
-offset_bottom = 166.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = 40.0
+offset_right = 75.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("10_gidmi")
 
 [node name="Label" type="Label" parent="Player/UI/UI/Buttons/ShopButton"]
@@ -355,16 +376,39 @@ grow_horizontal = 0
 text = "Inf resources"
 
 [node name="AuthButton" type="Button" parent="Player/UI/UI/Buttons"]
-layout_mode = 0
-offset_left = 557.0
-offset_top = 18.0
-offset_right = 595.0
-offset_bottom = 52.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -113.0
+offset_right = 25.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 0
 flat = true
 
 [node name="AuthButtonSprite" type="Sprite2D" parent="Player/UI/UI/Buttons/AuthButton"]
+visible = false
 position = Vector2(17.4999, 16.4999)
 scale = Vector2(3.0625, 3.0625)
+texture = ExtResource("9_3vl7v")
+
+[node name="TextureRect" type="TextureRect" parent="Player/UI/UI/Buttons/AuthButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("9_3vl7v")
 
 [node name="Shop" type="Control" parent="Player/UI/UI"]
