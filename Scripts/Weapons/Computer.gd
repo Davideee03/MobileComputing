@@ -6,6 +6,9 @@ extends Node2D
 @export var acelleration : float = 100.0
 var actual_speed : float
 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+var is_dragging : bool = false
+
 #Player references
 var player: Node2D
 
@@ -28,6 +31,17 @@ func _process(delta: float) -> void:
 
 func reset():
 	global_position = first_position
+
+func _input(event):
+	
+	if event is InputEventScreenTouch:
+		is_dragging = false
+		if event.is_pressed():
+			first_position = (event.position - (get_viewport().size*0.5))
+			animation_player.play("Walk", -1, 2)
+		else:
+			first_position = global_position
+			animation_player.play("Idle", -1, 0.8)
 
 func _on_player_detector_body_entered(_body: Node2D) -> void:
 	player = null
