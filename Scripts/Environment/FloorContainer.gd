@@ -2,14 +2,17 @@ extends Node
 
 const FLOOR = preload("res://Scenes/Environment/Floor.tscn")
 
-#Stores the position of its children
-var floors_position : Array[Vector2]
+var floors_position : Array[Vector2] = [Vector2.ZERO]
 
-func add(floor_position : Vector2):
-	floors_position.append(floor_position)
+func spawn(floor_position : Vector2):
+	if floors_position.has(floor_position):
+		return
+	
+	var floor = FLOOR.instantiate()
+	call_deferred("add_child", floor)
+	
+	floor.global_position = floor_position
+	floors_position.append(floor.global_position)
 
-func has(floor_position : Vector2):
-	return floors_position.has(floor_position)
-
-func delete(floor_position : Vector2):
+func delete_floor(floor_position : Vector2):
 	floors_position.erase(floor_position)

@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Scripts/Sounds/UniversalAudioPlayer.gd" id="1_opn3d"]
 [ext_resource type="AudioStream" uid="uid://o73ecds65gcc" path="res://Soundeffects/Enemy/Impact.wav" id="2_lxfvb"]
-[ext_resource type="AudioStream" uid="uid://bsf4coio87y80" path="res://Soundeffects/Enemy/Impact2.wav" id="3_aqh04"]
-[ext_resource type="AudioStream" uid="uid://dlm1tlwqjrp4r" path="res://Soundeffects/UI/ButtonPressed.wav" id="4_wve8g"]
+[ext_resource type="AudioStream" uid="uid://c4pehtd1kupux" path="res://Soundeffects/Enemy/EnemyExplosion.wav" id="3_5p2pi"]
+[ext_resource type="AudioStream" uid="uid://dvbiv27orwt6b" path="res://Soundeffects/Enemy/EnemyHitted.wav" id="4_2rk62"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("2_lxfvb")
 bus = &"Enemies"
 script = ExtResource("1_opn3d")
-default_enemy_sound = Array[AudioStreamWAV]([ExtResource("3_aqh04")])
-button_pressed_stream = ExtResource("4_wve8g")
+enemy_explosion = ExtResource("3_5p2pi")
+enemy_hit = ExtResource("4_2rk62")

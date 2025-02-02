@@ -20,4 +20,4 @@ func take_damage(damage : float):
 	particle_system.global_position = global_position
 	particle_system.emitting = true
 	
-	UniversalAudioPlayer.play_default_pitch(ENEMY_HITTED)
+	UniversalAudioPlayer.play_hit()
