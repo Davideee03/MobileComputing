@@ -24,11 +24,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if !player: return
-	var direction = (player.global_position - global_position).normalized()
 	global_position = global_position.move_toward(player.global_position, actual_speed*delta)
 	
 	#Check Pet's Movement
-	pet_movement(direction)
+	look_at(player.position)
+	pet_movement((player.position - global_position).normalized())
 	
 	if too_distant: 
 		actual_speed = move_toward(actual_speed, run_speed, delta*acelleration)
@@ -36,7 +36,9 @@ func _process(delta: float) -> void:
 #Check Pet's Movement
 func pet_movement(direction):
 	if direction.x < 0:
-		pet_sprite.scale.x = -2
+		pet_sprite.flip_v = true
+	else:
+		pet_sprite.flip_v = false
 
 func reset():
 	global_position = first_position
@@ -56,9 +58,9 @@ func _on_player_detector_body_entered(_body: Node2D) -> void:
 	player = null
 	actual_speed = speed
 	too_distant = false
+
 func _on_player_detector_body_exited(body: Node2D) -> void:
 	player = body
-
 
 func _on_increase_speed_area_body_exited(_body: Node2D) -> void:
 	too_distant = true
