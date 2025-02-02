@@ -783,7 +783,7 @@ script = ExtResource("17_h1k4o")
 
 [node name="FloorOneTile" parent="Floor" instance=ExtResource("16_l2qit")]
 position = Vector2(15, -4)
-first_tile = true
+is_first_floor = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("33_wccl7")
