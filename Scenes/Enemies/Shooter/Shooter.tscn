@@ -134,6 +134,8 @@ script = ExtResource("1_kph8m")
 value = 4
 damage = 3
 health = 7
+min_exp_drop = 15
+max_exp_drop = 25
 
 [node name="ShootingPoint" type="Node2D" parent="."]
 unique_name_in_owner = true

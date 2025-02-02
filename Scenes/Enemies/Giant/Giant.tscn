@@ -78,6 +78,8 @@ script = ExtResource("1_c5nhx")
 value = 3
 damage = 3
 health = 21
+min_exp_drop = 10
+max_exp_drop = 20
 
 [node name="HealthSystem" type="Area2D" parent="."]
 collision_layer = 4
