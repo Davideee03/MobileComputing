@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://cftrkiyi740hw"]
+[gd_scene load_steps=63 format=3 uid="uid://cftrkiyi740hw"]
 
 [ext_resource type="FontFile" uid="uid://dflx50tvhjet4" path="res://Fonts/TMT-Paint-Regular.otf" id="1_ee2sf"]
 [ext_resource type="Script" path="res://Scripts/UI/WeaponButton.gd" id="1_jvfwi"]
@@ -7,11 +7,8 @@
 [ext_resource type="Script" path="res://Scripts/Weapons/AssaultRifle.gd" id="5_slk5c"]
 [ext_resource type="Script" path="res://Scripts/UI/upgrade_button.gd" id="5_vysrr"]
 [ext_resource type="Texture2D" uid="uid://xsvbr4h073ak" path="res://Sprites/ShopUI/select.png" id="6_6brxq"]
-[ext_resource type="Texture2D" uid="uid://yb31726ijnte" path="res://Sprites/Environment/Floor.png" id="6_cx44u"]
-[ext_resource type="Texture2D" uid="uid://dy2275q4wo1yu" path="res://Sprites/Items/Sprite-0001.png" id="6_lj35b"]
 [ext_resource type="Script" path="res://Scripts/Weapons/ShotGun.gd" id="7_a5lli"]
 [ext_resource type="Script" path="res://Scripts/UI/Levels.gd" id="7_jxy6n"]
-[ext_resource type="Texture2D" uid="uid://deo03cvskmou2" path="res://Sprites/Items/Cores.png" id="7_k7bhb"]
 [ext_resource type="Script" path="res://Scripts/UI/StatsUI.gd" id="7_xvl4a"]
 [ext_resource type="Texture2D" uid="uid://cyo573a7fdt0s" path="res://Sprites/Items/corered.png" id="9_7m7r0"]
 [ext_resource type="Script" path="res://Scripts/UI/reset_button_weapons.gd" id="9_gx07f"]
@@ -27,7 +24,9 @@
 [ext_resource type="Texture2D" uid="uid://dqonsmyllymr5" path="res://Sprites/Items/coregreen.png" id="18_nvfpi"]
 [ext_resource type="Texture2D" uid="uid://m57ae6addipk" path="res://Sprites/Items/corepurple.png" id="23_3byir"]
 [ext_resource type="FontFile" uid="uid://ba8dt86yqwf0f" path="res://Fonts/Bytesized-Regular.ttf" id="23_qmmtf"]
+[ext_resource type="Texture2D" uid="uid://bgbou16770irx" path="res://Sprites/Player/Pet.png" id="24_6ug30"]
 [ext_resource type="Script" path="res://Scripts/UI/ConsumablesBuyButton.gd" id="24_cd5xm"]
+[ext_resource type="Script" path="res://Scripts/UI/PetBuyButton.gd" id="25_svou5"]
 [ext_resource type="Texture2D" uid="uid://d1ga2detqcbpj" path="res://Sprites/ShopUI/Minee.png" id="27_qd11j"]
 [ext_resource type="Texture2D" uid="uid://dj3i5fr3l8flq" path="res://Sprites/ShopUI/granadee.png" id="30_ts5fo"]
 
@@ -192,9 +191,10 @@ size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_ee2sf")
 theme_override_font_sizes/font_size = 27
 tab_alignment = 1
-current_tab = 0
+current_tab = 1
 
 [node name="Weapons" type="ScrollContainer" parent="."]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -726,7 +726,6 @@ script = ExtResource("7_xvl4a")
 new_weapon = SubResource("Resource_601y1")
 
 [node name="Upgrades" type="ScrollContainer" parent="."]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -735,42 +734,48 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Armor" type="Button" parent="Upgrades/VBoxContainer"]
+[node name="PetID" type="TextureRect" parent="Upgrades/VBoxContainer"]
 layout_mode = 2
-text = "Armor
-"
+texture = ExtResource("16_owed7")
 
-[node name="TextureRect" type="TextureRect" parent="Upgrades/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("6_lj35b")
-
-[node name="TextureRect" type="TextureRect" parent="Upgrades/VBoxContainer/TextureRect"]
+[node name="PetNameLabel" type="Label" parent="Upgrades/VBoxContainer/PetID"]
 layout_mode = 0
-offset_left = 27.0
-offset_top = 20.0
-offset_right = 219.0
-offset_bottom = 106.0
-texture = ExtResource("7_k7bhb")
+offset_left = 40.0
+offset_top = 23.0
+offset_right = 142.0
+offset_bottom = 54.0
+theme_override_fonts/font = ExtResource("1_ee2sf")
+theme_override_font_sizes/font_size = 25
+text = "Pet"
 
-[node name="Button" type="Button" parent="Upgrades/VBoxContainer/TextureRect"]
+[node name="PetShopSprite" type="Sprite2D" parent="Upgrades/VBoxContainer/PetID"]
+position = Vector2(103.206, 117.5)
+scale = Vector2(6.08824, 6.08824)
+texture = ExtResource("24_6ug30")
+
+[node name="PricePet1" type="Sprite2D" parent="Upgrades/VBoxContainer/PetID"]
+
+[node name="Description" type="Label" parent="Upgrades/VBoxContainer/PetID"]
+offset_left = 192.0
+offset_top = 27.0
+offset_right = 413.0
+offset_bottom = 236.0
+theme_override_fonts/font = ExtResource("1_ee2sf")
+text = "Description:
+
+Kills monsters that look extremely similar to you! BE WARY, HE SHOOTS"
+autowrap_mode = 2
+
+[node name="BuyPetButton" type="Button" parent="Upgrades/VBoxContainer/PetID"]
 layout_mode = 0
-offset_left = 355.0
-offset_top = 38.0
-offset_right = 443.0
-offset_bottom = 103.0
-text = "armatura,  scudo elettrico, modulo velocità player. modulo peso player"
+offset_left = 436.0
+offset_top = 80.0
+offset_right = 538.0
+offset_bottom = 147.0
+text = "Buy"
+script = ExtResource("25_svou5")
 
-[node name="TextureRect2" type="TextureRect" parent="Upgrades/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("6_cx44u")
-
-[node name="TextureRect3" type="TextureRect" parent="Upgrades/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("6_cx44u")
-
-[node name="TextureRect4" type="TextureRect" parent="Upgrades/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("6_cx44u")
+[node name="BuyPetSprite" type="Sprite2D" parent="Upgrades/VBoxContainer/PetID/BuyPetButton"]
 
 [node name="Consumables" type="ScrollContainer" parent="."]
 visible = false
@@ -1003,7 +1008,7 @@ text = "x1"
 [connection signal="button_down" from="Weapons/VBoxContainer/MachineGun/UpgradeMachine" to="Weapons/VBoxContainer/MachineGun/UpgradeMachine" method="_on_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/MachineGun/UpgradeMachine" to="Weapons/VBoxContainer/MachineGun/LevelMachine" method="_on_upgrade_gun_button_down"]
 [connection signal="button_down" from="Weapons/VBoxContainer/MachineGun/UpgradeMachine" to="Weapons/VBoxContainer/MachineGun/StatsMachine" method="_on_upgrade_gun_button_down"]
-[connection signal="button_down" from="Upgrades/VBoxContainer/TextureRect/Button" to="Upgrades/VBoxContainer/TextureRect/Button" method="_on_button_down"]
+[connection signal="button_down" from="Upgrades/VBoxContainer/PetID/BuyPetButton" to="Upgrades/VBoxContainer/PetID/BuyPetButton" method="_on_button_down"]
 [connection signal="button_down" from="Consumables/VBoxContainer/Mine/MineButtonBuy" to="Consumables/VBoxContainer/Mine/StatsMine" method="_on_mine_button_buy_button_down"]
 [connection signal="button_down" from="Consumables/VBoxContainer/Mine/MineButtonBuy" to="Consumables/VBoxContainer/Mine/MineButtonBuy" method="_on_button_down"]
 [connection signal="button_down" from="Consumables/VBoxContainer/Grenade/GrenadeButtonBuy" to="Consumables/VBoxContainer/Grenade/GrenadeButtonBuy" method="_on_button_down"]

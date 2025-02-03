@@ -9,12 +9,22 @@ var is_reloading : bool = false
 
 var enemies : Array = []
 var current_enemy
+var pet_enabled = false
+var pet = SaveConsumables.consume_stats
 
 func _ready() -> void:
-	pass
+	var pet = SaveConsumables.consume_stats
+	if pet["Pet"]["bought"]:
+		enable_pet()
 
+func enable_pet():
+	pet_enabled = true
+
+func disable_pet():
+	pet_enabled = false
+	
 func _process(delta: float) -> void:
-	if enemies.is_empty() : return #If there's no enemy near return
+	if enemies.is_empty() || !pet_enabled || pet["Pet"]["bought"]: return #If there's no enemy near return
 	
 	#Select the enemy target
 	current_enemy = get_target()
