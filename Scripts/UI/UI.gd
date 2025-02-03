@@ -60,14 +60,14 @@ func _on_start_wave_button_button_down() -> void:
 func _on_shop_button_button_down() -> void:
 	change_buttons_visibility()
 	health.visible = false
-	Global.shop_opened = true
+	Global.can_move = false
 	shop.visible = true
 
 #Close the shop
 func _on_shop_back_button_down() -> void:
 	change_buttons_visibility()
 	health.visible = true
-	Global.shop_opened = false
+	Global.can_move = true
 	shop.visible = false
 
 #Developer button  for resetting the game to zero
@@ -93,9 +93,11 @@ func _on_auth_button_button_down() -> void:
 	change_buttons_visibility()
 	health.visible = false
 	auth.visible = true
+	Global.can_move = false
 
 
 func _on_auth_back_button_down() -> void:
 	change_buttons_visibility()
 	health.visible = true
 	auth.visible = false
+	Global.can_move = true

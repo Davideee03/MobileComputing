@@ -1,10 +1,15 @@
 extends AudioStreamPlayer
 
-@export var default_enemy_sound : Array[AudioStreamWAV]
+@export var enemy_explosion : AudioStreamWAV
+@export var enemy_hit : AudioStreamWAV
 
+#Called by "Enemy"
 func play_expolosion() -> void:
-	stream = default_enemy_sound.pick_random()
-	pitch_scale = randf_range(0.6,0.9)
+	stream = enemy_explosion
+	play()
+
+func play_hit() -> void:
+	stream = enemy_hit
 	play()
 
 func play_default_pitch(audio : AudioStreamWAV):

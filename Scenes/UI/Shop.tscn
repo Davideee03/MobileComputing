@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Weapons/AssaultRifle.gd" id="5_slk5c"]
 [ext_resource type="Script" path="res://Scripts/UI/upgrade_button.gd" id="5_vysrr"]
 [ext_resource type="Texture2D" uid="uid://xsvbr4h073ak" path="res://Sprites/ShopUI/select.png" id="6_6brxq"]
-[ext_resource type="Texture2D" uid="uid://yb31726ijnte" path="res://Sprites/Enviroment/Floor.png" id="6_cx44u"]
+[ext_resource type="Texture2D" uid="uid://yb31726ijnte" path="res://Sprites/Environment/Floor.png" id="6_cx44u"]
 [ext_resource type="Texture2D" uid="uid://dy2275q4wo1yu" path="res://Sprites/Items/Sprite-0001.png" id="6_lj35b"]
 [ext_resource type="Script" path="res://Scripts/Weapons/ShotGun.gd" id="7_a5lli"]
 [ext_resource type="Script" path="res://Scripts/UI/Levels.gd" id="7_jxy6n"]

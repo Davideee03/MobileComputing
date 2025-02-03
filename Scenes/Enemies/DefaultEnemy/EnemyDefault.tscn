@@ -81,6 +81,7 @@ radius = 100.0
 top_level = true
 script = ExtResource("1_byofy")
 health = 8
+max_exp_drop = 10
 
 [node name="HealthSystem" type="Area2D" parent="."]
 collision_layer = 4

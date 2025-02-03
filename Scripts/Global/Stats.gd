@@ -90,6 +90,9 @@ func update_wave(reset_wave = false):
 	#emit_stats()
 	wave_changed.emit(current_wave)
 
+func emit_cores():
+	cores_changed.emit(current_coreNormal, current_coreRare, current_coreEpic, current_coreLegendary)
+
 # Reset the game to zero
 func reset_to_zero():
 	#Used in Player Hitbox

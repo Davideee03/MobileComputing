@@ -1,29 +1,31 @@
-[gd_scene load_steps=37 format=3 uid="uid://cu3i1p3knb8dp"]
+[gd_scene load_steps=42 format=3 uid="uid://cu3i1p3knb8dp"]
 
 [ext_resource type="PackedScene" uid="uid://7lfiufia8slp" path="res://Scenes/Player/Player.tscn" id="2_ko0f8"]
 [ext_resource type="Script" path="res://Scripts/ItemDrops/ItemContainer.gd" id="2_vjykl"]
 [ext_resource type="Script" path="res://Scripts/ItemDrops/ItemSpawner.gd" id="2_yjx6m"]
 [ext_resource type="PackedScene" uid="uid://cftrkiyi740hw" path="res://Scenes/UI/Shop.tscn" id="3_iquj0"]
 [ext_resource type="FontFile" uid="uid://dflx50tvhjet4" path="res://Fonts/TMT-Paint-Regular.otf" id="5_38p5k"]
-[ext_resource type="Texture2D" uid="uid://gosyriwthtd6" path="res://Sprites/UI/Button.png" id="5_pi5n0"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Spawners.gd" id="8_1d40r"]
 [ext_resource type="Script" path="res://Scripts/UI/Stats/Health.gd" id="8_irv3n"]
+[ext_resource type="Texture2D" uid="uid://b37gnogr251fe" path="res://Sprites/UI/StartWave.png" id="8_uycci"]
 [ext_resource type="Texture2D" uid="uid://d2coqcha62k3j" path="res://Sprites/ShopUI/settings.png" id="9_3vl7v"]
 [ext_resource type="Script" path="res://Scripts/Enemies/Spawner.gd" id="9_bfess"]
+[ext_resource type="Texture2D" uid="uid://dv3n6r0b51wyu" path="res://Sprites/UI/ShopButton.png" id="9_gubi2"]
 [ext_resource type="Script" path="res://Scripts/UI/Stats/Exp.gd" id="9_n7x3u"]
 [ext_resource type="Texture2D" uid="uid://ddcrofb64o3hw" path="res://Sprites/ShopUI/closingshopbutton.png" id="9_onf8e"]
 [ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="10_avg3d"]
 [ext_resource type="Theme" uid="uid://dxusat8n2pb7h" path="res://Themes/ProgressBars.tres" id="10_c1jpn"]
+[ext_resource type="Texture2D" uid="uid://br8xpwhn3me40" path="res://Sprites/UI/Shadow.png" id="10_gidmi"]
 [ext_resource type="Script" path="res://Scripts/UI/Stats/Wave.gd" id="10_o0yex"]
 [ext_resource type="Script" path="res://Scripts/Explosives/ExplosivesSpawner.gd" id="11_51ntn"]
-[ext_resource type="PackedScene" uid="uid://bbyxyh4mlf5bt" path="res://Scenes/UI/Authentication.tscn" id="11_vu0xc"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/Authentication.tscn" id="11_vu0xc"]
 [ext_resource type="PackedScene" uid="uid://ccgo2jmnn5064" path="res://Scenes/Player/Heart.tscn" id="12_ahd65"]
 [ext_resource type="PackedScene" uid="uid://cdqnsmky25kr1" path="res://Scenes/Explosives/Mine.tscn" id="12_q45tx"]
 [ext_resource type="PackedScene" uid="uid://cbbe6qoahmwoc" path="res://Scenes/Explosives/Grenade.tscn" id="13_cetdv"]
 [ext_resource type="Texture2D" uid="uid://cyo573a7fdt0s" path="res://Sprites/Items/corered.png" id="16_4ljdr"]
-[ext_resource type="PackedScene" uid="uid://bhaif6fyye5rx" path="res://Scenes/Enviroment/Floor.tscn" id="16_l2qit"]
+[ext_resource type="PackedScene" uid="uid://bhaif6fyye5rx" path="res://Scenes/Environment/Floor.tscn" id="16_l2qit"]
 [ext_resource type="Texture2D" uid="uid://cmlrm183f7twn" path="res://Sprites/Items/Sprite-0018.png" id="17_babrv"]
-[ext_resource type="Script" path="res://Scripts/Enviroment/FloorContainer.gd" id="17_h1k4o"]
+[ext_resource type="Script" path="res://Scripts/Environment/FloorContainer.gd" id="17_h1k4o"]
 [ext_resource type="PackedScene" uid="uid://dyux3pqy0wmvu" path="res://Scenes/Player/Pet.tscn" id="17_pjj81"]
 [ext_resource type="Texture2D" uid="uid://dqonsmyllymr5" path="res://Sprites/Items/coregreen.png" id="18_brlbe"]
 [ext_resource type="Texture2D" uid="uid://m57ae6addipk" path="res://Sprites/Items/corepurple.png" id="19_5jyyo"]
@@ -32,6 +34,9 @@
 [ext_resource type="Script" path="res://Scripts/Explosives/AmountConsumablesUI.gd" id="23_a3jdo"]
 [ext_resource type="Texture2D" uid="uid://dj3i5fr3l8flq" path="res://Sprites/ShopUI/granadee.png" id="26_u2awc"]
 [ext_resource type="PackedScene" uid="uid://cigox5t4icda4" path="res://Scenes/UI/Consumables.tscn" id="27_xwq4t"]
+[ext_resource type="PackedScene" uid="uid://bb32snp6wki8n" path="res://Scenes/UI/LoadingScreen.tscn" id="30_huxkm"]
+[ext_resource type="AudioStream" uid="uid://b71dg6u3yd3wa" path="res://Soundeffects/Enviroment/Enviroment.wav" id="33_wccl7"]
+[ext_resource type="Script" path="res://Scripts/Environment/EnivironmentSound.gd" id="34_kld8c"]
 
 [sub_resource type="Animation" id="Animation_p8jxl"]
 resource_name = "Death"
@@ -221,24 +226,18 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -259.3
+offset_left = -230.0
 offset_top = -166.0
-offset_right = -49.3
+offset_right = -20.0
 offset_bottom = -66.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 27
-text = "Start Wave
-"
 flat = true
 
-[node name="Button" type="Sprite2D" parent="Player/UI/UI/Buttons/StartWaveButton"]
-z_index = -1
-position = Vector2(105, 62)
-texture = ExtResource("5_pi5n0")
-
 [node name="Label" type="Label" parent="Player/UI/UI/Buttons/StartWaveButton"]
+visible = false
 z_index = -1
 layout_mode = 0
 offset_left = 7.0
@@ -252,6 +251,7 @@ text = "Start
 "
 
 [node name="Label2" type="Label" parent="Player/UI/UI/Buttons/StartWaveButton"]
+visible = false
 z_index = -1
 layout_mode = 0
 offset_left = 121.3
@@ -262,6 +262,36 @@ theme_override_colors/font_color = Color(0.111197, 0.111197, 0.111197, 1)
 theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 28
 text = "Wave"
+
+[node name="TextureRect" type="TextureRect" parent="Player/UI/UI/Buttons/StartWaveButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_uycci")
+
+[node name="TextureRect2" type="TextureRect" parent="Player/UI/UI/Buttons/StartWaveButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = 40.0
+offset_right = 75.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_gidmi")
 
 [node name="ShopButton" type="Button" parent="Player/UI/UI/Buttons"]
 layout_mode = 1
@@ -275,37 +305,61 @@ offset_bottom = -66.0
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 27
-text = "Shop
-"
 flat = true
 
-[node name="Button" type="Sprite2D" parent="Player/UI/UI/Buttons/ShopButton"]
-z_index = -1
-position = Vector2(105, 62)
-texture = ExtResource("5_pi5n0")
+[node name="TextureRect" type="TextureRect" parent="Player/UI/UI/Buttons/ShopButton"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 16.0
+offset_right = 146.0
+offset_bottom = 116.0
+texture = ExtResource("9_gubi2")
+
+[node name="TextureRect2" type="TextureRect" parent="Player/UI/UI/Buttons/ShopButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.0
+offset_top = 40.0
+offset_right = 75.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_gidmi")
 
 [node name="Label" type="Label" parent="Player/UI/UI/Buttons/ShopButton"]
-z_index = -1
-layout_mode = 0
-offset_left = 58.0
-offset_top = 39.0
-offset_right = 268.0
-offset_bottom = 68.0
-theme_override_colors/font_color = Color(0.111197, 0.111197, 0.111197, 1)
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = 66.0
+offset_right = 105.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_38p5k")
 theme_override_font_sizes/font_size = 28
 text = "Shop
 "
+horizontal_alignment = 1
 
 [node name="ResetGame" type="Button" parent="Player/UI/UI/Buttons"]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -111.0
-offset_top = 240.0
-offset_right = 70.0
-offset_bottom = 271.0
+offset_left = -1102.0
+offset_top = 232.0
+offset_right = -921.0
+offset_bottom = 263.0
 grow_horizontal = 0
 text = "Reset Game to Wave 0"
 
@@ -322,16 +376,39 @@ grow_horizontal = 0
 text = "Inf resources"
 
 [node name="AuthButton" type="Button" parent="Player/UI/UI/Buttons"]
-layout_mode = 0
-offset_left = 639.0
-offset_top = 154.0
-offset_right = 677.0
-offset_bottom = 188.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -113.0
+offset_right = 25.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 0
 flat = true
 
 [node name="AuthButtonSprite" type="Sprite2D" parent="Player/UI/UI/Buttons/AuthButton"]
+visible = false
 position = Vector2(17.4999, 16.4999)
 scale = Vector2(3.0625, 3.0625)
+texture = ExtResource("9_3vl7v")
+
+[node name="TextureRect" type="TextureRect" parent="Player/UI/UI/Buttons/AuthButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -37.5
+offset_right = 37.5
+offset_bottom = 37.5
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("9_3vl7v")
 
 [node name="Shop" type="Control" parent="Player/UI/UI"]
@@ -688,6 +765,9 @@ libraries = {
 "": SubResource("AnimationLibrary_mahuy")
 }
 
+[node name="LoadingScreen" parent="Player/UI/UI" instance=ExtResource("30_huxkm")]
+layout_mode = 1
+
 [node name="Items" type="Node" parent="."]
 unique_name_in_owner = true
 
@@ -701,11 +781,13 @@ script = ExtResource("17_h1k4o")
 
 [node name="FloorOneTile" parent="Floor" instance=ExtResource("16_l2qit")]
 position = Vector2(15, -4)
-first_tile = true
+is_first_floor = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_wccl7")
 volume_db = 5.0
 bus = &"Enviroment"
+script = ExtResource("34_kld8c")
 
 [connection signal="wave_ended" from="Player/EnemySpawners" to="Player" method="_on_enemy_spawners_wave_ended"]
 [connection signal="wave_ended" from="Player/EnemySpawners" to="Player/ItemSpawner" method="_on_enemy_spawners_wave_ended"]
