@@ -58,7 +58,7 @@ func take_damage(damage : int):
 		await damage_animator.animation_finished
 		
 		restore_health()
-		spawner_container.end_wave()
+		spawner_container.end_wave(false)
 	else:
 		print("Current health: " + str(current_health))
 		

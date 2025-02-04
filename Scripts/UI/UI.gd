@@ -42,16 +42,6 @@ func display_cores(current_coreNormal,current_coreRare,current_coreEpic, current
 	coreEpic.text = ": " + str(current_coreEpic)
 	coreLegendary.text = ": " + str(current_coreLegendary)
 
-#Display the stats
-#func display_new_stats(current_money, current_exp, current_wave, current_health, current_coreNormal,current_coreRare,current_coreEpic, current_coreLegendary ):
-	##money.text = "Money: " + str(current_money)
-	#exp.update_exp(current_exp)
-	##health.update_health(current_health)
-	#coreNormal.text = ": " + str(current_coreNormal)
-	#coreRare.text = ": " + str(current_coreRare)
-	#coreEpic.text = ": " + str(current_coreEpic)
-	#coreLegendary.text = ": " + str(current_coreLegendary)
-
 #Start a new wave
 func _on_start_wave_button_button_down() -> void:
 	change_buttons_visibility()

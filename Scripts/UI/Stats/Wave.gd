@@ -11,7 +11,7 @@ func display_wave(enemies_defeated : int, max_enemies : int = max_value):
 	#Called only once per wave
 	if max_value<max_enemies_for_this_wave || !visible:
 		max_value = max_enemies_for_this_wave
-		wave_label.text = "Wave " + str(Stats.current_wave)
+		wave_label.text = "Wave " + str(Stats.current_wave+1)
 		visible = true
 	#Udate the value
 	value = enemies_defeated
