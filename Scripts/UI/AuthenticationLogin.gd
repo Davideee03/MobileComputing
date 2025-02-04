@@ -26,15 +26,16 @@ func _on_signup_button_pressed():
 
 func on_login_succeeded(auth):
 	print(auth)
-	%LoginStatus.text = "Login success!"
-	if logged == true:
-		%LoginStatus.text = "Status: Logged in"
-		
+	%LoginStatus.text = "Login success!"	
 	Firebase.Auth.save_auth(auth)
 	load_data_from_cloud()
 	#Stats.emit_cores()
 	#%SyncData.show()
 	%Logout.show()
+	%SignUp.hide()
+	%Login.hide()
+	if logged == true:
+		%LoginStatus.text = "Status: Logged in"
 	logged = true
 
 func on_signup_succeeded(auth):
@@ -43,6 +44,9 @@ func on_signup_succeeded(auth):
 	Firebase.Auth.save_auth(auth)
 	save_data_to_cloud()
 	logged = true
+	%Logout.show()
+	%SignUp.hide()
+	%Login.hide()
 
 func on_login_failed(error_code, message):
 	print(error_code, message)
@@ -57,6 +61,8 @@ func _on_logout_button_pressed():
 	%LoginStatus.text = "Logged Out!"
 	#%SyncData.hide()
 	%Logout.hide()
+	%SignUp.show()
+	%Login.show()
 	logged = false
 
 # Sincronizza i dati locali con Firestore

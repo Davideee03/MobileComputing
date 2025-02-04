@@ -65,11 +65,13 @@ placeholder_text = "Password"
 secret = true
 
 [node name="Login" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tbd4l")
 text = "Login"
 
 [node name="SignUp" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_tbd4l")
 text = "SignUp"
