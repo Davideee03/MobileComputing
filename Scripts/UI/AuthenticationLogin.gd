@@ -9,9 +9,8 @@ func _ready():
 	Firebase.Auth.login_failed.connect(on_login_failed)
 	Firebase.Auth.signup_failed.connect(on_signup_failed)
 	if Firebase.Auth.check_auth_file():
-		%LoginStatus.text = "Status: Logged in"
 		logged = true
-		load_data_from_cloud()
+		#load_data_from_cloud()
 
 func _on_login_button_pressed():
 	var email = %Email.text
@@ -28,9 +27,12 @@ func _on_signup_button_pressed():
 func on_login_succeeded(auth):
 	print(auth)
 	%LoginStatus.text = "Login success!"
+	if logged == true:
+		%LoginStatus.text = "Status: Logged in"
+		
 	Firebase.Auth.save_auth(auth)
 	load_data_from_cloud()
-	Stats.emit_cores()
+	#Stats.emit_cores()
 	#%SyncData.show()
 	%Logout.show()
 	logged = true
@@ -39,7 +41,7 @@ func on_signup_succeeded(auth):
 	print(auth)
 	%LoginStatus.text = "Sign up success!"
 	Firebase.Auth.save_auth(auth)
-	load_data_from_cloud()
+	save_data_to_cloud()
 	logged = true
 
 func on_login_failed(error_code, message):
@@ -99,7 +101,7 @@ func load_data_from_cloud():
 		if document:
 			var cloud_data = document.get_value("player_stats")
 			if cloud_data:
-				save_local_data(cloud_data)  # Sovrascrivi i dati locali
+				save_local_data(cloud_data)  # Sovrascrivi i dati locali ma in memoria non in locale
 				print("Cloud load: Data loaded")
 			else:
 				print("Cloud load: No data found")
@@ -151,3 +153,4 @@ func save_local_data(data: Dictionary):
 		var file = FileAccess.open("user://weapons.dat", FileAccess.WRITE)
 		file.store_var(data["weapon_stats"])
 		file.close()
+	#loadInGameStats()

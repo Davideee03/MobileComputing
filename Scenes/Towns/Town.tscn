@@ -765,7 +765,6 @@ libraries = {
 }
 
 [node name="LoadingScreen" parent="Player/UI/UI" instance=ExtResource("30_huxkm")]
-visible = false
 layout_mode = 1
 
 [node name="Items" type="Node" parent="."]
