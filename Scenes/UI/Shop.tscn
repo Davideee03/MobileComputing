@@ -756,6 +756,7 @@ texture = ExtResource("24_6ug30")
 [node name="PricePet1" type="Sprite2D" parent="Upgrades/VBoxContainer/PetID"]
 
 [node name="Description" type="Label" parent="Upgrades/VBoxContainer/PetID"]
+layout_mode = 0
 offset_left = 192.0
 offset_top = 27.0
 offset_right = 413.0
@@ -768,14 +769,29 @@ autowrap_mode = 2
 
 [node name="BuyPetButton" type="Button" parent="Upgrades/VBoxContainer/PetID"]
 layout_mode = 0
-offset_left = 436.0
-offset_top = 80.0
-offset_right = 538.0
-offset_bottom = 147.0
-text = "Buy"
+offset_left = 411.0
+offset_top = 64.0
+offset_right = 552.0
+offset_bottom = 136.0
+theme_override_fonts/font = ExtResource("1_ee2sf")
+theme_override_font_sizes/font_size = 33
+flat = true
 script = ExtResource("25_svou5")
 
 [node name="BuyPetSprite" type="Sprite2D" parent="Upgrades/VBoxContainer/PetID/BuyPetButton"]
+position = Vector2(69.5, 37.5)
+scale = Vector2(5.09375, 6.1875)
+texture = ExtResource("6_6brxq")
+
+[node name="Label" type="Label" parent="Upgrades/VBoxContainer/PetID/BuyPetButton"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 20.0
+offset_right = 107.0
+offset_bottom = 54.0
+theme_override_fonts/font = ExtResource("1_ee2sf")
+theme_override_font_sizes/font_size = 33
+text = "Buy"
 
 [node name="Consumables" type="ScrollContainer" parent="."]
 visible = false

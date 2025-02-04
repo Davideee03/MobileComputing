@@ -9,7 +9,7 @@ func _ready():
 	Firebase.Auth.login_failed.connect(on_login_failed)
 	Firebase.Auth.signup_failed.connect(on_signup_failed)
 	if Firebase.Auth.check_auth_file():
-		%LoginStatus.text = "Logged in"
+		%LoginStatus.text = "Status: Logged in"
 		logged = true
 		load_data_from_cloud()
 
@@ -30,6 +30,7 @@ func on_login_succeeded(auth):
 	%LoginStatus.text = "Login success!"
 	Firebase.Auth.save_auth(auth)
 	load_data_from_cloud()
+	Stats.emit_cores()
 	#%SyncData.show()
 	%Logout.show()
 	logged = true
