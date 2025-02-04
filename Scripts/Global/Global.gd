@@ -24,7 +24,9 @@ func remove_drops(drop):
 
 #Called by the script Spawners
 func end_wave(player_has_won : bool):
+	#Stats.update_wave(player_has_won)
 	if player_has_won:
+		Stats.wave_compleated()
 		await get_tree().create_timer(0.05).timeout
 		get_tree().call_group("item", "follow_player")
 	

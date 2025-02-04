@@ -14,7 +14,7 @@ func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	if enemies.is_empty() : return #If there's no enemy near return
+	if enemies.is_empty() || Stats.current_health<=0: return #If there's no enemy near return
 	
 	#Select the enemy target
 	current_enemy = get_target()

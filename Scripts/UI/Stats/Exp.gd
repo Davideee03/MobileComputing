@@ -1,6 +1,6 @@
 extends ProgressBar
 
-@export var increase_max_value : int = 37
+@export var increase_max_value : int = 15
 
 @onready var health_label: Label = $HealthLabel
 
