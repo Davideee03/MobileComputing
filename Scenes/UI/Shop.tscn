@@ -770,6 +770,7 @@ Price:"
 autowrap_mode = 2
 
 [node name="PriceLabel" type="Label" parent="Upgrades/VBoxContainer/PetID"]
+layout_mode = 0
 offset_left = 295.0
 offset_top = 169.0
 offset_right = 327.0

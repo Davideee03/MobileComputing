@@ -18,7 +18,8 @@ var consume_stats = {
 }
 
 func _ready() -> void:
-	
+	if Stats.current_wave==0:
+		save_consume()
 	consume_stats = load_consume_data() 
 	print(consume_stats)
 
