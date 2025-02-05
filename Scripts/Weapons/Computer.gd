@@ -29,8 +29,8 @@ func _process(delta: float) -> void:
 	global_position = global_position.move_toward(player.global_position, actual_speed*delta)
 
 	
-		if too_distant: 
-			actual_speed = move_toward(actual_speed, run_speed, delta*acelleration)
+	if too_distant: 
+		actual_speed = move_toward(actual_speed, run_speed, delta*acelleration)
 
 func reset():
 	global_position = first_position
