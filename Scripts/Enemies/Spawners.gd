@@ -60,7 +60,6 @@ func set_up():
 	#Enemies are setted to zero
 	enemies_defeated = 0
 	
-	
 	#Get the number of the enemies for this wave
 	max_enemies = int(Utilities2.get_max_enemy_number())
 	print("Max enemies: " + str(max_enemies))
@@ -69,3 +68,7 @@ func set_up():
 #func _on_wave_ended(player_won: Variant) -> void:
 	#if player_won: return
 	#Stats.update_wave(true)
+
+
+func _on_start_wave_button_button_down() -> void:
+	new_wave()
