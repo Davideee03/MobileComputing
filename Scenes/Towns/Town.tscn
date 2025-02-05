@@ -357,9 +357,9 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -1102.0
-offset_top = 230.0
+offset_top = 232.0
 offset_right = -921.0
-offset_bottom = 261.0
+offset_bottom = 263.0
 grow_horizontal = 0
 text = "Reset Game to Wave 0"
 
@@ -766,6 +766,7 @@ libraries = {
 
 [node name="LoadingScreen" parent="Player/UI/UI" instance=ExtResource("30_huxkm")]
 layout_mode = 1
+show_loading_screen = false
 
 [node name="Items" type="Node" parent="."]
 unique_name_in_owner = true

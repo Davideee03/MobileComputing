@@ -11,7 +11,6 @@ func _ready() -> void:
 		hide()
 
 func _on_button_down() -> void:
-	UniversalAudioPlayer.play_button_pressed()
 	weapon.upgrade()
 	Stats.emit_cores()
 
