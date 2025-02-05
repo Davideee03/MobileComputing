@@ -10,7 +10,7 @@ var weapon: Node2D
 func _ready() -> void:
 	weapon = get_tree().get_first_node_in_group("PlayerWeapon")
 	if WeaponSave.weapon_stats.has(new_weapon.name):
-		if WeaponSave.weapon_stats[new_weapon.name]["bought"]== true:
+		if WeaponSave.weapon_stats[new_weapon.name]["bought"]== true or new_weapon.name=="Gun":
 			show()
 		else:
 			hide()

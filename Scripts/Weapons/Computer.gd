@@ -23,9 +23,11 @@ func _ready() -> void:
 	first_position = global_position
 
 func _process(delta: float) -> void:
+
 	if !player: animation_player.play("Idle", -1, 0.8); return
 	animation_player.play("Walk", -1, 2)
 	global_position = global_position.move_toward(player.global_position, actual_speed*delta)
+
 	
 	if too_distant: 
 		actual_speed = move_toward(actual_speed, run_speed, delta*acelleration)
