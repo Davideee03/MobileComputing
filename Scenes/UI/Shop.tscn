@@ -191,10 +191,9 @@ size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_ee2sf")
 theme_override_font_sizes/font_size = 27
 tab_alignment = 1
-current_tab = 1
+current_tab = 0
 
 [node name="Weapons" type="ScrollContainer" parent="."]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -726,6 +725,7 @@ script = ExtResource("7_xvl4a")
 new_weapon = SubResource("Resource_601y1")
 
 [node name="Upgrades" type="ScrollContainer" parent="."]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
@@ -759,13 +759,28 @@ texture = ExtResource("24_6ug30")
 layout_mode = 0
 offset_left = 192.0
 offset_top = 27.0
-offset_right = 413.0
+offset_right = 372.0
 offset_bottom = 236.0
 theme_override_fonts/font = ExtResource("1_ee2sf")
 text = "Description:
+Hunts Monsters with you!
+BE WARY, HE SHOOTS
 
-Kills monsters that look extremely similar to you! BE WARY, HE SHOOTS"
+Price:"
 autowrap_mode = 2
+
+[node name="PriceLabel" type="Label" parent="Upgrades/VBoxContainer/PetID"]
+offset_left = 295.0
+offset_top = 169.0
+offset_right = 327.0
+offset_bottom = 205.0
+theme_override_fonts/font = ExtResource("1_ee2sf")
+text = "x20"
+
+[node name="Price" type="Sprite2D" parent="Upgrades/VBoxContainer/PetID"]
+position = Vector2(279, 171)
+scale = Vector2(1.76562, 1.76562)
+texture = ExtResource("23_3byir")
 
 [node name="BuyPetButton" type="Button" parent="Upgrades/VBoxContainer/PetID"]
 layout_mode = 0

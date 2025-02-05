@@ -7,10 +7,11 @@ func _ready() -> void:
 		hide()
 
 func _on_button_down() -> void:
-	if Stats.current_coreLegendary >= 1:
+	if Stats.current_coreLegendary >= 20:
 		SaveConsumables.consume_stats["Pet"]["bought"] = true
 		label_node.enable_pet()
 		hide()
 		Stats.emit_cores()
 	else: 
 		show()
+		print("non hai abbastanza cores")
