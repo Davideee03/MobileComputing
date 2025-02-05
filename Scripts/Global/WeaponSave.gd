@@ -64,8 +64,9 @@ func load_weapon_data() -> Dictionary:
 				
 		return loaded_weapons
 	else:
-		print("Nessun file di salvataggio.")
-		return {}
+		print("Nessun file di salvataggio, ne ho creato uno adesso.")
+		reset_weapons()
+		return weapon_stats
 
 #We load the stats to the weapon in game we have
 func load_weapon(weapon: Weapon) -> void:

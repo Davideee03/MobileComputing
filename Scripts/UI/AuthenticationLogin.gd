@@ -159,4 +159,3 @@ func save_local_data(data: Dictionary):
 		var file = FileAccess.open("user://weapons.dat", FileAccess.WRITE)
 		file.store_var(data["weapon_stats"])
 		file.close()
-	#loadInGameStats()

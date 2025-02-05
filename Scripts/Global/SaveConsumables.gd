@@ -9,7 +9,7 @@ var consume_save_path = "user://consume.dat"
 var consume_stats = {
 	"Mine": {"count": 0, "priceNormal": 3, "priceRare": 1, "amount": 0, "damage": 20},
 	"Grenade": {"count": 0, "priceNormal": 3, "priceRare": 1, "amount": 0, "damage": 20},
-	"Pet": {"bought": false, "price": 10}
+	"Pet": {"bought": false, "price": 20}
 	#"Potion": {"amount":0, "priceRare": 1},
 	#"SpeedDrug": {"amount": 0, "priceNormal": 1, "priceRare": 2},
 	#"Elisir": {"amount": 0, "priceLegendary": 1},
@@ -18,6 +18,8 @@ var consume_stats = {
 }
 
 func _ready() -> void:
+	if Stats.current_wave==0:
+		save_consume()
 	consume_stats = load_consume_data() 
 	print(consume_stats)
 

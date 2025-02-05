@@ -2,6 +2,8 @@ extends ShopButton
 
 func _ready() -> void:
 	weapon = get_tree().get_first_node_in_group("PlayerWeapon")
+	if new_weapon.name=="Gun":
+		show()
 	if WeaponSave.weapon_stats.has(new_weapon.name):
 		if WeaponSave.weapon_stats[new_weapon.name]["bought"]== true:
 			show()
