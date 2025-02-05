@@ -13,20 +13,22 @@ func _ready():
 		#load_data_from_cloud()
 
 func _on_login_button_pressed():
-	var email = %Email.text
+	var email : String = %Email.text
+	email = email.replace(" ", "")
 	var password = %Password.text
 	Firebase.Auth.login_with_email_and_password(email, password)
 	%LoginStatus.text = "Logging in"
 
 func _on_signup_button_pressed():
 	var email = %Email.text
+	email = email.replace(" ", "")
 	var password = %Password.text
 	Firebase.Auth.signup_with_email_and_password(email, password)
 	%LoginStatus.text = "Signing up"
 
 func on_login_succeeded(auth):
 	print(auth)
-	%LoginStatus.text = "Login success!"	
+	%LoginStatus.text = "Login success!"
 	Firebase.Auth.save_auth(auth)
 	load_data_from_cloud()
 	#Stats.emit_cores()

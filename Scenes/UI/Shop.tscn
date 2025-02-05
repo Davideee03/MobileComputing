@@ -185,7 +185,6 @@ script = ExtResource("17_ekcxq")
 [node name="Shop" type="TabContainer"]
 offset_top = -600.0
 offset_right = 613.0
-offset_bottom = 308.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_fonts/font = ExtResource("1_ee2sf")
@@ -328,6 +327,7 @@ offset_bottom = 211.0
 texture = ExtResource("9_pvmpi")
 
 [node name="ResetButtonWeapons" type="Button" parent="Weapons/VBoxContainer/Gun"]
+visible = false
 layout_mode = 2
 offset_left = 568.0
 offset_top = 23.0
@@ -337,6 +337,7 @@ text = "Reset weapon"
 script = ExtResource("9_gx07f")
 
 [node name="ResetShop" type="Button" parent="Weapons/VBoxContainer/Gun"]
+visible = false
 layout_mode = 0
 offset_left = 571.0
 offset_top = 68.0
@@ -925,7 +926,7 @@ offset_right = 163.0
 offset_bottom = 46.0
 theme_override_fonts/font = ExtResource("1_ee2sf")
 theme_override_font_sizes/font_size = 25
-text = "Granade"
+text = "Grenade"
 
 [node name="StatsMine2" type="Label" parent="Consumables/VBoxContainer/Grenade"]
 layout_mode = 0

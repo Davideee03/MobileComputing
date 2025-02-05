@@ -427,16 +427,26 @@ mouse_filter = 2
 
 [node name="ShopBack" type="Button" parent="Player/UI/UI/Shop"]
 layout_mode = 0
-offset_left = 696.0
-offset_top = 248.0
+offset_left = 689.0
+offset_top = 240.0
 offset_right = 744.0
-offset_bottom = 294.0
+offset_bottom = 295.0
 theme_override_fonts/font = ExtResource("5_38p5k")
 flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player/UI/UI/Shop/ShopBack"]
+visible = false
 position = Vector2(23, 21.5)
 scale = Vector2(3.25, 3.1875)
+texture = ExtResource("9_onf8e")
+
+[node name="TextureRect" type="TextureRect" parent="Player/UI/UI/Shop/ShopBack"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("9_onf8e")
 
 [node name="Shop" parent="Player/UI/UI/Shop" instance=ExtResource("3_iquj0")]
@@ -766,7 +776,6 @@ libraries = {
 
 [node name="LoadingScreen" parent="Player/UI/UI" instance=ExtResource("30_huxkm")]
 layout_mode = 1
-show_loading_screen = false
 
 [node name="Items" type="Node" parent="."]
 unique_name_in_owner = true

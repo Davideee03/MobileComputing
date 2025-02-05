@@ -14,7 +14,7 @@ func _input(_event: InputEvent) -> void:
 		print("Can shoot: " + str(can_shoot))
 
 func _process(delta: float) -> void:
-	if enemies.is_empty() || !can_shoot: return #If there's no enemy near return
+	if enemies.is_empty() || !can_shoot || Stats.current_health<=0: return #If there's no enemy near return
 	
 	#Select the enemy target
 	current_enemy = get_target()
