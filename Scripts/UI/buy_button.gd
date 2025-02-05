@@ -17,20 +17,17 @@ func _on_button_down() -> void:
 	# need refactoring because its functional for 4 weapon but ugly as heck for future implementation
 	# BAD CODE NEED REFACTORING
 	if new_weapon.price == 2 and new_weapon.price <= Stats.current_coreRare:
-		UniversalAudioPlayer.play_button_pressed()
 		Stats.current_coreRare -= new_weapon.price
 		new_weapon.bought = true
 		WeaponSave.save_weapon(new_weapon)
 		hide()
 	elif new_weapon.price == 5 and new_weapon.price <= Stats.current_coreEpic:
-		UniversalAudioPlayer.play_button_pressed()
 		Stats.current_coreEpic -= new_weapon.price
 		new_weapon.bought = true
 		WeaponSave.save_weapon(new_weapon)
 		hide()
 	elif new_weapon.price == 10 and new_weapon.price <= Stats.current_coreLegendary:
-		UniversalAudioPlayer.play_button_pressed()
-		Stats.current_coreLegendary -= new_weapon.price		
+		Stats.current_coreLegendary -= new_weapon.price
 		new_weapon.bought = true
 		WeaponSave.save_weapon(new_weapon)
 		hide()
