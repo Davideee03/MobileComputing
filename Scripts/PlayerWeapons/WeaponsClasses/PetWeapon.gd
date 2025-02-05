@@ -24,7 +24,8 @@ func disable_pet():
 	pet_enabled = false
 	
 func _process(delta: float) -> void:
-	if enemies.is_empty() || !pet_enabled || pet["Pet"]["bought"]: return #If there's no enemy near return
+
+	if enemies.is_empty() || !pet_enabled || pet["Pet"]["bought"] || Stats.current_health<=0: return #If there's no enemy near return
 	
 	#Select the enemy target
 	current_enemy = get_target()

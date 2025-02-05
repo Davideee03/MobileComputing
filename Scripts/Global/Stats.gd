@@ -74,21 +74,23 @@ func update_player_health(player_health):
 	current_health = player_health
 	health_changed.emit(current_health)
 
+#Called by Global
+func wave_compleated():
+	current_wave+=1
+
 #A new wave
-#Called by UI
-func update_wave(reset_wave = false):
-	#Update the wave counter only if the player
-	#is not dead
-	#Called by Global
-	if reset_wave:
-		print("Lost")
-		current_wave-=1
-	else:
-		print("Won")
-		current_wave+=1
-	
-	#emit_stats()
-	wave_changed.emit(current_wave)
+#func update_wave(player_has_won : bool):
+	##Update the wave counter only if the player
+	##is not dead
+	##Called by Global
+	#if player_has_won:
+		#print("Won")
+		#current_wave+=1
+	#else:
+		#print("Lost")
+		#current_wave-=1
+	#
+	#wave_changed.emit(current_wave)
 
 func emit_cores():
 	cores_changed.emit(current_coreNormal, current_coreRare, current_coreEpic, current_coreLegendary)

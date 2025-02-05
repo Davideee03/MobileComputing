@@ -33,12 +33,10 @@ func update_wave(enemy_value : int):
 	
 	#Wave ended, no more enemies present
 	if enemies_defeated>=max_enemies:
-		end_wave()
+		end_wave(true)
 		enemies_defeated = 0
 
-func end_wave():
-	#Check if the player is alive
-	var player_has_won : bool = Stats.current_health>0
+func end_wave(player_has_won : bool):
 	
 	#Stop spawning enemies
 	for child in get_children(): child.end_wave()
@@ -49,6 +47,7 @@ func end_wave():
 	# should wait a second before saving the stats because after we end the wave we still collect some items
 	SaveAndLoad.save()
 	SaveConsumables.save_consume()
+	
 	if label_node.logged == true:
 		label_node.save_data_to_cloud()
 	
@@ -61,14 +60,12 @@ func set_up():
 	#Enemies are setted to zero
 	enemies_defeated = 0
 	
-	#Update the Gloabl Wave stat
-	Stats.update_wave()
 	
 	#Get the number of the enemies for this wave
 	max_enemies = int(Utilities2.get_max_enemy_number())
 	print("Max enemies: " + str(max_enemies))
 
 #Reset the current wave if the player lost
-func _on_wave_ended(player_won: Variant) -> void:
-	if player_won: return
-	Stats.update_wave(true)
+#func _on_wave_ended(player_won: Variant) -> void:
+	#if player_won: return
+	#Stats.update_wave(true)
