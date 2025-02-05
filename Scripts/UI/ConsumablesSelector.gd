@@ -62,12 +62,10 @@ func enable_choice():
 		animation_player.play("WaitTime", -1, 1/wait_time)
 		return
 	
-	enemy_spawners.new_wave()
 	visible = false
 
 func disable_choice():
 	visible = false
-	enemy_spawners.new_wave()
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
 	if visible:

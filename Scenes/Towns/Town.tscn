@@ -356,10 +356,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -394.0
-offset_top = 304.0
-offset_right = -213.0
-offset_bottom = 335.0
+offset_left = -1102.0
+offset_top = 230.0
+offset_right = -921.0
+offset_bottom = 261.0
 grow_horizontal = 0
 text = "Reset Game to Wave 0"
 
@@ -766,9 +766,7 @@ libraries = {
 }
 
 [node name="LoadingScreen" parent="Player/UI/UI" instance=ExtResource("30_huxkm")]
-visible = false
 layout_mode = 1
-show_loading_screen = false
 
 [node name="Items" type="Node" parent="."]
 unique_name_in_owner = true
@@ -799,7 +797,7 @@ script = ExtResource("34_kld8c")
 [connection signal="wave_started" from="Player/EnemySpawners" to="Player/ItemSpawner" method="_on_enemy_spawners_wave_started"]
 [connection signal="wave_started" from="Player/EnemySpawners" to="Player/UI/UI/Stats/Wave" method="_on_enemy_spawners_wave_started"]
 [connection signal="wave_updated" from="Player/EnemySpawners" to="Player/UI/UI/Stats/Wave" method="_on_enemy_spawners_wave_updated"]
-[connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/EnemySpawners" method="_on_start_wave_button_down"]
+[connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/EnemySpawners" method="_on_start_wave_button_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI" method="_on_start_wave_button_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/StartWaveButton" to="Player/UI/UI/Consumables" method="_on_start_wave_button_button_down"]
 [connection signal="button_down" from="Player/UI/UI/Buttons/ShopButton" to="Player/UI/UI" method="_on_shop_button_button_down"]

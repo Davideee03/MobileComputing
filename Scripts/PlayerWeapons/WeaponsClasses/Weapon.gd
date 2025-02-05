@@ -13,11 +13,12 @@ func _input(_event: InputEvent) -> void:
 		can_shoot = !can_shoot
 		print("Can shoot: " + str(can_shoot))
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if enemies.is_empty() || !can_shoot: return #If there's no enemy near return
 	
 	#Select the enemy target
 	current_enemy = get_target()
+	
 	look_at(current_enemy)
 	
 	#Func for checking if the enemy is on the right or left side of the screen
