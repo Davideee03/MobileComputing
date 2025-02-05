@@ -48,11 +48,12 @@ func _on_start_wave_button_button_down() -> void:
 func enable_choice():
 	var has_consumables : bool = false
 	for consumable in SaveConsumables.consume_stats:
-		if SaveConsumables.consume_stats[consumable]["amount"] > 0:
-			has_consumables = true
-			get_node("BackGround/"+consumable).disabled = false
-		else:
-			get_node("BackGround/"+consumable).disabled = true
+		if consumable != "Pet":
+			if SaveConsumables.consume_stats[consumable]["amount"] > 0:
+				has_consumables = true
+				get_node("BackGround/"+consumable).disabled = false
+			else:
+				get_node("BackGround/"+consumable).disabled = true
 	
 	if has_consumables:
 		for label in labels:

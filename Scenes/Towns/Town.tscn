@@ -417,9 +417,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -70.0
+offset_left = -78.0
 offset_top = 5.0
-offset_right = 10.0
+offset_right = 2.0
 offset_bottom = -275.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -492,8 +492,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -15.0
-offset_right = 87.0
+offset_right = -720.0
+offset_bottom = -1280.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -502,17 +502,16 @@ layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -363.0
 offset_top = 200.0
-offset_right = 360.0
-offset_bottom = 0.0
+offset_right = 0.0
+offset_bottom = 200.0
 
 [node name="AuthBack" type="Button" parent="Player/UI/UI/Auth"]
 layout_mode = 0
-offset_left = 576.0
-offset_top = 296.0
-offset_right = 621.0
-offset_bottom = 343.0
+offset_left = 588.0
+offset_top = 298.0
+offset_right = 633.0
+offset_bottom = 345.0
 flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Player/UI/UI/Auth/AuthBack"]
