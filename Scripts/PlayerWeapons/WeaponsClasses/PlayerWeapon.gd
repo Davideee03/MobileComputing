@@ -18,6 +18,7 @@ var price : float
 
 #Machine gun
 var overheating_text: Label
+@onready var overheating_effect: CPUParticles2D = $OverheatingEffect
 
 ##MOMENTANEO##
 func _ready() -> void:

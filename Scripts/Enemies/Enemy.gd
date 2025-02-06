@@ -78,7 +78,7 @@ func die():
 		#Play a sound when destroyed
 		UniversalAudioPlayer.play_expolosion()
 		
-		explode()
+	explode()
 	
 	#Update the Global enemies array
 	Global.remove_enemy(self)

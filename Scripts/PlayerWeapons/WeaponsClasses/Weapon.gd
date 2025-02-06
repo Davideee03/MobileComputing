@@ -101,6 +101,8 @@ func overheating():
 	can_shoot = false
 	overheating_text.visible = true
 	
+	overheating_effect.emitting = true
+	
 	#Wait the machingun cooling time
 	set_timer(cooling_time)
 	await timer.timeout
@@ -110,11 +112,13 @@ func overheating():
 	if current_weapon is MachineGun && !enemies.is_empty():
 		overheating()
 	else:
+		overheating_effect.emitting = false
 		on_overheating = false
 
 func reset_shooting():
 	can_shoot = true
 	overheating_text.visible = false
+	overheating_effect.emitting = false
 
 func set_timer(new_wait_time : float):
 	timer.wait_time = new_wait_time

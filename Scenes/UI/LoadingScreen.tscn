@@ -6,7 +6,7 @@
 
 [sub_resource type="Animation" id="Animation_0y3fh"]
 resource_name = "Loading"
-length = 5.0
+length = 4.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -14,7 +14,7 @@ tracks/0/path = NodePath("Title:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.433333, 1.9, 2.83333, 4.33333),
+"times": PackedFloat32Array(0.6, 0.966667, 2.36667, 3.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -26,7 +26,7 @@ tracks/1/path = NodePath("ColorRect:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(4.6, 4.86667),
+"times": PackedFloat32Array(4.06667, 4.33333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
@@ -43,7 +43,7 @@ tracks/2/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("2_a4j34")
 }],
-"times": PackedFloat32Array(0.833333)
+"times": PackedFloat32Array(0.633333)
 }
 tracks/2/use_blend = true
 
