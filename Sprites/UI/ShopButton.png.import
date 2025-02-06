@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://csv8pj1rjopvw"
-path="res://.godot/imported/Sprite-0001.png-73aa5ddffc21b51d0111b86f90fe049b.ctex"
+uid="uid://dv3n6r0b51wyu"
+path="res://.godot/imported/ShopButton.png-e39c7a42345f8a1a0f884efcdaa9d025.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ShopUI/Sprite-0001.png"
-dest_files=["res://.godot/imported/Sprite-0001.png-73aa5ddffc21b51d0111b86f90fe049b.ctex"]
+source_file="res://Sprites/UI/ShopButton.png"
+dest_files=["res://.godot/imported/ShopButton.png-e39c7a42345f8a1a0f884efcdaa9d025.ctex"]
 
 [params]
 

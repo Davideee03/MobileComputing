@@ -1,15 +1,62 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhaif6fyye5rx"]
+[gd_scene load_steps=5 format=3 uid="uid://bhaif6fyye5rx"]
 
-[ext_resource type="Texture2D" uid="uid://dtmlohhsrr586" path="res://Sprites/Environment/FloorOneTile.png" id="1_mpqyr"]
+[ext_resource type="Texture2D" uid="uid://yb31726ijnte" path="res://Sprites/Environment/Floor.png" id="1_jp8rn"]
 [ext_resource type="Script" path="res://Scripts/Environment/Floor.gd" id="2_vk1xm"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_djjwx"]
-size = Vector2(800, 1380)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3ruj"]
+size = Vector2(2160, 3840)
 
-[node name="FloorOneTile" type="Sprite2D"]
-z_index = -100
-texture = ExtResource("1_mpqyr")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdufc"]
+size = Vector2(6480, 11520)
+
+[node name="Floor" type="Node2D"]
 script = ExtResource("2_vk1xm")
+
+[node name="FloorSprites" type="Node2D" parent="."]
+
+[node name="Floor" type="Sprite2D" parent="FloorSprites"]
+z_index = -100
+texture = ExtResource("1_jp8rn")
+
+[node name="Floor2" type="Sprite2D" parent="FloorSprites"]
+z_index = -100
+position = Vector2(720, 0)
+texture = ExtResource("1_jp8rn")
+
+[node name="Floor3" type="Sprite2D" parent="FloorSprites"]
+z_index = -100
+position = Vector2(-720, 0)
+texture = ExtResource("1_jp8rn")
+
+[node name="Floor4" type="Sprite2D" parent="FloorSprites"]
+z_index = -100
+position = Vector2(0, 1280)
+texture = ExtResource("1_jp8rn")
+
+[node name="Floor5" type="Sprite2D" parent="FloorSprites"]
+z_index = -100
+position = Vector2(0, -1280)
+texture = ExtResource("1_jp8rn")
+
+[node name="Floor6" type="Sprite2D" parent="FloorSprites"]
+z_index = -100
+position = Vector2(720, -1280)
+texture = ExtResource("1_jp8rn")
+
+[node name="Floor7" type="Sprite2D" parent="FloorSprites"]
+z_index = -100
+position = Vector2(720, 1280)
+texture = ExtResource("1_jp8rn")
+
+[node name="Floor8" type="Sprite2D" parent="FloorSprites"]
+z_index = -100
+position = Vector2(-720, 1280)
+texture = ExtResource("1_jp8rn")
+
+[node name="Floor9" type="Sprite2D" parent="FloorSprites"]
+z_index = -100
+position = Vector2(-720, -1280)
+texture = ExtResource("1_jp8rn")
 
 [node name="PlayerDetector" type="Area2D" parent="."]
 collision_layer = 0
@@ -17,11 +64,41 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
-shape = SubResource("RectangleShape2D_djjwx")
+shape = SubResource("RectangleShape2D_e3ruj")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(0, 3.05176e-05)
-scale = Vector2(144, 256)
+[node name="Destroy" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destroy"]
+shape = SubResource("RectangleShape2D_kdufc")
+
+[node name="SpawnPositions" type="Node2D" parent="."]
+
+[node name="X" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(2160, 0)
+
+[node name="-X" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(-2160, 0)
+
+[node name="Y" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(0, 3840)
+
+[node name="-Y" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(0, -3840)
+
+[node name="XY" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(2160, 3840)
+
+[node name="-XY" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(-2160, 3840)
+
+[node name="X-Y" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(2160, -3840)
+
+[node name="-X-Y" type="Marker2D" parent="SpawnPositions"]
+position = Vector2(-2160, -3840)
 
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
+[connection signal="body_exited" from="Destroy" to="." method="_on_destroy_body_exited"]

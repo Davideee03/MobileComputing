@@ -8,7 +8,6 @@ var consumables
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(self.get_path())
 	update()
 
 # load the dictionary with consumables saved locally and load the right amount of consumables we had 

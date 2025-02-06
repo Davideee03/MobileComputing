@@ -129,9 +129,15 @@ _data = [Vector2(0, 0.989011), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 1
 collision_layer = 2
 script = ExtResource("1_q7gve")
 speed = 350.0
+
+[node name="Weapon" parent="." instance=ExtResource("6_mjxid")]
+z_index = 11
+position = Vector2(0, -40)
+script = ExtResource("6_2h1e7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_nrn82")
@@ -142,11 +148,6 @@ script = ExtResource("2_nrn82")
 visible = false
 modulate = Color(1, 1, 1, 0.8)
 texture = ExtResource("3_ogyjf")
-
-[node name="Weapon" parent="." instance=ExtResource("6_mjxid")]
-z_index = 11
-position = Vector2(0, -24)
-script = ExtResource("6_2h1e7")
 
 [node name="ComputerContainer" type="Node2D" parent="." groups=["ComputerContainer"]]
 position = Vector2(48, 16)

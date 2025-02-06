@@ -23,8 +23,11 @@ func _ready() -> void:
 	first_position = global_position
 
 func _process(delta: float) -> void:
-	if !player: return
+
+	if !player: animation_player.play("Idle", -1, 0.8); return
+	animation_player.play("Walk", -1, 2)
 	global_position = global_position.move_toward(player.global_position, actual_speed*delta)
+
 	
 	#Check Pet's Movement
 	#look_at(player.position)
@@ -42,17 +45,6 @@ func pet_movement(direction):
 
 func reset():
 	global_position = first_position
-
-func _input(event):
-	
-	if event is InputEventScreenTouch:
-		is_dragging = false
-		if event.is_pressed():
-			first_position = (event.position - (get_viewport().size*0.5))
-			animation_player.play("Walk", -1, 2)
-		else:
-			first_position = global_position
-			animation_player.play("Idle", -1, 0.8)
 
 func _on_player_detector_body_entered(_body: Node2D) -> void:
 	player = null

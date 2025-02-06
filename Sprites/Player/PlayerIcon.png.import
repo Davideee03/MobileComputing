@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nx0vj6ttp1od"
-path="res://.godot/imported/GEM 2 - LIGHT GREEN - 0008.png-27c2b7c377a98c67bbc41fdefc9bf34a.ctex"
+uid="uid://b4xk4ge1sm46b"
+path="res://.godot/imported/PlayerIcon.png-95d6f0202da4af5b6fde038900924e09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/GEM 2 - LIGHT GREEN - 0008.png"
-dest_files=["res://.godot/imported/GEM 2 - LIGHT GREEN - 0008.png-27c2b7c377a98c67bbc41fdefc9bf34a.ctex"]
+source_file="res://Sprites/Player/PlayerIcon.png"
+dest_files=["res://.godot/imported/PlayerIcon.png-95d6f0202da4af5b6fde038900924e09.ctex"]
 
 [params]
 

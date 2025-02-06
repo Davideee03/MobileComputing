@@ -9,18 +9,19 @@ func _ready():
 	Firebase.Auth.login_failed.connect(on_login_failed)
 	Firebase.Auth.signup_failed.connect(on_signup_failed)
 	if Firebase.Auth.check_auth_file():
-		%LoginStatus.text = "Logged in"
 		logged = true
-		load_data_from_cloud()
+		#load_data_from_cloud()
 
 func _on_login_button_pressed():
-	var email = %Email.text
+	var email : String = %Email.text
+	email = email.replace(" ", "")
 	var password = %Password.text
 	Firebase.Auth.login_with_email_and_password(email, password)
 	%LoginStatus.text = "Logging in"
 
 func _on_signup_button_pressed():
 	var email = %Email.text
+	email = email.replace(" ", "")
 	var password = %Password.text
 	Firebase.Auth.signup_with_email_and_password(email, password)
 	%LoginStatus.text = "Signing up"
@@ -30,16 +31,24 @@ func on_login_succeeded(auth):
 	%LoginStatus.text = "Login success!"
 	Firebase.Auth.save_auth(auth)
 	load_data_from_cloud()
+	#Stats.emit_cores()
 	#%SyncData.show()
 	%Logout.show()
+	%SignUp.hide()
+	%Login.hide()
+	if logged == true:
+		%LoginStatus.text = "Status: Logged in"
 	logged = true
 
 func on_signup_succeeded(auth):
 	print(auth)
 	%LoginStatus.text = "Sign up success!"
 	Firebase.Auth.save_auth(auth)
-	load_data_from_cloud()
+	save_data_to_cloud()
 	logged = true
+	%Logout.show()
+	%SignUp.hide()
+	%Login.hide()
 
 func on_login_failed(error_code, message):
 	print(error_code, message)
@@ -54,6 +63,8 @@ func _on_logout_button_pressed():
 	%LoginStatus.text = "Logged Out!"
 	#%SyncData.hide()
 	%Logout.hide()
+	%SignUp.show()
+	%Login.show()
 	logged = false
 
 # Sincronizza i dati locali con Firestore
@@ -98,7 +109,7 @@ func load_data_from_cloud():
 		if document:
 			var cloud_data = document.get_value("player_stats")
 			if cloud_data:
-				save_local_data(cloud_data)  # Sovrascrivi i dati locali
+				save_local_data(cloud_data)  # Sovrascrivi i dati locali ma in memoria non in locale
 				print("Cloud load: Data loaded")
 			else:
 				print("Cloud load: No data found")

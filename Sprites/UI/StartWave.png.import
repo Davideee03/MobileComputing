@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6r10dorcsuc7"
-path="res://.godot/imported/Apple.png-b2934a1c3bd512e2ebb2525ea5c5c314.ctex"
+uid="uid://b37gnogr251fe"
+path="res://.godot/imported/StartWave.png-7942c5d9e8c4b0f28e732ef29e578636.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Items/Apple.png"
-dest_files=["res://.godot/imported/Apple.png-b2934a1c3bd512e2ebb2525ea5c5c314.ctex"]
+source_file="res://Sprites/UI/StartWave.png"
+dest_files=["res://.godot/imported/StartWave.png-7942c5d9e8c4b0f28e732ef29e578636.ctex"]
 
 [params]
 
