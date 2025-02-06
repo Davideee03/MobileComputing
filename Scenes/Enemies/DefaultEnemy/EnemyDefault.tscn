@@ -80,7 +80,7 @@ radius = 100.0
 [node name="DefaultEnemy" type="Node2D"]
 top_level = true
 script = ExtResource("1_byofy")
-health = 8
+health = 5
 max_exp_drop = 10
 
 [node name="HealthSystem" type="Area2D" parent="."]

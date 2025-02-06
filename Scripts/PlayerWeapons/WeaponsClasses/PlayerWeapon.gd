@@ -16,8 +16,12 @@ var price : float
 
 @onready var weapon_save = get_node("/root/WeaponSave")
 
+#Machine gun
+var overheating_text: Label
+
 ##MOMENTANEO##
 func _ready() -> void:
+	overheating_text = get_node("/root/World/Player/UI/UI/Overheating")
 	# loading weapons
 	var saved_weapons = weapon_save.load_weapon_data()
 	
@@ -40,10 +44,6 @@ func load_weapon(weapon) -> void:
 	reload_time = weapon.reload_time
 	price = weapon.price
 	
-	#Check if Weapon is Machine Gun
-	if current_weapon is MachineGun:
-		shoot_time()
-
 	print("Weapon: " + str(weapon))
 	print("Sprite: " + str(sprite.texture))
 	print("Damage: " + str(damage))
@@ -51,15 +51,19 @@ func load_weapon(weapon) -> void:
 	print("Price: " + str(price))
 
 #Manages Overheating Time
-func shoot_time() -> void:
-	while true:
-		await get_tree().create_timer(fire_timer).timeout
-		if current_weapon is not MachineGun:
-			break
-		can_shoot = false
-		print("Overheating")
-		await get_tree().create_timer(no_fire_timer).timeout
-		can_shoot = true
+#func shoot_time() -> void:
+	#while true:
+		#on_overheating = true
+		#await get_tree().create_timer(fire_timer).timeout
+		#if current_weapon is not MachineGun:
+			#overheating.visible = false
+			#on_overheating = false
+			#break
+		#can_shoot = false
+		#overheating.visible = true
+		#await get_tree().create_timer(no_fire_timer).timeout
+		#can_shoot = true
+		#overheating.visible = false
 
 # function used for flippin the weapon's sprite when the enemy is on the left side of the screen
 func check_flip(enemy_position : Vector2):
@@ -67,7 +71,6 @@ func check_flip(enemy_position : Vector2):
 		sprite.scale.y = -1
 	else:
 		sprite.scale.y= 1
-
 
 func upgrade():
 	# load_weapon(current_weapon)

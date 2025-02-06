@@ -2,7 +2,6 @@ extends Node2D
 
 @export var central_bullet : bool = false
 
-var initial_position : Vector2
 var bullet_life : float = 5.0
 var speed : float = 1000.0
 var random_direction : Vector2
@@ -11,7 +10,6 @@ var random_angle : float
 var destroyed : bool = false
 
 func _ready() -> void:
-	initial_position = global_position
 	await  get_tree().create_timer(get_process_delta_time()).timeout
 	var direction = get_parent().direction
 	#Central Bullet Control
@@ -30,7 +28,7 @@ func _ready() -> void:
 #Enemy Enters Area
 func _on_enemy_detector_area_entered(enemy: Area2D) -> void:
 	var enemy_position : Vector2 = enemy.global_position
-	var distance : float = initial_position.distance_to(enemy_position) #Enemy Distance
+	var distance : float = global_position.distance_to(enemy_position) #Enemy Distance
 	var damage_to_apply : float = get_parent().calculate_damage(distance)
 	enemy.take_damage(damage_to_apply)
 	destroyed = true
