@@ -8,4 +8,5 @@ var max_distance : float = 1000.0
 func calculate_damage(distance: float) -> float:
 	var clamped_distance = clamp(distance, 0, max_distance)
 	var t = clamped_distance / max_distance
+	print(lerp(max_damage, min_damage, t))
 	return lerp(max_damage, min_damage, t)

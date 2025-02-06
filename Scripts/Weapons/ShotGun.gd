@@ -37,5 +37,3 @@ func upgradingCost():
 func setBought() -> void:
 	bought = true
 	print(name + " è stato acquistato!")
-		
-	
