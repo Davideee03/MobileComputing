@@ -15,9 +15,11 @@ var current_weapon: Weapon
 var price : float
 
 @onready var weapon_save = get_node("/root/WeaponSave")
+var overheating: Label
 
 ##MOMENTANEO##
 func _ready() -> void:
+	overheating = get_node("/root/World/Player/UI/UI/Overheating")
 	# loading weapons
 	var saved_weapons = weapon_save.load_weapon_data()
 	
@@ -55,11 +57,13 @@ func shoot_time() -> void:
 	while true:
 		await get_tree().create_timer(fire_timer).timeout
 		if current_weapon is not MachineGun:
+			overheating.visible = false
 			break
 		can_shoot = false
-		print("Overheating")
+		overheating.visible = true
 		await get_tree().create_timer(no_fire_timer).timeout
 		can_shoot = true
+		overheating.visible = false
 
 # function used for flippin the weapon's sprite when the enemy is on the left side of the screen
 func check_flip(enemy_position : Vector2):
@@ -67,7 +71,6 @@ func check_flip(enemy_position : Vector2):
 		sprite.scale.y = -1
 	else:
 		sprite.scale.y= 1
-
 
 func upgrade():
 	# load_weapon(current_weapon)

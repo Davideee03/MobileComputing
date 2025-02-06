@@ -3,9 +3,10 @@ extends Weapon
 
 var bullet = preload("res://Scenes/Weapon/Bullets/MachineGunBullet.tscn")
 var sprite = preload("res://Sprites/Weapons/machinegunn.png")
-var damage = 15.0
+var initial_damage : float = 4.0
+var damage = 4.0
 var reload_time = 0.1
-var reload_reduction = 0.008
+var reload_reduction = 0.001
 var level = 1
 var price = 10
 var name = "MachineGun"
@@ -15,7 +16,7 @@ var bought = false
 
 func up():
 	if upgradingCost():
-		damage = 2.5*pow(damage, 0.7)
+		damage = initial_damage*pow(level, 0.4)
 		damage = snapped(damage, 0.01)
 		reload_time = max(reload_time * pow(1 - reload_reduction, level), 0.1)
 		reload_time = snapped(reload_time, 0.01)
@@ -30,7 +31,7 @@ func up():
 func upgradingCost():
 	if Stats.current_coreLegendary>=price:
 		Stats.current_coreLegendary -= price
-		price += 10
+		price += 2
 		return true
 	else:
 		return false

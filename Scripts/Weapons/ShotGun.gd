@@ -7,7 +7,7 @@ var damage = 15.0
 var reload_time = 1.2
 var level = 1
 var reload_reduction = 0.008
-var price = 2
+var price = 5
 var name = "ShotGun"
 var weapon_save = WeaponSave
 var bought = false
@@ -29,7 +29,7 @@ func up():
 func upgradingCost():
 	if Stats.current_coreRare>=price:
 		Stats.current_coreRare -= price
-		price += 2
+		price += 4
 		return true
 	else:
 		return false
