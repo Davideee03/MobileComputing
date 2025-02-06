@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 	global_position = global_position.move_toward(player.global_position, actual_speed*delta)
 	
 	#Check Pet's Movement
-	look_at(player.position)
+	#look_at(player.position)
 	pet_movement((player.position - global_position).normalized())
 	
 	if too_distant: 
@@ -36,9 +36,9 @@ func _process(delta: float) -> void:
 #Check Pet's Movement
 func pet_movement(direction):
 	if direction.x < 0:
-		pet_sprite.flip_v = true
+		pet_sprite.flip_h = true
 	else:
-		pet_sprite.flip_v = false
+		pet_sprite.flip_h = false
 
 func reset():
 	global_position = first_position
