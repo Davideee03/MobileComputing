@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://11fh8kk8xko4"]
+[gd_scene load_steps=3 format=3 uid="uid://11fh8kk8xko4"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerWeapons/WeaponsClasses/PlayerWeapon.gd" id="1_wvq1q"]
+
+[sub_resource type="Curve" id="Curve_ixq7g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Weapon" type="Node2D" groups=["PlayerWeapon"]]
 script = ExtResource("1_wvq1q")
@@ -11,3 +15,17 @@ script = ExtResource("1_wvq1q")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 4.6
+
+[node name="OverheatingEffect" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+lifetime = 0.4
+emission_shape = 5
+emission_points = PackedVector2Array(0, 0, -5, 0, 5, 0)
+emission_normals = PackedVector2Array()
+emission_colors = PackedColorArray()
+gravity = Vector2(0, -980)
+scale_amount_min = 4.0
+scale_amount_max = 8.0
+scale_amount_curve = SubResource("Curve_ixq7g")
+color = Color(0.531594, 0.000202053, 0.53159, 1)
