@@ -7,7 +7,7 @@ const ENEMY_HITTED = preload("res://Soundeffects/Enemy/EnemyHitted.wav")
 const HIT_PARTICLE_SYSTEM = preload("res://Scenes/Enemies/HitParticleSystem.tscn")
 
 func _ready() -> void:
-	health = owner.health*pow(Stats.current_wave, 0.2)
+	health = owner.health*pow(Stats.current_wave, 0.5)
 
 func take_damage(damage : float):
 	health-=damage

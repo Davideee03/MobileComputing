@@ -5,6 +5,7 @@ extends Node2D
 @export var run_speed : float = 550.0
 @export var acelleration : float = 100.0
 var actual_speed : float
+@onready var pet_sprite : Sprite2D = $PetSprite
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 var is_dragging : bool = false
@@ -23,14 +24,22 @@ func _ready() -> void:
 	first_position = global_position
 
 func _process(delta: float) -> void:
-
 	if !player: animation_player.play("Idle", -1, 0.8); return
 	animation_player.play("Walk", -1, 2)
 	global_position = global_position.move_toward(player.global_position, actual_speed*delta)
-
+	
+	#Check Pet's Movement
+	pet_movement((player.position - global_position).normalized())
 	
 	if too_distant: 
 		actual_speed = move_toward(actual_speed, run_speed, delta*acelleration)
+
+#Check Pet's Movement
+func pet_movement(direction):
+	if direction.x < 0:
+		pet_sprite.flip_h = true
+	else:
+		pet_sprite.flip_h = false
 
 func reset():
 	global_position = first_position

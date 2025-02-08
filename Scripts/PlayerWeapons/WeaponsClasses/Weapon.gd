@@ -7,6 +7,12 @@ var is_reloading : bool = false
 #Small area reference
 @onready var small_enemy_detector: Area2D = %CloserArea
 
+#Overheating
+var overheating_time : float = 4.6
+var cooling_time : float = 3.8
+var on_overheating : bool = false
+@onready var timer: Timer = $Timer
+
 ###DEBUG###
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("a"):
@@ -14,7 +20,7 @@ func _input(_event: InputEvent) -> void:
 		print("Can shoot: " + str(can_shoot))
 
 func _process(delta: float) -> void:
-	if enemies.is_empty() || !can_shoot: return #If there's no enemy near return
+	if enemies.is_empty() || !can_shoot || Stats.current_health<=0: return #If there's no enemy near return
 	
 	#Select the enemy target
 	current_enemy = get_target()
@@ -29,6 +35,10 @@ func _process(delta: float) -> void:
 
 #Manage Shoot
 func shoot():
+	#Check if Weapon is Machine Gun
+	if current_weapon is MachineGun && !on_overheating:
+		overheating()
+	
 	#Spawn a new bullet
 	var new_bullet = bullet.instantiate()
 	add_child(new_bullet)
@@ -76,3 +86,40 @@ func _on_emey_detector_area_entered(area: Area2D) -> void:
 #Remove the enemy once exited from the area
 func _on_emey_detector_area_exited(area: Area2D) -> void:
 	enemies.erase(area)
+
+func overheating():
+	on_overheating = true
+	#After the timer stop shooting
+	set_timer(overheating_time)
+	await timer.timeout
+	if current_weapon is not MachineGun || enemies.is_empty():
+		reset_shooting()
+		on_overheating = false
+		return
+	
+	#Stop shooting and notify the overheating
+	can_shoot = false
+	overheating_text.visible = true
+	
+	overheating_effect.emitting = true
+	
+	#Wait the machingun cooling time
+	set_timer(cooling_time)
+	await timer.timeout
+	reset_shooting()
+	
+	#Carry on if it's still a machingun
+	if current_weapon is MachineGun && !enemies.is_empty():
+		overheating()
+	else:
+		overheating_effect.emitting = false
+		on_overheating = false
+
+func reset_shooting():
+	can_shoot = true
+	overheating_text.visible = false
+	overheating_effect.emitting = false
+
+func set_timer(new_wait_time : float):
+	timer.wait_time = new_wait_time
+	timer.start()

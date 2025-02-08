@@ -3,7 +3,8 @@ extends Weapon
 
 var sprite = preload("res://Sprites/Weapons/pistol.png")
 var bullet = preload("res://Scenes/Weapon/Bullets/GunBullet.tscn")
-var damage = 5.0
+var initial_damage = 8.0
+var damage = 8.0
 var reload_time = 0.75
 var level = 1
 var reload_reduction = 0.008
@@ -19,7 +20,7 @@ var bought = true # the gun is the first weapon the player has so we set the var
 # Upgrading the weapon called by the playerWeapon
 func up():
 	if upgradingCost():
-		damage = 2.5*pow(damage, 0.7)
+		damage = initial_damage*pow(level, 0.5)
 		# Snapping the float number es. if I have a 21.23232 it will get snapped to 21.23
 		damage = snapped(damage, 0.01)
 		reload_time = max(reload_time * pow(1 - reload_reduction, level), 0.1)
@@ -38,7 +39,7 @@ func upgradingCost():
 	if Stats.current_coreNormal>=price:
 		Stats.current_coreNormal -= price
 		# momentary increase number
-		price += 2
+		price += 5
 		return true
 	else:
 		return false

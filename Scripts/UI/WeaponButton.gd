@@ -17,7 +17,7 @@ func _ready() -> void:
 		else:
 			hide()
 	else:
-		hide()	
+		hide()
 
 #When pressed, change the player weapon parameters
 func _on_button_down() -> void:

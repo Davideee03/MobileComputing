@@ -16,12 +16,12 @@ func _on_button_down() -> void:
 	
 	# need refactoring because its functional for 4 weapon but ugly as heck for future implementation
 	# BAD CODE NEED REFACTORING
-	if new_weapon.price == 2 and new_weapon.price <= Stats.current_coreRare:
+	if new_weapon.price == 5 and new_weapon.price <= Stats.current_coreRare:
 		Stats.current_coreRare -= new_weapon.price
 		new_weapon.bought = true
 		WeaponSave.save_weapon(new_weapon)
 		hide()
-	elif new_weapon.price == 5 and new_weapon.price <= Stats.current_coreEpic:
+	elif new_weapon.price == 8 and new_weapon.price <= Stats.current_coreEpic:
 		Stats.current_coreEpic -= new_weapon.price
 		new_weapon.bought = true
 		WeaponSave.save_weapon(new_weapon)
@@ -32,6 +32,7 @@ func _on_button_down() -> void:
 		WeaponSave.save_weapon(new_weapon)
 		hide()
 	else: 
+		print(Stats.current_coreEpic)
 		print("Core insufficienti per comprare l'arma")
 		
 	Stats.emit_cores()
