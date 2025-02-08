@@ -230,7 +230,7 @@ theme_override_fonts/font = ExtResource("1_ee2sf")
 theme_override_font_sizes/font_size = 33
 text = "Buy"
 
-[node name="SelectGun" type="Button" parent="Weapons/VBoxContainer/Gun"]
+[node name="SelectGun" type="Button" parent="Weapons/VBoxContainer/Gun" groups=["Select Buttons"]]
 layout_mode = 2
 offset_left = 405.0
 offset_top = 29.0
@@ -327,7 +327,6 @@ offset_bottom = 211.0
 texture = ExtResource("9_pvmpi")
 
 [node name="ResetButtonWeapons" type="Button" parent="Weapons/VBoxContainer/Gun"]
-visible = false
 layout_mode = 2
 offset_left = 568.0
 offset_top = 23.0
@@ -337,7 +336,6 @@ text = "Reset weapon"
 script = ExtResource("9_gx07f")
 
 [node name="ResetShop" type="Button" parent="Weapons/VBoxContainer/Gun"]
-visible = false
 layout_mode = 0
 offset_left = 571.0
 offset_top = 68.0
@@ -375,7 +373,7 @@ theme_override_fonts/font = ExtResource("1_ee2sf")
 theme_override_font_sizes/font_size = 33
 text = "Buy"
 
-[node name="SelectShotGun" type="Button" parent="Weapons/VBoxContainer/ShotGun"]
+[node name="SelectShotGun" type="Button" parent="Weapons/VBoxContainer/ShotGun" groups=["Select Buttons"]]
 visible = false
 layout_mode = 2
 offset_left = 403.0
@@ -499,7 +497,7 @@ theme_override_fonts/font = ExtResource("1_ee2sf")
 theme_override_font_sizes/font_size = 33
 text = "Buy"
 
-[node name="SelectAssault" type="Button" parent="Weapons/VBoxContainer/Assault"]
+[node name="SelectAssault" type="Button" parent="Weapons/VBoxContainer/Assault" groups=["Select Buttons"]]
 layout_mode = 2
 offset_left = 410.0
 offset_top = 29.0
@@ -640,7 +638,7 @@ theme_override_fonts/font = ExtResource("1_ee2sf")
 theme_override_font_sizes/font_size = 33
 text = "Buy"
 
-[node name="SelectMachine" type="Button" parent="Weapons/VBoxContainer/MachineGun"]
+[node name="SelectMachine" type="Button" parent="Weapons/VBoxContainer/MachineGun" groups=["Select Buttons"]]
 layout_mode = 2
 offset_left = 408.0
 offset_top = 37.0
