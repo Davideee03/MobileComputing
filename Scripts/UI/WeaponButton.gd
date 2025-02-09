@@ -10,8 +10,8 @@ var weapon: Node2D
 func _ready() -> void:
 	weapon = get_tree().get_first_node_in_group("PlayerWeapon")
 	if new_weapon.name=="Gun":
-		show()
-	if WeaponSave.weapon_stats.has(new_weapon.name):
+		hide()
+	elif WeaponSave.weapon_stats.has(new_weapon.name):
 		if WeaponSave.weapon_stats[new_weapon.name]["bought"]== true:
 			show()
 		else:
@@ -37,6 +37,8 @@ func _on_buy_button_button_down() -> void:
 	if WeaponSave.weapon_stats.has(new_weapon.name):
 		if WeaponSave.weapon_stats[new_weapon.name]["bought"]== true:
 			show()
+			weapon.load_weapon(new_weapon)
+			updateVisibility()
 		else:
 			hide()
 	else:
@@ -58,6 +60,7 @@ func _on_up_gun_button_button_down() -> void:
 		weapon.load_weapon(saved_weapons[new_weapon.name])
 	else:
 		weapon.load_weapon(new_weapon)
+	updateVisibility()
 
 func _on_reset_shop_button_down() -> void:
 	hide()
