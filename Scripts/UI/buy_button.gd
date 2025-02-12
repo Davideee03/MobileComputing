@@ -13,7 +13,6 @@ func _ready() -> void:
 		show()
 
 func _on_button_down() -> void:
-	
 	# need refactoring because its functional for 4 weapon but ugly as heck for future implementation
 	# BAD CODE NEED REFACTORING
 	if new_weapon.price == 5 and new_weapon.price <= Stats.current_coreRare:
